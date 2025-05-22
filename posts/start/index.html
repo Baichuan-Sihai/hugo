@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Start | 百川</title>
+<meta name="keywords" content="">
+<meta name="description" content="
+安装windows下包管理器Scoop
+最近一段时间用惯了linux的一些命令行操作后回到Windows总有点不适应，cmd中像是ls这样的命令无法使用。其实Windows下的Windows PowerShell可以使用不少像是ls,rm这样的指令，获得类似与linux类似的体验，由于Win11中Windows Terminal集成了Windows PowerSell，cmd等shell，功能强大且颜值高，故强烈推荐此后使用terminal。
+首先设置PowerShell执行策略使其可以执行脚本
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+# 添加环境变量: scoop的安装路径
+$env:SCOOP=&#39;C:\software\Scoop&#39;
+[Environment]::SetEnvironmentVariable(&#39;SCOOP&#39;, $env:SCOOP, &#39;User&#39;)
+# 安装
+Invoke-Expression (New-Object System.Net.WebClient).DownloadString(&#39;https://get.scoop.sh&#39;)
+完成后相应路径会有一个Scoop文件夹。
+若上述方法失败，可直接打开https://get.scoop.sh下载install.ps1到C:\software\Scoop中，然后
+# 获得脚本执行权限
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+# 打开vpn并设置scoop代理, ip和端口号根据自己的代理设置
+scoop config proxy 127.0.0.1:7890
+# 执行install.ps1
+.\install.ps1
+安装Hugo
+scoop install hugo-extended
+
+使用Hugo创建个人博客
+创建新博客
+cd C:/mywork
+hugo new site blog # blog是自定义名称 
+完成后会有提示如下：
+Congratulations! Your new Hugo site was created in C:\Users\Baichuan\blog.
+Just a few more steps&hellip;">
+<meta name="author" content="">
+<link rel="canonical" href="https://baichuan-sihai.github.io/hugo/posts/start/">
+<link crossorigin="anonymous" href="/hugo/assets/css/stylesheet.6da9a63d25a9608bca2f7f907a030e887a7dd3c3f3918e4cc113129361414bda.css" integrity="sha256-bammPSWpYIvKL3&#43;QegMOiHp908PzkY5MwRMSk2FBS9o=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://baichuan-sihai.github.io/hugo/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://baichuan-sihai.github.io/hugo/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://baichuan-sihai.github.io/hugo/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://baichuan-sihai.github.io/hugo/apple-touch-icon.png">
+<link rel="mask-icon" href="https://baichuan-sihai.github.io/hugo/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://baichuan-sihai.github.io/hugo/posts/start/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><meta property="og:url" content="https://baichuan-sihai.github.io/hugo/posts/start/">
+  <meta property="og:site_name" content="百川">
+  <meta property="og:title" content="Start">
+  <meta property="og:description" content=" 安装windows下包管理器Scoop 最近一段时间用惯了linux的一些命令行操作后回到Windows总有点不适应，cmd中像是ls这样的命令无法使用。其实Windows下的Windows PowerShell可以使用不少像是ls,rm这样的指令，获得类似与linux类似的体验，由于Win11中Windows Terminal集成了Windows PowerSell，cmd等shell，功能强大且颜值高，故强烈推荐此后使用terminal。
+首先设置PowerShell执行策略使其可以执行脚本
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser # 添加环境变量: scoop的安装路径 $env:SCOOP=&#39;C:\software\Scoop&#39; [Environment]::SetEnvironmentVariable(&#39;SCOOP&#39;, $env:SCOOP, &#39;User&#39;) # 安装 Invoke-Expression (New-Object System.Net.WebClient).DownloadString(&#39;https://get.scoop.sh&#39;) 完成后相应路径会有一个Scoop文件夹。
+若上述方法失败，可直接打开https://get.scoop.sh下载install.ps1到C:\software\Scoop中，然后
+# 获得脚本执行权限 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass # 打开vpn并设置scoop代理, ip和端口号根据自己的代理设置 scoop config proxy 127.0.0.1:7890 # 执行install.ps1 .\install.ps1 安装Hugo scoop install hugo-extended 使用Hugo创建个人博客 创建新博客 cd C:/mywork hugo new site blog # blog是自定义名称 完成后会有提示如下：
+Congratulations! Your new Hugo site was created in C:\Users\Baichuan\blog.
+Just a few more steps…">
+  <meta property="og:locale" content="zh-cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-05-22T16:43:01+08:00">
+    <meta property="article:modified_time" content="2025-05-22T16:43:01+08:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Start">
+<meta name="twitter:description" content="
+安装windows下包管理器Scoop
+最近一段时间用惯了linux的一些命令行操作后回到Windows总有点不适应，cmd中像是ls这样的命令无法使用。其实Windows下的Windows PowerShell可以使用不少像是ls,rm这样的指令，获得类似与linux类似的体验，由于Win11中Windows Terminal集成了Windows PowerSell，cmd等shell，功能强大且颜值高，故强烈推荐此后使用terminal。
+首先设置PowerShell执行策略使其可以执行脚本
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+# 添加环境变量: scoop的安装路径
+$env:SCOOP=&#39;C:\software\Scoop&#39;
+[Environment]::SetEnvironmentVariable(&#39;SCOOP&#39;, $env:SCOOP, &#39;User&#39;)
+# 安装
+Invoke-Expression (New-Object System.Net.WebClient).DownloadString(&#39;https://get.scoop.sh&#39;)
+完成后相应路径会有一个Scoop文件夹。
+若上述方法失败，可直接打开https://get.scoop.sh下载install.ps1到C:\software\Scoop中，然后
+# 获得脚本执行权限
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+# 打开vpn并设置scoop代理, ip和端口号根据自己的代理设置
+scoop config proxy 127.0.0.1:7890
+# 执行install.ps1
+.\install.ps1
+安装Hugo
+scoop install hugo-extended
+
+使用Hugo创建个人博客
+创建新博客
+cd C:/mywork
+hugo new site blog # blog是自定义名称 
+完成后会有提示如下：
+Congratulations! Your new Hugo site was created in C:\Users\Baichuan\blog.
+Just a few more steps&hellip;">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://baichuan-sihai.github.io/hugo/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Start",
+      "item": "https://baichuan-sihai.github.io/hugo/posts/start/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Start",
+  "name": "Start",
+  "description": " 安装windows下包管理器Scoop 最近一段时间用惯了linux的一些命令行操作后回到Windows总有点不适应，cmd中像是ls这样的命令无法使用。其实Windows下的Windows PowerShell可以使用不少像是ls,rm这样的指令，获得类似与linux类似的体验，由于Win11中Windows Terminal集成了Windows PowerSell，cmd等shell，功能强大且颜值高，故强烈推荐此后使用terminal。\n首先设置PowerShell执行策略使其可以执行脚本\nSet-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser # 添加环境变量: scoop的安装路径 $env:SCOOP=\u0026#39;C:\\software\\Scoop\u0026#39; [Environment]::SetEnvironmentVariable(\u0026#39;SCOOP\u0026#39;, $env:SCOOP, \u0026#39;User\u0026#39;) # 安装 Invoke-Expression (New-Object System.Net.WebClient).DownloadString(\u0026#39;https://get.scoop.sh\u0026#39;) 完成后相应路径会有一个Scoop文件夹。\n若上述方法失败，可直接打开https://get.scoop.sh下载install.ps1到C:\\software\\Scoop中，然后\n# 获得脚本执行权限 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass # 打开vpn并设置scoop代理, ip和端口号根据自己的代理设置 scoop config proxy 127.0.0.1:7890 # 执行install.ps1 .\\install.ps1 安装Hugo scoop install hugo-extended 使用Hugo创建个人博客 创建新博客 cd C:/mywork hugo new site blog # blog是自定义名称 完成后会有提示如下：\nCongratulations! Your new Hugo site was created in C:\\Users\\Baichuan\\blog.\nJust a few more steps\u0026hellip;\n",
+  "keywords": [
+    
+  ],
+  "articleBody": " 安装windows下包管理器Scoop 最近一段时间用惯了linux的一些命令行操作后回到Windows总有点不适应，cmd中像是ls这样的命令无法使用。其实Windows下的Windows PowerShell可以使用不少像是ls,rm这样的指令，获得类似与linux类似的体验，由于Win11中Windows Terminal集成了Windows PowerSell，cmd等shell，功能强大且颜值高，故强烈推荐此后使用terminal。\n首先设置PowerShell执行策略使其可以执行脚本\nSet-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser # 添加环境变量: scoop的安装路径 $env:SCOOP='C:\\software\\Scoop' [Environment]::SetEnvironmentVariable('SCOOP', $env:SCOOP, 'User') # 安装 Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh') 完成后相应路径会有一个Scoop文件夹。\n若上述方法失败，可直接打开https://get.scoop.sh下载install.ps1到C:\\software\\Scoop中，然后\n# 获得脚本执行权限 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass # 打开vpn并设置scoop代理, ip和端口号根据自己的代理设置 scoop config proxy 127.0.0.1:7890 # 执行install.ps1 .\\install.ps1 安装Hugo scoop install hugo-extended 使用Hugo创建个人博客 创建新博客 cd C:/mywork hugo new site blog # blog是自定义名称 完成后会有提示如下：\nCongratulations! Your new Hugo site was created in C:\\Users\\Baichuan\\blog.\nJust a few more steps…\nChange the current directory to C:\\Users\\Baichuan\\blog. Create or install a theme: Create a new theme with the command “hugo new theme ” Or, install a theme from https://themes.gohugo.io/ Edit hugo.toml, setting the “theme” property to the theme name. Create new content with the command “hugo new content .”. Start the embedded web server with the command “hugo server –buildDrafts”. See documentation at https://gohugo.io/.\ngit初始化仓库：\ncd blog git init 撰写文章 hugo new content posts/start.md content\\posts下会根据archetypes\\default.md中的模板新建一个名为start.md的文件。\n下载主题 在Hugo Themes中挑选合适主题，这里选择PaperMod主题：\n# 为git添加代理 git config --global http.proxy http://127.0.0.1:7890 # 克隆仓库 git submodule add https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod 注意把代理关掉，否则会无法连接（powershell里如果使用代理，git可能需要添加代理ip和端口号）。git submodule add \u003c远程仓库URL\u003e [本地路径]命令用于将另一个 Git 仓库作为​​子模块（Submodule）​​添加到当前项目中。子模块允许你在一个 Git 仓库中嵌套另一个独立的 Git 仓库，同时保持两者的提交历史隔离。\n将hugo.toml重命名为hugo.yml，这是Hugo的配置文件，.yml与.toml的语法略有不同：\nbaseURL : 'https://example.org/' languageCode : 'zh-cn' title : '百川的个人博客' theme : 'PaperMod' 本地预览：\nhugo server --buildDrafts ​​默认情况下​​，Hugo ​​不会渲染​​标记为 draft: true 的草稿内容。添加--buildDrafts参数（可简写为-D）后，Hugo 会​​强制包含所有草稿内容​​，方便你在写作时预览未完成的文章。此时 会返回链接http://localhost:1313/，复制到浏览器中打开即可查看博客。\n生成静态网站：\nhugo -D PaperMod官方文档\n初始化 \u0026 设置 PaperMod 主题的基础功能\nPaperMod主题配置\n",
+  "wordCount" : "207",
+  "inLanguage": "en",
+  "datePublished": "2025-05-22T16:43:01+08:00",
+  "dateModified": "2025-05-22T16:43:01+08:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://baichuan-sihai.github.io/hugo/posts/start/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "百川",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://baichuan-sihai.github.io/hugo/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://baichuan-sihai.github.io/hugo/" accesskey="h" title="百川 (Alt + H)">百川</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://baichuan-sihai.github.io/hugo/search" title="🔍 搜索">
+                    <span>🔍 搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://baichuan-sihai.github.io/hugo/" title="🏠 主页">
+                    <span>🏠 主页</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://baichuan-sihai.github.io/hugo/archives" title="⏱️ 归档">
+                    <span>⏱️ 归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://baichuan-sihai.github.io/hugo/tags" title="🧩 标签">
+                    <span>🧩 标签</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Start
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="35" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h1>
+    <div class="post-meta"><span title='2025-05-22 16:43:01 +0800 CST'>2025-05-22</span>
+
+</div>
+  </header> 
+  <div class="post-content"><hr>
+<h1 id="安装windows下包管理器scoop">安装windows下包管理器<a href="https://zhuanlan.zhihu.com/p/463284082">Scoop</a><a hidden class="anchor" aria-hidden="true" href="#安装windows下包管理器scoop">#</a></h1>
+<p>最近一段时间用惯了linux的一些命令行操作后回到Windows总有点不适应，cmd中像是<code>ls</code>这样的命令无法使用。其实Windows下的Windows PowerShell可以使用不少像是<code>ls,rm</code>这样的指令，获得类似与linux类似的体验，由于Win11中Windows Terminal集成了Windows PowerSell，cmd等shell，功能强大且颜值高，故强烈推荐此后使用terminal。</p>
+<p>首先设置PowerShell执行策略使其可以执行脚本</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e"># 添加环境变量: scoop的安装路径</span>
+</span></span><span style="display:flex;"><span>$env:SCOOP<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;C:\software\Scoop&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>Environment<span style="color:#f92672">]</span>::SetEnvironmentVariable<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;SCOOP&#39;</span>, $env:SCOOP, <span style="color:#e6db74">&#39;User&#39;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 安装</span>
+</span></span><span style="display:flex;"><span>Invoke-Expression <span style="color:#f92672">(</span>New-Object System.Net.WebClient<span style="color:#f92672">)</span>.DownloadString<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;https://get.scoop.sh&#39;</span><span style="color:#f92672">)</span>
+</span></span></code></pre></div><p>完成后相应路径会有一个Scoop文件夹。</p>
+<p>若上述方法失败，可直接打开<a href="https://get.scoop.sh">https://get.scoop.sh</a>下载install.ps1到<code>C:\software\Scoop</code>中，然后</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e"># 获得脚本执行权限</span>
+</span></span><span style="display:flex;"><span>Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 打开vpn并设置scoop代理, ip和端口号根据自己的代理设置</span>
+</span></span><span style="display:flex;"><span>scoop config proxy 127.0.0.1:7890
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 执行install.ps1</span>
+</span></span><span style="display:flex;"><span>.<span style="color:#ae81ff">\i</span>nstall.ps1
+</span></span></code></pre></div><h1 id="安装hugo">安装Hugo<a hidden class="anchor" aria-hidden="true" href="#安装hugo">#</a></h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>scoop install hugo-extended
+</span></span></code></pre></div><hr>
+<h1 id="使用hugo创建个人博客">使用Hugo创建个人博客<a hidden class="anchor" aria-hidden="true" href="#使用hugo创建个人博客">#</a></h1>
+<h2 id="创建新博客">创建新博客<a hidden class="anchor" aria-hidden="true" href="#创建新博客">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>cd C:/mywork
+</span></span><span style="display:flex;"><span>hugo new site blog <span style="color:#75715e"># blog是自定义名称 </span>
+</span></span></code></pre></div><p>完成后会有提示如下：</p>
+<p>Congratulations! Your new Hugo site was created in C:\Users\Baichuan\blog.</p>
+<p>Just a few more steps&hellip;</p>
+<ol>
+<li>Change the current directory to C:\Users\Baichuan\blog.</li>
+<li>Create or install a theme:
+<ul>
+<li>Create a new theme with the command &ldquo;hugo new theme <THEMENAME>&rdquo;</li>
+<li>Or, install a theme from <a href="https://themes.gohugo.io/">https://themes.gohugo.io/</a></li>
+</ul>
+</li>
+<li>Edit hugo.toml, setting the &ldquo;theme&rdquo; property to the theme name.</li>
+<li>Create new content with the command &ldquo;hugo new content <SECTIONNAME>&lt;FILENAME&gt;.<FORMAT>&rdquo;.</li>
+<li>Start the embedded web server with the command &ldquo;hugo server &ndash;buildDrafts&rdquo;.</li>
+</ol>
+<p>See documentation at <a href="https://gohugo.io/">https://gohugo.io/</a>.</p>
+<p>git初始化仓库：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>cd blog
+</span></span><span style="display:flex;"><span>git init
+</span></span></code></pre></div><h2 id="撰写文章">撰写文章<a hidden class="anchor" aria-hidden="true" href="#撰写文章">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>hugo new content posts/start.md
+</span></span></code></pre></div><p><code>content\posts</code>下会根据<code>archetypes\default.md</code>中的模板新建一个名为start.md的文件。</p>
+<h2 id="下载主题">下载主题<a hidden class="anchor" aria-hidden="true" href="#下载主题">#</a></h2>
+<p>在<a href="https://themes.gohugo.io/">Hugo Themes</a>中挑选合适主题，这里选择<a href="https://themes.gohugo.com.cn/themes/hugo-papermod/">PaperMod</a>主题：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e"># 为git添加代理</span>
+</span></span><span style="display:flex;"><span>git config --global http.proxy  http://127.0.0.1:7890
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 克隆仓库</span>
+</span></span><span style="display:flex;"><span>git submodule add https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod
+</span></span></code></pre></div><p>注意把代理关掉，否则会无法连接（powershell里如果使用代理，git可能需要添加代理ip和端口号）。<code>git submodule add &lt;远程仓库URL&gt; [本地路径]</code>命令用于将另一个 Git 仓库作为​​子模块（Submodule）​​添加到当前项目中。子模块允许你在一个 Git 仓库中嵌套另一个独立的 Git 仓库，同时保持两者的提交历史隔离。</p>
+<p>将<code>hugo.toml</code>重命名为<code>hugo.yml</code>，这是Hugo的配置文件，<code>.yml</code>与<code>.toml</code>的语法略有不同：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>baseURL : <span style="color:#e6db74">&#39;https://example.org/&#39;</span>
+</span></span><span style="display:flex;"><span>languageCode : <span style="color:#e6db74">&#39;zh-cn&#39;</span>
+</span></span><span style="display:flex;"><span>title : <span style="color:#e6db74">&#39;百川的个人博客&#39;</span>
+</span></span><span style="display:flex;"><span>theme : <span style="color:#e6db74">&#39;PaperMod&#39;</span>
+</span></span></code></pre></div><p>本地预览：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>hugo server --buildDrafts
+</span></span></code></pre></div><p>​​默认情况下​​，Hugo ​​不会渲染​​标记为 draft: true 的草稿内容。添加<code>--buildDrafts</code>参数（可简写为<code>-D</code>）后，Hugo 会​​强制包含所有草稿内容​​，方便你在写作时预览未完成的文章。此时
+会返回链接<a href="//localhost:1313/">http://localhost:1313/</a>，复制到浏览器中打开即可查看博客。</p>
+<p>生成静态网站：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>hugo -D
+</span></span></code></pre></div><p><a href="https://github.com/adityatelange/hugo-PaperMod/wiki/Features">PaperMod官方文档</a></p>
+<p><a href="https://aikenh.cn/posts/%E5%88%9D%E5%A7%8B%E5%8C%96%E8%AE%BE%E7%BD%AEpapermod%E4%B8%BB%E9%A2%98%E7%9A%84%E5%9F%BA%E7%A1%80%E5%8A%9F%E8%83%BD/">初始化 &amp; 设置 PaperMod 主题的基础功能</a></p>
+<p><a href="https://www.shaohanyun.top/posts/env/blog_build2/">PaperMod主题配置</a></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="https://baichuan-sihai.github.io/hugo/">百川</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

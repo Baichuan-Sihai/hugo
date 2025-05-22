@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Posts on 百川</title>
+    <link>https://baichuan-sihai.github.io/hugo/posts/</link>
+    <description>Recent content in Posts on 百川</description>
+    <generator>Hugo -- 0.147.4</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 22 May 2025 17:43:07 +0800</lastBuildDate>
+    <atom:link href="https://baichuan-sihai.github.io/hugo/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Microphysical Parameterization</title>
+      <link>https://baichuan-sihai.github.io/hugo/posts/microphysical-parameterization/</link>
+      <pubDate>Thu, 22 May 2025 17:43:07 +0800</pubDate>
+      <guid>https://baichuan-sihai.github.io/hugo/posts/microphysical-parameterization/</guid>
+      <description>&lt;hr&gt;
+&lt;p&gt;hello&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Start</title>
+      <link>https://baichuan-sihai.github.io/hugo/posts/start/</link>
+      <pubDate>Thu, 22 May 2025 16:43:01 +0800</pubDate>
+      <guid>https://baichuan-sihai.github.io/hugo/posts/start/</guid>
+      <description>&lt;hr&gt;
+&lt;h1 id=&#34;安装windows下包管理器scoop&#34;&gt;安装windows下包管理器&lt;a href=&#34;https://zhuanlan.zhihu.com/p/463284082&#34;&gt;Scoop&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;最近一段时间用惯了linux的一些命令行操作后回到Windows总有点不适应，cmd中像是&lt;code&gt;ls&lt;/code&gt;这样的命令无法使用。其实Windows下的Windows PowerShell可以使用不少像是&lt;code&gt;ls,rm&lt;/code&gt;这样的指令，获得类似与linux类似的体验，由于Win11中Windows Terminal集成了Windows PowerSell，cmd等shell，功能强大且颜值高，故强烈推荐此后使用terminal。&lt;/p&gt;
+&lt;p&gt;首先设置PowerShell执行策略使其可以执行脚本&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 添加环境变量: scoop的安装路径&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$env:SCOOP&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;C:\software\Scoop&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;Environment&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;::SetEnvironmentVariable&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;SCOOP&amp;#39;&lt;/span&gt;, $env:SCOOP, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;User&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 安装&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Invoke-Expression &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;New-Object System.Net.WebClient&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;.DownloadString&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;https://get.scoop.sh&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;完成后相应路径会有一个Scoop文件夹。&lt;/p&gt;
+&lt;p&gt;若上述方法失败，可直接打开&lt;a href=&#34;https://get.scoop.sh&#34;&gt;https://get.scoop.sh&lt;/a&gt;下载install.ps1到&lt;code&gt;C:\software\Scoop&lt;/code&gt;中，然后&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 获得脚本执行权限&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 打开vpn并设置scoop代理, ip和端口号根据自己的代理设置&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;scoop config proxy 127.0.0.1:7890
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 执行install.ps1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;.&lt;span style=&#34;color:#ae81ff&#34;&gt;\i&lt;/span&gt;nstall.ps1
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;安装hugo&#34;&gt;安装Hugo&lt;/h1&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;scoop install hugo-extended
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h1 id=&#34;使用hugo创建个人博客&#34;&gt;使用Hugo创建个人博客&lt;/h1&gt;
+&lt;h2 id=&#34;创建新博客&#34;&gt;创建新博客&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd C:/mywork
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hugo new site blog &lt;span style=&#34;color:#75715e&#34;&gt;# blog是自定义名称 &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;完成后会有提示如下：&lt;/p&gt;
+&lt;p&gt;Congratulations! Your new Hugo site was created in C:\Users\Baichuan\blog.&lt;/p&gt;
+&lt;p&gt;Just a few more steps&amp;hellip;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
