@@ -1,11 +1,44 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Tags on 百川</title>
-    <link>https://baichuan-sihai.github.io/hugo/tags/</link>
-    <description>Recent content in Tags on 百川</description>
-    <generator>Hugo -- 0.147.4</generator>
-    <language>zh-cn</language>
-    <atom:link href="https://baichuan-sihai.github.io/hugo/tags/index.xml" rel="self" type="application/rss+xml" />
-  </channel>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Tags on 百川的小屋</title>
+        <link>https://baichuan-sihai.github.io/hugo/tags/</link>
+        <description>Recent content in Tags on 百川的小屋</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>百川</copyright>
+        <lastBuildDate>Mon, 11 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://baichuan-sihai.github.io/hugo/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Css</title>
+        <link>https://baichuan-sihai.github.io/hugo/tags/css/</link>
+        <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+        
+        <guid>https://baichuan-sihai.github.io/hugo/tags/css/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Html</title>
+        <link>https://baichuan-sihai.github.io/hugo/tags/html/</link>
+        <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+        
+        <guid>https://baichuan-sihai.github.io/hugo/tags/html/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Markdown</title>
+        <link>https://baichuan-sihai.github.io/hugo/tags/markdown/</link>
+        <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+        
+        <guid>https://baichuan-sihai.github.io/hugo/tags/markdown/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Themes</title>
+        <link>https://baichuan-sihai.github.io/hugo/tags/themes/</link>
+        <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+        
+        <guid>https://baichuan-sihai.github.io/hugo/tags/themes/</guid>
+        <description></description>
+        </item>
+        
+    </channel>
 </rss>
