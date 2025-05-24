@@ -7,7 +7,7 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>百川</copyright>
-        <lastBuildDate>Sat, 24 May 2025 21:34:43 +0800</lastBuildDate><atom:link href="https://baichuan-sihai.github.io/hugo/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 24 May 2025 21:43:20 +0800</lastBuildDate><atom:link href="https://baichuan-sihai.github.io/hugo/post/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Hugo使用技巧</title>
         <link>https://baichuan-sihai.github.io/hugo/p/hugo%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</link>
         <pubDate>Sat, 24 May 2025 12:07:37 +0800</pubDate>
@@ -186,7 +186,8 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;这里&lt;code&gt;2006-01-02&lt;/code&gt;是go语言的&lt;code&gt;yyyy-mm-dd&lt;/code&gt;，&lt;code&gt;lastmod&lt;/code&gt;的几个参数具体解释参见官方文档的&lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/configuration/all/#configure-dates&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Configure Dates&lt;/a&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;layouts\partials\article\components\details.html&lt;/code&gt;的26-49行替换为：&lt;/p&gt;
+&lt;p&gt;这时“最后更新于”显示在文末，如果想挪到前面，可将&lt;code&gt;layouts\partials\article\components\footer.html&lt;/code&gt;的11-18行注释掉，然后将
+&lt;code&gt;layouts\partials\article\components\details.html&lt;/code&gt;的26-49行替换为：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -236,10 +237,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		{{ end }}
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		&lt;span class=&#34;c&#34;&gt;&amp;lt;!-- Created Date --&amp;gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		{{- $pubdate := .PublishDate.Format &amp;#34;2006-01-02 15:04 MST &amp;#34; }}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		{{- $pubdate := .PublishDate.Format &amp;#34;2006-01-02 15:04&amp;#34; }}
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		&lt;span class=&#34;c&#34;&gt;&amp;lt;!-- Last Updated Date --&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		{{- if .Lastmod }}
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;			{{- $lastmod := .Lastmod.Format &amp;#34;2006-01-02 15:04 MST&amp;#34; }}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;			{{- $lastmod := .Lastmod.Format &amp;#34;2006-01-02 15:04&amp;#34; }}
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;				{{- if ne $lastmod $pubdate }}
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;					&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;span&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;class&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;article-time--final-update&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;						最后更新于 &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;time&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;class&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;article-time--updated&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;datetime&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;{{ .Lastmod }}&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;{{ .Lastmod }}&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;{{$lastmod}}&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;time&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
