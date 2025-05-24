@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://baichuan-sihai.github.io/hugo/p/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/'>
 
-<link rel="stylesheet" href="/hugo/scss/style.min.343c06a9eda8490ec994f006905964f735e56d3918ab50afb7a0b10a710195ab.css"><meta property='og:title' content="Hugo搭建个人博客">
+<link rel="stylesheet" href="/hugo/scss/style.min.b742b063da3324b8ca447dfda19b78ed4f73aee213aa9b2e6d8aa261eec5bb27.css"><meta property='og:title' content="Hugo搭建个人博客">
 <meta property='og:description' content="安装windows下包管理器Scoop\r最近一段时间用惯了linux的一些命令行操作后回到Windows总有点不适应，cmd中像是ls这样的命令无法使用。其实Windows下的Windows PowerShell可以使用不少像是ls,rm这样的指令，获得类似与linux类似的体验，由于Win11中Windows Terminal集成了Windows PowerSell，cmd等shell，功能强大且颜值高，故强烈推荐此后使用terminal。\n">
 <meta property='og:url' content='https://baichuan-sihai.github.io/hugo/p/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/'>
 <meta property='og:site_name' content='百川的小屋'>
@@ -316,24 +316,14 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">2025-05-23 23:00 CST</time>
+                <time class="article-time--published">2025-05-23</time>
             </div>
         
-
-        
-        
-                    最后修改:
-                    <time class="article-time--updated" datetime="2025-05-23 23:00:00 &#43;0800 CST" title="2025-05-23 23:00:00 &#43;0800 CST">
-                        2025-05-23 23:00 CST
-                    </time>
 
         
     </footer>
     
 
-    
-
-    
     
 </div>
 
@@ -345,34 +335,20 @@
     <h2 id="安装windows下包管理器scoop">安装windows下包管理器<a class="link" href="https://zhuanlan.zhihu.com/p/463284082"  target="_blank" rel="noopener"
     >Scoop</a>
 </h2><p>最近一段时间用惯了linux的一些命令行操作后回到Windows总有点不适应，cmd中像是<code>ls</code>这样的命令无法使用。其实Windows下的Windows PowerShell可以使用不少像是<code>ls,rm</code>这样的指令，获得类似与linux类似的体验，由于Win11中Windows Terminal集成了Windows PowerSell，cmd等shell，功能强大且颜值高，故强烈推荐此后使用terminal。</p>
-<p>首先设置PowerShell执行策略使其可以执行脚本</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-</span></span></code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 添加环境变量: scoop的安装路径</span>
-</span></span><span class="line"><span class="cl"><span class="nv">$env</span>:SCOOP<span class="o">=</span><span class="s1">&#39;C:\software\Scoop&#39;</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>Environment<span class="o">]</span>::SetEnvironmentVariable<span class="o">(</span><span class="s1">&#39;SCOOP&#39;</span>, <span class="nv">$env</span>:SCOOP, <span class="s1">&#39;User&#39;</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># 安装</span>
-</span></span><span class="line"><span class="cl">Invoke-Expression <span class="o">(</span>New-Object System.Net.WebClient<span class="o">)</span>.DownloadString<span class="o">(</span><span class="s1">&#39;https://get.scoop.sh&#39;</span><span class="o">)</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>完成后相应路径会有一个Scoop文件夹。</p>
-<p>若上述方法失败，可直接打开<a class="link" href="https://get.scoop.sh"  target="_blank" rel="noopener"
-    >https://get.scoop.sh</a>下载install.ps1到<code>C:\software\Scoop</code>中，然后</p>
+<!-- 首先设置PowerShell执行策略使其可以执行脚本
+```sh
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+```sh
+# 添加环境变量: scoop的安装路径
+$env:SCOOP='C:\software\Scoop'
+[Environment]::SetEnvironmentVariable('SCOOP', $env:SCOOP, 'User')
+# 安装
+Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
+```
+完成后相应路径会有一个Scoop文件夹。 -->
+<p>将<a class="link" href="https://get.scoop.sh"  target="_blank" rel="noopener"
+    >install.ps1</a>下载<code>C:\software\Scoop</code>中，然后</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -381,14 +357,16 @@
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span><span class="lnt">6
+</span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 获得脚本执行权限</span>
-</span></span><span class="line"><span class="cl">Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-</span></span><span class="line"><span class="cl"><span class="c1"># 打开vpn并设置scoop代理, ip和端口号根据自己的代理设置</span>
-</span></span><span class="line"><span class="cl">scoop config proxy 127.0.0.1:7890
-</span></span><span class="line"><span class="cl"><span class="c1"># 执行install.ps1</span>
-</span></span><span class="line"><span class="cl">.<span class="se">\i</span>nstall.ps1
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">cd </span><span class="n">C:</span><span class="p">\</span><span class="n">software</span><span class="p">\</span><span class="n">Scoop</span>
+</span></span><span class="line"><span class="cl"><span class="c"># 获得脚本执行权限</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Set-ExecutionPolicy</span> <span class="n">-Scope</span> <span class="k">Process</span> <span class="n">-ExecutionPolicy</span> <span class="n">Bypass</span>
+</span></span><span class="line"><span class="cl"><span class="c"># 打开vpn并设置scoop代理, ip和端口号根据自己的代理设置</span>
+</span></span><span class="line"><span class="cl"><span class="c"># scoop config proxy 127.0.0.1:7890</span>
+</span></span><span class="line"><span class="cl"><span class="c"># 执行install.ps1</span>
+</span></span><span class="line"><span class="cl"><span class="p">.\</span><span class="n">install</span><span class="p">.</span><span class="py">ps1</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="安装hugo">安装Hugo
@@ -397,7 +375,7 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">scoop install hugo-extendeda
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">scoop</span> <span class="n">install</span> <span class="nb">hugo-extended</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="创建新博客">创建新博客
@@ -407,8 +385,8 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="nb">cd</span> C:/mywork
-</span></span><span class="line"><span class="cl">hugo new site myblog <span class="c1"># myblog是自定义名称 </span>
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">cd </span><span class="n">C:</span><span class="p">/</span><span class="n">mywork</span>
+</span></span><span class="line"><span class="cl"><span class="n">hugo</span> <span class="n">new</span> <span class="n">site</span> <span class="n">myblog</span> <span class="c"># myblog是自定义名称 </span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>完成后会有提示如下：</p>
@@ -436,8 +414,8 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="nb">cd</span> myblog
-</span></span><span class="line"><span class="cl">git init
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">cd </span><span class="n">myblog</span>
+</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">init</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="撰写文章">撰写文章
@@ -446,8 +424,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">hugo new content posts/start.md
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">hugo</span> <span class="n">new</span> <span class="n">content</span> <span class="n">posts</span><span class="p">/</span><span class="n">start</span><span class="p">.</span><span class="nb">md
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p><code>content\posts</code>下会根据<code>archetypes\default.md</code>中的模板新建一个名为start.md的文件。</p>
 <h2 id="下载主题">下载主题
@@ -462,10 +440,10 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 为git添加代理</span>
-</span></span><span class="line"><span class="cl">git config --global http.proxy  http://127.0.0.1:7890
-</span></span><span class="line"><span class="cl"><span class="c1"># 克隆仓库</span>
-</span></span><span class="line"><span class="cl">git submodule add https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># 为git添加代理</span>
+</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">config</span> <span class="p">-</span><span class="n">-global</span> <span class="n">http</span><span class="p">.</span><span class="py">proxy</span>  <span class="n">http</span><span class="err">:</span><span class="p">//</span><span class="mf">127.0</span><span class="p">.</span><span class="py">0</span><span class="p">.</span><span class="mf">1</span><span class="err">:</span><span class="mf">7890</span>
+</span></span><span class="line"><span class="cl"><span class="c"># 克隆仓库</span>
+</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">submodule</span> <span class="n">add</span> <span class="n">https</span><span class="err">:</span><span class="p">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">adityatelange</span><span class="p">/</span><span class="nb">hugo-PaperMod</span><span class="p">.</span><span class="py">git</span> <span class="n">themes</span><span class="p">/</span><span class="n">PaperMod</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>注意把代理关掉，否则会无法连接（powershell里如果使用代理，git可能需要添加代理ip和端口号）。<code>git submodule add &lt;远程仓库URL&gt; [本地路径]</code>命令用于将另一个 Git 仓库作为​​子模块（Submodule）​​添加到当前项目中。子模块允许你在一个 Git 仓库中嵌套另一个独立的 Git 仓库，同时保持两者的提交历史隔离。</p>
@@ -478,10 +456,10 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">baseURL : <span class="s1">&#39;https://example.org/&#39;</span> <span class="c1">#这里改成github pages的url</span>
-</span></span><span class="line"><span class="cl">languageCode : <span class="s1">&#39;zh-cn&#39;</span>
-</span></span><span class="line"><span class="cl">title : <span class="s1">&#39;百川的个人博客&#39;</span>
-</span></span><span class="line"><span class="cl">theme : <span class="s1">&#39;PaperMod&#39;</span>
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">baseURL</span> <span class="err">:</span> <span class="s1">&#39;https://example.org/&#39;</span> <span class="c">#这里改成github pages的url</span>
+</span></span><span class="line"><span class="cl"><span class="n">languageCode</span> <span class="err">:</span> <span class="s1">&#39;zh-cn&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="err">:</span> <span class="s1">&#39;百川的个人博客&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">theme</span> <span class="err">:</span> <span class="s1">&#39;PaperMod&#39;</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>本地预览：</p>
@@ -490,7 +468,7 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">hugo server --buildDrafts
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">hugo</span> <span class="n">server</span> <span class="p">-</span><span class="n">-buildDrafts</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>​​默认情况下​​，Hugo ​​不会渲染​​标记为 draft: true 的草稿内容。添加<code>--buildDrafts</code>参数（可简写为<code>-D</code>）后，Hugo 会​​强制包含所有草稿内容​​，方便你在写作时预览未完成的文章。此时
@@ -501,7 +479,7 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">hugo -D
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">hugo</span> <span class="n">-D</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>在<code>myblog</code>文件夹中将产生一个<code>public</code>文件夹。</p>
