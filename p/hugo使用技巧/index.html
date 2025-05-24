@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="参数设置\rHugo会优先从主路径文件夹读取文件，若没找到，则进入hugo.yaml设置的theme中寻找。因此，如果需要修改主题文件，请先将其从相应主题中复制到主路经相应位置再进行修改。\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="参数设置 Hugo会优先从主路径文件夹读取文件，若没找到，则进入hugo.yaml设置的theme中寻找。因此，如果需要修改主题文件，请先将其从相应主题中复制到主路经相应位置再进行修改。\n">
 <title>Hugo使用技巧</title>
 
 <link rel='canonical' href='https://baichuan-sihai.github.io/hugo/p/hugo%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/'>
 
-<link rel="stylesheet" href="/hugo/scss/style.min.b742b063da3324b8ca447dfda19b78ed4f73aee213aa9b2e6d8aa261eec5bb27.css"><meta property='og:title' content="Hugo使用技巧">
-<meta property='og:description' content="参数设置\rHugo会优先从主路径文件夹读取文件，若没找到，则进入hugo.yaml设置的theme中寻找。因此，如果需要修改主题文件，请先将其从相应主题中复制到主路经相应位置再进行修改。\n">
+<link rel="stylesheet" href="/hugo/scss/style.min.581b0ff8e16d4ced90d8d155763886e081d6661e0e2b431242ff9dd44eae3a90.css"><meta property='og:title' content="Hugo使用技巧">
+<meta property='og:description' content="参数设置 Hugo会优先从主路径文件夹读取文件，若没找到，则进入hugo.yaml设置的theme中寻找。因此，如果需要修改主题文件，请先将其从相应主题中复制到主路经相应位置再进行修改。\n">
 <meta property='og:url' content='https://baichuan-sihai.github.io/hugo/p/hugo%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/'>
 <meta property='og:site_name' content='百川的小屋'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-05-24T12:07:37&#43;08:00'/><meta property='article:modified_time' content='2025-05-24T12:07:37&#43;08:00'/>
 <meta name="twitter:title" content="Hugo使用技巧">
-<meta name="twitter:description" content="参数设置\rHugo会优先从主路径文件夹读取文件，若没找到，则进入hugo.yaml设置的theme中寻找。因此，如果需要修改主题文件，请先将其从相应主题中复制到主路经相应位置再进行修改。\n">
+<meta name="twitter:description" content="参数设置 Hugo会优先从主路径文件夹读取文件，若没找到，则进入hugo.yaml设置的theme中寻找。因此，如果需要修改主题文件，请先将其从相应主题中复制到主路经相应位置再进行修改。\n">
     <link rel="shortcut icon" href="/hugo/favicon2.ico" />
 
     </head>
@@ -473,7 +473,62 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="github-action自动化部署">Github Action自动化部署
-</h2>
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">git</span> <span class="n">init</span>
+</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">config</span> <span class="n">user</span><span class="p">.</span><span class="n">email</span><span class="p">=</span><span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">config</span> <span class="n">user</span><span class="p">.</span><span class="n">name</span><span class="p">=</span><span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">add</span> <span class="p">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">commit</span> <span class="n">-m</span> <span class="s2">&#34;-&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">branch</span> <span class="n">-M</span> <span class="n">main</span>
+</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">origin</span> <span class="n">git</span><span class="nv">@github</span><span class="p">.</span><span class="n">com</span><span class="err">:</span><span class="nb">Baichuan-Sihai</span><span class="p">/</span><span class="n">myblog</span><span class="p">.</span><span class="py">git</span>
+</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">submodule</span> <span class="n">add</span> <span class="n">https</span><span class="err">:</span><span class="p">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">CaiJimmy</span><span class="p">/</span><span class="nb">hugo-theme</span><span class="n">-stack</span><span class="p">.</span><span class="py">git</span> <span class="n">themes</span><span class="p">/</span><span class="nb">hugo-theme</span><span class="n">-stack</span>
+</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">submodule</span> <span class="n">add</span> <span class="n">git</span><span class="nv">@github</span><span class="p">.</span><span class="n">com</span><span class="err">:</span><span class="nb">Baichuan-Sihai</span><span class="p">/</span><span class="n">hugo</span><span class="p">.</span><span class="py">git</span> <span class="p">./</span><span class="n">public</span>
+</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">push</span> <span class="n">-u</span> <span class="n">origin</span> <span class="n">main</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果<code>git submodule add</code>时报错<code>fatal: 'public' already exists in the index</code>，则</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">git</span> <span class="nb">rm </span><span class="n">-r</span> <span class="p">-</span><span class="n">-cached</span> <span class="n">public</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>只从索引删除，不会删除实际文件或目录。</p>
+<p>添加完<code>.gitmodules</code>文件为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[submodule &#34;public&#34;]
+</span></span><span class="line"><span class="cl">	path = public
+</span></span><span class="line"><span class="cl">	url = git@github.com:Baichuan-Sihai/hugo.git
+</span></span><span class="line"><span class="cl">[submodule &#34;themes/hugo-theme-stack&#34;]
+</span></span><span class="line"><span class="cl">	path = themes/hugo-theme-stack
+</span></span><span class="line"><span class="cl">	url = https://github.com/CaiJimmy/hugo-theme-stack.git
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
 </section>
 
 

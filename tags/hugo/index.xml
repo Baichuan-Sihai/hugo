@@ -29,7 +29,7 @@ Invoke-Expression (New-Object System.Net.WebClient).DownloadString(&#39;https://
 ```
 完成后相应路径会有一个Scoop文件夹。 --&gt;
 &lt;p&gt;将&lt;a class=&#34;link&#34; href=&#34;https://get.scoop.sh&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;install.ps1&lt;/a&gt;下载&lt;code&gt;C:\software\Scoop&lt;/code&gt;中，然后&lt;/p&gt;
+    &gt;install.ps1&lt;/a&gt;下载install.ps1到&lt;code&gt;C:\software\Scoop&lt;/code&gt;中，然后&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -59,14 +59,20 @@ Invoke-Expression (New-Object System.Net.WebClient).DownloadString(&#39;https://
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;scoop&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;install&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;hugo-extended&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;创建新博客&#34;&gt;创建新博客
+&lt;/div&gt;&lt;p&gt;Hugo有两个版本：标准版和扩展版。使用扩展版可以：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在处理图像时，将图像编码为WebP格式。无论您使用哪个版本，都可以解码WebP图像。&lt;/li&gt;
+&lt;li&gt;使用内置的LibSass转译器，将Sass转译为CSS。使用Dart Sass转译器时不需要扩展版。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;使用&lt;code&gt;hugo-theme-stack&lt;/code&gt;主题需要安装扩展版。&lt;/p&gt;
+&lt;h2 id=&#34;创建新博客&#34;&gt;创建新博客
 &lt;/h2&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;C:&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mywork&lt;/span&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;C:&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;\&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mywork&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;hugo&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;site&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;myblog&lt;/span&gt; &lt;span class=&#34;c&#34;&gt;# myblog是自定义名称 &lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
@@ -105,7 +111,7 @@ Invoke-Expression (New-Object System.Net.WebClient).DownloadString(&#39;https://
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;hugo&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;content&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;posts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;start&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;md
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;hugo&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;content&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;posts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;\&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;start&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;md
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;&lt;code&gt;content\posts&lt;/code&gt;下会根据&lt;code&gt;archetypes\default.md&lt;/code&gt;中的模板新建一个名为start.md的文件。&lt;/p&gt;
