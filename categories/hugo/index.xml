@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Hugo on 百川的小屋</title>
-        <link>https://baichuan-sihai.github.io/hugo/categories/hugo/</link>
+        <link>https://baichuan-blog.netlify.app/categories/hugo/</link>
         <description>Recent content in Hugo on 百川的小屋</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <copyright>百川</copyright><atom:link href="https://baichuan-sihai.github.io/hugo/categories/hugo/index.xml" rel="self" type="application/rss+xml" /><item>
+        <copyright>百川</copyright><atom:link href="https://baichuan-blog.netlify.app/categories/hugo/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Hugo使用技巧</title>
-        <link>https://baichuan-sihai.github.io/hugo/p/hugo%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</link>
+        <link>https://baichuan-blog.netlify.app/p/hugo%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</link>
         <pubDate>Sat, 24 May 2025 12:07:37 +0800</pubDate>
         
-        <guid>https://baichuan-sihai.github.io/hugo/p/hugo%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</guid>
+        <guid>https://baichuan-blog.netlify.app/p/hugo%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</guid>
         <description>&lt;h2 id=&#34;stack主题参数设置&#34;&gt;Stack主题参数设置
 &lt;/h2&gt;&lt;p&gt;Hugo会优先从主路径文件夹读取文件，若没找到，则进入&lt;code&gt;hugo.yaml&lt;/code&gt;设置的&lt;code&gt;theme&lt;/code&gt;中寻找。因此，如果需要修改主题文件，请先将其从相应主题中复制到主路经相应位置再进行修改。&lt;/p&gt;
 &lt;h3 id=&#34;绑定个人网站&#34;&gt;绑定个人网站
@@ -376,7 +376,16 @@
     &gt;Netlify&lt;/a&gt;
 是一个现代化的 ​​静态网站托管与自动化部署平台​​，专为开发者设计，它提供全球 CDN、持续集成、无服务器函数等功能，让静态网站部署变得极其简单且高性能。
 Netlify的免费基础套餐每月包含100GB流量、300分钟构建时长及 1 个并发构建队列，满足个人项目和小型站点需求。通过Github仓库导入Netlify中进行部署，我们可以获得更顺畅的访问体验。另外，&lt;code&gt;git push&lt;/code&gt;会触发自动部署，我们可以一键实现推送仓库——构建页面——部署网站的一条龙服务。&lt;/p&gt;
-&lt;h2 id=&#34;参考资料&#34;&gt;参考资料
+&lt;p&gt;注意，需要将&lt;code&gt;hugo.yaml&lt;/code&gt;中的`baseu改为netlify生成的网站：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;baseurl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;https://baichuan-blog.netlify.app/&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;参考资料&#34;&gt;参考资料
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://stack.jimmycai.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Stack主题&lt;/a&gt;&lt;/li&gt;
@@ -389,10 +398,10 @@ Netlify的免费基础套餐每月包含100GB流量、300分钟构建时长及 1
         </item>
         <item>
         <title>Hugo搭建个人博客</title>
-        <link>https://baichuan-sihai.github.io/hugo/p/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
+        <link>https://baichuan-blog.netlify.app/p/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
         <pubDate>Fri, 23 May 2025 23:00:00 +0800</pubDate>
         
-        <guid>https://baichuan-sihai.github.io/hugo/p/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
+        <guid>https://baichuan-blog.netlify.app/p/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
         <description>&lt;h2 id=&#34;安装windows下包管理器scoop&#34;&gt;安装windows下包管理器&lt;a class=&#34;link&#34; href=&#34;https://zhuanlan.zhihu.com/p/463284082&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Scoop&lt;/a&gt;
 &lt;/h2&gt;&lt;p&gt;最近一段时间用惯了linux的一些命令行操作后回到Windows总有点不适应，cmd中像是&lt;code&gt;ls&lt;/code&gt;这样的命令无法使用。其实Windows下的Windows PowerShell可以使用不少像是&lt;code&gt;ls,rm&lt;/code&gt;这样的指令，获得类似与linux类似的体验，由于Win11中Windows Terminal集成了Windows PowerSell，cmd等shell，功能强大且颜值高，故强烈推荐此后使用terminal。&lt;/p&gt;

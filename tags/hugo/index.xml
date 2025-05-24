@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Hugo on 百川的小屋</title>
-        <link>https://baichuan-sihai.github.io/hugo/tags/hugo/</link>
+        <link>https://baichuan-blog.netlify.app/tags/hugo/</link>
         <description>Recent content in Hugo on 百川的小屋</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>百川</copyright>
-        <lastBuildDate>Sat, 24 May 2025 21:29:45 +0800</lastBuildDate><atom:link href="https://baichuan-sihai.github.io/hugo/tags/hugo/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 24 May 2025 21:29:45 +0800</lastBuildDate><atom:link href="https://baichuan-blog.netlify.app/tags/hugo/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Hugo搭建个人博客</title>
-        <link>https://baichuan-sihai.github.io/hugo/p/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
+        <link>https://baichuan-blog.netlify.app/p/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
         <pubDate>Fri, 23 May 2025 23:00:00 +0800</pubDate>
         
-        <guid>https://baichuan-sihai.github.io/hugo/p/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
+        <guid>https://baichuan-blog.netlify.app/p/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
         <description>&lt;h2 id=&#34;安装windows下包管理器scoop&#34;&gt;安装windows下包管理器&lt;a class=&#34;link&#34; href=&#34;https://zhuanlan.zhihu.com/p/463284082&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Scoop&lt;/a&gt;
 &lt;/h2&gt;&lt;p&gt;最近一段时间用惯了linux的一些命令行操作后回到Windows总有点不适应，cmd中像是&lt;code&gt;ls&lt;/code&gt;这样的命令无法使用。其实Windows下的Windows PowerShell可以使用不少像是&lt;code&gt;ls,rm&lt;/code&gt;这样的指令，获得类似与linux类似的体验，由于Win11中Windows Terminal集成了Windows PowerSell，cmd等shell，功能强大且颜值高，故强烈推荐此后使用terminal。&lt;/p&gt;
