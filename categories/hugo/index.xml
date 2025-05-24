@@ -283,7 +283,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;---
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;Hugo中图片路径是按其在&lt;code&gt;static&lt;/code&gt;文件夹下的相对路径，因此可以将用作封面的图片都放在&lt;code&gt;static/images/&lt;/code&gt;下。&lt;code&gt;background&lt;/code&gt;为背景色，这里取的是浅红色；&lt;code&gt;color&lt;/code&gt;是字体颜色，这里是白色。颜色可参考&lt;a class=&#34;link&#34; href=&#34;https://www.codeeeee.com/color/rgb.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;/div&gt;&lt;p&gt;Hugo中图片路径是按其在&lt;code&gt;static&lt;/code&gt;文件夹下的相对路径，因此可以将用作封面的图片都放在&lt;code&gt;static/images/&lt;/code&gt;下（这种方法本地没问题，但上传到Github后显示不出来，还是建议把图片放在&lt;code&gt;md&lt;/code&gt;文件同级目录）。&lt;code&gt;background&lt;/code&gt;为背景色，这里取的是浅红色；&lt;code&gt;color&lt;/code&gt;是字体颜色，这里是白色。颜色可参考&lt;a class=&#34;link&#34; href=&#34;https://www.codeeeee.com/color/rgb.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;十六进制色表&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;定义新分类：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
