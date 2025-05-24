@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="参数设置 Hugo会优先从主路径文件夹读取文件，若没找到，则进入hugo.yaml设置的theme中寻找。因此，如果需要修改主题文件，请先将其从相应主题中复制到主路经相应位置再进行修改。\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Stack主题参数设置，Github自动化部署">
 <title>Hugo使用技巧</title>
 
 <link rel='canonical' href='https://baichuan-sihai.github.io/hugo/p/hugo%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/'>
 
 <link rel="stylesheet" href="/hugo/scss/style.min.581b0ff8e16d4ced90d8d155763886e081d6661e0e2b431242ff9dd44eae3a90.css"><meta property='og:title' content="Hugo使用技巧">
-<meta property='og:description' content="参数设置 Hugo会优先从主路径文件夹读取文件，若没找到，则进入hugo.yaml设置的theme中寻找。因此，如果需要修改主题文件，请先将其从相应主题中复制到主路经相应位置再进行修改。\n">
+<meta property='og:description' content="Stack主题参数设置，Github自动化部署">
 <meta property='og:url' content='https://baichuan-sihai.github.io/hugo/p/hugo%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/'>
 <meta property='og:site_name' content='百川的小屋'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-05-24T12:07:37&#43;08:00'/><meta property='article:modified_time' content='2025-05-24T12:07:37&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-05-24T12:07:37&#43;08:00'/><meta property='article:modified_time' content='2025-05-24T21:29:45&#43;08:00'/>
 <meta name="twitter:title" content="Hugo使用技巧">
-<meta name="twitter:description" content="参数设置 Hugo会优先从主路径文件夹读取文件，若没找到，则进入hugo.yaml设置的theme中寻找。因此，如果需要修改主题文件，请先将其从相应主题中复制到主路经相应位置再进行修改。\n">
+<meta name="twitter:description" content="Stack主题参数设置，Github自动化部署">
     <link rel="shortcut icon" href="/hugo/favicon2.ico" />
 
     </head>
@@ -135,25 +135,6 @@
         
         
         <li >
-            <a href='/hugo/%E5%85%B3%E4%BA%8E/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-</svg>
-
-
-
-                
-                <span>关于</span>
-            </a>
-        </li>
-        
-        
-        <li >
             <a href='/hugo/archives/' >
                 
                 
@@ -193,20 +174,20 @@
         
         
         <li >
-            <a href='/hugo/links/' >
+            <a href='/hugo/%E5%85%B3%E4%BA%8E/' >
                 
                 
                 
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
-  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
 </svg>
 
 
 
                 
-                <span>Links</span>
+                <span>关于</span>
             </a>
         </li>
         
@@ -261,8 +242,22 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#参数设置">参数设置</a></li>
+    <li><a href="#stack主题参数设置">Stack主题参数设置</a>
+      <ol>
+        <li><a href="#绑定个人网站">绑定个人网站</a></li>
+        <li><a href="#主页右侧控件">主页右侧控件</a></li>
+        <li><a href="#文章发布的时间格式">文章发布的时间格式</a></li>
+        <li><a href="#允许数学公式">允许数学公式</a></li>
+        <li><a href="#文章模板">文章模板</a></li>
+        <li><a href="#修改文章副标题字体大小">修改文章副标题字体大小</a></li>
+        <li><a href="#添加最后更新时间">添加最后更新时间</a></li>
+        <li><a href="#分类">分类</a></li>
+        <li><a href="#调节主页左侧各栏目顺序">调节主页左侧各栏目顺序</a></li>
+      </ol>
+    </li>
     <li><a href="#github-action自动化部署">Github Action自动化部署</a></li>
+    <li><a href="#netlify加速网站访问">Netlify加速网站访问</a></li>
+    <li><a href="#参考资料">参考资料</a></li>
   </ol>
 </nav>
         </div>
@@ -281,7 +276,7 @@
     
     <header class="article-category">
         
-            <a href="/hugo/categories/hugo/" >
+            <a href="/hugo/categories/hugo/" style="background-color: #ff7f7f; color: #fff;">
                 Hugo
             </a>
         
@@ -294,16 +289,17 @@
         </h2>
     
         
+        <h3 class="article-subtitle">
+            Stack主题参数设置，Github自动化部署
+        </h3>
+        
     </div>
 
     
-    
-    
-    
-    <footer class="article-time">
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <footer class="article-time">
+            
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
   <circle cx="18" cy="18" r="4" />
@@ -312,13 +308,20 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">2025-05-24</time>
-            </div>
-        
+                    <time class="article-time--published">2025-05-24 12:07 &#43;0800</time>
+                </div>
+            
 
-        
-    </footer>
+            
+            
+						<span class="article-time--final-update">
+							最后更新于 <time class="article-time--updated" datetime="2025-05-24 21:29:45 &#43;0800 &#43;0800" title="2025-05-24 21:29:45 &#43;0800 &#43;0800">2025-05-24 21:29 &#43;0800</time>
+						</span>
+
+            
+        </footer>
     
+
 
     
 </div>
@@ -328,76 +331,20 @@
     <section class="article-content">
     
     
-    <h2 id="参数设置">参数设置
+    <h2 id="stack主题参数设置">Stack主题参数设置
 </h2><p>Hugo会优先从主路径文件夹读取文件，若没找到，则进入<code>hugo.yaml</code>设置的<code>theme</code>中寻找。因此，如果需要修改主题文件，请先将其从相应主题中复制到主路经相应位置再进行修改。</p>
-<ul>
-<li>主页右侧控件，<code>hugo.yaml</code>：</li>
-</ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">widgets</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">homepage</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">search</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">archives</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">params</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="nt">limit</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">categories</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">params</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">               </span><span class="nt">limit</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">tag-cloud</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">params</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="nt">limit</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
-</span></span></span></code></pre></td></tr></table>
-</div>
-</div><p>控制主页右端区域功能，limit是条目数。</p>
-<ul>
-<li>文章发布的时间格式，<code>hugo.yaml</code>：</li>
-</ul>
+<h3 id="绑定个人网站">绑定个人网站
+</h3><p><code>hugo.yaml</code>：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">params</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">dateFormat</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">published</span><span class="p">:</span><span class="w"> </span><span class="ld">2006-01-02</span><span class="w"> </span><span class="m">15</span><span class="p">:</span><span class="m">04</span><span class="w"> </span><span class="l">MST</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">baseurl</span><span class="p">:</span><span class="w"> </span><span class="l">https://baichuan-sihai.github.io/hugo/</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
-</div><p>其中MST为时区。</p>
-<ul>
-<li>允许数学公式，<code>hugo.yaml</code>：</li>
-</ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">params</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">article</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">math</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span></span></span></code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>文章模板，<code>archetypes/default.md</code>：</li>
-</ul>
+</div><h3 id="主页右侧控件">主页右侧控件
+</h3><p><code>hugo.yaml</code>：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -415,8 +362,69 @@
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">---
-</span></span><span class="line"><span class="cl">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nt">widgets</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="nt">homepage</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span>- <span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">search</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span>- <span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">archives</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">				</span><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">					</span><span class="nt">limit</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span>- <span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">categories</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">				</span><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">				</span><span class="nt">limit</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span>- <span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">tag-cloud</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">				</span><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">					</span><span class="nt">limit</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>控制主页右端区域功能，limit是条目数。</p>
+<h3 id="文章发布的时间格式">文章发布的时间格式
+</h3><p><code>hugo.yaml</code>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">dateFormat</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">published</span><span class="p">:</span><span class="w"> </span><span class="ld">2006-01-02</span><span class="w"> </span><span class="m">15</span><span class="p">:</span><span class="m">04</span><span class="w"> </span><span class="l">MST</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中MST为时区。</p>
+<h3 id="允许数学公式">允许数学公式
+</h3><p><code>hugo.yaml</code>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">article</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">math</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="文章模板">文章模板
+</h3><p><code>archetypes/default.md</code>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-md" data-lang="md"><span class="line"><span class="cl">---
 </span></span><span class="line"><span class="cl">title: &#34;{{ replace .Name &#34;-&#34; &#34; &#34; | title }}&#34;
 </span></span><span class="line"><span class="cl">description: 
 </span></span><span class="line"><span class="cl">date: {{ .Date }}
@@ -425,8 +433,7 @@
 </span></span><span class="line"><span class="cl">license: 
 </span></span><span class="line"><span class="cl">categories:
 </span></span><span class="line"><span class="cl">tag:
-</span></span><span class="line"><span class="cl">weight:
-</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">weight: 
 </span></span><span class="line"><span class="cl">---
 </span></span></code></pre></td></tr></table>
 </div>
@@ -445,9 +452,8 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>可依据模板生成文章的front matter。根据<code>hugo.yaml</code>中的<code>dateFormat, math,license</code>为文章生成默认值。此处即使<code>post</code>下没有文件夹<code>dir</code>也会生成，可以在文件夹中放封面图片等相关内容。</p>
-<ul>
-<li>修改文章副标题字体大小，<code>assets/scss/partials/article.scss</code>：</li>
-</ul>
+<h3 id="修改文章副标题字体大小">修改文章副标题字体大小
+</h3><p><code>assets/scss/partials/article.scss</code>：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -472,7 +478,136 @@
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="github-action自动化部署">Github Action自动化部署
+</div><h3 id="添加最后更新时间">添加最后更新时间
+</h3><p><code>hugo.yaml</code>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">enableGitInfo</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">frontmatter</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">lastmod</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;lastmod&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;:git&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;publishDate&#39;</span><span class="p">]</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>具体解释参见官方文档的<a class="link" href="https://gohugo.io/configuration/all/#configure-dates"  target="_blank" rel="noopener"
+    >Configure Dates</a>。</p>
+<p><code>layouts\partials\article\components\details.html</code>的26-49行替换为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">{{ if or (not .Date.IsZero) (.Site.Params.article.readingTime) }}
+</span></span><span class="line"><span class="cl">	<span class="p">&lt;</span><span class="nt">footer</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;article-time&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">		{{ if not .Date.IsZero }}
+</span></span><span class="line"><span class="cl">			<span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">				{{ partial &#34;helper/icon&#34; &#34;date&#34; }}
+</span></span><span class="line"><span class="cl">				<span class="p">&lt;</span><span class="nt">time</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;article-time--published&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">					{{- .Date.Format (or .Site.Params.dateFormat.published &#34;Jan 02, 2006&#34;) -}}
+</span></span><span class="line"><span class="cl">				<span class="p">&lt;/</span><span class="nt">time</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">			<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">		{{ end }}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">		<span class="c">&lt;!-- Created Date --&gt;</span>
+</span></span><span class="line"><span class="cl">		{{- $pubdate := .PublishDate.Format &#34;2006-01-02 15:04 MST &#34; }}
+</span></span><span class="line"><span class="cl">		<span class="c">&lt;!-- Last Updated Date --&gt;</span>
+</span></span><span class="line"><span class="cl">		{{- if .Lastmod }}
+</span></span><span class="line"><span class="cl">			{{- $lastmod := .Lastmod.Format &#34;2006-01-02 15:04 MST&#34; }}
+</span></span><span class="line"><span class="cl">				{{- if ne $lastmod $pubdate }}
+</span></span><span class="line"><span class="cl">					<span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;article-time--final-update&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">						最后更新于 <span class="p">&lt;</span><span class="nt">time</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;article-time--updated&#34;</span> <span class="na">datetime</span><span class="o">=</span><span class="s">&#34;{{ .Lastmod }}&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;{{ .Lastmod }}&#34;</span><span class="p">&gt;</span>{{$lastmod}}<span class="p">&lt;/</span><span class="nt">time</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">					<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">			{{- end }}
+</span></span><span class="line"><span class="cl">		{{- end }}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">		{{ if .Site.Params.article.readingTime }}
+</span></span><span class="line"><span class="cl">			<span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">				{{ partial &#34;helper/icon&#34; &#34;clock&#34; }}
+</span></span><span class="line"><span class="cl">				<span class="p">&lt;</span><span class="nt">time</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;article-time--reading&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">					{{ T &#34;article.readingTime&#34; .ReadingTime }}
+</span></span><span class="line"><span class="cl">				<span class="p">&lt;/</span><span class="nt">time</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">			<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">		{{ end }}
+</span></span><span class="line"><span class="cl">	<span class="p">&lt;/</span><span class="nt">footer</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">{{ end }}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="分类">分类
+</h3><p><code>archetypescategories.md</code>是分类的模板：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-md" data-lang="md"><span class="line"><span class="cl">---
+</span></span><span class="line"><span class="cl">title: &#34;{{ replace .Name &#34;-&#34; &#34; &#34; | title }}&#34;
+</span></span><span class="line"><span class="cl">description:
+</span></span><span class="line"><span class="cl">image: &#34;images/&#34;
+</span></span><span class="line"><span class="cl">style:
+</span></span><span class="line"><span class="cl">    background: &#34;&#34;<span class="ni">#ff7f7f</span>&#34;&#34;
+</span></span><span class="line"><span class="cl">    color: &#34;<span class="ni">#fff</span>&#34;
+</span></span><span class="line"><span class="cl">---
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Hugo中图片路径是按其在<code>static</code>文件夹下的相对路径，因此可以将用作封面的图片都放在<code>static/images/</code>下。<code>background</code>为背景色，这里取的是浅红色；<code>color</code>是字体颜色，这里是白色。颜色可参考<a class="link" href="https://www.codeeeee.com/color/rgb.html"  target="_blank" rel="noopener"
+    >十六进制色表</a>。</p>
+<p>定义新分类：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">hugo</span> <span class="n">new</span> <span class="n">categories</span><span class="p">/</span><span class="n">Markdown</span><span class="p">/</span><span class="n">_index</span><span class="p">.</span><span class="nb">md
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中<code>Mardown</code>为新定义的分类。</p>
+<h3 id="调节主页左侧各栏目顺序">调节主页左侧各栏目顺序
+</h3><p>在<code>content/page</code>中修改各栏目<code>md</code>文件的<code>weight</code></p>
+<h2 id="github-action自动化部署">Github Action自动化部署
 </h2><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -485,17 +620,35 @@
 </span><span class="lnt"> 8
 </span><span class="lnt"> 9
 </span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">git</span> <span class="n">init</span>
-</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">config</span> <span class="n">user</span><span class="p">.</span><span class="n">email</span><span class="p">=</span><span class="s2">&#34;&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">config</span> <span class="n">user</span><span class="p">.</span><span class="n">name</span><span class="p">=</span><span class="s2">&#34;&#34;</span>
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># 创建博客</span>
+</span></span><span class="line"><span class="cl"><span class="n">hugo</span> <span class="n">new</span> <span class="n">site</span> <span class="n">myblog</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd </span><span class="n">myblog</span>
+</span></span><span class="line"><span class="cl"><span class="c"># 初始化仓库</span>
+</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">init</span>
+</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">config</span> <span class="n">user</span><span class="p">.</span><span class="py">email</span> <span class="s2">&#34; &#34;</span> 
+</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">config</span> <span class="n">user</span><span class="p">.</span><span class="py">name</span> <span class="s2">&#34; &#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c"># 添加远程仓库</span>
+</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">origin</span> <span class="n">git</span><span class="nv">@github</span><span class="p">.</span><span class="n">com</span><span class="err">:</span><span class="nb">Baichuan-Sihai</span><span class="p">/</span><span class="n">myblog</span><span class="p">.</span><span class="py">git</span>
+</span></span><span class="line"><span class="cl"><span class="c"># 重命名本地分支</span>
+</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">branch</span> <span class="n">-M</span> <span class="n">main</span>
+</span></span><span class="line"><span class="cl"><span class="c"># 将stack主题作为子模块添加</span>
+</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">submodule</span> <span class="n">add</span> <span class="n">https</span><span class="err">:</span><span class="p">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">CaiJimmy</span><span class="p">/</span><span class="nb">hugo-theme</span><span class="n">-stack</span><span class="p">.</span><span class="py">git</span> <span class="n">themes</span><span class="p">/</span><span class="nb">hugo-theme</span><span class="n">-stack</span>
+</span></span><span class="line"><span class="cl"><span class="c"># 将public文件夹作为子模块添加</span>
+</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">submodule</span> <span class="n">add</span> <span class="n">git</span><span class="nv">@github</span><span class="p">.</span><span class="n">com</span><span class="err">:</span><span class="nb">Baichuan-Sihai</span><span class="p">/</span><span class="n">hugo</span><span class="p">.</span><span class="py">git</span> <span class="p">./</span><span class="n">public</span>
+</span></span><span class="line"><span class="cl"><span class="c"># 暂存、添加提交信息并提交文件</span>
 </span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">add</span> <span class="p">.</span>
 </span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">commit</span> <span class="n">-m</span> <span class="s2">&#34;-&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">branch</span> <span class="n">-M</span> <span class="n">main</span>
-</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">origin</span> <span class="n">git</span><span class="nv">@github</span><span class="p">.</span><span class="n">com</span><span class="err">:</span><span class="nb">Baichuan-Sihai</span><span class="p">/</span><span class="n">myblog</span><span class="p">.</span><span class="py">git</span>
-</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">submodule</span> <span class="n">add</span> <span class="n">https</span><span class="err">:</span><span class="p">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">CaiJimmy</span><span class="p">/</span><span class="nb">hugo-theme</span><span class="n">-stack</span><span class="p">.</span><span class="py">git</span> <span class="n">themes</span><span class="p">/</span><span class="nb">hugo-theme</span><span class="n">-stack</span>
-</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">submodule</span> <span class="n">add</span> <span class="n">git</span><span class="nv">@github</span><span class="p">.</span><span class="n">com</span><span class="err">:</span><span class="nb">Baichuan-Sihai</span><span class="p">/</span><span class="n">hugo</span><span class="p">.</span><span class="py">git</span> <span class="p">./</span><span class="n">public</span>
 </span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">push</span> <span class="n">-u</span> <span class="n">origin</span> <span class="n">main</span>
 </span></span></code></pre></td></tr></table>
 </div>
@@ -508,8 +661,8 @@
 <pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">git</span> <span class="nb">rm </span><span class="n">-r</span> <span class="p">-</span><span class="n">-cached</span> <span class="n">public</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>只从索引删除，不会删除实际文件或目录。</p>
-<p>添加完<code>.gitmodules</code>文件为：</p>
+</div><p>这只将<code>public</code>从索引删除，不会删除实际文件夹</p>
+<p><code>git submodule add</code>产生<code>.gitmodules</code>文件：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -528,7 +681,21 @@
 </span></span><span class="line"><span class="cl">	url = https://github.com/CaiJimmy/hugo-theme-stack.git
 </span></span></code></pre></td></tr></table>
 </div>
-</div>
+</div><h2 id="netlify加速网站访问">Netlify加速网站访问
+</h2><p><a class="link" href="https://app.netlify.com/"  target="_blank" rel="noopener"
+    >Netlify</a>
+是一个现代化的 ​​静态网站托管与自动化部署平台​​，专为开发者设计，它提供全球 CDN、持续集成、无服务器函数等功能，让静态网站部署变得极其简单且高性能。
+Netlify的免费基础套餐每月包含100GB流量、300分钟构建时长及 1 个并发构建队列，满足个人项目和小型站点需求。通过Github仓库导入Netlify中进行部署，我们可以获得更顺畅的访问体验。另外，<code>git push</code>会触发自动部署，我们可以一键实现推送仓库——构建页面——部署网站的一条龙服务。</p>
+<h2 id="参考资料">参考资料
+</h2><ul>
+<li><a class="link" href="https://stack.jimmycai.com/"  target="_blank" rel="noopener"
+    >Stack主题</a></li>
+<li><a class="link" href="https://www.github-zh.com/getting-started/github-pages"  target="_blank" rel="noopener"
+    >从Github仓库生成Github Pages</a></li>
+<li><a class="link" href="https://www.bilibili.com/video/BV1bovfeaEtQ/?p=2&amp;spm_id_from=888.80997.embed_other.whitelist&amp;t=2.082967&amp;bvid=BV1bovfeaEtQ&amp;vd_source=a2a32ede9f57ff6109845973af0194fc"  target="_blank" rel="noopener"
+    >【雷】Hugo + Github免费搭建博客，并实现自动化部署</a></li>
+</ul>
+
 </section>
 
 
@@ -547,7 +714,19 @@
 
         <span>Licensed under CC BY-NC-SA 4.0</span>
     </section>
-    </footer>
+    <section class="article-lastmod">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <span>
+            最后更新于 2025-05-24 21:29 &#43;0800
+        </span>
+    </section></footer>
 
 
     

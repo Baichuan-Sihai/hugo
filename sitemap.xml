@@ -2,54 +2,52 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://baichuan-sihai.github.io/hugo/</loc>
-    <lastmod>2025-05-24T12:07:37+08:00</lastmod>
-  </url><url>
     <loc>https://baichuan-sihai.github.io/hugo/categories/</loc>
-    <lastmod>2025-05-24T12:07:37+08:00</lastmod>
-  </url><url>
-    <loc>https://baichuan-sihai.github.io/hugo/categories/hugo/</loc>
-    <lastmod>2025-05-24T12:07:37+08:00</lastmod>
+    <lastmod>2025-05-24T21:29:45+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-sihai.github.io/hugo/p/hugo%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</loc>
-    <lastmod>2025-05-24T12:07:37+08:00</lastmod>
+    <lastmod>2025-05-24T21:29:45+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-sihai.github.io/hugo/post/</loc>
-    <lastmod>2025-05-24T12:07:37+08:00</lastmod>
+    <lastmod>2025-05-24T21:29:45+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-sihai.github.io/hugo/tags/hugo/</loc>
-    <lastmod>2025-05-23T23:00:00+08:00</lastmod>
+    <lastmod>2025-05-24T21:29:45+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-sihai.github.io/hugo/p/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc>
-    <lastmod>2025-05-23T23:00:00+08:00</lastmod>
+    <lastmod>2025-05-24T21:29:45+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-sihai.github.io/hugo/tags/</loc>
-    <lastmod>2025-05-23T23:00:00+08:00</lastmod>
+    <lastmod>2025-05-24T21:29:45+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-sihai.github.io/hugo/page/</loc>
-    <lastmod>2019-05-28T00:00:00+00:00</lastmod>
+    <lastmod>2025-05-24T21:29:45+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-sihai.github.io/hugo/archives/</loc>
-    <lastmod>2019-05-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://baichuan-sihai.github.io/hugo/categories/markdown/</loc>
-    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+    <lastmod>2025-05-24T14:15:49+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-sihai.github.io/hugo/tags/markdown/</loc>
-    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+    <lastmod>2025-05-24T14:15:49+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-sihai.github.io/hugo/p/markdown-syntax-guide/</loc>
-    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+    <lastmod>2025-05-24T14:15:49+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-sihai.github.io/hugo/p/math-typesetting/</loc>
-    <lastmod>2019-03-08T00:00:00+00:00</lastmod>
+    <lastmod>2025-05-24T14:15:49+08:00</lastmod>
   </url><url>
-    <loc>https://baichuan-sihai.github.io/hugo/categories/hugo/hugo/</loc>
+    <loc>https://baichuan-sihai.github.io/hugo/</loc>
+    <lastmod>2025-05-24T14:15:49+08:00</lastmod>
   </url><url>
-    <loc>https://baichuan-sihai.github.io/hugo/links/</loc>
+    <loc>https://baichuan-sihai.github.io/hugo/categories/hugo/</loc>
+    <lastmod>2025-05-24T21:29:45+08:00</lastmod>
+  </url><url>
+    <loc>https://baichuan-sihai.github.io/hugo/categories/markdown/</loc>
+    <lastmod>2025-05-24T21:29:45+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-sihai.github.io/hugo/%E5%85%B3%E4%BA%8E/</loc>
+    <lastmod>2025-05-24T21:29:45+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-sihai.github.io/hugo/search/</loc>
+    <lastmod>2025-05-24T14:15:49+08:00</lastmod>
   </url>
 </urlset>
