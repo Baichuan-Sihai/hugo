@@ -10,7 +10,7 @@
 <meta property='og:description' content="Stack主题参数设置，Github自动化部署">
 <meta property='og:url' content='https://baichuan-blog.netlify.app/p/hugo%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/'>
 <meta property='og:site_name' content='百川的小屋'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-05-24T12:07:37&#43;08:00'/><meta property='article:modified_time' content='2025-05-25T11:41:35&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-05-24T12:07:37&#43;08:00'/><meta property='article:modified_time' content='2025-05-25T20:29:58&#43;08:00'/>
 <meta name="twitter:title" content="Hugo使用技巧">
 <meta name="twitter:description" content="Stack主题参数设置，Github自动化部署">
     <link rel="shortcut icon" href="/favicon2.ico" />
@@ -315,7 +315,7 @@
 			
 			
 						<span class="article-time--final-update">
-							最后更新于 <time class="article-time--updated" datetime="2025-05-25 11:41:35 &#43;0800 &#43;0800" title="2025-05-25 11:41:35 &#43;0800 &#43;0800">2025-05-25 11:41</time>
+							最后更新于 <time class="article-time--updated" datetime="2025-05-25 20:29:58 &#43;0800 &#43;0800" title="2025-05-25 20:29:58 &#43;0800 &#43;0800">2025-05-25 20:29</time>
 						</span>
 
 			
@@ -695,7 +695,7 @@
     >Netlify</a>
 是一个现代化的 ​​静态网站托管与自动化部署平台​​，专为开发者设计，它提供全球 CDN、持续集成、无服务器函数等功能，让静态网站部署变得极其简单且高性能。
 Netlify的免费基础套餐每月包含100GB流量、300分钟构建时长及 1 个并发构建队列，满足个人项目和小型站点需求。通过Github仓库导入Netlify中进行部署，我们可以获得更顺畅的访问体验。另外，<code>git push</code>会触发自动部署，我们可以一键实现推送仓库——构建页面——部署网站的一条龙服务。</p>
-<p>注意，需要将<code>hugo.yaml</code>中的`baseu改为netlify生成的网站：</p>
+<p>注意，需要将<code>hugo.yaml</code>中的<code>baseurl</code>改为netlify生成的网站：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -760,6 +760,10 @@ Netlify的免费基础套餐每月包含100GB流量、300分钟构建时长及 1
                 { left: "\\(", right: "\\)", display: false },
                 { left: "\\[", right: "\\]", display: true }
             ],
+			macros: {
+                "\\abs": "\\left| #1 \\right|",
+				"\\Sob": "W^{#1,#2}(#3)"  
+            },
             ignoredClasses: ["gist"]
         });})
 </script>

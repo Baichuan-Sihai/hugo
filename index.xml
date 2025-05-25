@@ -12,14 +12,38 @@
         <pubDate>Sun, 25 May 2025 11:07:01 +0800</pubDate>
         
         <guid>https://baichuan-blog.netlify.app/p/hugo-markdown%E6%8A%80%E5%B7%A7/</guid>
-        <description>&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Markdown行内公式&lt;code&gt;$a^*b^*$&lt;/code&gt;渲染会出错（两个*间会变成斜体$a^&lt;em&gt;b^&lt;/em&gt;$），改成&lt;code&gt;$a^\*b^\*$&lt;/code&gt;（$a^*b^*$）。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;引用其他文章：&lt;code&gt;[](../article-name)&lt;/code&gt;，其中&lt;code&gt;article-name&lt;/code&gt;是要引用的文章名（以&lt;code&gt;url&lt;/code&gt;中的文章名为主）。例如，引用文章&lt;code&gt;Markdown Syntax Guide&lt;/code&gt;时为&lt;code&gt;../markdown-syntax-guide&lt;/code&gt;，效果：&lt;a class=&#34;link&#34; href=&#34;../markdown-syntax-guide&#34; &gt;Markdown Syntax Guide&lt;/a&gt;。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
+        <description>&lt;h2 id=&#34;-的渲染&#34;&gt;* 的渲染
+&lt;/h2&gt;&lt;p&gt;Markdown行内公式&lt;code&gt;$a^*b^*$&lt;/code&gt;渲染会出错（两个*间会变成斜体$a^&lt;em&gt;b^&lt;/em&gt;$），改成&lt;code&gt;$a^\*b^\*$&lt;/code&gt;（$a^*b^*$），但这样在vscode中的渲染有问题，一种安全的写法是&lt;code&gt;$a^\ast b^\ast$&lt;/code&gt;（$a^\ast b^\ast$）。&lt;/p&gt;
+&lt;h2 id=&#34;引用自己的博客文章&#34;&gt;引用自己的博客文章
+&lt;/h2&gt;&lt;p&gt;&lt;code&gt;[](../article-name)&lt;/code&gt;，其中&lt;code&gt;article-name&lt;/code&gt;是要引用的文章名（以&lt;code&gt;url&lt;/code&gt;中的文章名为主）。例如，引用文章&lt;code&gt;Markdown Syntax Guide&lt;/code&gt;时为&lt;code&gt;../markdown-syntax-guide&lt;/code&gt;，效果：&lt;a class=&#34;link&#34; href=&#34;../markdown-syntax-guide&#34; &gt;Markdown Syntax Guide&lt;/a&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;自定义数学命令&#34;&gt;自定义数学命令
+&lt;/h2&gt;&lt;h3 id=&#34;全局定义&#34;&gt;全局定义
+&lt;/h3&gt;&lt;p&gt;所有开启&lt;code&gt;math=true&lt;/code&gt;的文章中均可使用。&lt;/p&gt;
+&lt;p&gt;在&lt;code&gt;layouts\partials\article\components\math.html&lt;/code&gt;中的&lt;code&gt;ignoredClasses: [&amp;quot;gist&amp;quot;]&lt;/code&gt;前面添加：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;macros: {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&amp;#34;\\abs&amp;#34;: &amp;#34;\\left| #1 \\right|&amp;#34;,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&amp;#34;\\Sob&amp;#34;: &amp;#34;W^{#1,#2}(#3)&amp;#34;  // 三参数：k, p, 区域
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;},
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;效果为：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;$\abs{x + y}$&lt;/code&gt;：$\abs{x + y}$&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$\Sob{1}{2}{\Omega}$&lt;/code&gt;：$\Sob{1}{2}{\Omega}$&lt;/li&gt;
+&lt;/ol&gt;
+$$
+\gdef\wkp#1#2#3{W^{#1,#2}(#3)}
+$$&lt;h3 id=&#34;局部定义&#34;&gt;局部定义
+&lt;/h3&gt;&lt;p&gt;仅限于定义所在的文章从定义后到文章结束的部分。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$$\gdef\wkp#1#2#3{W^{#1,#2}(#3)}$$&lt;/code&gt;：$\wkp{1}{2}{\Omega}$&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -549,7 +573,7 @@ Park&lt;/a&gt;&lt;/p&gt;
     &gt;Netlify&lt;/a&gt;
 是一个现代化的 ​​静态网站托管与自动化部署平台​​，专为开发者设计，它提供全球 CDN、持续集成、无服务器函数等功能，让静态网站部署变得极其简单且高性能。
 Netlify的免费基础套餐每月包含100GB流量、300分钟构建时长及 1 个并发构建队列，满足个人项目和小型站点需求。通过Github仓库导入Netlify中进行部署，我们可以获得更顺畅的访问体验。另外，&lt;code&gt;git push&lt;/code&gt;会触发自动部署，我们可以一键实现推送仓库——构建页面——部署网站的一条龙服务。&lt;/p&gt;
-&lt;p&gt;注意，需要将&lt;code&gt;hugo.yaml&lt;/code&gt;中的`baseu改为netlify生成的网站：&lt;/p&gt;
+&lt;p&gt;注意，需要将&lt;code&gt;hugo.yaml&lt;/code&gt;中的&lt;code&gt;baseurl&lt;/code&gt;改为netlify生成的网站：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -1027,6 +1051,19 @@ Invoke-Expression (New-Object System.Net.WebClient).DownloadString(&#39;https://
 $$
  \varphi = 1+\frac{1} {1+\frac{1} {1+\frac{1} {1+\cdots} } } 
 $$</description>
+        </item>
+        <item>
+        <title>test</title>
+        <link>https://baichuan-blog.netlify.app/p/test/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://baichuan-blog.netlify.app/p/test/</guid>
+        <description>$$
+\gdef\wkp#1#2#3{W^{#1,#2}(#3)}
+$$&lt;p&gt;$\wkp{1}{2}{\Omega}$ → $ W^{1,2}(\Omega) $&lt;/p&gt;
+&lt;p&gt;公式示例：$\abs{x + y}$ → $\left| x + y \right|$&lt;/p&gt;
+&lt;p&gt;$\Sob{1}{2}{\Omega}$&lt;/p&gt;
+</description>
         </item>
         <item>
         <title>关于</title>
