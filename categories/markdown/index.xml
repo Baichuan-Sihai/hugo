@@ -7,6 +7,22 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>百川</copyright><atom:link href="https://baichuan-blog.netlify.app/categories/markdown/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Hugo Markdown技巧</title>
+        <link>https://baichuan-blog.netlify.app/p/hugo-markdown%E6%8A%80%E5%B7%A7/</link>
+        <pubDate>Sun, 25 May 2025 11:07:01 +0800</pubDate>
+        
+        <guid>https://baichuan-blog.netlify.app/p/hugo-markdown%E6%8A%80%E5%B7%A7/</guid>
+        <description>&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Markdown行内公式&lt;code&gt;$a^*b^*$&lt;/code&gt;渲染会出错（两个*间会变成斜体$a^&lt;em&gt;b^&lt;/em&gt;$），改成&lt;code&gt;$a^\*b^\*$&lt;/code&gt;（$a^*b^*$）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;引用其他文章：&lt;code&gt;[](../article-name)&lt;/code&gt;，其中&lt;code&gt;article-name&lt;/code&gt;是要引用的文章名（以&lt;code&gt;url&lt;/code&gt;中的文章名为主）。例如，引用文章&lt;code&gt;Markdown Syntax Guide&lt;/code&gt;时为&lt;code&gt;../markdown-syntax-guide&lt;/code&gt;，效果：&lt;a class=&#34;link&#34; href=&#34;../markdown-syntax-guide&#34; &gt;Markdown Syntax Guide&lt;/a&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>Markdown Syntax Guide</title>
         <link>https://baichuan-blog.netlify.app/p/markdown-syntax-guide/</link>
         <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>

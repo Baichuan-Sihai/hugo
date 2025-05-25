@@ -10,7 +10,7 @@
 <meta property='og:description' content="Stack主题参数设置，Github自动化部署">
 <meta property='og:url' content='https://baichuan-blog.netlify.app/p/hugo%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/'>
 <meta property='og:site_name' content='百川的小屋'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-05-24T12:07:37&#43;08:00'/><meta property='article:modified_time' content='2025-05-24T21:58:02&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-05-24T12:07:37&#43;08:00'/><meta property='article:modified_time' content='2025-05-25T11:41:35&#43;08:00'/>
 <meta name="twitter:title" content="Hugo使用技巧">
 <meta name="twitter:description" content="Stack主题参数设置，Github自动化部署">
     <link rel="shortcut icon" href="/favicon2.ico" />
@@ -315,7 +315,7 @@
 			
 			
 						<span class="article-time--final-update">
-							最后更新于 <time class="article-time--updated" datetime="2025-05-24 21:58:02 &#43;0800 &#43;0800" title="2025-05-24 21:58:02 &#43;0800 &#43;0800">2025-05-24 21:58</time>
+							最后更新于 <time class="article-time--updated" datetime="2025-05-25 11:41:35 &#43;0800 &#43;0800" title="2025-05-25 11:41:35 &#43;0800 &#43;0800">2025-05-25 11:41</time>
 						</span>
 
 			
@@ -330,7 +330,8 @@
     <section class="article-content">
     
     
-    <h2 id="stack主题参数设置">Stack主题参数设置
+    <p><a class="link" href="../hugo%e6%90%ad%e5%bb%ba%e4%b8%aa%e4%ba%ba%e5%8d%9a%e5%ae%a2" >Hugo搭建个人博客</a></p>
+<h2 id="stack主题参数设置">Stack主题参数设置
 </h2><p>Hugo会优先从主路径文件夹读取文件，若没找到，则进入<code>hugo.yaml</code>设置的<code>theme</code>中寻找。因此，如果需要修改主题文件，请先将其从相应主题中复制到主路经相应位置再进行修改。</p>
 <h3 id="绑定个人网站">绑定个人网站
 </h3><p><code>hugo.yaml</code>：</p>
@@ -501,7 +502,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">lastmod</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;lastmod&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;:git&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;publishDate&#39;</span><span class="p">]</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
-</div><p>这里<code>2006-01-02</code>是go语言的<code>yyyy-mm-dd</code>，<code>lastmod</code>的几个参数具体解释参见官方文档的<a class="link" href="https://gohugo.io/configuration/all/#configure-dates"  target="_blank" rel="noopener"
+</div><p>这里<code>2006-01-02</code>是go语言的<code>yyyy-mm-dd</code>，<code>enableGitInfo: true</code>后会自动用<code>Git</code>信息填充，<code>lastmod</code>的几个参数具体解释参见官方文档的<a class="link" href="https://gohugo.io/configuration/all/#configure-dates"  target="_blank" rel="noopener"
     >Configure Dates</a>。</p>
 <p>这时“最后更新于”显示在文末，如果想挪到前面，可将<code>layouts\partials\article\components\footer.html</code>的11-18行注释掉，然后将
 <code>layouts\partials\article\components\details.html</code>的26-49行替换为：</p>
@@ -601,7 +602,7 @@
 </span></span><span class="line"><span class="cl">---
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>Hugo中图片路径是按其在<code>static</code>文件夹下的相对路径，因此可以将用作封面的图片都放在<code>static/images/</code>下（这种方法本地没问题，但上传到Github后显示不出来，还是建议把图片放在<code>md</code>文件同级目录）。<code>background</code>为背景色，这里取的是浅红色；<code>color</code>是字体颜色，这里是白色。颜色可参考<a class="link" href="https://www.codeeeee.com/color/rgb.html"  target="_blank" rel="noopener"
+</div><p>Hugo中图片路径是按其在<code>static</code>文件夹下的相对路径，因此可以将用作封面的图片都放在<code>static/images/</code>下。<code>background</code>为背景色，这里取的是浅红色；<code>color</code>是字体颜色，这里是白色。颜色可参考<a class="link" href="https://www.codeeeee.com/color/rgb.html"  target="_blank" rel="noopener"
     >十六进制色表</a>。</p>
 <p>定义新分类：</p>
 <div class="highlight"><div class="chroma">

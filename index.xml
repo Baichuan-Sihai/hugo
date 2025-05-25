@@ -7,12 +7,185 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>百川</copyright><atom:link href="https://baichuan-blog.netlify.app/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Hugo Markdown技巧</title>
+        <link>https://baichuan-blog.netlify.app/p/hugo-markdown%E6%8A%80%E5%B7%A7/</link>
+        <pubDate>Sun, 25 May 2025 11:07:01 +0800</pubDate>
+        
+        <guid>https://baichuan-blog.netlify.app/p/hugo-markdown%E6%8A%80%E5%B7%A7/</guid>
+        <description>&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Markdown行内公式&lt;code&gt;$a^*b^*$&lt;/code&gt;渲染会出错（两个*间会变成斜体$a^&lt;em&gt;b^&lt;/em&gt;$），改成&lt;code&gt;$a^\*b^\*$&lt;/code&gt;（$a^*b^*$）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;引用其他文章：&lt;code&gt;[](../article-name)&lt;/code&gt;，其中&lt;code&gt;article-name&lt;/code&gt;是要引用的文章名（以&lt;code&gt;url&lt;/code&gt;中的文章名为主）。例如，引用文章&lt;code&gt;Markdown Syntax Guide&lt;/code&gt;时为&lt;code&gt;../markdown-syntax-guide&lt;/code&gt;，效果：&lt;a class=&#34;link&#34; href=&#34;../markdown-syntax-guide&#34; &gt;Markdown Syntax Guide&lt;/a&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>Kessler Microphysical Parameterization</title>
+        <link>https://baichuan-blog.netlify.app/p/kessler-microphysical-parameterization/</link>
+        <pubDate>Sun, 25 May 2025 09:47:13 +0800</pubDate>
+        
+        <guid>https://baichuan-blog.netlify.app/p/kessler-microphysical-parameterization/</guid>
+        <description>&lt;p&gt;本文介绍积云动力学中的水分平衡方程、位温方程以及相应的微物理参数化方法.
+云内的水分包含水汽、液态水和固态水[1, Sec.13.1 p353],
+本文不考虑冰相(忽略固态水), 将水汽(water vapor)、云水(cloud
+water)、雨水(rain water)的密度分别记为$\rho_v,\rho_c,\rho_r$,
+干空气密度为$\rho$,
+记水汽混合比、云水混合比、雨水混合比分别为$q_v=\frac{\rho_v}{\rho},q_c=\frac{\rho_c}{\rho},q_r=\frac{\rho_r}{\rho}$.&lt;/p&gt;
+&lt;p&gt;水汽、云水、雨水之间可相互转化, 记为:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$P_1$: 水汽$\to$云水, 水汽凝结速率;&lt;/li&gt;
+&lt;li&gt;$P_2$: 云水$\to$雨水, 包含云水自动转化速率(rain auto-conversion)$A_r$和碰并增长速率(rain accretion)$C_r$;&lt;/li&gt;
+&lt;li&gt;$P_6$: 云水$\to$水汽, 云滴蒸发速率;&lt;/li&gt;
+&lt;li&gt;$P_7$: 雨水$\to$水汽, 雨滴蒸发速率.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;水汽、云水、雨水方程分别为:
+&lt;/p&gt;
+$$\begin{aligned}
+    \frac{dq_v}{dt} &amp; = D_{q_v}+P_6 -P_1 + P_7 \\
+    \frac{dq_c}{dt} &amp; = D_{q_c}-(P_6-P_1) - P_2 \\
+    \frac{dq_r}{dt} &amp; = D_{q_r}+\frac{1}{\rho}\frac{\partial}{\partial z}(\rho v_rq_r)+P_2 - P_7
+\end{aligned}$$&lt;p&gt;
+水汽凝结释放潜热, 使位温升高; 云滴、雨滴蒸发吸收潜热,
+使位温降低, 由此得到位温方程
+&lt;/p&gt;
+$$\frac{d\theta}{dt}  = D_\theta-\gamma(P_6-P_1+P_7)$$&lt;p&gt;
+$\gamma =\frac{L_v}{c_p\Pi}$, 其中$L_v$是蒸发潜热, $c_p$是定压比热容,
+$\Pi=(\frac{p}{p_0})^{\frac R{c_p}}$是Exner pressure(压力无量纲化).&lt;/p&gt;
+&lt;p&gt;上面$P_i$是[1]中记号, 我们将云水转化为水汽的$P_6-P_1$合并,
+其实恰好是饱和水汽混合比$q_{vs}$(即单位质量干空气所能容纳的最大饱和水汽质量)的转化速率,
+即$P_6-P_7=\frac{d q_{vs}}{dt}$, 再将$P_7$改用$E_r$(rate of rain
+evaporation), 则得到[2]中方程组:
+&lt;/p&gt;
+$$\begin{aligned}
+    \frac{d\theta}{dt} &amp; = D_\theta-\gamma(\frac{d q_{vs}}{dt}+E_r)\\
+    \frac{dq_v}{dt} &amp; = D_{q_v}+ \frac{d q_{vs}}{dt}+E_r\\
+    \frac{dq_c}{dt} &amp; = D_{q_c}- \frac{d q_{vs}}{dt} - A_r-C_r \\
+    \frac{dq_r}{dt} &amp; = D_{q_r}+\frac{1}{\rho}\frac{\partial}{\partial z}(\rho v_rq_r)+A_r+C_r +E_r
+\end{aligned}\tag{1}
+$$&lt;p&gt;观察可发现:
+&lt;/p&gt;
+$$\begin{aligned}
+    &amp;\frac{d \theta}{dt}+\gamma\frac{d q_{v}}{dt} = D_{\theta}+\gamma D_{q_v}\\
+    &amp;\frac{d q_v}{dt}+\frac{d q_c}{dt} = D_{q_v}+D_{q_c}
+\end{aligned}\tag{2}$$&lt;p&gt;
+事实上, 这由液态、气态水间转化容易看出.&lt;/p&gt;
+&lt;p&gt;公式($1$)和动量方程、连续性方程组以及状态结合可得到完整大气系统.
+我们采用两步方法求解该系统:
+首先忽略水汽、云水、雨水间的转化(1)右端只保留$D_{(\cdot)}$项, 将解推进一个时间步,
+得到$\rho^{n+1},\vec{u}^{n+1}$, $\theta^{*},q_{v}^*,q_c^*,q_r^*$;
+随后利用转化速率项对$\theta^{*},q_{v}^*,q_c^*,q_r^*$做调整得到$\theta^{n+1},q_v^{n+1},q_c^{n+1},q_r^{n+1}$.
+相当于在原来不考虑水汽情形求解完一个时间步后对解变量做后处理.&lt;/p&gt;
+&lt;p&gt;下面推导微物理转化项的参数化方法, 由[2]有:
+&lt;/p&gt;
+$$\begin{aligned}
+    \text{rain auto-conversion:}\ &amp;A_r = k_1(q_c-a),\quad k_1=10^{-3}s^{-1}, a = 10^{-3}g\ g^{-1}\\
+    \text{rain accretion:}\ &amp;C_r = k_2q_cq_r^{0.875},\quad k_2 = 2.2s^{-1}\\
+    \text{rain evaporation:}\ &amp;E_r = \frac{1}{{ \rho}} \frac{(1 - q_v / q_{v s}) (1.6 + 124.9 ( \rho q_r)^{0.2046})({\rho} q_r)^{0.525}}{5.4 \times 10^5 + 2.55 \times 10^6 / ( {p}q_{v s})}\\
+    \text{saturation water vapor fraction:}\ &amp;q_{vs} = \frac{3.8}{ {p}}\exp(17.27\frac{  \Pi\theta-273}{ \Pi\theta-36}),\quad(\text{Teten&#39;s formula})\\
+    \text{terminal velocity of rain following:}\ &amp;v_r=3634 (\rho q_r)^{0.1346}(\frac{\rho}{\rho_0})^{-\frac 12}\ [\text{cm\ s}^{-1}]
+\end{aligned}$$&lt;p&gt;
+其中$\rho_0$是地面的基态密度. 注意此处的单位,
+$p$是百帕mb(millibar), $\rho$是$g/cm^3=10^{3}kg/m^3$,
+$q_v,q_c,q_r$均为$g\ g^{-1}$.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;考虑$A_r,C_r,E_r,\frac{1}{\rho}\frac{\partial}{\partial z}(\rho v_r q_r)$项.
+&lt;/p&gt;
+$$\begin{aligned}
+        &amp;\theta^{*}=\theta^*-\Delta t \gamma E_r\\
+        &amp;q_v^{*}=q_v^*+\Delta t E_r\\
+        &amp;q_c^{*}=q_c^*-\Delta t (A_r+C_r)\\
+         &amp;q_r^*=q_r^*+\Delta t(\frac{1}{\rho}\frac{\partial}{\partial z}(\rho v_rq_r^*)+A_r+C_r)
+    \end{aligned}$$&lt;p&gt;
+为记号方便, 更新后仍用$(\cdot)^&lt;em&gt;$表示. $\frac{1}{\rho}\frac{\partial}{\partial z}(\rho v_rq_r^&lt;/em&gt;)$的CG或DG处理参考[5].&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;处理剩余的$\frac{d q_{vs}}{dt}$项.&lt;/p&gt;
+&lt;p&gt;将(1)中$\theta, q_v, q_c$中已经处理好的右端项去掉, 得到
+&lt;/p&gt;
+$$\begin{aligned}
+    &amp;\frac{d\theta}{dt}+\gamma\frac{d q_v}{dt}=0\\
+        &amp;\frac{d q_v}{dt}+\frac{d q_c}{dt}=0
+    \end{aligned}$$&lt;p&gt;
+于是
+&lt;/p&gt;
+$$\theta^{n+1}+\gamma q_v^{n+1}=\theta^*+\gamma q_v^*\tag{3}$$&lt;p&gt;
+&lt;/p&gt;
+$$q_v^{n+1}+q_c^{n+1} = q_v^*+q_c^*\tag{4}$$&lt;p&gt;利用Teten&amp;rsquo;s formula, 将$q_v$在$\theta^*$处做一阶Taylor展开有:
+&lt;/p&gt;
+$$q_v^{n+1}=q_{vs}^{n+1}\approx q_v^*(1+\frac{4093\Pi}{(\Pi\theta^*-36)^2}(\theta^{n+1}-\theta^*))\tag{5}$$&lt;p&gt;第一个等号是由饱和假设, 假如$q_v^* &amp;gt;q_{vs}^*$,
+此时过饱和, 将会通过转换到达饱和状态[3, Appendix: Saturation
+Technique]. 将该式代入(3)可得:
+&lt;/p&gt;
+$$\theta^{n+1} = \theta^*+\frac{\gamma}{1+\gamma q_{vs}^*\frac{4039\Pi}{(\Pi\theta^*-36)^2}}(q_v^*-q_{vs}^*)$$&lt;p&gt;
+将上式再代入(3)可得:
+&lt;/p&gt;
+$$q_v^{n+1} = q_v^*- \frac{1}{1+\gamma q_{vs}^*\frac{4039\Pi}{(\Pi\theta^*-36)^2}}(q_v^*-q_{vs}^*)$$&lt;p&gt;
+将上式代入(4)可得:
+&lt;/p&gt;
+$$q_c^{n+1} = q_c^*+q_v^*-q_v^{n+1}$$&lt;p&gt;
+为了保证$q_c\ge 0$, 令
+&lt;/p&gt;
+$$\begin{aligned}
+        q_c^{n+1} &amp;= \max(q_c^*+q_v^*-q_v^{n+1},0)\\
+        &amp; = q_c^*+\max(prod,-q_c^*)\\
+		(prod :&amp;=q_v^*-q_v^{n+1}=\frac{1}{1+\gamma q_{vs}^*\frac{4039\Pi}{(\Pi\theta^*-36)^2}}(q_v^*-q_{vs}^*) )
+    \end{aligned}$$&lt;p&gt;
+再次利用(4)和(3)得到:
+&lt;/p&gt;
+$$\begin{aligned}
+        q_v^{n+1}&amp;=q_v^*+q_c^*-q_c^{n+1}\\
+        &amp; = q_v^*-\max(prod,-q_c^*)\\
+        \theta^{n+1}&amp; = \theta^*+\gamma \max(prod,-q_c^*)
+    \end{aligned}$$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;综上就得到了[4]中Appendix C: Listing of the Kesler Microphysics
+Subroutine的算法,
+区别只在于其中$A_r+E_r$用的是$\frac{\max(A_r,0)+C_r}{1+\Delta t\frac{C_r}{q_c}}$,
+以及令$q_v$也非负$q_v^{n+1} =\max(q_v^*-\max(prod,-q_c^* ),0)$.
+另外$E_r$在代码中出现的位置也与前面推导略有不同,
+不过这点从数学上看是等价的, 从数值上看最多也只有舍入误差会有影响,
+可忽略不计.&lt;/p&gt;
+&lt;h4 id=&#34;参考文献&#34;&gt;参考文献
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.jianguoyun.com/p/DRvLTikQlsqoDRie7voFIAA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;大气物理学. (2023). 盛裴轩等&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.jianguoyun.com/p/DbZDLLwQlsqoDRiX7voFIAA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;The simulation of
+three-dimensional convective storm dynamics. (1978). Klemp, J., Wilhelmson, R.&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.jianguoyun.com/p/DZqVk3UQlsqoDRih7voFIAA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;A comparison between axisymmetric and
+slab-symmetric cumulus cloud models. (1973). Soong, S., Ogura, Y.&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.jianguoyun.com/p/DYdWbhkQlsqoDRiW7voFIAA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Idealized global nonhydrostatic atmospheric test cases on a
+reduced-radius sphere. (2015). J. B. Klemp, W. C. Skamarock, S.-H.
+Park&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.jianguoyun.com/p/DT_CnVUQlsqoDRif7voFIAA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;A Non-Column Based, Fully Unstructured Implementation of Kessler&amp;rsquo;s Microphysics With Warm Rain Using Continuous and Discontinuous Spectral Elements. (2023). Yassine Tissaoui, Simone Marras, etc.&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        <item>
         <title>Hugo使用技巧</title>
         <link>https://baichuan-blog.netlify.app/p/hugo%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</link>
         <pubDate>Sat, 24 May 2025 12:07:37 +0800</pubDate>
         
         <guid>https://baichuan-blog.netlify.app/p/hugo%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</guid>
-        <description>&lt;h2 id=&#34;stack主题参数设置&#34;&gt;Stack主题参数设置
+        <description>&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;../hugo%e6%90%ad%e5%bb%ba%e4%b8%aa%e4%ba%ba%e5%8d%9a%e5%ae%a2&#34; &gt;Hugo搭建个人博客&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;stack主题参数设置&#34;&gt;Stack主题参数设置
 &lt;/h2&gt;&lt;p&gt;Hugo会优先从主路径文件夹读取文件，若没找到，则进入&lt;code&gt;hugo.yaml&lt;/code&gt;设置的&lt;code&gt;theme&lt;/code&gt;中寻找。因此，如果需要修改主题文件，请先将其从相应主题中复制到主路经相应位置再进行修改。&lt;/p&gt;
 &lt;h3 id=&#34;绑定个人网站&#34;&gt;绑定个人网站
 &lt;/h3&gt;&lt;p&gt;&lt;code&gt;hugo.yaml&lt;/code&gt;：&lt;/p&gt;
@@ -183,7 +356,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;lastmod&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;lastmod&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;:git&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;date&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;publishDate&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;这里&lt;code&gt;2006-01-02&lt;/code&gt;是go语言的&lt;code&gt;yyyy-mm-dd&lt;/code&gt;，&lt;code&gt;lastmod&lt;/code&gt;的几个参数具体解释参见官方文档的&lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/configuration/all/#configure-dates&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;/div&gt;&lt;p&gt;这里&lt;code&gt;2006-01-02&lt;/code&gt;是go语言的&lt;code&gt;yyyy-mm-dd&lt;/code&gt;，&lt;code&gt;enableGitInfo: true&lt;/code&gt;后会自动用&lt;code&gt;Git&lt;/code&gt;信息填充，&lt;code&gt;lastmod&lt;/code&gt;的几个参数具体解释参见官方文档的&lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/configuration/all/#configure-dates&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Configure Dates&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;这时“最后更新于”显示在文末，如果想挪到前面，可将&lt;code&gt;layouts\partials\article\components\footer.html&lt;/code&gt;的11-18行注释掉，然后将
 &lt;code&gt;layouts\partials\article\components\details.html&lt;/code&gt;的26-49行替换为：&lt;/p&gt;
@@ -283,7 +456,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;---
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;Hugo中图片路径是按其在&lt;code&gt;static&lt;/code&gt;文件夹下的相对路径，因此可以将用作封面的图片都放在&lt;code&gt;static/images/&lt;/code&gt;下（这种方法本地没问题，但上传到Github后显示不出来，还是建议把图片放在&lt;code&gt;md&lt;/code&gt;文件同级目录）。&lt;code&gt;background&lt;/code&gt;为背景色，这里取的是浅红色；&lt;code&gt;color&lt;/code&gt;是字体颜色，这里是白色。颜色可参考&lt;a class=&#34;link&#34; href=&#34;https://www.codeeeee.com/color/rgb.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;/div&gt;&lt;p&gt;Hugo中图片路径是按其在&lt;code&gt;static&lt;/code&gt;文件夹下的相对路径，因此可以将用作封面的图片都放在&lt;code&gt;static/images/&lt;/code&gt;下。&lt;code&gt;background&lt;/code&gt;为背景色，这里取的是浅红色；&lt;code&gt;color&lt;/code&gt;是字体颜色，这里是白色。颜色可参考&lt;a class=&#34;link&#34; href=&#34;https://www.codeeeee.com/color/rgb.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;十六进制色表&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;定义新分类：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
