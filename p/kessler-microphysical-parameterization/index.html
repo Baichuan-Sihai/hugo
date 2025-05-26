@@ -10,7 +10,7 @@
 <meta property='og:description' content="微物理过程参数化 本文介绍积云动力学中的水分平衡方程、位温方程以及相应的微物理参数化方法. 云内的水分包含水汽、液态水和固态水[1, Sec.13.1 p353], 本文不考虑冰相(忽略固态水), 将水汽(water vapor)、云水(cloud water)、雨水(rain water)的密度分别记为$\\rho_v,\\rho_c,\\rho_r$, 干空气密度为$\\rho$, 记水汽混合比、云水混合比、雨水混合比分别为$q_v=\\frac{\\rho_v}{\\rho},q_c=\\frac{\\rho_c}{\\rho},q_r=\\frac{\\rho_r}{\\rho}$.\n">
 <meta property='og:url' content='https://baichuan-blog.netlify.app/p/kessler-microphysical-parameterization/'>
 <meta property='og:site_name' content='百川的小屋'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-05-25T09:47:13&#43;08:00'/><meta property='article:modified_time' content='2025-05-26T10:56:28&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-05-25T09:47:13&#43;08:00'/><meta property='article:modified_time' content='2025-05-26T18:06:37&#43;08:00'/>
 <meta name="twitter:title" content="Kessler Microphysical Parameterization">
 <meta name="twitter:description" content="微物理过程参数化 本文介绍积云动力学中的水分平衡方程、位温方程以及相应的微物理参数化方法. 云内的水分包含水汽、液态水和固态水[1, Sec.13.1 p353], 本文不考虑冰相(忽略固态水), 将水汽(water vapor)、云水(cloud water)、雨水(rain water)的密度分别记为$\\rho_v,\\rho_c,\\rho_r$, 干空气密度为$\\rho$, 记水汽混合比、云水混合比、雨水混合比分别为$q_v=\\frac{\\rho_v}{\\rho},q_c=\\frac{\\rho_c}{\\rho},q_r=\\frac{\\rho_r}{\\rho}$.\n">
     <link rel="shortcut icon" href="/favicon2.ico" />
@@ -297,7 +297,7 @@
 			
 			
 						<span class="article-time--final-update">
-							最后更新于 <time class="article-time--updated" datetime="2025-05-26 10:56:28 &#43;0800 &#43;0800" title="2025-05-26 10:56:28 &#43;0800 &#43;0800">2025-05-26 10:56</time>
+							最后更新于 <time class="article-time--updated" datetime="2025-05-26 18:06:37 &#43;0800 &#43;0800" title="2025-05-26 18:06:37 &#43;0800 &#43;0800">2025-05-26 18:06</time>
 						</span>
 
 			
@@ -348,7 +348,7 @@ $$\begin{aligned}
     \frac{d\theta}{dt} & = D_\theta-\gamma(\frac{d q_{vs}}{dt}+E_r)\\
     \frac{dq_v}{dt} & = D_{q_v}+ \frac{d q_{vs}}{dt}+E_r\\
     \frac{dq_c}{dt} & = D_{q_c}- \frac{d q_{vs}}{dt} - A_r-C_r \\
-    \frac{dq_r}{dt} & = D_{q_r}+\frac{1}{\rho}\frac{\partial}{\partial z}(\rho v_rq_r)+A_r+C_r +E_r
+    \frac{dq_r}{dt} & = D_{q_r}+\frac{1}{\rho}\frac{\partial}{\partial z}(\rho v_rq_r)+A_r+C_r -E_r
 \end{aligned}\tag{1}
 $$<p>观察可发现:
 </p>
@@ -377,62 +377,82 @@ $p$是百帕mb(millibar), $\rho$是$g/cm^3=10^{3}kg/m^3$,
 $q_v,q_c,q_r$均为$g\ g^{-1}$.</p>
 <ol>
 <li>
-<p>考虑$A_r,C_r,E_r,\frac{1}{\rho}\frac{\partial}{\partial z}(\rho v_r q_r)$项.
-</p>
+<p>$A_r,C_r,\frac{1}{\rho}\frac{\partial}{\partial z}(\rho v_r q_r)$</p>
 $$\begin{aligned}
-        &\theta^{*}=\theta^*-\Delta t \gamma E_r\\
-        &q_v^{*}=q_v^*+\Delta t E_r\\
-        &q_c^{*}=q_c^*-\Delta t (A_r+C_r)\\
-         &q_r^*=q_r^*+\Delta t(\frac{1}{\rho}\frac{\partial}{\partial z}(\rho v_rq_r^*)+A_r+C_r)
+        &\theta^{(1)}=\theta^*\\
+        &q_v^{(1)}=q_v^*\\
+        &q_c^{(1)}=q_c^*-\Delta t (A_r+C_r)\\
+         &q_r^{(1)}=q_r^*+\Delta t(\frac{1}{\rho}\frac{\partial}{\partial z}(\rho v_rq_r^*)+A_r+C_r )
     \end{aligned}$$<p>
-为记号方便, 更新后仍用$(\cdot)^\ast$表示. $\frac{1}{\rho}\frac{\partial}{\partial z}(\rho v_rq_r^\ast)$的CG或DG处理参考[5].</p>
+其中$\frac{1}{\rho}\frac{\partial}{\partial z}(\rho v_rq_r^\ast)$的CG或DG处理参考[5].</p>
 </li>
 <li>
-<p>处理剩余的$\frac{d q_{vs}}{dt}$项.</p>
-<p>将(1)中$\theta, q_v, q_c$中已经处理好的右端项去掉, 得到
+<p>$\frac{d q_{vs}}{dt}$</p>
+<p>将(1)中$\theta, q_v, q_c$中已经处理好的右端项去掉, 类似(2)得到
 </p>
 $$\begin{aligned}
-    &\frac{d\theta}{dt}+\gamma\frac{d q_v}{dt}=0\\
-        &\frac{d q_v}{dt}+\frac{d q_c}{dt}=0
+    &\frac{\partial\theta}{\partial t}+\gamma\frac{\partial q_v}{\partial t}=0\\
+        &\frac{\partial q_v}{\partial t}+\frac{\partial q_c}{\partial t}=0
     \end{aligned}$$<p>
 于是
 </p>
-$$\theta^{n+1}+\gamma q_v^{n+1}=\theta^*+\gamma q_v^*\tag{3}$$<p>
+$$\theta^{(2)}+\gamma q_v^{(2)}=\theta^{(1)}+\gamma q_v^{(1)} \tag{3}$$<p>
 </p>
-$$q_v^{n+1}+q_c^{n+1} = q_v^*+q_c^*\tag{4}$$<p>利用Teten&rsquo;s formula, 将$q_v$在$\theta^*$处做一阶Taylor展开有:
+$$q_v^{(2)}+q_c^{(2)} = q_v^{(1)}+q_c^{(1)}\tag{4}$$<p>利用Teten&rsquo;s formula, 将$q_v$在$\theta^*$处做一阶Taylor展开有:
 </p>
-$$q_v^{n+1}=q_{vs}^{n+1}\approx q_v^*(1+\frac{4093\Pi}{(\Pi\theta^*-36)^2}(\theta^{n+1}-\theta^*))\tag{5}$$<p>第一个等号是由饱和假设, 假如$q_v^* &gt;q_{vs}^*$,
+$$q_v^{(2)}=q_{vs}^{(2)}\approx q_v^{(1)}(1+\frac{4093\Pi}{(\Pi\theta^{(1)}-36)^2}(\theta^{(2)}-\theta^{(1)}))\tag{5}$$<p>第一个等号是由饱和假设, 假如$q_v^{(1)} &gt;q_{vs}^{(1)}$,
 此时过饱和, 将会通过转换到达饱和状态[3, Appendix: Saturation
 Technique]. 将该式代入(3)可得:
 </p>
-$$\theta^{n+1} = \theta^*+\frac{\gamma}{1+\gamma q_{vs}^*\frac{4039\Pi}{(\Pi\theta^*-36)^2}}(q_v^*-q_{vs}^*)$$<p>
+$$\theta^{(2)} = \theta^{(1)}+\frac{\gamma}{1+\gamma q_{vs}^{(1)}\frac{4039\Pi}{(\Pi\theta^{(1)}-36)^2}}(q_v^{(1)}-q_{vs}^{(1)})$$<p>
 将上式再代入(3)可得:
 </p>
-$$q_v^{n+1} = q_v^*- \frac{1}{1+\gamma q_{vs}^*\frac{4039\Pi}{(\Pi\theta^*-36)^2}}(q_v^*-q_{vs}^*)$$<p>
+$$q_v^{(2)} = q_v^{(1)}- \frac{1}{1+\gamma q_{vs}^{(1)}\frac{4039\Pi}{(\Pi\theta^*-36)^2}}(q_v^{(1)}-q_{vs}^{(1)})$$<p>
 将上式代入(4)可得:
 </p>
-$$q_c^{n+1} = q_c^*+q_v^*-q_v^{n+1}$$<p>
+$$q_c^{(2)} = q_c^{(1)}+q_v^{(1)}-q_v^{(2)}$$<p>
 为了保证$q_c\ge 0$, 令
 </p>
 $$\begin{aligned}
-        q_c^{n+1} &= \max(q_c^\ast+q_v^\ast-q_v^{n+1},0)\\
-       			 & = q_c^\ast+\max(prod,-q_c^\ast)\\
-				 (prod :&=q_v^\ast-q_v^{n+1}=\frac{1}{1+\gamma q_{vs}^\ast\frac{4039\Pi}{(\Pi\theta^\ast-36)^2}}(q_v^\ast-q_{vs}^\ast) )\end{aligned}$$<p>
+        q_c^{(2)} &= \max(q_c^{(1)}+q_v^{(1)}-q_v^{(2)},0)\\
+       			 & = q_c^{(1)}+\max(\text{prod},-q_c^{(1)})\\
+				 (\text{prod} :&=q_v^{(1)}-q_v^{(2)}=\frac{1}{1+\gamma q_{vs}^{(1)}\frac{4039\Pi}{(\Pi\theta^{(1)}-36)^2}}(q_v^{(1)}-q_{vs}^{(1)}) )\end{aligned}$$<p>
 再次利用(4)和(3)得到:
 </p>
 $$\begin{aligned}
-        q_v^{n+1}&=q_v^*+q_c^*-q_c^{n+1}\\
-        & = q_v^*-\max(prod,-q_c^*)\\
-        \theta^{n+1}& = \theta^*+\gamma \max(prod,-q_c^*)
+        q_v^{(2)}&=\max(q_v^{(1)}+q_c^{(1)}-q_c^{(2)},0)\\
+        & = \max(q_v^{(1)}-\max(\text{prod},-q_c^{(1)}),0)\\
+        \theta^{(2)}& = \theta^{(1)}+\gamma \max(\text{prod},-q_c^{(1)})
     \end{aligned}$$</li>
+<li>
+<p>$E_r$</p>
+<p>结合$q_v,q_r$非负, 得到:
+</p>
+$$\begin{aligned}
+&\theta^{(n+1)} = \theta^{(2)}-\Delta t \gamma E_r\\
+&q_v^{(n+1)}=\max(q_v^{(2)}+\Delta t E_r,0)\\
+&q_r^{(n+1)}=\max(q_r^{(1)}-\Delta t E_r,0)
+\end{aligned}$$</li>
 </ol>
-<p>综上就得到了[4]中Appendix C: Listing of the Kesler Microphysics
-Subroutine的算法,
-区别只在于其中$A_r+E_r$用的是$\frac{\max(A_r,0)+C_r}{1+\Delta t\frac{C_r}{q_c}}$,
-以及令$q_v$也非负$q_v^{n+1} =\max(q_v^\ast-\max(prod,-q_c^\ast ),0)$.
-另外$E_r$在代码中出现的位置也与前面推导略有不同,
-不过这点从数学上看是等价的, 从数值上看最多也只有舍入误差会有影响,
-可忽略不计.</p>
+<p>综上, 可将算法重新总结如下:
+</p>
+$$
+\begin{aligned}
+&(\vec{A}_r)_i = \langle k_1(q_c-a),\varphi_i\rangle \\
+&(\vec{C}_r)_i = \langle k_2q_cq_r^{0.875},\varphi_i \rangle \\
+&\Pi = (\frac{p}{p_0})^{\frac{R}{c_p}},\quad q_{vs} = \frac{3.8}{ {p}}\exp(17.27\frac{  \Pi\theta-273}{ \Pi\theta-36}),\quad \gamma = \frac{L_v}{c_p\Pi}\\
+&v_r=3634 (\rho q_r)^{0.1346}(\frac{\rho}{\rho_0})^{-\frac 12}\\
+&(\overset\longrightarrow{\text{sed}})_i=\sum_K\frac{1}{\rho_K}(\int_{\p K}\rho v_r q_r\varphi_i \vec{n}_z\d \sigma -\int_{K} \rho v_r q_r\p_z\varphi_i\d x )\\
+&(\overset\longrightarrow{\text{prod}})_i=\inn{\frac{1}{1+\gamma q_{vs}^{(1)}\frac{4039\Pi}{(\Pi\theta^{(1)}-36)^2}}(q_v^{(1)}-q_{vs}^{(1)})}{\varphi_i}\\
+&(\vec{E}_r)_i =  \inn{\frac{1}{{ \rho}}\max(1 - \f{q_v}{q_{vs}},0)  \frac{(1.6 + 124.9 ( \rho q_r)^{0.2046})({\rho} q_r)^{0.525}}{5.4 \times 10^5 + 2.55 \times 10^6 / ( {p}q_{v s})}}{\varphi_i}\\
+\\
+&q_c^{(1)}=q_c^{\ast}-\Delta t M^{-1}(\vec{A}_r+\vec{C}_r)\\
+&\theta^{n+1} =\theta^{\ast}+\D t\gamma (\max(M^{-1}\overset\longrightarrow{\text{prod}},-q_c^{(1)})-M^{-1}\vec{E}_r) \\
+& q_v^{n+1} = \max(q_v^{\ast}-\max(M^{-1}\overset\longrightarrow{\text{prod}},-q_c^{(1)})+M^{-1}\vec{E}_r,0)\\
+&q_r^{n+1}=\max(q_r^\ast+\Delta t M^{-1}(\vec{A}_r+\vec{C}_r+\overset\longrightarrow{\text{sed}}-\vec{E}_r),0 )
+\end{aligned}
+$$<p>
+其中$M$为质量矩阵, $\varphi_i$为测试函数.</p>
 <h2 id="参考文献">参考文献
 </h2><ol>
 <li>
@@ -509,7 +529,12 @@ Park</a></p>
             ],
 			macros: {
                 "\\abs": "\\left| #1 \\right|",
-				"\\Sob": "W^{#1,#2}(#3)"  
+				"\\Sob": "W^{#1,#2}(#3)",  
+				"\\inn": "\\langle #1,#2 \\rangle",
+				"\\p": "\\partial",
+				"\\d": "\\mathrm{d}",
+				"\\f": "\\frac",
+				"\\D": "\\Delta",
             },
             ignoredClasses: ["gist"]
         });})
