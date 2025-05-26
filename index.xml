@@ -99,8 +99,8 @@ $$\begin{aligned}
 &lt;p&gt;公式($1$)和动量方程、连续性方程组以及状态结合可得到完整大气系统.
 我们采用两步方法求解该系统:
 首先忽略水汽、云水、雨水间的转化(1)右端只保留$D_{(\cdot)}$项, 将解推进一个时间步,
-得到$\rho^{n+1},\vec{u}^{n+1}$, $\theta^{*},q_{v}^*,q_c^*,q_r^*$;
-随后利用转化速率项对$\theta^{*},q_{v}^*,q_c^*,q_r^*$做调整得到$\theta^{n+1},q_v^{n+1},q_c^{n+1},q_r^{n+1}$.
+得到$\rho^{n+1},\vec{u}^{n+1}$, $\theta^{\ast},q_{v}^\ast,q_c^\ast,q_r^\ast$;
+随后利用转化速率项对$\theta^{\ast},q_{v}^\ast,q_c^\ast,q_r^\ast$做调整得到$\theta^{n+1},q_v^{n+1},q_c^{n+1},q_r^{n+1}$.
 相当于在原来不考虑水汽情形求解完一个时间步后对解变量做后处理.&lt;/p&gt;
 &lt;p&gt;下面推导微物理转化项的参数化方法, 由[2]有:
 &lt;/p&gt;
@@ -124,7 +124,7 @@ $$\begin{aligned}
         &amp;q_c^{*}=q_c^*-\Delta t (A_r+C_r)\\
          &amp;q_r^*=q_r^*+\Delta t(\frac{1}{\rho}\frac{\partial}{\partial z}(\rho v_rq_r^*)+A_r+C_r)
     \end{aligned}$$&lt;p&gt;
-为记号方便, 更新后仍用$(\cdot)^&lt;em&gt;$表示. $\frac{1}{\rho}\frac{\partial}{\partial z}(\rho v_rq_r^&lt;/em&gt;)$的CG或DG处理参考[5].&lt;/p&gt;
+为记号方便, 更新后仍用$(\cdot)^\ast$表示. $\frac{1}{\rho}\frac{\partial}{\partial z}(\rho v_rq_r^\ast)$的CG或DG处理参考[5].&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;处理剩余的$\frac{d q_{vs}}{dt}$项.&lt;/p&gt;
@@ -154,10 +154,9 @@ $$q_c^{n+1} = q_c^*+q_v^*-q_v^{n+1}$$&lt;p&gt;
 为了保证$q_c\ge 0$, 令
 &lt;/p&gt;
 $$\begin{aligned}
-        q_c^{n+1} &amp;= \max(q_c^*+q_v^*-q_v^{n+1},0)\\
-        &amp; = q_c^*+\max(prod,-q_c^*)\\
-		(prod :&amp;=q_v^*-q_v^{n+1}=\frac{1}{1+\gamma q_{vs}^*\frac{4039\Pi}{(\Pi\theta^*-36)^2}}(q_v^*-q_{vs}^*) )
-    \end{aligned}$$&lt;p&gt;
+        q_c^{n+1} &amp;= \max(q_c^\ast+q_v^\ast-q_v^{n+1},0)\\
+       			 &amp; = q_c^\ast+\max(prod,-q_c^\ast)\\
+				 (prod :&amp;=q_v^\ast-q_v^{n+1}=\frac{1}{1+\gamma q_{vs}^\ast\frac{4039\Pi}{(\Pi\theta^\ast-36)^2}}(q_v^\ast-q_{vs}^\ast) )\end{aligned}$$&lt;p&gt;
 再次利用(4)和(3)得到:
 &lt;/p&gt;
 $$\begin{aligned}
@@ -169,7 +168,7 @@ $$\begin{aligned}
 &lt;p&gt;综上就得到了[4]中Appendix C: Listing of the Kesler Microphysics
 Subroutine的算法,
 区别只在于其中$A_r+E_r$用的是$\frac{\max(A_r,0)+C_r}{1+\Delta t\frac{C_r}{q_c}}$,
-以及令$q_v$也非负$q_v^{n+1} =\max(q_v^*-\max(prod,-q_c^* ),0)$.
+以及令$q_v$也非负$q_v^{n+1} =\max(q_v^\ast-\max(prod,-q_c^\ast ),0)$.
 另外$E_r$在代码中出现的位置也与前面推导略有不同,
 不过这点从数学上看是等价的, 从数值上看最多也只有舍入误差会有影响,
 可忽略不计.&lt;/p&gt;
@@ -1051,19 +1050,6 @@ Invoke-Expression (New-Object System.Net.WebClient).DownloadString(&#39;https://
 $$
  \varphi = 1+\frac{1} {1+\frac{1} {1+\frac{1} {1+\cdots} } } 
 $$</description>
-        </item>
-        <item>
-        <title>test</title>
-        <link>https://baichuan-blog.netlify.app/p/test/</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-        
-        <guid>https://baichuan-blog.netlify.app/p/test/</guid>
-        <description>$$
-\gdef\wkp#1#2#3{W^{#1,#2}(#3)}
-$$&lt;p&gt;$\wkp{1}{2}{\Omega}$ → $ W^{1,2}(\Omega) $&lt;/p&gt;
-&lt;p&gt;公式示例：$\abs{x + y}$ → $\left| x + y \right|$&lt;/p&gt;
-&lt;p&gt;$\Sob{1}{2}{\Omega}$&lt;/p&gt;
-</description>
         </item>
         <item>
         <title>关于</title>
