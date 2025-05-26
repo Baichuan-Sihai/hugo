@@ -12,7 +12,8 @@
         <pubDate>Sun, 25 May 2025 09:47:13 +0800</pubDate>
         
         <guid>https://baichuan-blog.netlify.app/p/kessler-microphysical-parameterization/</guid>
-        <description>&lt;p&gt;本文介绍积云动力学中的水分平衡方程、位温方程以及相应的微物理参数化方法.
+        <description>&lt;h2 id=&#34;微物理过程参数化&#34;&gt;微物理过程参数化
+&lt;/h2&gt;&lt;p&gt;本文介绍积云动力学中的水分平衡方程、位温方程以及相应的微物理参数化方法.
 云内的水分包含水汽、液态水和固态水[1, Sec.13.1 p353],
 本文不考虑冰相(忽略固态水), 将水汽(water vapor)、云水(cloud
 water)、雨水(rain water)的密度分别记为$\rho_v,\rho_c,\rho_r$,
@@ -132,8 +133,8 @@ Subroutine的算法,
 另外$E_r$在代码中出现的位置也与前面推导略有不同,
 不过这点从数学上看是等价的, 从数值上看最多也只有舍入误差会有影响,
 可忽略不计.&lt;/p&gt;
-&lt;h4&gt; 参考文献 &lt;/h4&gt;
-&lt;ol&gt;
+&lt;h2 id=&#34;参考文献&#34;&gt;参考文献
+&lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.jianguoyun.com/p/DRvLTikQlsqoDRie7voFIAA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;大气物理学. (2023). 盛裴轩等&lt;/a&gt;&lt;/p&gt;
