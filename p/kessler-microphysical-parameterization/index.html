@@ -10,7 +10,7 @@
 <meta property='og:description' content="微物理过程参数化 本文介绍积云动力学中的水分平衡方程、位温方程以及相应的微物理参数化方法. 云内的水分包含水汽、液态水和固态水[1, Sec.13.1 p353], 本文不考虑冰相(忽略固态水), 将水汽(water vapor)、云水(cloud water)、雨水(rain water)的密度分别记为$\\rho_v,\\rho_c,\\rho_r$, 干空气密度为$\\rho$, 记水汽混合比、云水混合比、雨水混合比分别为$q_v=\\frac{\\rho_v}{\\rho},q_c=\\frac{\\rho_c}{\\rho},q_r=\\frac{\\rho_r}{\\rho}$.\n">
 <meta property='og:url' content='https://baichuan-blog.netlify.app/p/kessler-microphysical-parameterization/'>
 <meta property='og:site_name' content='百川的小屋'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-05-25T09:47:13&#43;08:00'/><meta property='article:modified_time' content='2025-05-26T20:15:27&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-05-25T09:47:13&#43;08:00'/><meta property='article:modified_time' content='2025-05-26T22:19:57&#43;08:00'/>
 <meta name="twitter:title" content="Kessler Microphysical Parameterization">
 <meta name="twitter:description" content="微物理过程参数化 本文介绍积云动力学中的水分平衡方程、位温方程以及相应的微物理参数化方法. 云内的水分包含水汽、液态水和固态水[1, Sec.13.1 p353], 本文不考虑冰相(忽略固态水), 将水汽(water vapor)、云水(cloud water)、雨水(rain water)的密度分别记为$\\rho_v,\\rho_c,\\rho_r$, 干空气密度为$\\rho$, 记水汽混合比、云水混合比、雨水混合比分别为$q_v=\\frac{\\rho_v}{\\rho},q_c=\\frac{\\rho_c}{\\rho},q_r=\\frac{\\rho_r}{\\rho}$.\n">
     <link rel="shortcut icon" href="/favicon2.ico" />
@@ -297,7 +297,7 @@
 			
 			
 						<span class="article-time--final-update">
-							最后更新于 <time class="article-time--updated" datetime="2025-05-26 20:15:27 &#43;0800 &#43;0800" title="2025-05-26 20:15:27 &#43;0800 &#43;0800">2025-05-26 20:15</time>
+							最后更新于 <time class="article-time--updated" datetime="2025-05-26 22:19:57 &#43;0800 &#43;0800" title="2025-05-26 22:19:57 &#43;0800 &#43;0800">2025-05-26 22:19</time>
 						</span>
 
 			
@@ -447,8 +447,9 @@ $$
 &(\vec{E}_r)_i =  \inn{\frac{1}{{ \rho}}\max(1 - \f{q_v}{q_{vs}},0)  \frac{(1.6 + 124.9 ( \rho q_r)^{0.2046})({\rho} q_r)^{0.525}}{5.4 \times 10^5 + 2.55 \times 10^6 / ( {p}q_{v s})}}{\varphi_i}\\
 \\
 &q_c^{(1)}=q_c-\Delta t M^{-1}(\vec{A}_r+\vec{C}_r)\\
-&\theta^{n+1} =\theta+\D t\gamma (\max(M^{-1}\overset\longrightarrow{\text{prod}},-q_c^{(1)})-M^{-1}\vec{E}_r) \\
-& q_v^{n+1} = \max(q_v-\max(M^{-1}\overset\longrightarrow{\text{prod}},-q_c^{(1)})+M^{-1}\vec{E}_r,0)\\
+&\theta^{n+1} =\theta+\gamma (\max(M^{-1}\overset\longrightarrow{\text{prod}},-q_c^{(1)})-\D t M^{-1}\vec{E}_r) \\
+& q_v^{n+1} = \max(q_v-\max(M^{-1}\overset\longrightarrow{\text{prod}},-q_c^{(1)})+\D t M^{-1}\vec{E}_r,0)\\
+&q_c^{n+1}=q_c^{(1)}+\max(M^{-1}\overset\longrightarrow{\text{prod}},-q_c^{(1)})\\
 &q_r^{n+1}=\max(q_r+\Delta t M^{-1}(\vec{A}_r+\vec{C}_r+\overset\longrightarrow{\text{sed}}-\vec{E}_r),0 )
 \end{aligned}
 $$<p>

@@ -147,8 +147,9 @@ $$
 &amp;(\vec{E}_r)_i =  \inn{\frac{1}{{ \rho}}\max(1 - \f{q_v}{q_{vs}},0)  \frac{(1.6 + 124.9 ( \rho q_r)^{0.2046})({\rho} q_r)^{0.525}}{5.4 \times 10^5 + 2.55 \times 10^6 / ( {p}q_{v s})}}{\varphi_i}\\
 \\
 &amp;q_c^{(1)}=q_c-\Delta t M^{-1}(\vec{A}_r+\vec{C}_r)\\
-&amp;\theta^{n+1} =\theta+\D t\gamma (\max(M^{-1}\overset\longrightarrow{\text{prod}},-q_c^{(1)})-M^{-1}\vec{E}_r) \\
-&amp; q_v^{n+1} = \max(q_v-\max(M^{-1}\overset\longrightarrow{\text{prod}},-q_c^{(1)})+M^{-1}\vec{E}_r,0)\\
+&amp;\theta^{n+1} =\theta+\gamma (\max(M^{-1}\overset\longrightarrow{\text{prod}},-q_c^{(1)})-\D t M^{-1}\vec{E}_r) \\
+&amp; q_v^{n+1} = \max(q_v-\max(M^{-1}\overset\longrightarrow{\text{prod}},-q_c^{(1)})+\D t M^{-1}\vec{E}_r,0)\\
+&amp;q_c^{n+1}=q_c^{(1)}+\max(M^{-1}\overset\longrightarrow{\text{prod}},-q_c^{(1)})\\
 &amp;q_r^{n+1}=\max(q_r+\Delta t M^{-1}(\vec{A}_r+\vec{C}_r+\overset\longrightarrow{\text{sed}}-\vec{E}_r),0 )
 \end{aligned}
 $$&lt;p&gt;
