@@ -185,13 +185,13 @@ $$
 &amp;\Pi = (\frac{p}{p_0})^{\frac{R}{c_p}},\quad q_{vs} = \frac{3.8}{ {p}}\exp(17.27\frac{  \Pi\theta-273}{ \Pi\theta-36}),\quad \gamma = \frac{L_v}{c_p\Pi}\\
 &amp;v_r=3634 (\rho q_r)^{0.1346}(\frac{\rho}{\rho_0})^{-\frac 12}\\
 &amp;(\overset\longrightarrow{\text{sed}})_i=\sum_K\frac{1}{\rho_K}(\int_{\p K}\rho v_r q_r\varphi_i \vec{n}_z\d \sigma -\int_{K} \rho v_r q_r\p_z\varphi_i\d x )\\
-&amp;(\overset\longrightarrow{\text{prod}})_i=\inn{\frac{1}{1+\gamma q_{vs}^{(1)}\frac{4039\Pi}{(\Pi\theta^{(1)}-36)^2}}(q_v^{(1)}-q_{vs}^{(1)})}{\varphi_i}\\
+&amp;(\overset\longrightarrow{\text{prod}})_i=\inn{\frac{1}{1+\gamma q_{vs}\frac{4039\Pi}{(\Pi\theta 36)^2}}(q_v-q_{vs})}{\varphi_i}\\
 &amp;(\vec{E}_r)_i =  \inn{\frac{1}{{ \rho}}\max(1 - \f{q_v}{q_{vs}},0)  \frac{(1.6 + 124.9 ( \rho q_r)^{0.2046})({\rho} q_r)^{0.525}}{5.4 \times 10^5 + 2.55 \times 10^6 / ( {p}q_{v s})}}{\varphi_i}\\
 \\
-&amp;q_c^{(1)}=q_c^{\ast}-\Delta t M^{-1}(\vec{A}_r+\vec{C}_r)\\
-&amp;\theta^{n+1} =\theta^{\ast}+\D t\gamma (\max(M^{-1}\overset\longrightarrow{\text{prod}},-q_c^{(1)})-M^{-1}\vec{E}_r) \\
-&amp; q_v^{n+1} = \max(q_v^{\ast}-\max(M^{-1}\overset\longrightarrow{\text{prod}},-q_c^{(1)})+M^{-1}\vec{E}_r,0)\\
-&amp;q_r^{n+1}=\max(q_r^\ast+\Delta t M^{-1}(\vec{A}_r+\vec{C}_r+\overset\longrightarrow{\text{sed}}-\vec{E}_r),0 )
+&amp;q_c^{(1)}=q_c-\Delta t M^{-1}(\vec{A}_r+\vec{C}_r)\\
+&amp;\theta^{n+1} =\theta+\D t\gamma (\max(M^{-1}\overset\longrightarrow{\text{prod}},-q_c^{(1)})-M^{-1}\vec{E}_r) \\
+&amp; q_v^{n+1} = \max(q_v-\max(M^{-1}\overset\longrightarrow{\text{prod}},-q_c^{(1)})+M^{-1}\vec{E}_r,0)\\
+&amp;q_r^{n+1}=\max(q_r+\Delta t M^{-1}(\vec{A}_r+\vec{C}_r+\overset\longrightarrow{\text{sed}}-\vec{E}_r),0 )
 \end{aligned}
 $$&lt;p&gt;
 其中$M$为质量矩阵, $\varphi_i$为测试函数.&lt;/p&gt;
