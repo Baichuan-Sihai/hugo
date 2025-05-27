@@ -10,7 +10,7 @@
 <meta property='og:description' content="初始化及绑定远程仓库 本地从零开始构建仓库：\n1 2 3 4 # 初始化仓库 git init # 绑定远程仓库 git remote add origin [url] 其中origin是默认的远程仓库名字， [url]是远程仓库地址。 远程仓库的默认名可通过下面语句修改：\n">
 <meta property='og:url' content='https://baichuan-blog.netlify.app/p/git/'>
 <meta property='og:site_name' content='百川的小屋'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='SSH' /><meta property='article:published_time' content='2025-05-27T18:46:25&#43;08:00'/><meta property='article:modified_time' content='2025-05-27T20:42:44&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='SSH' /><meta property='article:published_time' content='2025-05-27T18:46:25&#43;08:00'/><meta property='article:modified_time' content='2025-05-27T23:38:14&#43;08:00'/>
 <meta name="twitter:title" content="Git">
 <meta name="twitter:description" content="初始化及绑定远程仓库 本地从零开始构建仓库：\n1 2 3 4 # 初始化仓库 git init # 绑定远程仓库 git remote add origin [url] 其中origin是默认的远程仓库名字， [url]是远程仓库地址。 远程仓库的默认名可通过下面语句修改：\n">
     <link rel="shortcut icon" href="/favicon2.ico" />
@@ -286,8 +286,12 @@
     <li><a href="#初始化及绑定远程仓库">初始化及绑定远程仓库</a></li>
     <li><a href="#添加身份标识">添加身份标识</a></li>
     <li><a href="#分支管理">分支管理</a></li>
+    <li><a href="#查看工作区和暂存区状态">查看工作区和暂存区状态</a></li>
     <li><a href="#暂存-提交-推送-拉取">暂存-提交-推送-拉取</a></li>
-    <li><a href="#进阶操作">进阶操作</a>
+    <li><a href="#解决合并冲突">解决合并冲突</a></li>
+    <li><a href="#临时保存">临时保存</a></li>
+    <li><a href="#处理提交历史">处理提交历史</a></li>
+    <li><a href="#git-rebase">git rebase</a>
       <ol>
         <li><a href="#修改提交信息">修改提交信息</a></li>
       </ol>
@@ -348,7 +352,7 @@
 			
 			
 						<span class="article-time--final-update">
-							最后更新于 <time class="article-time--updated" datetime="2025-05-27 20:42:44 &#43;0800 &#43;0800" title="2025-05-27 20:42:44 &#43;0800 &#43;0800">2025-05-27 20:42</time>
+							最后更新于 <time class="article-time--updated" datetime="2025-05-27 23:38:14 &#43;0800 &#43;0800" title="2025-05-27 23:38:14 &#43;0800 &#43;0800">2025-05-27 23:38</time>
 						</span>
 
 			
@@ -433,13 +437,37 @@
 </h2><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">git branch -m <span class="o">[</span>old_branch<span class="o">]</span> <span class="o">[</span>new branch<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>-m</code>参数不覆盖已有同名分支，<code>-M</code>参数强制重命名，将覆盖已有的同名分支。
+如果是对当前分支进行重命名，可省略<code>[old_branch]</code>。</p>
+<p>在<code>git init</code>初始化后，初始分支名为<code>master</code>，建议重命名为<code>main</code>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">git branch -m main
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>更多操作：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 查看本地分支</span>
@@ -450,9 +478,36 @@
 </span></span><span class="line"><span class="cl">git checkout -b <span class="o">[</span>new_branch<span class="o">]</span> 
 </span></span><span class="line"><span class="cl"><span class="c1"># 切换到已有分支</span>
 </span></span><span class="line"><span class="cl">git checkout <span class="o">[</span>branch<span class="o">]</span> 
+</span></span><span class="line"><span class="cl"><span class="c1"># 删除本地分支</span>
+</span></span><span class="line"><span class="cl">git branch -d <span class="o">[</span>branch<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 删除远程分支</span>
+</span></span><span class="line"><span class="cl">git push origin --delete <span class="o">[</span>branch<span class="o">]</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="暂存-提交-推送-拉取">暂存-提交-推送-拉取
+</div><h2 id="查看工作区和暂存区状态">查看工作区和暂存区状态
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">git status 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>后面可以加<code>-s</code>（<code>--short</code>的缩写），用以输出更简洁、紧凑的内容，此时若显示</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">M file1
+</span></span><span class="line"><span class="cl">A file2
+</span></span><span class="line"><span class="cl">?? file3
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>表示<code>file1</code>被修改（modified），<code>file2</code>被新添加（added），<code>file3</code>未跟踪。</p>
+<h2 id="暂存-提交-推送-拉取">暂存-提交-推送-拉取
 </h2><p>这是最常用的操作：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -482,7 +537,70 @@
 </div>
 </div><p>其中<code>-u</code>表示<code>origin</code>是<code>main</code>的上游。<code>git pull origin main</code>和<code>git push -u origin main</code>只需设置一次，之后可以简单使用<code>git pull</code>和<code>git push</code>，Git会默认使用此前仓库的关联方式。</p>
 <p>常用<code>git add .</code>把所有新文件及变动过的文件一次性添加到暂存区，此时为了过滤掉某些文件，可在仓库根目录新建<code>.gitignore</code>文件，在里面写入需要过滤的文件。</p>
-<h2 id="进阶操作">进阶操作
+<h2 id="解决合并冲突">解决合并冲突
+</h2><p>假设现在有两个分支：<code>main</code>和<code>another</code>，将<code>another</code>的修改内容合并到<code>main</code>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 切换到主分支</span>
+</span></span><span class="line"><span class="cl">git checkout main
+</span></span><span class="line"><span class="cl"><span class="c1"># 将another合并到main</span>
+</span></span><span class="line"><span class="cl">git merge another
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>当出现冲突时，需要打开每个冲突文件处理冲突。然后再<code>git add</code>告诉Git冲突已解决和<code>git commit</code>提交结果。</p>
+<h2 id="临时保存">临时保存
+</h2><p>如果存在工作未提交，<code>git pull</code>或者<code>git merge</code>会报错，此时使用<code>git stash</code>允许我们先将未完成的工作先临时保存而无需<code>commit</code>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 临时保存已暂存(git add)</span>
+</span></span><span class="line"><span class="cl">git stash
+</span></span><span class="line"><span class="cl"><span class="c1"># 临时保存已暂存和未跟踪的文件</span>
+</span></span><span class="line"><span class="cl">git stash -u
+</span></span><span class="line"><span class="cl"><span class="c1"># 临时保存所有文件(包含.gitignore忽略的文件)</span>
+</span></span><span class="line"><span class="cl">git stash -a
+</span></span><span class="line"><span class="cl"><span class="c1"># 添加描述信息</span>
+</span></span><span class="line"><span class="cl">git stash save <span class="s2">&#34;描述信息&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 查看stash列表</span>
+</span></span><span class="line"><span class="cl">git stash list
+</span></span><span class="line"><span class="cl"><span class="c1"># 恢复指定的stash</span>
+</span></span><span class="line"><span class="cl">git stash apply stash@<span class="o">{</span>1<span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 删除指定的stash</span>
+</span></span><span class="line"><span class="cl">git stash drop stash@<span class="o">{</span>1<span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 清空stash列表</span>
+</span></span><span class="line"><span class="cl">git stash clear
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="处理提交历史">处理提交历史
+</h2><p><code>git rebase</code></p>
+<p><code>git checkout</code></p>
+<p><code>git reset</code></p>
+<p><code>git revert</code></p>
+<p><code>git reflog</code></p>
+<h2 id="git-rebase">git rebase
 </h2><p>将远程仓库下<code>origin/branch</code>分支拉取到当前分支：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
