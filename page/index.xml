@@ -7,7 +7,7 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>百川</copyright>
-        <lastBuildDate>Sat, 24 May 2025 21:29:45 +0800</lastBuildDate><atom:link href="https://baichuan-blog.netlify.app/page/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 27 May 2025 12:06:51 +0800</lastBuildDate><atom:link href="https://baichuan-blog.netlify.app/page/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>归档</title>
         <link>https://baichuan-blog.netlify.app/archives/</link>
         <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
@@ -23,6 +23,30 @@
         <guid>https://baichuan-blog.netlify.app/%E5%85%B3%E4%BA%8E/</guid>
         <description>&lt;p&gt;This is a test page for i18n support.&lt;/p&gt;
 </description>
+        </item>
+        <item>
+        <title>链接</title>
+        <link>https://baichuan-blog.netlify.app/%E9%93%BE%E6%8E%A5/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://baichuan-blog.netlify.app/%E9%93%BE%E6%8E%A5/</guid>
+        <description>&lt;!-- To use this feature, add `links` section to frontmatter.
+
+This page&#39;s frontmatter:
+
+```yaml
+links:
+  - title: GitHub
+    description: GitHub is the world&#39;s largest software development platform.
+    website: https://github.com
+    image: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
+  - title: TypeScript
+    description: TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.
+    website: https://www.typescriptlang.org
+    image: ts-logo-128.jpg
+```
+
+`image` field accepts both local and external images. --&gt;</description>
         </item>
         <item>
         <title>搜索</title>
