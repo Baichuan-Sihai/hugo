@@ -154,6 +154,7 @@ $$
 \end{aligned}
 $$&lt;p&gt;
 其中$M$为质量矩阵, $\varphi_i$为测试函数.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注&lt;/strong&gt;：在实际代码中，由于$\rho,p$是$P_2$元, 为方便先将两者投影到$DG_1$空间.&lt;/p&gt;
 &lt;h2 id=&#34;参考文献&#34;&gt;参考文献
 &lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;
