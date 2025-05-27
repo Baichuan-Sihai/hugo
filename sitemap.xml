@@ -3,19 +3,28 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://baichuan-blog.netlify.app/categories/</loc>
-    <lastmod>2025-05-27T12:06:51+08:00</lastmod>
+    <lastmod>2025-05-27T20:42:44+08:00</lastmod>
   </url><url>
-    <loc>https://baichuan-blog.netlify.app/p/hugo-markdown%E6%8A%80%E5%B7%A7/</loc>
-    <lastmod>2025-05-27T12:06:51+08:00</lastmod>
+    <loc>https://baichuan-blog.netlify.app/p/git/</loc>
+    <lastmod>2025-05-27T20:42:44+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-blog.netlify.app/post/</loc>
+    <lastmod>2025-05-27T20:42:44+08:00</lastmod>
+  </url><url>
+    <loc>https://baichuan-blog.netlify.app/tags/ssh/</loc>
+    <lastmod>2025-05-27T20:42:44+08:00</lastmod>
+  </url><url>
+    <loc>https://baichuan-blog.netlify.app/tags/</loc>
+    <lastmod>2025-05-27T20:42:44+08:00</lastmod>
+  </url><url>
+    <loc>https://baichuan-blog.netlify.app/p/hugo-markdown%E6%8A%80%E5%B7%A7/</loc>
     <lastmod>2025-05-27T12:06:51+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-blog.netlify.app/p/kessler-microphysical-parameterization/</loc>
     <lastmod>2025-05-27T10:34:49+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-blog.netlify.app/p/hugo%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</loc>
-    <lastmod>2025-05-25T20:29:58+08:00</lastmod>
+    <lastmod>2025-05-27T20:42:44+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-blog.netlify.app/p/hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc>
     <lastmod>2025-05-25T20:29:58+08:00</lastmod>
@@ -26,14 +35,8 @@
     <loc>https://baichuan-blog.netlify.app/archives/</loc>
     <lastmod>2025-05-24T14:15:49+08:00</lastmod>
   </url><url>
-    <loc>https://baichuan-blog.netlify.app/tags/markdown/</loc>
-    <lastmod>2025-05-24T14:15:49+08:00</lastmod>
-  </url><url>
     <loc>https://baichuan-blog.netlify.app/p/markdown-syntax-guide/</loc>
-    <lastmod>2025-05-24T14:15:49+08:00</lastmod>
-  </url><url>
-    <loc>https://baichuan-blog.netlify.app/tags/</loc>
-    <lastmod>2025-05-24T14:15:49+08:00</lastmod>
+    <lastmod>2025-05-27T20:42:44+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-blog.netlify.app/p/math-typesetting/</loc>
     <lastmod>2025-05-24T14:15:49+08:00</lastmod>
@@ -43,6 +46,9 @@
   </url><url>
     <loc>https://baichuan-blog.netlify.app/categories/atmosphere/</loc>
     <lastmod>2025-05-25T11:41:35+08:00</lastmod>
+  </url><url>
+    <loc>https://baichuan-blog.netlify.app/categories/git/</loc>
+    <lastmod>2025-05-27T20:42:44+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-blog.netlify.app/categories/hugo/</loc>
     <lastmod>2025-05-25T11:41:35+08:00</lastmod>
