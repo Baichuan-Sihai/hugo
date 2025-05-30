@@ -7,12 +7,20 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>百川</copyright>
-        <lastBuildDate>Tue, 27 May 2025 23:38:14 +0800</lastBuildDate><atom:link href="https://baichuan-blog.netlify.app/tags/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>SSH</title>
-        <link>https://baichuan-blog.netlify.app/tags/ssh/</link>
+        <lastBuildDate>Fri, 30 May 2025 23:27:38 +0800</lastBuildDate><atom:link href="https://baichuan-blog.netlify.app/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title> Scp</title>
+        <link>https://baichuan-blog.netlify.app/tags/-scp/</link>
         <pubDate>Tue, 27 May 2025 18:46:25 +0800</pubDate>
         
-        <guid>https://baichuan-blog.netlify.app/tags/ssh/</guid>
+        <guid>https://baichuan-blog.netlify.app/tags/-scp/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title> Ssh</title>
+        <link>https://baichuan-blog.netlify.app/tags/-ssh/</link>
+        <pubDate>Tue, 27 May 2025 18:46:25 +0800</pubDate>
+        
+        <guid>https://baichuan-blog.netlify.app/tags/-ssh/</guid>
         <description></description>
         </item>
         
