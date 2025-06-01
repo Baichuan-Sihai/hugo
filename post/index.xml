@@ -7,7 +7,7 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>百川</copyright>
-        <lastBuildDate>Sun, 01 Jun 2025 09:09:19 +0800</lastBuildDate><atom:link href="https://baichuan-blog.netlify.app/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 01 Jun 2025 09:30:22 +0800</lastBuildDate><atom:link href="https://baichuan-blog.netlify.app/post/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>输运方程算例</title>
         <link>https://baichuan-blog.netlify.app/p/%E8%BE%93%E8%BF%90%E6%96%B9%E7%A8%8B%E7%AE%97%E4%BE%8B/</link>
         <pubDate>Fri, 30 May 2025 21:12:27 +0800</pubDate>
@@ -50,8 +50,8 @@ $$\begin{aligned}
 &lt;p&gt;$\Omega=[\f12,1]^2$, $\a=1$, $\vec{\beta}=(1,\frac{y}{x})$, $f=0$,
 &lt;/p&gt;
 \[u = C(\f{y}{x})e^{-\theta},\quad C(r)=\begin{cases}1,\ \f{y}{x}\in(\f12,1)\\0,\ \f{y}{x}\in(1,2)\end{cases},\]&lt;p&gt;
-选择参数对$(\theta=x,r=xy)$, 此时&lt;/p&gt;
-$$\f{\p (\theta,r)}{\p (x,y)}=\begin{vmatrix}1&amp;0 \\ y&amp;x\end{vmatrix}\ne0.$$&lt;/li&gt;
+选择参数对$(\theta=x,r=\frac{y}{x})$, 此时&lt;/p&gt;
+$$\f{\p (\theta,r)}{\p (x,y)}=\begin{vmatrix}1&amp;0 \\ -\f{y}{x^2}&amp;\f1{x}\end{vmatrix}\ne0.$$&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;非定常问题&#34;&gt;非定常问题
 &lt;/h2&gt;\[\p_t u+\vec{\beta}\cdot\nabla u  = 0,\quad u(\mathbf{x},0)=u_0(\mathbf{x})\]&lt;p&gt;
