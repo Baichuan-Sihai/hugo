@@ -7,7 +7,7 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>百川</copyright>
-        <lastBuildDate>Fri, 30 May 2025 23:27:38 +0800</lastBuildDate><atom:link href="https://baichuan-blog.netlify.app/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 01 Jun 2025 09:09:19 +0800</lastBuildDate><atom:link href="https://baichuan-blog.netlify.app/post/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>输运方程算例</title>
         <link>https://baichuan-blog.netlify.app/p/%E8%BE%93%E8%BF%90%E6%96%B9%E7%A8%8B%E7%AE%97%E4%BE%8B/</link>
         <pubDate>Fri, 30 May 2025 21:12:27 +0800</pubDate>
@@ -17,12 +17,12 @@
 &lt;/h2&gt;\[\a u+\vec{\b}\cdot \nabla u=f\]&lt;h3 id=&#34;光滑解&#34;&gt;光滑解
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;$\mathrm{div}\vec{\b}=0$+齐次边值&lt;/p&gt;
+&lt;p&gt;$\mathrm{div}\vec{\b}=0$, 齐次边值&lt;/p&gt;
 &lt;p&gt;$\Omega=[0,1]^2$, $\a=1$, $\vec{\beta} = (1,1)^T$, $f = u+(2x-1)y(y-1)+x(x-1)(2y-1)$,
 &lt;/p&gt;
 \[u=x(x-1)y(y-1).\]&lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;$\mathrm{div}\vec{\b}=0$+非齐次边值&lt;/p&gt;
+&lt;p&gt;$\mathrm{div}\vec{\b}=0$, 非齐次边值&lt;/p&gt;
 &lt;p&gt;$\Omega=[0,1]^2$, $\a=1$, $\vec{\beta} = (1,1)^T$, $f = u+\pi \sin(\pi (x+y))$,
 &lt;/p&gt;
 \[u=\sin(\pi x)\sin(\pi y)+1.\]&lt;/li&gt;
@@ -35,8 +35,8 @@ $\Omega=[0,1]^2$, $\a=1$, $\vec{\beta} = (x,y)^T$, $f = u+\pi(x \cos(\pi x)\sin(
 &lt;h3 id=&#34;间断解&#34;&gt;间断解
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;$\mathrm{div}\vec{\b}=0$
-$\Omega=[0,1]^2$, $\a=1$, $\vec{\b}=(-y,x)^T$, $f=0$,
+&lt;p&gt;$\mathrm{div}\vec{\b}=0$&lt;/p&gt;
+&lt;p&gt;$\Omega=[0,1]^2$, $\a=1$, $\vec{\b}=(-y,x)^T$, $f=0$,
 &lt;/p&gt;
 \[u=C(r)e^{-\theta},\quad C(r)=\begin{cases}1,\ r\in(0.2,0.4)\\0,\ \text{otherwise}\end{cases},\]&lt;p&gt;
 其中$r=\sqrt{x^2+y^2}$, $\theta=\mathrm{arctan}(\frac{y}{x})$.&lt;/p&gt;
@@ -46,8 +46,8 @@ $$\begin{aligned}
   &amp;0=\a u+\b\cdot \nabla u=\a u+\p_{\theta} \tilde{u}=e^{-\a\theta}\p_{\theta}(e^{\a\theta}u),\\
   \implies &amp; u=C(r)e^{-\a \theta}.\end{aligned}$$&lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;$\mathrm{div}\vec{\b}\ne 0$
-$\Omega=[\f12,1]^2$, $\a=1$, $\vec{\beta}=(1,\frac{y}{x})$, $f=0$,
+&lt;p&gt;$\mathrm{div}\vec{\b}\ne 0$&lt;/p&gt;
+&lt;p&gt;$\Omega=[\f12,1]^2$, $\a=1$, $\vec{\beta}=(1,\frac{y}{x})$, $f=0$,
 &lt;/p&gt;
 \[u = C(\f{y}{x})e^{-\theta},\quad C(r)=\begin{cases}1,\ \f{y}{x}\in(\f12,1)\\0,\ \f{y}{x}\in(1,2)\end{cases},\]&lt;p&gt;
 选择参数对$(\theta=x,r=xy)$, 此时&lt;/p&gt;

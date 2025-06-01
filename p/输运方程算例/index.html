@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="定常问题 \\[\\a u+\\vec{\\b}\\cdot \\nabla u=f\\]光滑解 $\\mathrm{div}\\vec{\\b}=0$+齐次边值\n$\\Omega=[0,1]^2$, $\\a=1$, $\\vec{\\beta} = (1,1)^T$, $f = u+(2x-1)y(y-1)+x(x-1)(2y-1)$, \\[u=x(x-1)y(y-1).\\] $\\mathrm{div}\\vec{\\b}=0$+非齐次边值\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="定常问题 \\[\\a u+\\vec{\\b}\\cdot \\nabla u=f\\]光滑解 $\\mathrm{div}\\vec{\\b}=0$, 齐次边值\n$\\Omega=[0,1]^2$, $\\a=1$, $\\vec{\\beta} = (1,1)^T$, $f = u+(2x-1)y(y-1)+x(x-1)(2y-1)$, \\[u=x(x-1)y(y-1).\\] $\\mathrm{div}\\vec{\\b}=0$, 非齐次边值\n$\\Omega=[0,1]^2$, $\\a=1$, $\\vec{\\beta} = (1,1)^T$, $f = u+\\pi \\sin(\\pi (x+y))$, \\[u=\\sin(\\pi x)\\sin(\\pi y)+1.\\] $\\mathrm{div}\\vec{\\b}\\ne 0$ $\\Omega=[0,1]^2$, $\\a=1$, $\\vec{\\beta} = (x,y)^T$, $f = u+\\pi(x \\cos(\\pi x)\\sin(\\pi y)+y\\sin(\\pi x)\\cos(\\pi y))$, \\[u=\\sin(\\pi x)\\sin(\\pi y)+1.\\] 间断解 $\\mathrm{div}\\vec{\\b}=0$\n$\\Omega=[0,1]^2$, $\\a=1$, $\\vec{\\b}=(-y,x)^T$, $f=0$, \\[u=C(r)e^{-\\theta},\\quad C(r)=\\begin{cases}1,\\ r\\in(0.2,0.4)\\\\0,\\ \\text{otherwise}\\end{cases},\\] 其中$r=\\sqrt{x^2+y^2}$, $\\theta=\\mathrm{arctan}(\\frac{y}{x})$.\n">
 <title>输运方程算例</title>
 
 <link rel='canonical' href='https://baichuan-blog.netlify.app/p/%E8%BE%93%E8%BF%90%E6%96%B9%E7%A8%8B%E7%AE%97%E4%BE%8B/'>
 
 <link rel="stylesheet" href="/scss/style.min.581b0ff8e16d4ced90d8d155763886e081d6661e0e2b431242ff9dd44eae3a90.css"><meta property='og:title' content="输运方程算例">
-<meta property='og:description' content="定常问题 \\[\\a u+\\vec{\\b}\\cdot \\nabla u=f\\]光滑解 $\\mathrm{div}\\vec{\\b}=0$+齐次边值\n$\\Omega=[0,1]^2$, $\\a=1$, $\\vec{\\beta} = (1,1)^T$, $f = u+(2x-1)y(y-1)+x(x-1)(2y-1)$, \\[u=x(x-1)y(y-1).\\] $\\mathrm{div}\\vec{\\b}=0$+非齐次边值\n">
+<meta property='og:description' content="定常问题 \\[\\a u+\\vec{\\b}\\cdot \\nabla u=f\\]光滑解 $\\mathrm{div}\\vec{\\b}=0$, 齐次边值\n$\\Omega=[0,1]^2$, $\\a=1$, $\\vec{\\beta} = (1,1)^T$, $f = u+(2x-1)y(y-1)+x(x-1)(2y-1)$, \\[u=x(x-1)y(y-1).\\] $\\mathrm{div}\\vec{\\b}=0$, 非齐次边值\n$\\Omega=[0,1]^2$, $\\a=1$, $\\vec{\\beta} = (1,1)^T$, $f = u+\\pi \\sin(\\pi (x+y))$, \\[u=\\sin(\\pi x)\\sin(\\pi y)+1.\\] $\\mathrm{div}\\vec{\\b}\\ne 0$ $\\Omega=[0,1]^2$, $\\a=1$, $\\vec{\\beta} = (x,y)^T$, $f = u+\\pi(x \\cos(\\pi x)\\sin(\\pi y)+y\\sin(\\pi x)\\cos(\\pi y))$, \\[u=\\sin(\\pi x)\\sin(\\pi y)+1.\\] 间断解 $\\mathrm{div}\\vec{\\b}=0$\n$\\Omega=[0,1]^2$, $\\a=1$, $\\vec{\\b}=(-y,x)^T$, $f=0$, \\[u=C(r)e^{-\\theta},\\quad C(r)=\\begin{cases}1,\\ r\\in(0.2,0.4)\\\\0,\\ \\text{otherwise}\\end{cases},\\] 其中$r=\\sqrt{x^2+y^2}$, $\\theta=\\mathrm{arctan}(\\frac{y}{x})$.\n">
 <meta property='og:url' content='https://baichuan-blog.netlify.app/p/%E8%BE%93%E8%BF%90%E6%96%B9%E7%A8%8B%E7%AE%97%E4%BE%8B/'>
 <meta property='og:site_name' content='百川的小屋'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-05-30T21:12:27&#43;08:00'/><meta property='article:modified_time' content='2025-05-30T23:27:38&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-05-30T21:12:27&#43;08:00'/><meta property='article:modified_time' content='2025-06-01T09:09:19&#43;08:00'/>
 <meta name="twitter:title" content="输运方程算例">
-<meta name="twitter:description" content="定常问题 \\[\\a u+\\vec{\\b}\\cdot \\nabla u=f\\]光滑解 $\\mathrm{div}\\vec{\\b}=0$+齐次边值\n$\\Omega=[0,1]^2$, $\\a=1$, $\\vec{\\beta} = (1,1)^T$, $f = u+(2x-1)y(y-1)+x(x-1)(2y-1)$, \\[u=x(x-1)y(y-1).\\] $\\mathrm{div}\\vec{\\b}=0$+非齐次边值\n">
+<meta name="twitter:description" content="定常问题 \\[\\a u+\\vec{\\b}\\cdot \\nabla u=f\\]光滑解 $\\mathrm{div}\\vec{\\b}=0$, 齐次边值\n$\\Omega=[0,1]^2$, $\\a=1$, $\\vec{\\beta} = (1,1)^T$, $f = u+(2x-1)y(y-1)+x(x-1)(2y-1)$, \\[u=x(x-1)y(y-1).\\] $\\mathrm{div}\\vec{\\b}=0$, 非齐次边值\n$\\Omega=[0,1]^2$, $\\a=1$, $\\vec{\\beta} = (1,1)^T$, $f = u+\\pi \\sin(\\pi (x+y))$, \\[u=\\sin(\\pi x)\\sin(\\pi y)+1.\\] $\\mathrm{div}\\vec{\\b}\\ne 0$ $\\Omega=[0,1]^2$, $\\a=1$, $\\vec{\\beta} = (x,y)^T$, $f = u+\\pi(x \\cos(\\pi x)\\sin(\\pi y)+y\\sin(\\pi x)\\cos(\\pi y))$, \\[u=\\sin(\\pi x)\\sin(\\pi y)+1.\\] 间断解 $\\mathrm{div}\\vec{\\b}=0$\n$\\Omega=[0,1]^2$, $\\a=1$, $\\vec{\\b}=(-y,x)^T$, $f=0$, \\[u=C(r)e^{-\\theta},\\quad C(r)=\\begin{cases}1,\\ r\\in(0.2,0.4)\\\\0,\\ \\text{otherwise}\\end{cases},\\] 其中$r=\\sqrt{x^2+y^2}$, $\\theta=\\mathrm{arctan}(\\frac{y}{x})$.\n">
     <link rel="shortcut icon" href="/favicon2.ico" />
 
     </head>
@@ -348,7 +348,7 @@
 			
 			
 						<span class="article-time--final-update">
-							最后更新于 <time class="article-time--updated" datetime="2025-05-30 23:27:38 &#43;0800 &#43;0800" title="2025-05-30 23:27:38 &#43;0800 &#43;0800">2025-05-30 23:27</time>
+							最后更新于 <time class="article-time--updated" datetime="2025-06-01 09:09:19 &#43;0800 &#43;0800" title="2025-06-01 09:09:19 &#43;0800 &#43;0800">2025-06-01 09:09</time>
 						</span>
 
 			
@@ -367,12 +367,12 @@
 </h2>\[\a u+\vec{\b}\cdot \nabla u=f\]<h3 id="光滑解">光滑解
 </h3><ul>
 <li>
-<p>$\mathrm{div}\vec{\b}=0$+齐次边值</p>
+<p>$\mathrm{div}\vec{\b}=0$, 齐次边值</p>
 <p>$\Omega=[0,1]^2$, $\a=1$, $\vec{\beta} = (1,1)^T$, $f = u+(2x-1)y(y-1)+x(x-1)(2y-1)$,
 </p>
 \[u=x(x-1)y(y-1).\]</li>
 <li>
-<p>$\mathrm{div}\vec{\b}=0$+非齐次边值</p>
+<p>$\mathrm{div}\vec{\b}=0$, 非齐次边值</p>
 <p>$\Omega=[0,1]^2$, $\a=1$, $\vec{\beta} = (1,1)^T$, $f = u+\pi \sin(\pi (x+y))$,
 </p>
 \[u=\sin(\pi x)\sin(\pi y)+1.\]</li>
@@ -385,8 +385,8 @@ $\Omega=[0,1]^2$, $\a=1$, $\vec{\beta} = (x,y)^T$, $f = u+\pi(x \cos(\pi x)\sin(
 <h3 id="间断解">间断解
 </h3><ul>
 <li>
-<p>$\mathrm{div}\vec{\b}=0$
-$\Omega=[0,1]^2$, $\a=1$, $\vec{\b}=(-y,x)^T$, $f=0$,
+<p>$\mathrm{div}\vec{\b}=0$</p>
+<p>$\Omega=[0,1]^2$, $\a=1$, $\vec{\b}=(-y,x)^T$, $f=0$,
 </p>
 \[u=C(r)e^{-\theta},\quad C(r)=\begin{cases}1,\ r\in(0.2,0.4)\\0,\ \text{otherwise}\end{cases},\]<p>
 其中$r=\sqrt{x^2+y^2}$, $\theta=\mathrm{arctan}(\frac{y}{x})$.</p>
@@ -396,8 +396,8 @@ $$\begin{aligned}
   &0=\a u+\b\cdot \nabla u=\a u+\p_{\theta} \tilde{u}=e^{-\a\theta}\p_{\theta}(e^{\a\theta}u),\\
   \implies & u=C(r)e^{-\a \theta}.\end{aligned}$$</li>
 <li>
-<p>$\mathrm{div}\vec{\b}\ne 0$
-$\Omega=[\f12,1]^2$, $\a=1$, $\vec{\beta}=(1,\frac{y}{x})$, $f=0$,
+<p>$\mathrm{div}\vec{\b}\ne 0$</p>
+<p>$\Omega=[\f12,1]^2$, $\a=1$, $\vec{\beta}=(1,\frac{y}{x})$, $f=0$,
 </p>
 \[u = C(\f{y}{x})e^{-\theta},\quad C(r)=\begin{cases}1,\ \f{y}{x}\in(\f12,1)\\0,\ \f{y}{x}\in(1,2)\end{cases},\]<p>
 选择参数对$(\theta=x,r=xy)$, 此时</p>
