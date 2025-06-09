@@ -7,6 +7,68 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>百川</copyright><atom:link href="https://baichuan-blog.netlify.app/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>积云动力学</title>
+        <link>https://baichuan-blog.netlify.app/p/%E7%A7%AF%E4%BA%91%E5%8A%A8%E5%8A%9B%E5%AD%A6/</link>
+        <pubDate>Mon, 09 Jun 2025 10:17:10 +0800</pubDate>
+        
+        <guid>https://baichuan-blog.netlify.app/p/%E7%A7%AF%E4%BA%91%E5%8A%A8%E5%8A%9B%E5%AD%A6/</guid>
+        <description>&lt;h2 id=&#34;云的运动方程&#34;&gt;云的运动方程
+&lt;/h2&gt;&lt;p&gt;大气动力——热力学方程组（忽略分子粘性）中的运动方程：
+&lt;/p&gt;
+\[\frac{d\cuti{V}}{dt}=-\frac1{\rho}\nabla p+\cuti{g}-2\cuti{\Omega}\times \cuti{V}\tag{1}\]&lt;p&gt;
+其中$\cuti{g} = (0,0,-g)^T$。&lt;/p&gt;
+&lt;p&gt;积云对流有如下特点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;尺度小，地球旋转产生的科氏力可略去不计。&lt;/li&gt;
+&lt;li&gt;非静力平衡，垂直运动加速度$\f{d w}{dt}$不能被忽略。&lt;/li&gt;
+&lt;li&gt;积云对流具有高度的湍流性，需要考虑湍流粘性力的作用。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;结合上述几点，当云中含液态水时，运动方程(1)应改为：
+&lt;/p&gt;
+\[\frac{d\cuti{V}}{dt}=-\frac1{\rho}\nabla p+\cuti{g}+q_w\cuti{g}+D_{\cuti{V}}\]&lt;p&gt;
+其中$\rho=\rho_d+\rho_v$是湿空气密度，$q_w$为液态水比含水量，$\rho(1+q_w)=\rho_d+\rho_v+\rho_w=\rho_d+\rho_v+\rho_c+\rho_r$是湿空气与液体水物质的总密度（若有固态水，也以同样方法处理），$D_{\cuti{V}}=K_m\nabla^2\cuti{V}$为湍流粘性力。&lt;/p&gt;
+&lt;p&gt;方程两边同时乘以$\rho$得到：
+&lt;/p&gt;
+\[\rho\frac{d\cuti{V}}{dt}=-\nabla p+\rho\cuti{g}+q_w\cuti{g}+\rho D_{\cuti{V}}\tag{2}\]&lt;p&gt;
+将$p,\rho,T$分裂为背景场和扰动场：
+&lt;/p&gt;
+$$\begin{cases}p = p_0(z)+p&#39;,\\\rho=\rho_0(z)+\rho&#39;,\\T = T_0(z)+T&#39;\end{cases}\tag{3}$$&lt;p&gt;
+满足静力平衡条件：
+&lt;/p&gt;
+\[\f{\p p_0}{\p z}=-\rho_0g\]&lt;p&gt;
+对于积云对流，扰动温度$T&amp;rsquo;$很少超过$10K$，扰动压力$p&amp;rsquo;$很少超过$10$hPa（$p_{00}=1000$hPa），故：
+&lt;/p&gt;
+\[\begin{cases}\f{p&#39;}{p_0}\ll 1\\\f{\rho&#39;}{\rho_0}\ll 1\\\f{T&#39;}{T_0}\ll 1\end{cases}\]&lt;p&gt;
+将(3)代入(2)得到：
+&lt;/p&gt;
+\[\rho\frac{d\cuti{V}}{dt}=-\nabla p&#39;+\rho&#39;\cuti{g}+\rho q_w\cuti{g}+\rho D_{\cuti{V}}\tag{4}\]&lt;p&gt;湿空气的状态方程为：
+&lt;/p&gt;
+\[\begin{cases}\theta = T(\f{p_{00}}{p})^{\f{R}{c_p}}\\
+p =  \rho R T =\rho R_d T(1+0.608q_v)\end{cases}\]&lt;p&gt;
+其中$R=(1-q_v)R_d+q_vR_v=R_d(1-q_v+q_v\f{R_d}{R_v})\approx  R_d(1+0.608 q_v)$。&lt;/p&gt;
+&lt;p&gt;对$p = \rho RT$和$p_0 = \rho_0 RT$两边同时取对数并相减得到：
+&lt;/p&gt;
+\[\ln \f{p_0+p&#39;}{p_0}=\ln\f{\rho_0+\rho&#39;}{\rho_0}+\ln \f{T_0+T&#39;}{T_0}+\ln\f{1+0.608((q_v)_0+(q_v)&#39;)}{1+0.608(q_v)_0}\]&lt;p&gt;
+于是有一阶近似：
+&lt;/p&gt;
+\[\f{p&#39;}{p_0}\approx  \f{\rho&#39;}{\rho_0}+\f{T&#39;}{T_0}+0.608\f{(q_v)&#39;}{1+0.608(q_v)_0}\]&lt;p&gt;
+由于比湿$(q_v)_0\ll 1$，因此对上式可做近似如下：
+&lt;/p&gt;
+\[\f{p&#39;}{p_0}\approx  \f{\rho&#39;}{\rho_0}+\f{T&#39;}{T_0}+0.608(q_v)&#39;\tag{5}\]&lt;p&gt;当数值方法中无法直接求得密度时，我们可利用(5)将$\rho&amp;rsquo;$代入(4)中得到：
+&lt;/p&gt;
+\[\rho\frac{d\cuti{V}}{dt}=-\nabla p&#39;+\rho_0(\f{p&#39;}{p_0}-\f{T&#39;}{T_0}-0.608(q_v)&#39;)\cuti{g}+\rho q_w\cuti{g}+\rho D_{\cuti{V}}\]&lt;p&gt;
+此时将其余$\rho$用平衡解$\rho_0$代替，可得：
+&lt;/p&gt;
+\[\frac{d\cuti{V}}{dt}=-\f{1}{\rho_0}\nabla p&#39;+(\f{p&#39;}{p_0}-\f{T&#39;}{T_0}-0.608(q_v)&#39;)\cuti{g}+q_w\cuti{g} + D_{\cuti{V}}\quad \tag{6}\]&lt;p&gt;不过，由于我们的数值方法可以直接计算出$\rho$，因此直接采用&lt;code&gt;方程(4)&lt;/code&gt;即可：
+&lt;/p&gt;
+\[\rho\frac{d\cuti{V}}{dt}=-\nabla p&#39;+\rho&#39;\cuti{g}+\rho (q_c+q_r)\cuti{g}+\rho D_{\cuti{V}}\]&lt;h2 id=&#34;参考文献&#34;&gt;参考文献
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.jianguoyun.com/p/DRvLTikQlsqoDRie7voFIAA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;大气物理学. (2023). 盛裴轩等. 13.1节&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        <item>
         <title>Linux</title>
         <link>https://baichuan-blog.netlify.app/p/linux/</link>
         <pubDate>Sun, 08 Jun 2025 16:47:11 +0800</pubDate>

@@ -2,13 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://baichuan-blog.netlify.app/categories/</loc>
+    <lastmod>2025-06-09T11:39:07+08:00</lastmod>
+  </url><url>
+    <loc>https://baichuan-blog.netlify.app/post/</loc>
+    <lastmod>2025-06-09T11:39:07+08:00</lastmod>
+  </url><url>
+    <loc>https://baichuan-blog.netlify.app/p/%E7%A7%AF%E4%BA%91%E5%8A%A8%E5%8A%9B%E5%AD%A6/</loc>
+    <lastmod>2025-06-09T11:39:07+08:00</lastmod>
+  </url><url>
     <loc>https://baichuan-blog.netlify.app/p/linux/</loc>
     <lastmod>2025-06-08T17:31:17+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-blog.netlify.app/tags/linux/</loc>
-    <lastmod>2025-06-08T17:31:17+08:00</lastmod>
-  </url><url>
-    <loc>https://baichuan-blog.netlify.app/post/</loc>
     <lastmod>2025-06-08T17:31:17+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-blog.netlify.app/tags/</loc>
@@ -19,9 +25,6 @@
   </url><url>
     <loc>https://baichuan-blog.netlify.app/p/fealpy/</loc>
     <lastmod>2025-06-08T17:31:17+08:00</lastmod>
-  </url><url>
-    <loc>https://baichuan-blog.netlify.app/categories/</loc>
-    <lastmod>2025-06-08T11:18:45+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-blog.netlify.app/p/%E8%BE%93%E8%BF%90%E6%96%B9%E7%A8%8B%E7%AE%97%E4%BE%8B/</loc>
     <lastmod>2025-06-03T11:17:11+08:00</lastmod>
