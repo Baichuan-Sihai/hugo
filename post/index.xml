@@ -7,7 +7,7 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>百川</copyright>
-        <lastBuildDate>Mon, 09 Jun 2025 11:50:24 +0800</lastBuildDate><atom:link href="https://baichuan-blog.netlify.app/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 09 Jun 2025 20:01:36 +0800</lastBuildDate><atom:link href="https://baichuan-blog.netlify.app/post/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>积云动力学</title>
         <link>https://baichuan-blog.netlify.app/p/%E7%A7%AF%E4%BA%91%E5%8A%A8%E5%8A%9B%E5%AD%A6/</link>
         <pubDate>Mon, 09 Jun 2025 10:17:10 +0800</pubDate>
@@ -112,6 +112,11 @@ p =  \rho R T =\rho R_d T(1+0.608q_v)\end{cases}\]&lt;p&gt;
           &lt;td&gt;光标移动到行尾&lt;/td&gt;
           &lt;td&gt;Ctrl+E/End&lt;/td&gt;
           &lt;td&gt;End&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;切换回上一次cd进入的目录&lt;/td&gt;
+          &lt;td&gt;cd -&lt;/td&gt;
+          &lt;td&gt;用pushd/popd实现目录的进出栈切换&lt;/td&gt;
       &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
