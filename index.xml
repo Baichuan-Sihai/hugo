@@ -36,7 +36,7 @@ $$\begin{cases}p = p_0(z)+p&#39;,\\\rho=\rho_0(z)+\rho&#39;,\\T = T_0(z)+T&#39;\
 满足静力平衡条件：
 &lt;/p&gt;
 \[\f{\p p_0}{\p z}=-\rho_0g\]&lt;p&gt;
-对于积云对流，扰动温度$T&amp;rsquo;$很少超过$10K$，扰动压力$p&amp;rsquo;$很少超过$10$hPa（$p_{00}=1000$hPa），故：
+对于积云对流，扰动温度$T&#39;$很少超过$10K$，扰动压力$p&#39;$很少超过$10$hPa（$p_{00}=1000$hPa），故：
 &lt;/p&gt;
 \[\begin{cases}\f{p&#39;}{p_0}\ll 1\\\f{\rho&#39;}{\rho_0}\ll 1\\\f{T&#39;}{T_0}\ll 1\end{cases}\]&lt;p&gt;
 将(3)代入(2)得到：
@@ -54,12 +54,12 @@ p =  \rho R T =\rho R_d T(1+0.608q_v)\end{cases}\]&lt;p&gt;
 \[\f{p&#39;}{p_0}\approx  \f{\rho&#39;}{\rho_0}+\f{T&#39;}{T_0}+0.608\f{(q_v)&#39;}{1+0.608(q_v)_0}\]&lt;p&gt;
 由于比湿$(q_v)_0\ll 1$，因此对上式可做近似如下：
 &lt;/p&gt;
-\[\f{p&#39;}{p_0}\approx  \f{\rho&#39;}{\rho_0}+\f{T&#39;}{T_0}+0.608(q_v)&#39;\tag{5}\]&lt;p&gt;当数值方法中无法直接求得密度时，我们可利用(5)将$\rho&amp;rsquo;$代入(4)中得到：
+\[\f{p&#39;}{p_0}\approx  \f{\rho&#39;}{\rho_0}+\f{T&#39;}{T_0}+0.608(q_v)&#39;\tag{5}\]&lt;p&gt;当数值方法中无法直接求得密度时，我们可利用(5)将$\rho&#39;$代入(4)中得到：
 &lt;/p&gt;
 \[\rho\frac{d\cuti{V}}{dt}=-\nabla p&#39;+\rho_0(\f{p&#39;}{p_0}-\f{T&#39;}{T_0}-0.608(q_v)&#39;)\cuti{g}+\rho q_w\cuti{g}+\rho D_{\cuti{V}}\]&lt;p&gt;
 此时将其余$\rho$用平衡解$\rho_0$代替，可得：
 &lt;/p&gt;
-\[\frac{d\cuti{V}}{dt}=-\f{1}{\rho_0}\nabla p&#39;+(\f{p&#39;}{p_0}-\f{T&#39;}{T_0}-0.608(q_v)&#39;)\cuti{g}+q_w\cuti{g} + D_{\cuti{V}}\quad \tag{6}\]&lt;p&gt;不过，由于我们的数值方法可以直接计算出$\rho$，因此直接采用&lt;code&gt;方程(4)&lt;/code&gt;即可：
+\[\frac{d\cuti{V}}{dt}=-\f{1}{\rho_0}\nabla p&#39;+(\f{p&#39;}{p_0}-\f{T&#39;}{T_0}-0.608(q_v)&#39;)\cuti{g}+q_w\cuti{g} + D_{\cuti{V}}\quad\tag{6}\]&lt;p&gt;不过，由于我们的数值方法可以直接计算出$\rho$，因此直接采用&lt;code&gt;方程(4)&lt;/code&gt;即可：
 &lt;/p&gt;
 \[\rho\frac{d\cuti{V}}{dt}=-\nabla p&#39;+\rho&#39;\cuti{g}+\rho (q_c+q_r)\cuti{g}+\rho D_{\cuti{V}}\]&lt;h2 id=&#34;参考文献&#34;&gt;参考文献
 &lt;/h2&gt;&lt;ol&gt;
