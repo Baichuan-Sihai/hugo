@@ -10,7 +10,7 @@
 <meta property='og:description' content="凸多边形内点的坐标表示">
 <meta property='og:url' content='https://baichuan-blog.netlify.app/p/wachspress-coordinates/'>
 <meta property='og:site_name' content='百川的小屋'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-06-20T10:56:39&#43;08:00'/><meta property='article:modified_time' content='2025-06-20T12:42:14&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-06-20T10:56:39&#43;08:00'/><meta property='article:modified_time' content='2025-06-20T15:46:47&#43;08:00'/>
 <meta name="twitter:title" content="Wachspress Coordinates">
 <meta name="twitter:description" content="凸多边形内点的坐标表示">
     <link rel="shortcut icon" href="/favicon2.ico" />
@@ -283,7 +283,8 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#wachspress-coordinates">Wachspress Coordinates</a></li>
+    <li><a href="#wachspress-coordinates">Wachspress coordinates</a></li>
+    <li><a href="#凸多边形上的插值">凸多边形上的插值</a></li>
     <li><a href="#参考文献">参考文献</a></li>
   </ol>
 </nav>
@@ -342,7 +343,7 @@
 			
 			
 						<span class="article-time--final-update">
-							最后更新于 <time class="article-time--updated" datetime="2025-06-20 12:42:14 &#43;0800 &#43;0800" title="2025-06-20 12:42:14 &#43;0800 &#43;0800">2025-06-20 12:42</time>
+							最后更新于 <time class="article-time--updated" datetime="2025-06-20 15:46:47 &#43;0800 &#43;0800" title="2025-06-20 15:46:47 &#43;0800 &#43;0800">2025-06-20 15:46</time>
 						</span>
 
 			
@@ -357,12 +358,12 @@
     <section class="article-content">
     
     
-    <h2 id="wachspress-coordinates">Wachspress Coordinates
+    <h2 id="wachspress-coordinates">Wachspress coordinates
 </h2><div style="text-align:center;">
   <img src="wachspress.png" alt="alt text" width="500"/>
 </div>
 <p>对于三角形上的任何一个点，我们可以使用三个顶点的凸组合唯一表示该点，即重心坐标。但是对于凸多边形（如矩形）而言，一般情况下凸组合并不唯一。例如图中的点$v$，既在$\triangle v_1v_{i-1}v_i$内部，也在$\triangle v_{i-1}v_iv_{i+1}$内部，因此既可以用点$v_0,v_{i-1},v_i$的凸组合，也可以用点$v_{i-1},v_i,v_{i+1}$的凸组合表示。</p>
-<p>下面将介绍一种凸多边形内点的坐标表示：Wachspress Coordinates。</p>
+<p>下面将介绍一种凸多边形内点的坐标表示：Wachspress coordinates。</p>
 <p>首先定义$\triangle v_{i-1}v_iv_{i+1}$面积为：
 </p>
 \[A_i=Area(\triangle v_{i-1}v_iv_{i+1})\]<p>
@@ -373,10 +374,10 @@
 </p>
 \[w_i = \frac{A_i}{D_{i-1}D_i}\]<p>
 $w_i$衡量了衡量点$v$靠近点$v_i$的程度：当$v$往$v_i$靠近时，$D_{i-1}D_i$减小（不严格），$w_i$变大；反之，当$v$远离$v_i$时，$w_i$减小。</p>
-<p>最后只需对$w_i$归一化便可得到Wachspress Coordinate：
+<p>最后对$w_i$进行归一化：
 </p>
 \[\lambda_i = \frac{w_i}{\sum_{i=1}^N w_i},\quad i=1,\cdots N\]<p>
-由于$\lambda_i\ge0$且$\sum_{i=1}^N \lambda_i = 1$，因此${\lambda_i}_{i=1}^N$构成了一组凸组合系数。</p>
+由于$\lambda_i\ge0$且$\sum_{i=1}^N \lambda_i = 1$，因此${\lambda_i}_{i=1}^N$构成了一组凸组合系数，称为Wachspress coordinates。</p>
 <p>当$v$恰好为某个顶点，如$v_j$时，$\lambda_i=\delta_{ij}$。 此时$\sum_{i=1}^N\lambda_iv_i = v_j=v$。</p>
 <p>下面我们证明对一般的$v$，也有：
 </p>
@@ -392,7 +393,28 @@ $$
 \implies & \sum_{i=1}^N \lambda_i (v_i-v) = 0\\
 \implies & \sum_{i=1}^N \lambda_i v_i=v
 \end{aligned}
-$$<h2 id="参考文献">参考文献
+$$<p>综上，Wachspress coordinates满足如下性质：</p>
+<ul>
+<li>非负性：$\lambda_i\ge 0,\ i=1,\cdots, N$。</li>
+<li>凸组合：$\sum_{i=1}^N \lambda_i = 1$。</li>
+<li>精确插值性：$v = \sum_{i=1}^{N}\lambda_i(v)v_i$。</li>
+</ul>
+<h2 id="凸多边形上的插值">凸多边形上的插值
+</h2><p>在实际应用，我们经常面临这样的问题：已知函数在单元（三角形、四边形等）顶点的取值，希望估计其在单元内某一点处函数值，即利用顶点值插值得到内部点函数值。假设函数$f$在顶点$v_i$处取值为$f_i$，利用上面的Wachspress coordinates，我们可以定义在点$v$处插值：
+</p>
+\[\mathbb{I}_f(v): = \sum_{i=1}^N\lambda_i(v)f_i\]<ul>
+<li>当$f$是线性多项式时，
+\[f(v) = f(\sum_{i=1}^N \lambda_iv_i )=\sum_{i=1}^N\lambda_i(v)f_i =\mathbb{I}_f(v)\]
+即$f = \mathbb{I}_f$。</li>
+<li>当$f$为一般光滑函数时，对$f$进行一阶Taylor展开：$f = P_1(f)+O(h^2)$，$h$为单元直径。于是，
+$$\begin{aligned}\mathbb{I}_f(v) &= \sum_{i=1}^N\lambda_i f_i \\
+  &= \sum_i \lambda_iP_1(f)(v_i)+O(h^2) \\
+  & = P_1(f)(v)+O(h^2)\quad (P_1\text{是线性函数})\\
+  & = f(v)+O(h^2)
+  \end{aligned}$$
+即$\norm{f-\mathbb{I}_f}=O(h^2)$，更具体地，有$\norm{f-\mathbb{I}_f}\le C\norm{D^2f}h^2$。</li>
+</ul>
+<h2 id="参考文献">参考文献
 </h2><ol>
 <li><a class="link" href="https://www.jianguoyun.com/p/DVEHkT4QlsqoDRjQkv8FIAA"  target="_blank" rel="noopener"
     >Wachspress and mean value coordinates</a></li>
@@ -454,7 +476,8 @@ $$<h2 id="参考文献">参考文献
 				"\\D": "\\Delta",
 				"\\a": "\\alpha",
 				"\\b": "\\beta",
-				"\\cuti": "\\mathbf"
+				"\\cuti": "\\mathbf",
+                "\\norm": "\\|#1\\|"
             },
             ignoredClasses: ["gist"]
         });})

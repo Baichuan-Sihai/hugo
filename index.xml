@@ -12,12 +12,12 @@
         <pubDate>Fri, 20 Jun 2025 10:56:39 +0800</pubDate>
         
         <guid>https://baichuan-blog.netlify.app/p/wachspress-coordinates/</guid>
-        <description>&lt;h2 id=&#34;wachspress-coordinates&#34;&gt;Wachspress Coordinates
+        <description>&lt;h2 id=&#34;wachspress-coordinates&#34;&gt;Wachspress coordinates
 &lt;/h2&gt;&lt;div style=&#34;text-align:center;&#34;&gt;
   &lt;img src=&#34;wachspress.png&#34; alt=&#34;alt text&#34; width=&#34;500&#34;/&gt;
 &lt;/div&gt;
 &lt;p&gt;对于三角形上的任何一个点，我们可以使用三个顶点的凸组合唯一表示该点，即重心坐标。但是对于凸多边形（如矩形）而言，一般情况下凸组合并不唯一。例如图中的点$v$，既在$\triangle v_1v_{i-1}v_i$内部，也在$\triangle v_{i-1}v_iv_{i+1}$内部，因此既可以用点$v_0,v_{i-1},v_i$的凸组合，也可以用点$v_{i-1},v_i,v_{i+1}$的凸组合表示。&lt;/p&gt;
-&lt;p&gt;下面将介绍一种凸多边形内点的坐标表示：Wachspress Coordinates。&lt;/p&gt;
+&lt;p&gt;下面将介绍一种凸多边形内点的坐标表示：Wachspress coordinates。&lt;/p&gt;
 &lt;p&gt;首先定义$\triangle v_{i-1}v_iv_{i+1}$面积为：
 &lt;/p&gt;
 \[A_i=Area(\triangle v_{i-1}v_iv_{i+1})\]&lt;p&gt;
@@ -28,10 +28,10 @@
 &lt;/p&gt;
 \[w_i = \frac{A_i}{D_{i-1}D_i}\]&lt;p&gt;
 $w_i$衡量了衡量点$v$靠近点$v_i$的程度：当$v$往$v_i$靠近时，$D_{i-1}D_i$减小（不严格），$w_i$变大；反之，当$v$远离$v_i$时，$w_i$减小。&lt;/p&gt;
-&lt;p&gt;最后只需对$w_i$归一化便可得到Wachspress Coordinate：
+&lt;p&gt;最后对$w_i$进行归一化：
 &lt;/p&gt;
 \[\lambda_i = \frac{w_i}{\sum_{i=1}^N w_i},\quad i=1,\cdots N\]&lt;p&gt;
-由于$\lambda_i\ge0$且$\sum_{i=1}^N \lambda_i = 1$，因此${\lambda_i}_{i=1}^N$构成了一组凸组合系数。&lt;/p&gt;
+由于$\lambda_i\ge0$且$\sum_{i=1}^N \lambda_i = 1$，因此${\lambda_i}_{i=1}^N$构成了一组凸组合系数，称为Wachspress coordinates。&lt;/p&gt;
 &lt;p&gt;当$v$恰好为某个顶点，如$v_j$时，$\lambda_i=\delta_{ij}$。 此时$\sum_{i=1}^N\lambda_iv_i = v_j=v$。&lt;/p&gt;
 &lt;p&gt;下面我们证明对一般的$v$，也有：
 &lt;/p&gt;
@@ -47,7 +47,28 @@ $$
 \implies &amp; \sum_{i=1}^N \lambda_i (v_i-v) = 0\\
 \implies &amp; \sum_{i=1}^N \lambda_i v_i=v
 \end{aligned}
-$$&lt;h2 id=&#34;参考文献&#34;&gt;参考文献
+$$&lt;p&gt;综上，Wachspress coordinates满足如下性质：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;非负性：$\lambda_i\ge 0,\ i=1,\cdots, N$。&lt;/li&gt;
+&lt;li&gt;凸组合：$\sum_{i=1}^N \lambda_i = 1$。&lt;/li&gt;
+&lt;li&gt;精确插值性：$v = \sum_{i=1}^{N}\lambda_i(v)v_i$。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;凸多边形上的插值&#34;&gt;凸多边形上的插值
+&lt;/h2&gt;&lt;p&gt;在实际应用，我们经常面临这样的问题：已知函数在单元（三角形、四边形等）顶点的取值，希望估计其在单元内某一点处函数值，即利用顶点值插值得到内部点函数值。假设函数$f$在顶点$v_i$处取值为$f_i$，利用上面的Wachspress coordinates，我们可以定义在点$v$处插值：
+&lt;/p&gt;
+\[\mathbb{I}_f(v): = \sum_{i=1}^N\lambda_i(v)f_i\]&lt;ul&gt;
+&lt;li&gt;当$f$是线性多项式时，
+\[f(v) = f(\sum_{i=1}^N \lambda_iv_i )=\sum_{i=1}^N\lambda_i(v)f_i =\mathbb{I}_f(v)\]
+即$f = \mathbb{I}_f$。&lt;/li&gt;
+&lt;li&gt;当$f$为一般光滑函数时，对$f$进行一阶Taylor展开：$f = P_1(f)+O(h^2)$，$h$为单元直径。于是，
+$$\begin{aligned}\mathbb{I}_f(v) &amp;= \sum_{i=1}^N\lambda_i f_i \\
+  &amp;= \sum_i \lambda_iP_1(f)(v_i)+O(h^2) \\
+  &amp; = P_1(f)(v)+O(h^2)\quad (P_1\text{是线性函数})\\
+  &amp; = f(v)+O(h^2)
+  \end{aligned}$$
+即$\norm{f-\mathbb{I}_f}=O(h^2)$，更具体地，有$\norm{f-\mathbb{I}_f}\le C\norm{D^2f}h^2$。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;参考文献&#34;&gt;参考文献
 &lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.jianguoyun.com/p/DVEHkT4QlsqoDRjQkv8FIAA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Wachspress and mean value coordinates&lt;/a&gt;&lt;/li&gt;
