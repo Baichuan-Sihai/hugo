@@ -7,6 +7,54 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>百川</copyright><atom:link href="https://baichuan-blog.netlify.app/categories/fem/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Wachspress Coordinates</title>
+        <link>https://baichuan-blog.netlify.app/p/wachspress-coordinates/</link>
+        <pubDate>Fri, 20 Jun 2025 10:56:39 +0800</pubDate>
+        
+        <guid>https://baichuan-blog.netlify.app/p/wachspress-coordinates/</guid>
+        <description>&lt;h2 id=&#34;wachspress-coordinates&#34;&gt;Wachspress Coordinates
+&lt;/h2&gt;&lt;div style=&#34;text-align:center;&#34;&gt;
+  &lt;img src=&#34;wachspress.png&#34; alt=&#34;alt text&#34; width=&#34;500&#34;/&gt;
+&lt;/div&gt;
+&lt;p&gt;对于三角形上的任何一个点，我们可以使用三个顶点的凸组合唯一表示该点，即重心坐标。但是对于凸多边形（如矩形）而言，一般情况下凸组合并不唯一。例如图中的点$v$，既在$\triangle v_1v_{i-1}v_i$内部，也在$\triangle v_{i-1}v_iv_{i+1}$内部，因此既可以用点$v_0,v_{i-1},v_i$的凸组合，也可以用点$v_{i-1},v_i,v_{i+1}$的凸组合表示。&lt;/p&gt;
+&lt;p&gt;下面将介绍一种凸多边形内点的坐标表示：Wachspress Coordinates。&lt;/p&gt;
+&lt;p&gt;首先定义$\triangle v_{i-1}v_iv_{i+1}$面积为：
+&lt;/p&gt;
+\[A_i=Area(\triangle v_{i-1}v_iv_{i+1})\]&lt;p&gt;
+定义以$vv_i$为公共边的两个相邻三角形面积分别为：
+&lt;/p&gt;
+\[D_{i-1} = Area(\triangle vv_{i-1}v_i),\quad D_{i}= Area(\triangle vv_{i}v_{i+1})\]&lt;p&gt;
+构造权函数：
+&lt;/p&gt;
+\[w_i = \frac{A_i}{D_{i-1}D_i}\]&lt;p&gt;
+$w_i$衡量了衡量点$v$靠近点$v_i$的程度：当$v$往$v_i$靠近时，$D_{i-1}D_i$减小（不严格），$w_i$变大；反之，当$v$远离$v_i$时，$w_i$减小。&lt;/p&gt;
+&lt;p&gt;最后只需对$w_i$归一化便可得到Wachspress Coordinate：
+&lt;/p&gt;
+\[\lambda_i = \frac{w_i}{\sum_{i=1}^N w_i},\quad i=1,\cdots N\]&lt;p&gt;
+由于$\lambda_i\ge0$且$\sum_{i=1}^N \lambda_i = 1$，因此${\lambda_i}_{i=1}^N$构成了一组凸组合系数。&lt;/p&gt;
+&lt;p&gt;当$v$恰好为某个顶点，如$v_j$时，$\lambda_i=\delta_{ij}$。 此时$\sum_{i=1}^N\lambda_iv_i = v_j=v$。&lt;/p&gt;
+&lt;p&gt;下面我们证明对一般的$v$，也有：
+&lt;/p&gt;
+\[v = \sum_{i=1}^N\lambda_iv_i\]&lt;p&gt;由三角形上重心坐标表示，可以将点$v$表示为$v_{i-1},v_{i},v_{i+1}$的线性组合如下：
+&lt;/p&gt;
+\[v = \frac{D_i}{A_i}v_{i-1}+\frac{A_i-D_i-D_{i-1}}{A_i}{v_i}+\frac{D_{i-1}}{A_i}v_{i+1}\]&lt;p&gt;
+于是
+&lt;/p&gt;
+$$
+\begin{aligned}
+&amp;w_i (v_i-v) = \frac{1}{D_{i-1}}(v_{i}-v_{i-1})-\frac{1}{D_i}(v_{i+1}-v_{i})\\
+\implies &amp; \sum_{i=1}^Nw_i (v_i-v) = 0\\
+\implies &amp; \sum_{i=1}^N \lambda_i (v_i-v) = 0\\
+\implies &amp; \sum_{i=1}^N \lambda_i v_i=v
+\end{aligned}
+$$&lt;h2 id=&#34;参考文献&#34;&gt;参考文献
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.jianguoyun.com/p/DVEHkT4QlsqoDRjQkv8FIAA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Wachspress and mean value coordinates&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        <item>
         <title>输运方程算例</title>
         <link>https://baichuan-blog.netlify.app/p/%E8%BE%93%E8%BF%90%E6%96%B9%E7%A8%8B%E7%AE%97%E4%BE%8B/</link>
         <pubDate>Fri, 30 May 2025 21:12:27 +0800</pubDate>
