@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>FNM on 百川的小屋</title>
+        <link>https://baichuan-blog.netlify.app/tags/fnm/</link>
+        <description>Recent content in FNM on 百川的小屋</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>百川</copyright>
+        <lastBuildDate>Tue, 15 Jul 2025 23:49:42 +0800</lastBuildDate><atom:link href="https://baichuan-blog.netlify.app/tags/fnm/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Finite Neuron Method</title>
+        <link>https://baichuan-blog.netlify.app/p/finite-neuron-method/</link>
+        <pubDate>Mon, 14 Jul 2025 22:09:35 +0800</pubDate>
+        
+        <guid>https://baichuan-blog.netlify.app/p/finite-neuron-method/</guid>
+        <description>&lt;h2 id=&#34;the-finite-neuron-method-and-convergence-analysis&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.jianguoyun.com/p/DYb3upYQlsqoDRi31YIGIAA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;The Finite Neuron Method and Convergence Analysis&lt;/a&gt;
+&lt;/h2&gt;&lt;h3 id=&#34;some-remarks&#34;&gt;Some remarks
+&lt;/h3&gt;&lt;p&gt;The general construction of $H^m$-conforming elements in any dimension is still an open problem. &lt;strong&gt;This paper studies $H^m$-conforming functions based on artificial nerual network.&lt;/strong&gt; With ReLU$^k$ as activation function, there&amp;rsquo;s a family of $H^m$-conforming piecewise polynomials.&lt;/p&gt;
+&lt;p&gt;For finite neuron method, the underlying finite element grids are not given a priori and the discrete solution can only be obtained by solving a nonlinear and non-convex optimization problem.
+On the one hand, finite nerual method gains more flexibility. But on the other hand the highly nonlinear and non-convex problem  will be expensive and challenging for us to solve.&lt;/p&gt;
+&lt;p&gt;If we relax the conformity, it is possible to give a universal construction of convergent $H^m$-nonconforming finite element consisting of piecewise polynomial of degree $m$. In the finite neuron method setting, by relaxing the constraints from the a priori given finite element grid, the construction of $H^m$-conforming piecewise polynomials of degree $m$ becomes straightforward. In fact, the finite neuron method can be considered as &lt;strong&gt;mesh-less method&lt;/strong&gt;, or even, vertex-less method although there is a hidden grid for any finite neuron function. This raises a question if it is possible to develop some &amp;ldquo;in-between&amp;rdquo; method that have the advantages of both the classic finite element method and the finite neuron method.&lt;/p&gt;
+&lt;p&gt;In deep neural networks,  functions can be written as:
+&lt;/p&gt;
+$$
+f(x) = \theta^l\circ\sigma\circ\theta^{l-1}\circ \sigma\cdots\circ\theta^1\circ \theta^{0}(x),
+$$&lt;p&gt;
+where $\theta^i:\mathbb{R}^{n_i}\to \mathbb{R}^{n_{i+1}}$ are linear functions with form $w_i\cdot x+b_i$, and $\sigma$ is the activation function.&lt;/p&gt;
+&lt;p&gt;RELU-DNN is simply piecewise linear functions. Any linear finite element function on proper simplicial finite element grid can be written as a ReLU-DNN with at most $O(d)$ layers ($d$ is the dimension of the problem, see Lemma 4.3). So the finite neuron method has both local and global &lt;strong&gt;adaptive features&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;When choose ReLU$^k$ as activation function, the finite neuron functions set (not necessarily a linear space) contains a $\mathbb{P}_q$ (all polynomials with degree not larger than $q$) as a subspace and the inequality in Theorem 4.2:
+&lt;/p&gt;
+$$\inf_{v_N\in_n\mathcal{N}^k_l(N)}\norm{u-v_N}_{H^m(\Omega)}\lesssim \inf_{v_N\in\mathbb{P}_{k^l}}\norm{u-v_N}_{H^m(\Omega)}$$&lt;p&gt;
+indicates that deep finite neuron function may provide spetral approximate accuracy.&lt;/p&gt;
+&lt;p&gt;The error estimates in this paper are not sharp enough, because the results are independent of the index $k$ of ReLU$^k$.&lt;/p&gt;
+&lt;p&gt;DNN is known to have much less &amp;ldquo;curse of dimesionality&amp;rdquo; than the traditional functional classes may be due to its overparameterization feature.&lt;/p&gt;
+&lt;h3 id=&#34;the-core-idea-in-the-convergence-analysis&#34;&gt;The core idea in the convergence analysis
+&lt;/h3&gt;&lt;p&gt;Monte-Carlo and stratified (分层的) sampling  both derive a variance inequality. For Monte-Carlo sampling, it&amp;rsquo;s
+&lt;/p&gt;
+$$\mathbb{E}_N\left(\mathbb{E}(g)-\frac1{N}\sum_{i=1}^Ng(w_i)\right)^2=\begin{cases}\frac1N\mathbb{V}(g)\le \frac1N\sup_{w,w&#39;\in G}|g(w)-g(w&#39;)|^2\\\frac1N\left(\mathbb{E}(g^2)-\mathbb{E}(g)^2\right)\le \frac1N \mathbb{E}(g^2)\le \frac1N\norm{g}^2_{L^{\infty}}.\end{cases}\tag{1}$$&lt;p&gt;Consider
+&lt;/p&gt;
+$$u(x)=\int_{G}g(x,\theta)\rho(\theta)\d\theta=\norm{\rho}_{L^1(G)}\int_Gg(x,\theta)\frac{\rho(\theta)}{\norm{\rho}_{L^1(G)}}\d \theta,$$&lt;p&gt;
+then from the above inequality, we have an existence result in Lemma 2.3 that there exists $\theta_i^*\in G$ such that
+&lt;/p&gt;
+$$\norm{u-u_N}_{H^m(\Omega)}\le \frac{\norm{\rho}_{L^1(G)}}{N}\mathbb{E}(\norm{g(\cdot,\theta)}^2_{H^m(\Omega)}),\tag{2}$$&lt;p&gt;
+where
+&lt;/p&gt;
+$$u_N = \frac{\norm{\rho}_{L^1(G)}}{N}\sum_{i=1}^Ng(x,\theta_i^*).\tag{3}$$&lt;p&gt;
+Otherwise the variance inequality would not be true.&lt;/p&gt;
+&lt;p&gt;The &lt;strong&gt;core idea&lt;/strong&gt; is:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Represent $u$ as an expectation of some probability distribution.&lt;/li&gt;
+&lt;li&gt;A simple application of Monte-Carlo sampling then leads to error estimate.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;For example, consider the Fourier transform of a real function $u:\mathbb{R}^d\to \mathbb{R}$
+&lt;/p&gt;
+$$\hat{u}(w) = (2\pi)^{-\frac{d}2}\int_{\mathbb{R}^d} e^{-iw\cdot x}u(x)\d x.$$&lt;p&gt;
+This gives the following representation of $u$ in terms of the cosine function
+&lt;/p&gt;
+$$u(x)=Re\int_{\R^d}e^{iw\cdot x}\hat{u}(w)\d w=\int_{\R^d}\cos(w\cdot x +b(w))|\hat{u}(w)|\d w,$$&lt;p&gt;
+where
+$\hat{u}(w) = e^{ib(w)}|\hat{u}(w)|$. Let
+&lt;/p&gt;
+$$g(x,w)= \cos(w\cdot x +b(w))\quad \text{and} \quad\rho(w) = |\hat{u}(w)|, $$&lt;p&gt;
+then
+&lt;/p&gt;
+$$u(x) = \int_{\R^d}g(x,w)\rho(w)\d w.$$&lt;p&gt;With Monte-Carlo sampling Lemma, there exits $w_i\in\R^d$ such that
+&lt;/p&gt;
+$$\norm{u-u_N}_{H^m(\Omega)}\lesssim N^{-\frac12}\int_{\R^d}(1+\norm{w})^m|\hat{u}(w)|\d w,\tag{4}$$&lt;p&gt;
+where
+&lt;/p&gt;
+$$u_N = \frac{\|\hat{u}\|_{L^1(\mathbb{R}^d)}}{N}\sum_{i=1}^N\cos(w_i\cdot x+b(w_i)).$$&lt;p&gt;
+In this case, cosine is the activation function.&lt;/p&gt;
+&lt;h3 id=&#34;barron-spetral-space&#34;&gt;Barron spetral space
+&lt;/h3&gt;&lt;p&gt;Given $v\in L^2(\Omega)$, consider all possible extension $v_E:\R^d\to \R$ with $v_E|_{\Omega} = v$ and define the Barron spetral norm for any $s\ge1$:
+&lt;/p&gt;
+$$\norm{v}_{B^s(\Omega)} := \inf_{v_E|{\Omega=v}}\int_{\R^d}(1+\norm{w})^s|\hat{v}_E(w)|\d w$$&lt;p&gt;
+and Barron spetral space
+&lt;/p&gt;
+$$B^s(\Omega):=\{v\in L^2(\Omega):\norm{v}_{B^s(\Omega)}&lt;\infty\}.$$&lt;p&gt;With these definition, (4) can be rewritten as
+&lt;/p&gt;
+$$\norm{u-u_N}_{H^m(\Omega)}\lesssim N^{-\frac12}\norm{u}_{B^s(\Omega)}.$$&lt;p&gt;Lemma 2.5 demonstrates that for any Schwarz function $v$, we have
+&lt;/p&gt;
+$$\norm{u}_{H^m(\Omega)}\lesssim \norm{v}_{B^s(\Omega)} \norm{v}_{H^{m+\frac{d}2+\epsilon}(\Omega)},$$&lt;p&gt;
+where $m\ge 0$ is an integer, $\Omega\subset \R^d$ is a bounded domain and  $\epsilon$ is any positive real number.&lt;/p&gt;
+&lt;h2 id=&#34;approximation-rates-for-shallow-reluk-neural-networks-on-sobolev-spaces-via-the-radon-transform&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.jianguoyun.com/p/DTDnoSwQlsqoDRi41YIGIAA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Approximation Rates for Shallow ReLU$^k$ Neural Networks on Sobolev Spaces via the Radon Transform&lt;/a&gt;
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;Space embedding result (Theorem 1):
+$$W^{s,2}(\Omega)\subset \mathcal{H}(\mathbb{P}_k^d),$$
+where $s=\frac{d+2k+1}2$.&lt;/li&gt;
+&lt;li&gt;Approximation inequality (Corollary 1):
+$$\inf_{f_n\in\Sigma_n^k(\R^d)}\norm{f-f_n}_{L^{\infty}(\Omega)}\le C\norm{f}_{W^{s,2}(\Omega)}n^{-\frac{s}{d}},$$
+where $s=\frac{d+2k+1}2$.&lt;/li&gt;
+&lt;li&gt;Generalization of 2:
+$$\inf_{f_n\in\Sigma_n^k(\R^d)}\norm{f-f_n}_{L^{p}(\Omega)}\le C\norm{f}_{W^{s,p}(\Omega)}n^{-\frac{s}{d}},$$
+where $2\le p\le \infty$ and $0\le s\le \frac{d+2k+1}2$.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;参考文献&#34;&gt;参考文献
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.jianguoyun.com/p/DYb3upYQlsqoDRi31YIGIAA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;The Finite Neuron Method and Convergence Analysis. Xu.  2020&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.jianguoyun.com/p/DTDnoSwQlsqoDRi41YIGIAA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Approximation Rates for Shallow ReLU$^k$ Neural Networks on Sobolev Spaces via the Radon Transform. Xu, et al. . 2024&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
