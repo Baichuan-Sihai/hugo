@@ -14,6 +14,8 @@
         <guid>https://baichuan-blog.netlify.app/p/hugo-markdown%E6%8A%80%E5%B7%A7/</guid>
         <description>&lt;h2 id=&#34;-的渲染&#34;&gt;* 的渲染
 &lt;/h2&gt;&lt;p&gt;Markdown行内公式&lt;code&gt;$a^*b^*$&lt;/code&gt;渲染会出错（两个*间会变成斜体$a^&lt;em&gt;b^&lt;/em&gt;$），改成&lt;code&gt;$a^\*b^\*$&lt;/code&gt;（$a^*b^*$），但这样在vscode中的渲染有问题，一种安全的写法是&lt;code&gt;$a^\ast b^\ast$&lt;/code&gt;（$a^\ast b^\ast$）。&lt;/p&gt;
+&lt;h2 id=&#34;行内公式渲染问题&#34;&gt;行内公式渲染问题
+&lt;/h2&gt;&lt;p&gt;有时候行内公式用&lt;code&gt;$$&lt;/code&gt;渲染不出，可以改用&lt;code&gt;\(\)&lt;/code&gt;的方式。&lt;/p&gt;
 &lt;h2 id=&#34;引用自己的博客文章&#34;&gt;引用自己的博客文章
 &lt;/h2&gt;&lt;p&gt;&lt;code&gt;[](../article-name)&lt;/code&gt;，其中&lt;code&gt;article-name&lt;/code&gt;是要引用的文章名（以&lt;code&gt;url&lt;/code&gt;中的文章名为主）。例如，引用文章&lt;code&gt;Markdown Syntax Guide&lt;/code&gt;时为&lt;code&gt;../markdown-syntax-guide&lt;/code&gt;，效果：&lt;a class=&#34;link&#34; href=&#34;../markdown-syntax-guide&#34; &gt;Markdown Syntax Guide&lt;/a&gt;。&lt;/p&gt;
 &lt;h2 id=&#34;自定义数学命令&#34;&gt;自定义数学命令

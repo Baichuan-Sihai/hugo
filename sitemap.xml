@@ -2,20 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://baichuan-blog.netlify.app/p/physics-informed-machine-learning/</loc>
+    <lastmod>2025-07-17T13:31:17+08:00</lastmod>
+  </url><url>
+    <loc>https://baichuan-blog.netlify.app/tags/piml/</loc>
+    <lastmod>2025-07-17T13:31:17+08:00</lastmod>
+  </url><url>
+    <loc>https://baichuan-blog.netlify.app/post/</loc>
+    <lastmod>2025-07-17T13:31:17+08:00</lastmod>
+  </url><url>
+    <loc>https://baichuan-blog.netlify.app/tags/</loc>
+    <lastmod>2025-07-17T13:31:17+08:00</lastmod>
+  </url><url>
     <loc>https://baichuan-blog.netlify.app/p/finite-neuron-method/</loc>
     <lastmod>2025-07-15T23:49:42+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-blog.netlify.app/tags/fnm/</loc>
     <lastmod>2025-07-15T23:49:42+08:00</lastmod>
   </url><url>
-    <loc>https://baichuan-blog.netlify.app/post/</loc>
-    <lastmod>2025-07-15T23:49:42+08:00</lastmod>
-  </url><url>
-    <loc>https://baichuan-blog.netlify.app/tags/</loc>
-    <lastmod>2025-07-15T23:49:42+08:00</lastmod>
-  </url><url>
     <loc>https://baichuan-blog.netlify.app/categories/</loc>
-    <lastmod>2025-07-15T23:49:42+08:00</lastmod>
+    <lastmod>2025-07-17T13:31:17+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-blog.netlify.app/p/wachspress-coordinates/</loc>
     <lastmod>2025-06-20T15:46:47+08:00</lastmod>
@@ -51,7 +57,7 @@
     <lastmod>2025-06-08T11:18:45+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-blog.netlify.app/p/hugo-markdown%E6%8A%80%E5%B7%A7/</loc>
-    <lastmod>2025-05-27T12:06:51+08:00</lastmod>
+    <lastmod>2025-07-17T13:31:17+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-blog.netlify.app/p/kessler-microphysical-parameterization/</loc>
     <lastmod>2025-05-27T10:34:49+08:00</lastmod>

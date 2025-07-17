@@ -7,7 +7,115 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>百川</copyright>
-        <lastBuildDate>Tue, 15 Jul 2025 23:49:42 +0800</lastBuildDate><atom:link href="https://baichuan-blog.netlify.app/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 17 Jul 2025 13:31:17 +0800</lastBuildDate><atom:link href="https://baichuan-blog.netlify.app/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Physics-Informed Machine Learning</title>
+        <link>https://baichuan-blog.netlify.app/p/physics-informed-machine-learning/</link>
+        <pubDate>Tue, 15 Jul 2025 23:50:17 +0800</pubDate>
+        
+        <guid>https://baichuan-blog.netlify.app/p/physics-informed-machine-learning/</guid>
+        <description>&lt;h2 id=&#34;preliminaries&#34;&gt;Preliminaries
+&lt;/h2&gt;&lt;p&gt;在一个机器学习模型的训练中，有几个基础的组成部分：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Data：数据集，可以做一些前处理来保持某些性质。&lt;/li&gt;
+&lt;li&gt;Model architecture：模型架构，可以嵌入一些先验的物理知识和指导经验。&lt;/li&gt;
+&lt;li&gt;Loss functions：损失函数/优化目标，可以利用给定的ODE/PDE/SDEs设计更好的损失函数或加入正则化项。&lt;/li&gt;
+&lt;li&gt;Optimaization algorithms：优化算法，设计合适的优化方法来增强稳定性或提高收敛速度。&lt;/li&gt;
+&lt;li&gt;interference：推断，可以将物理约束加入到推断算法中，比如加入后处理步。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;neural-solver&#34;&gt;Neural Solver
+&lt;/h2&gt;&lt;p&gt;相较于传统的FEM、FVM等方法，神经网络求解器有两个潜在的优势：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;可以灵活地结合数据和知识。&lt;/li&gt;
+&lt;li&gt;更高效地表示高维函数。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;缺点则是计算效率、精度、收敛性等方面存在一些问题。&lt;/p&gt;
+&lt;p&gt;在neural solver中，最有代表性的莫过于Physics-Informed Nerual Networks (PINNs)，其实就是将物理信息结合到上节提到的神经网络学习中的基础组成部分中的一个或多个。&lt;/p&gt;
+&lt;h3 id=&#34;data&#34;&gt;Data
+&lt;/h3&gt;&lt;p&gt;Data Re-Sampling：从误差更大的区域选择更多配置点(collacation points)。&lt;/p&gt;
+&lt;h3 id=&#34;neural-architectures&#34;&gt;Neural Architectures
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;前处理(嵌入embedding)： 例如用Fourier特征由输入坐标获得嵌入向量，可以更容易学到高频信息。&lt;/li&gt;
+&lt;li&gt;多神经网络：用多个神经网络学习不同函数，如对于Dirichlet边值问题
+$$\begin{cases}\mathcal{F}(u)(\mathbf{x})=0, &amp;x\in\Omega\\u(\mathbf(x))=g(\mathbf{x}),&amp;x\in\p \Omega\end{cases},$$
+将解分解为两个部分
+$$u(\mathbf{x}) = v(\mathbf{x})+D(\mathbf{x})y(\mathbf{x}),$$
+其中$D(\mathbf{x})$再区域边界为0 (如距离函数$\min_{\mathbf{x}_b\in\p \Omega}\norm{\mathbf{x}-\mathbf{x}_b}_2$)，可以用一个神经网络学习；$v(\mathbf{x})$满足边界条件，用第二个神经网络学习；最后利用PDE残量学习$y(\mathbf{x})$。&lt;/li&gt;
+&lt;li&gt;序列神经网络：对于带时序的问题如非定常PDE，可以考虑Recurrent Neural Networks (RNN), Long-Short Term Memeory (LSTM), Gate Recurrent Unit (GRU), Transformer等架构。&lt;/li&gt;
+&lt;li&gt;区域分解：类似区域分解算法的想法，将区域划分为有overlapping的子区域，在每个子区域上求解子优化问题，区域交界处加一些惩罚项进行约束。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;loss-function&#34;&gt;Loss function
+&lt;/h3&gt;&lt;p&gt;损失函数的组成一般可以包含PDE residuals、初边值条件、数据集等。&lt;/p&gt;
+&lt;p&gt;Loss Re-Weighting：损失函数各部分可以通过构造合适的权重组合到一起。&lt;/p&gt;
+&lt;p&gt;一些新奇的目标函数设置：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;结合数值微分： 用数值微分替代一些自动微分项。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;变分形式：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;对于自伴微分算子如$-\Delta$而言，常常可以写成等价的变分形式：
+&lt;/p&gt;
+$$\min_{w}\mathcal{J}(w).$$&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;对于一般的问题，可以类似Petrov-Galerkin的想法，选一个测试函数集$V_K$，构造损失函数：
+&lt;/p&gt;
+$$\mathcal{J}(w) = \frac{1}{K}\sum_{k=1}^K|\langle\mathcal{F}(u_w)(\mathbf{x}),v\rangle_{\Omega}|^2,$$&lt;p&gt;若有边值条件等则再往损失函数中添加相关项。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Weak Adversarial Networks (WAN) 将变分形式表示成了min-max问题：
+&lt;/p&gt;
+$$\min_w\max_{\theta}\frac{\langle\mathcal{F}(u),v_{\theta}\rangle^2}{\norm{v_{\theta}}_{\Omega}^2}.$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;正则化项：$L$-2正则化缓解过拟合现象，$L$-1正则化可以提取稀疏特征，也可以将PDE残差的高阶导项加入正则化项。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;nerual-operator&#34;&gt;Nerual Operator
+&lt;/h2&gt;&lt;p&gt;算子学习方法主要可分为四类： DeepONet、Green&amp;rsquo;s function learning、 grid-based operator learniing和graph-based operator learning。&lt;/p&gt;
+&lt;p&gt;Nerual Operator和前面Neural solver的区别在于算子学习的目标是为ODEs/PDEs学一个代理模型而不是求解具体实例。这也意味着算子学习的输入除了坐标$\mathbf{x}$外还可能包含初边值等条件。&lt;/p&gt;
+&lt;h3 id=&#34;deeponet&#34;&gt;DeepONet
+&lt;/h3&gt;&lt;p&gt;直接将参数$\theta$(初边值等条件)和$\mathbf{x}$作为训练的输入。
+&lt;/p&gt;
+$$G_w(\theta)(\mathbf{x}) = b_0+\sum_{k=1}^p b_k(\theta)t_k(\mathbf{x}),$$&lt;p&gt;
+用两个神经网络分别学习$(b_1,\cdots,b_p)$和$(t_1,\cdot,t_p)$，其中神经网络是可以是FNNs、ResNets或其他架构。&lt;/p&gt;
+&lt;h3 id=&#34;greens-function-learning&#34;&gt;Green&amp;rsquo;s Function learning
+&lt;/h3&gt;&lt;p&gt;考虑线性问题如下：
+&lt;/p&gt;
+$$\begin{cases}\mathcal{F}_L(u) = f,&amp;\mathbf{x}\in\Omega\\\mathcal{B}_L(u) = g, &amp;\mathbf{x}\in\p \Omega\end{cases},$$&lt;p&gt;
+其中$\mathcal{F}_L$和$\mathcal{B}_L$都是线性算子。类似Laplace方程的Green函数法，我们希望找到Green函数\(\mathcal{G}(\mathbf{x},\mathbf{y})\)
+和\(u_{homo}\)使得：
+&lt;/p&gt;
+$$\begin{cases}\mathcal{F}_L(\mathcal{G}(\mathbf{x},\mathbf{y})) = \delta(\mathbf{y}-\mathbf{x}),&amp;\mathbf{x},\mathbf{y}\in\Omega\\\mathcal{B}_L(\mathcal{G}(\mathbf{x},\mathbf{y})) = 0, &amp;\mathbf{x}\in\p \Omega\end{cases},\quad \begin{cases}\mathcal{F}_L(u_{homo}(\mathbf{x})) = 0,&amp;\mathbf{x},\mathbf{y}\in\Omega\\\mathcal{B}_L(u_{homo}(\mathbf{x})) = 0, &amp;\mathbf{x}\in\p \Omega\end{cases}.$$&lt;p&gt;
+此时解可以表示为：
+&lt;/p&gt;
+$$u(\mathbf{x}) = \int_{\Omega}\mathcal{G}(\mathbf{x},\mathbf{y})f(\mathbf{y})\d \mathbf{y}+u_{homo}(\mathbf{x}).$$&lt;p&gt;对于非线性问题，可以学习$u,f$到$v,h$的映射，其中$v,h$满足线性模型，对线性模型用Green函数法。&lt;/p&gt;
+&lt;h3 id=&#34;grid-based-operator-learning&#34;&gt;Grid-based Operator Learning
+&lt;/h3&gt;&lt;p&gt;如果配置点取的是均匀网格上的顶点，学习算子
+&lt;/p&gt;
+$$\tilde{G}:\theta=\{v(\mathbf{x}_i)\}_{i=1}^N\mapsto \{u(\mathbf{x}_i)\}_{i=1}^N.$$&lt;p&gt;
+此时\(\{v(\mathbf{x}_i)\}_{i=1}^N\)和\(\{u(\mathbf{x}_i)\}_{i=1}^N\)可以表示成高维张量(因为网格是规则区域的均匀剖分)，因此$\tilde{G}$可以看成image到image的映射，可以考虑convolutional nerual networks (CNN)等处理图像的方法，也可以考虑应用注意力机制(attention mechanism)。&lt;/p&gt;
+&lt;p&gt;缺点：规则网格，维数灾难。&lt;/p&gt;
+&lt;h3 id=&#34;graph-based-operator-learning&#34;&gt;Graph-based Operator Learning
+&lt;/h3&gt;&lt;p&gt;Grid-based方法中的网格\(\{\mathbf{x}_i\}_{i=1}^N\)
+其实可以用图论中的图\(\mathcal{G}(\mathcal{V},\mathcal{E})\)
+来表示。Our goal is to learn the latent operator G in equation defined above in  a data-driven manner.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Graph nerual operators&lt;/strong&gt;：Inspired by the format of Green&amp;rsquo;s function, Li et al. have introduced a graph kernel network into operator learning. The model can be described as
+&lt;/p&gt;
+$$\begin{aligned}
+&amp;z_0(\mathbf{x}) = P(\mathbf{x},v(\mathbf{x}),v_{\epsilon}(\mathbf{x}),\nabla v_{\epsilon}(\mathbf{x}))+p,\\
+&amp;z_{t+1}(\mathbf{x}) = \sigma(Wz_t(\mathbf{x}))+\int_{\Omega}\kappa_{\phi}(\mathbf{x},\mathbf{y},v(\mathbf{x}),v(\mathbf{y}))z_t(\mathbf{y})\nu_x(\d\mathbf{y})),\\
+&amp;u(\mathbf{x})=Qz_T(\mathbf{x})+q.
+\end{aligned}$$&lt;h2 id=&#34;参考文献&#34;&gt;参考文献
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.jianguoyun.com/p/DTOnWTUQlsqoDRjN6oIGIAA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Physics-Informed Machine Learning A Survey on Problems, Methods and Applications. Hao, et al. . 2023&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        <item>
         <title>Finite Neuron Method</title>
         <link>https://baichuan-blog.netlify.app/p/finite-neuron-method/</link>
         <pubDate>Mon, 14 Jul 2025 22:09:35 +0800</pubDate>
@@ -1250,6 +1358,8 @@ $$&lt;p&gt;
         <guid>https://baichuan-blog.netlify.app/p/hugo-markdown%E6%8A%80%E5%B7%A7/</guid>
         <description>&lt;h2 id=&#34;-的渲染&#34;&gt;* 的渲染
 &lt;/h2&gt;&lt;p&gt;Markdown行内公式&lt;code&gt;$a^*b^*$&lt;/code&gt;渲染会出错（两个*间会变成斜体$a^&lt;em&gt;b^&lt;/em&gt;$），改成&lt;code&gt;$a^\*b^\*$&lt;/code&gt;（$a^*b^*$），但这样在vscode中的渲染有问题，一种安全的写法是&lt;code&gt;$a^\ast b^\ast$&lt;/code&gt;（$a^\ast b^\ast$）。&lt;/p&gt;
+&lt;h2 id=&#34;行内公式渲染问题&#34;&gt;行内公式渲染问题
+&lt;/h2&gt;&lt;p&gt;有时候行内公式用&lt;code&gt;$$&lt;/code&gt;渲染不出，可以改用&lt;code&gt;\(\)&lt;/code&gt;的方式。&lt;/p&gt;
 &lt;h2 id=&#34;引用自己的博客文章&#34;&gt;引用自己的博客文章
 &lt;/h2&gt;&lt;p&gt;&lt;code&gt;[](../article-name)&lt;/code&gt;，其中&lt;code&gt;article-name&lt;/code&gt;是要引用的文章名（以&lt;code&gt;url&lt;/code&gt;中的文章名为主）。例如，引用文章&lt;code&gt;Markdown Syntax Guide&lt;/code&gt;时为&lt;code&gt;../markdown-syntax-guide&lt;/code&gt;，效果：&lt;a class=&#34;link&#34; href=&#34;../markdown-syntax-guide&#34; &gt;Markdown Syntax Guide&lt;/a&gt;。&lt;/p&gt;
 &lt;h2 id=&#34;自定义数学命令&#34;&gt;自定义数学命令
