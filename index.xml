@@ -7,6 +7,61 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>百川</copyright><atom:link href="https://baichuan-blog.netlify.app/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Brouwer&#39;s fixed point theorem</title>
+        <link>https://baichuan-blog.netlify.app/p/brouwers-fixed-point-theorem/</link>
+        <pubDate>Sat, 26 Jul 2025 10:11:05 +0800</pubDate>
+        
+        <guid>https://baichuan-blog.netlify.app/p/brouwers-fixed-point-theorem/</guid>
+        <description>&lt;h2 id=&#34;sprener引理&#34;&gt;Sprener引理
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Sprener染色&lt;/strong&gt;
+对于任意$n$维单纯形，考虑其上的单纯形剖分，我们采用如下方式对剖分得到的所有顶点进行染色：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;$n+1$个顶点用$n+1$种不同的颜色；&lt;/li&gt;
+&lt;li&gt;对于任意子单纯形${i_1,i_2,\cdots,i_k}$，其中$k=1,2,\cdots,n$，$i_1,i_2,\cdots,i_k\in{1,2,\cdots,n+1}$，若一个顶点落在该子单纯形中，则任选顶点集${i_1,i_2,\cdots,i_k}$所染颜色中的一种对该点进行染色。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Sprener引理&lt;/strong&gt;
+$n$维单纯形中的任意一个Sprener染色，必定存在一个子单纯形的顶点集包含所有的$n+1$种颜色。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Proof：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;当$n=1$时，单纯形是一个区间，不妨记为$[0,1]$，区间两端点分别为不同颜色，从左到右顶点的变色次数必为奇数，且端点颜色不同子区间有奇数个。因此必定存在一个子区间，其两个端点颜色不同。&lt;/li&gt;
+&lt;li&gt;假设对于$n=k$，彩虹单纯形（顶点颜色互不相同）数目为奇数。当$n= k+1$时，我们利用归纳法进行证明。设$R$是彩虹单纯形个数，$Q$是恰好有${1,2,\cdots,n}$这$n$种颜色的单纯形个数，$X$是原始单纯形的表面上包含颜色${1,2,\cdots,n}$的面片个数，$Y$是内部面中恰好包含颜色${1,2,\cdots,n}$的面片个数，则观察恰好包含颜色${1,2,\cdots,n}$的面片数量可以得到下面关系式：
+$$R+2Q= X+2Y.$$
+由于原始单纯形表面上包含颜色${1,2,\cdots,n}$的面片只出现在顶点${1,2,\cdots,n}$上，而由归纳假设，该$n-1$维单纯形上的$n-1$维彩虹单纯形有奇数个，即$X$为奇数，因此$R$也为奇数。&lt;/li&gt;
+&lt;li&gt;综上，我们证得彩虹单纯形个数为奇数，因此必定存在。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;brouwer不动点定理&#34;&gt;Brouwer不动点定理
+&lt;/h2&gt;&lt;p&gt;设$M\subset \mathbb{R}^n$是有界凸闭集，$F:M\rightarrow M$是连续函数，则存在不动点$\mathbf{x}_0\in M$，使得$F(\mathbf{x}_0)=\mathbf{x}_0$。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Proof：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;对于一般的$M$，我们可取包含$M$的单纯形$B$，将$F$延拓为$B$上函数$\tilde{F}:B\rightarrow B$，
+&lt;/p&gt;
+$$\tilde{F}(\mathbf{x}) = \argmin_{\mathbf{y}\in M}\norm{\mathbf{x}-\mathbf{y}}.$$&lt;p&gt;
+由于$M$是凸闭集，因此$\tilde{F}$是良定的（右端存在唯一的$y\in M$使得$\norm{\mathbf{x}-\mathbf{y}}$极小），且连续。
+若$\mathbf{x}\in M$，则$\tilde{F}(\mathbf{x}) = \mathbf{x}$，且$\tilde{F}(B)\subset M\subset B$。于是，只要对单纯形的情形证明了结论，则存在$\mathbf{x}_0\in B$，使得$\mathbf{x}_0=\tilde{F}(\mathbf{x}_0)\in M$。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;不妨设$M$为$n$维单纯形，记\(\{\mathbf{v}_i\}_{i=1}^{n+1}\)为$M$的$n+1$个顶点。设\(\{\lambda_i(\mathbf{x})\}_{i=1}^{n+1}\)是点$\mathbf{x}\in M$的重心坐标，则$\sum_{i=1}^{n+1}\lambda_i= 1$。定义\(\tilde{\lambda}_i(\mathbf{x}) = \lambda_i({F}(\mathbf{x}))\)，则\(\sum_{i=1}^{n+1}\tilde{\lambda}_i=1\)。考虑对$M$进行嵌套的单纯形剖分，使得单纯形直径趋于0。由于\(\sum_{i}\lambda_i=\sum_i\tilde{\lambda}_i=1\)，因此剖分中的单纯形顶点可考虑按照顶点$\mathbf{v}_{\argmin{i:\lambda_i\ge \tilde{\lambda_i}}}$染色（对于$M$的顶点$\mathbf{v}_i$，只有$\lambda_i=1$，因此恰好是根据其自身染色，这是自洽的）。这是Sprener染色。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;由Sprener引理，存在彩虹单纯形序列$A_1\supset A_2\supset A_{k-1}\supset A_k\supset \cdots$，$A_i$的直径趋于0。对于$A_i$，各顶点适当排序后记为\(\{\mathbf{v}_{j}^i\}_{j=1}^{n+1}\)，有
+&lt;/p&gt;
+\[\lambda_j(\mathbf{v}_j^i)\ge\tilde\lambda_j(\mathbf{v}_j^i)\]&lt;p&gt;
+由致密性定理，对每个$j$，存在$\mathbf{v}_j^{\ast}$，使得\(\tilde\lambda(\mathbf{v}_j^{\ast})\le \lambda(\mathbf{v}_j^{\ast}) \)。又由闭区间套定理可知所有\(\mathbf{v}_j^{\ast}\)都恰好是彩虹单纯形序列的极限点$\mathbf{v}^*$。因此&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+\[\tilde\lambda_j(\mathbf{v}^{\ast})\le \lambda_j(\mathbf{v}^{\ast}),\quad  j=1,2,\cdots, n+1.\]&lt;p&gt;
+由于
+&lt;/p&gt;
+\[\sum_{j=1}^{n+1}\tilde\lambda_j=\sum_{j=1}^{n+1}\lambda_j=1,\]&lt;p&gt;
+因此
+&lt;/p&gt;
+\[\tilde\lambda_j(\mathbf{v}^{\ast})= \lambda_j(\mathbf{v}^{\ast}),\quad  j=1,2,\cdots, n+1,\]&lt;p&gt;
+即
+&lt;/p&gt;
+\[F(\mathbf{v}^{\ast})=\mathbf{v}^{\ast}.\]</description>
+        </item>
+        <item>
         <title>动手学深度学习</title>
         <link>https://baichuan-blog.netlify.app/p/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</link>
         <pubDate>Fri, 18 Jul 2025 09:20:29 +0800</pubDate>
