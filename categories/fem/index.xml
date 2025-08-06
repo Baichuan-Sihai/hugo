@@ -7,6 +7,134 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>百川</copyright><atom:link href="https://baichuan-blog.netlify.app/categories/fem/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>H(div) and H(curl) finite elements</title>
+        <link>https://baichuan-blog.netlify.app/p/hdiv-and-hcurl-finite-elements/</link>
+        <pubDate>Fri, 01 Aug 2025 16:40:59 +0800</pubDate>
+        
+        <guid>https://baichuan-blog.netlify.app/p/hdiv-and-hcurl-finite-elements/</guid>
+        <description>&lt;h2 id=&#34;hdiv-finite-elements&#34;&gt;H(div) finite elements
+&lt;/h2&gt;&lt;h3 id=&#34;raviart-thomas-finite-elements&#34;&gt;Raviart-Thomas finite elements
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;多项式空间：\(\mathbb{RT}_{k,d} := \mathbf{P}_{k,d}\oplus \mathbf{x}\mathrm{P}^H_{k,d}\subset \mathbf{P}_{k+1,d}\)，&lt;/p&gt;
+&lt;p&gt;其中$\mathrm{P}^H_{k,d}$是$d$元齐次多项式全体，\(\mathrm{dim}(\mathrm{P}^H_{k,d})=\begin{pmatrix}k+d-1\\ d-1\end{pmatrix}\)，\(\mathrm{dim}(\mathrm{P}_{k,d})=\begin{pmatrix}k+d\\d\end{pmatrix}\)（由组合技巧隔板法易证）。&lt;/p&gt;
+\[\begin{aligned}\mathrm{dim}\mathbb{RT}_{k,d}
+	=&amp;d\cdot\mathrm{dim}(\mathrm{P}_{k,d})+\mathrm{dim}(\mathrm{P}^H_{k,d})\\
+	=&amp;\frac{d(k+d)!}{k!d!}+\begin{pmatrix}k+d-1\\ k\end{pmatrix}\\
+	=&amp;(k+d+1)\begin{pmatrix}k+d-1\\ k\end{pmatrix}=(k+d+1)\begin{pmatrix}k+d-1\\ d-1\end{pmatrix}.
+	\end{aligned}\]&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;自由度：$\forall\mathbf{v}\in \mathbb{RT}_{k,d} $，&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;face：\(\sigma_{F,j}(\mathbf{v})=\int_F\mathbf{v}\cdot \mathbf{n}_{F}q_j\d s,\quad \forall F\in\mathcal{F}_K,\  q_j\in \mathrm{P}_{k,d-1}.\)&lt;/li&gt;
+&lt;li&gt;cell：\(\sigma_{K,i,j}(\mathbf{v})=\int_K\mathbf{v}\cdot \mathbf{n}_{F_i}\psi_j\d \cuti{x},\quad \forall i\in\{1,\cdots,d\},\  \psi_j\in \mathrm{P}_{k-1,d}.\)&lt;/li&gt;
+&lt;/ul&gt;
+\[\begin{aligned}&amp;\mathrm{card}\{\sigma_{F,j}\}=(d+1)\mathrm{dim}(\mathrm{P}_{k,d-1}) = (d+1)\begin{pmatrix}k+d-1\\ d-1\end{pmatrix}\\
+  &amp;\mathrm{card}\{\sigma_{K,i,j}\}=d\cdot\mathrm{dim}(\mathrm{P}_{k-1,d})=k\begin{pmatrix}k+d-1\\ d-1\end{pmatrix}\\
+  &amp;\mathrm{card}\{\sigma_{F,j}\}+\mathrm{card}\{\sigma_{K,i,j}\}=\mathrm{dim}\mathbb{RT}_{k,d}
+  \end{aligned}
+  \]&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;\(\forall\mathbf{v}\in \mathbb{RT}_{k,d}\)，&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;\(\nabla\cdot\mathbf{v}\in \mathrm{P}_{k,d}\)，&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;If \(\mathbf{v}\) is divergence-free, then \(\mathbf{v}\in \mathbf{P}_{k,d}.\)&lt;/p&gt;
+\[\nabla\cdot(q(\mathbf{x})\mathbf{x}) =\nabla q(\mathbf{x})\cdot\mathbf{x}+q(\mathbf{x})\cdot d=(k+d)q(\mathbf{x}),\quad \forall q\in\mathrm{P}_{k,d}^H.\]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;brezzi-douglas-marini-elements&#34;&gt;Brezzi-Douglas-Marini elements
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;多项式空间：\(\mathbf{P}_{k,d}\subsetneq \mathbb{RT}_{k,d}\).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;自由度：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;face：与\(\mathbb{RT}_{k,d}\)相同&lt;/li&gt;
+&lt;li&gt;cell： \(\sigma_{K,i,j}(\mathbf{v})=\int_K\mathbf{v}\cdot\boldsymbol{\psi}_j\d \cuti{x},\quad \forall \psi_j\in \mathbb{N}_{k-2,d}.\)&lt;/li&gt;
+&lt;/ul&gt;
+\[\begin{aligned}
+  \mathrm{card}\{\sigma_{K,i,j}\}=&amp;\mathrm{dim}(\mathbb{N}_{k-2,d})\\=&amp;\frac{((k-2)+d+1)!}{(k-2)!(d-1)!k}\\
+  =&amp;(k-1)\begin{pmatrix}k+d-1\\ d\end{pmatrix}\\
+  \mathrm{card}\{\sigma_{F,j}\}\ +\ &amp;  \mathrm{card}\{\sigma_{K,i,j}\}=d\begin{pmatrix}k+d\\ d\end{pmatrix}\\
+  =&amp;\mathrm{dim}(\mathbf{P}_{k,d}).
+  \end{aligned}
+  \]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;hcurl-finite-elements&#34;&gt;H(curl) finite elements
+&lt;/h2&gt;&lt;h3 id=&#34;nedelec-finite-elements&#34;&gt;Nédélec finite elements
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;多项式空间：\(\mathbb{N}_{k,d}=\mathbf{P}_{k,d}\oplus \mathbb{S}_{k+1,d}\subset\mathbf{P}_{k+2,d}\)，&lt;/p&gt;
+&lt;p&gt;其中\(\mathbb{S}_{k+1,d}:=\{\mathbf{q}\in\mathbf{P}^H_{k+1,d}:\mathbf{q}(\mathbf{x})\cdot\mathbf{x}=0\}\)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;\(\phi:\mathbf{P}^H_{k,d}\rightarrow \mathrm{P}^H_{k+1,d},\mathbf{q}\mapsto \mathbf{x}\cdot \mathbf{q}(\mathbf{x})\)是满射。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+\[\begin{aligned}
+	\mathrm{dim}(\mathbb{S}_{k,d})&amp; =\mathrm{dim}(\mathrm{ker}(\phi))\\&amp;= \mathrm{dim}(\mathbf{P}^H_{k,d})-\mathrm{dim(Im}(\phi))\\
+	&amp;=d\frac{(k+d-1)!}{k!(d-1)!}-\frac{(k+d)!}{(k+1)!(d-1)!}\\
+	&amp; = k\frac{(k+d-1)!}{(k+1)!(d-2)!}\end{aligned}\]&lt;/li&gt;
+&lt;li&gt;
+\[\begin{aligned}\mathrm{dim}(\mathbb{N}_{k,d})&amp;=d\frac{(k+d)!}{k!d!}+(k+1)\frac{(k+d)!}{(k+2)!(d-2)!}\\&amp;=\frac{(k+d+1)!}{k!(d-1)!(k+2)}\end{aligned}\]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;自由度：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;$d=2$，&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;edge：\(\sigma_{E,j}(\mathbf{v})=\int_{E}\mathbf{v}\cdot\mathbf{t}_E q_j \d l,\quad \forall E\in\mathcal{E}_K,\ q_j\in \mathrm{P}_{k,1}\)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;cell：\(\sigma_{K,i,j}(\mathbf{v})=\int_{F}\mathbf{v}\cdot\mathbf{t}_{K,i} \psi_j \d \mathbf{x},\quad \forall i=1,2, \ \psi_j\in \mathrm{P}_{k-1,2}\)
+&lt;/p&gt;
+\[\begin{aligned}&amp;\mathrm{card}\{\sigma_{E,j}\}+\mathrm{card}\{\sigma_{E,j}\}\\=&amp;3(k+1)+2\frac{(k+1)k}{2}\\
+  =&amp;(k+1)(k+3)\\
+  =&amp;\mathrm{dim}(\mathbb{N}_{k,d})\end{aligned}\]&lt;p&gt;\(\mathbb{N}_{k,2}=R_{\frac{\pi}{2}}(\mathbb{RT}_{k,2})\)，即R-T元的旋转。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$d=3$，&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;edge：\(\sigma_{E,j}(\mathbf{v})=\int_{E}\mathbf{v}\cdot\mathbf{t}_E q_j \d l,\quad \forall E\in\mathcal{E}_K,\ q_j\in \mathrm{P}_{k,1}\)&lt;/li&gt;
+&lt;li&gt;face：\(\sigma_{F,i,j}(\mathbf{v})=\int_{F}\mathbf{v}\cdot\mathbf{t}_{K,i} \psi_j \d s,\quad \forall i=1,2,\  \psi_j\in \mathrm{P}_{k-1,2}\)&lt;/li&gt;
+&lt;li&gt;cell：\(\sigma_{K,i,j}(\mathbf{v})=\int_{F}\mathbf{v}\cdot\mathbf{t}_{K,i} \varphi_j \d \mathbf{x},\quad \forall i=1,2,3,\  \varphi_j\in \mathrm{P}_{k-2,3}\)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;\(\forall \mathbf{v}\in\mathbb{N}_{k,d}\)，&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;$\nabla\times \mathbf{v}\in\mathbf{P}_{k,d}$，&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;If \(\mathbf{v}\) is curl-free, then there exits $q\in\mathrm{P}_{k+1,d}$ such that \(\mathbf{v}=\nabla q\) and \(\mathbf{v}\in\mathbf{P}_{k,d}\).&lt;/p&gt;
+&lt;p&gt;无旋场是有势场，$q(\mathbf{x})=\int_{\mathbf{x}_0}^{\mathbf{x}}\mathbf{v}\cdot\mathbf{t}\d l$，参见浅水方程笔记中的场论一节[2]。因此$q$仍是多项式。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;参考文献&#34;&gt;参考文献
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.jianguoyun.com/p/DSlLaskQlsqoDRiK-IQGIAA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Finite Elements I. Ch 14-15.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.jianguoyun.com/p/DfD8y2cQ_6nhCxik94QGIAA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Shallow Water. Section 1 场论.&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        <item>
         <title>Wachspress Coordinates</title>
         <link>https://baichuan-blog.netlify.app/p/wachspress-coordinates/</link>
         <pubDate>Fri, 20 Jun 2025 10:56:39 +0800</pubDate>

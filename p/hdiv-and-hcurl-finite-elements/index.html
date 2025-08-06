@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Sprener引理 Sprener染色 对于任意$n$维单纯形，考虑其上的单纯形剖分，我们采用如下方式对剖分得到的所有顶点进行染色：\n$n+1$个顶点用$n+1$种不同的颜色； 对于任意子单纯形${i_1,i_2,\\cdots,i_k}$，其中$k=1,2,\\cdots,n$，$i_1,i_2,\\cdots,i_k\\in{1,2,\\cdots,n+1}$，若一个顶点落在该子单纯形中，则任选顶点集${i_1,i_2,\\cdots,i_k}$所染颜色中的一种对该点进行染色。 Sprener引理 $n$维单纯形中的任意一个Sprener染色，必定存在一个子单纯形的顶点集包含所有的$n+1$种颜色。\n">
-<title>Brouwer&#39;s fixed point theorem</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="RT, BDM, Nédélec">
+<title>H(div) and H(curl) finite elements</title>
 
-<link rel='canonical' href='https://baichuan-blog.netlify.app/p/brouwers-fixed-point-theorem/'>
+<link rel='canonical' href='https://baichuan-blog.netlify.app/p/hdiv-and-hcurl-finite-elements/'>
 
-<link rel="stylesheet" href="/scss/style.min.581b0ff8e16d4ced90d8d155763886e081d6661e0e2b431242ff9dd44eae3a90.css"><meta property='og:title' content="Brouwer's fixed point theorem">
-<meta property='og:description' content="Sprener引理 Sprener染色 对于任意$n$维单纯形，考虑其上的单纯形剖分，我们采用如下方式对剖分得到的所有顶点进行染色：\n$n+1$个顶点用$n+1$种不同的颜色； 对于任意子单纯形${i_1,i_2,\\cdots,i_k}$，其中$k=1,2,\\cdots,n$，$i_1,i_2,\\cdots,i_k\\in{1,2,\\cdots,n+1}$，若一个顶点落在该子单纯形中，则任选顶点集${i_1,i_2,\\cdots,i_k}$所染颜色中的一种对该点进行染色。 Sprener引理 $n$维单纯形中的任意一个Sprener染色，必定存在一个子单纯形的顶点集包含所有的$n+1$种颜色。\n">
-<meta property='og:url' content='https://baichuan-blog.netlify.app/p/brouwers-fixed-point-theorem/'>
+<link rel="stylesheet" href="/scss/style.min.581b0ff8e16d4ced90d8d155763886e081d6661e0e2b431242ff9dd44eae3a90.css"><meta property='og:title' content="H(div) and H(curl) finite elements">
+<meta property='og:description' content="RT, BDM, Nédélec">
+<meta property='og:url' content='https://baichuan-blog.netlify.app/p/hdiv-and-hcurl-finite-elements/'>
 <meta property='og:site_name' content='百川的小屋'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-07-26T10:11:05&#43;08:00'/><meta property='article:modified_time' content='2025-07-26T11:45:19&#43;08:00'/>
-<meta name="twitter:title" content="Brouwer's fixed point theorem">
-<meta name="twitter:description" content="Sprener引理 Sprener染色 对于任意$n$维单纯形，考虑其上的单纯形剖分，我们采用如下方式对剖分得到的所有顶点进行染色：\n$n+1$个顶点用$n+1$种不同的颜色； 对于任意子单纯形${i_1,i_2,\\cdots,i_k}$，其中$k=1,2,\\cdots,n$，$i_1,i_2,\\cdots,i_k\\in{1,2,\\cdots,n+1}$，若一个顶点落在该子单纯形中，则任选顶点集${i_1,i_2,\\cdots,i_k}$所染颜色中的一种对该点进行染色。 Sprener引理 $n$维单纯形中的任意一个Sprener染色，必定存在一个子单纯形的顶点集包含所有的$n+1$种颜色。\n">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-08-01T16:40:59&#43;08:00'/><meta property='article:modified_time' content='2025-08-06T10:09:56&#43;08:00'/>
+<meta name="twitter:title" content="H(div) and H(curl) finite elements">
+<meta name="twitter:description" content="RT, BDM, Nédélec">
     <link rel="shortcut icon" href="/favicon2.ico" />
 
     </head>
@@ -283,8 +283,18 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#sprener引理">Sprener引理</a></li>
-    <li><a href="#brouwer不动点定理">Brouwer不动点定理</a></li>
+    <li><a href="#hdiv-finite-elements">H(div) finite elements</a>
+      <ol>
+        <li><a href="#raviart-thomas-finite-elements">Raviart-Thomas finite elements</a></li>
+        <li><a href="#brezzi-douglas-marini-elements">Brezzi-Douglas-Marini elements</a></li>
+      </ol>
+    </li>
+    <li><a href="#hcurl-finite-elements">H(curl) finite elements</a>
+      <ol>
+        <li><a href="#nedelec-finite-elements">Nédélec finite elements</a></li>
+      </ol>
+    </li>
+    <li><a href="#参考文献">参考文献</a></li>
   </ol>
 </nav>
         </div>
@@ -301,12 +311,24 @@
 
     <div class="article-details">
     
+    <header class="article-category">
+        
+            <a href="/categories/fem/" style="background-color: #7AC5CD; color: #fff;">
+                FEM
+            </a>
+        
+    </header>
+    
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/brouwers-fixed-point-theorem/">Brouwer&#39;s fixed point theorem</a>
+            <a href="/p/hdiv-and-hcurl-finite-elements/">H(div) and H(curl) finite elements</a>
         </h2>
     
+        
+        <h3 class="article-subtitle">
+            RT, BDM, Nédélec
+        </h3>
         
     </div>
 
@@ -323,14 +345,14 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-					<time class="article-time--published">2025-07-26 10:11</time>
+					<time class="article-time--published">2025-08-01 16:40</time>
 				</div>
 			
 
 			
 			
 						<span class="article-time--final-update">
-							最后更新于 <time class="article-time--updated" datetime="2025-07-26 11:45:19 &#43;0800 &#43;0800" title="2025-07-26 11:45:19 &#43;0800 &#43;0800">2025-07-26 11:45</time>
+							最后更新于 <time class="article-time--updated" datetime="2025-08-06 10:09:56 &#43;0800 &#43;0800" title="2025-08-06 10:09:56 &#43;0800 &#43;0800">2025-08-06 10:09</time>
 						</span>
 
 			
@@ -345,54 +367,127 @@
     <section class="article-content">
     
     
-    <h2 id="sprener引理">Sprener引理
-</h2><p><strong>Sprener染色</strong>
-对于任意$n$维单纯形，考虑其上的单纯形剖分，我们采用如下方式对剖分得到的所有顶点进行染色：</p>
-<ol>
-<li>$n+1$个顶点用$n+1$种不同的颜色；</li>
-<li>对于任意子单纯形${i_1,i_2,\cdots,i_k}$，其中$k=1,2,\cdots,n$，$i_1,i_2,\cdots,i_k\in{1,2,\cdots,n+1}$，若一个顶点落在该子单纯形中，则任选顶点集${i_1,i_2,\cdots,i_k}$所染颜色中的一种对该点进行染色。</li>
-</ol>
-<p><strong>Sprener引理</strong>
-$n$维单纯形中的任意一个Sprener染色，必定存在一个子单纯形的顶点集包含所有的$n+1$种颜色。</p>
-<p><strong>Proof：</strong></p>
-<ol>
-<li>当$n=1$时，单纯形是一个区间，不妨记为$[0,1]$，区间两端点分别为不同颜色，从左到右顶点的变色次数必为奇数，且端点颜色不同子区间有奇数个。因此必定存在一个子区间，其两个端点颜色不同。</li>
-<li>假设对于$n=k$，彩虹单纯形（顶点颜色互不相同）数目为奇数。当$n= k+1$时，我们利用归纳法进行证明。设$R$是彩虹单纯形个数，$Q$是恰好有${1,2,\cdots,n}$这$n$种颜色的单纯形个数，$X$是原始单纯形的表面上包含颜色${1,2,\cdots,n}$的面片个数，$Y$是内部面中恰好包含颜色${1,2,\cdots,n}$的面片个数，则观察恰好包含颜色${1,2,\cdots,n}$的面片数量可以得到下面关系式：
-$$R+2Q= X+2Y.$$
-由于原始单纯形表面上包含颜色${1,2,\cdots,n}$的面片只出现在顶点${1,2,\cdots,n}$上，而由归纳假设，该$n-1$维单纯形上的$n-1$维彩虹单纯形有奇数个，即$X$为奇数，因此$R$也为奇数。</li>
-<li>综上，我们证得彩虹单纯形个数为奇数，因此必定存在。</li>
-</ol>
-<h2 id="brouwer不动点定理">Brouwer不动点定理
-</h2><p>设$M\subset \mathbb{R}^n$是有界凸闭集，$F:M\rightarrow M$是连续函数，则存在不动点$\mathbf{x}_0\in M$，使得$F(\mathbf{x}_0)=\mathbf{x}_0$。</p>
-<p><strong>Proof：</strong></p>
-<ol>
+    <h2 id="hdiv-finite-elements">H(div) finite elements
+</h2><h3 id="raviart-thomas-finite-elements">Raviart-Thomas finite elements
+</h3><ul>
 <li>
-<p>对于一般的$M$，我们可取包含$M$的单纯形$B$，将$F$延拓为$B$上函数$\tilde{F}:B\rightarrow B$，
-</p>
-$$\tilde{F}(\mathbf{x}) = \argmin_{\mathbf{y}\in M}\norm{\mathbf{x}-\mathbf{y}}.$$<p>
-由于$M$是凸闭集，因此$\tilde{F}$是良定的（右端存在唯一的$y\in M$使得$\norm{\mathbf{x}-\mathbf{y}}$极小），且连续。
-若$\mathbf{x}\in M$，则$\tilde{F}(\mathbf{x}) = \mathbf{x}$，且$\tilde{F}(B)\subset M\subset B$。于是，只要对单纯形的情形证明了结论，则存在$\mathbf{x}_0\in B$，使得$\mathbf{x}_0=\tilde{F}(\mathbf{x}_0)\in M$。</p>
+<p>多项式空间：\(\mathbb{RT}_{k,d} := \mathbf{P}_{k,d}\oplus \mathbf{x}\mathrm{P}^H_{k,d}\subset \mathbf{P}_{k+1,d}\)，</p>
+<p>其中$\mathrm{P}^H_{k,d}$是$d$元齐次多项式全体，\(\mathrm{dim}(\mathrm{P}^H_{k,d})=\begin{pmatrix}k+d-1\\ d-1\end{pmatrix}\)，\(\mathrm{dim}(\mathrm{P}_{k,d})=\begin{pmatrix}k+d\\d\end{pmatrix}\)（由组合技巧隔板法易证）。</p>
+\[\begin{aligned}\mathrm{dim}\mathbb{RT}_{k,d}
+	=&d\cdot\mathrm{dim}(\mathrm{P}_{k,d})+\mathrm{dim}(\mathrm{P}^H_{k,d})\\
+	=&\frac{d(k+d)!}{k!d!}+\begin{pmatrix}k+d-1\\ k\end{pmatrix}\\
+	=&(k+d+1)\begin{pmatrix}k+d-1\\ k\end{pmatrix}=(k+d+1)\begin{pmatrix}k+d-1\\ d-1\end{pmatrix}.
+	\end{aligned}\]</li>
+<li>
+<p>自由度：$\forall\mathbf{v}\in \mathbb{RT}_{k,d} $，</p>
+<ul>
+<li>face：\(\sigma_{F,j}(\mathbf{v})=\int_F\mathbf{v}\cdot \mathbf{n}_{F}q_j\d s,\quad \forall F\in\mathcal{F}_K,\  q_j\in \mathrm{P}_{k,d-1}.\)</li>
+<li>cell：\(\sigma_{K,i,j}(\mathbf{v})=\int_K\mathbf{v}\cdot \mathbf{n}_{F_i}\psi_j\d \cuti{x},\quad \forall i\in\{1,\cdots,d\},\  \psi_j\in \mathrm{P}_{k-1,d}.\)</li>
+</ul>
+\[\begin{aligned}&\mathrm{card}\{\sigma_{F,j}\}=(d+1)\mathrm{dim}(\mathrm{P}_{k,d-1}) = (d+1)\begin{pmatrix}k+d-1\\ d-1\end{pmatrix}\\
+  &\mathrm{card}\{\sigma_{K,i,j}\}=d\cdot\mathrm{dim}(\mathrm{P}_{k-1,d})=k\begin{pmatrix}k+d-1\\ d-1\end{pmatrix}\\
+  &\mathrm{card}\{\sigma_{F,j}\}+\mathrm{card}\{\sigma_{K,i,j}\}=\mathrm{dim}\mathbb{RT}_{k,d}
+  \end{aligned}
+  \]</li>
+<li>
+<p>\(\forall\mathbf{v}\in \mathbb{RT}_{k,d}\)，</p>
+<ul>
+<li>
+<p>\(\nabla\cdot\mathbf{v}\in \mathrm{P}_{k,d}\)，</p>
 </li>
 <li>
-<p>不妨设$M$为$n$维单纯形，记\(\{\mathbf{v}_i\}_{i=1}^{n+1}\)为$M$的$n+1$个顶点。设\(\{\lambda_i(\mathbf{x})\}_{i=1}^{n+1}\)是点$\mathbf{x}\in M$的重心坐标，则$\sum_{i=1}^{n+1}\lambda_i= 1$。定义\(\tilde{\lambda}_i(\mathbf{x}) = \lambda_i({F}(\mathbf{x}))\)，则\(\sum_{i=1}^{n+1}\tilde{\lambda}_i=1\)。考虑对$M$进行嵌套的单纯形剖分，使得单纯形直径趋于0。由于\(\sum_{i}\lambda_i=\sum_i\tilde{\lambda}_i=1\)，因此剖分中的单纯形顶点可考虑按照顶点$\mathbf{v}_{\argmin{i:\lambda_i\ge \tilde{\lambda_i}}}$染色（对于$M$的顶点$\mathbf{v}_i$，只有$\lambda_i=1$，因此恰好是根据其自身染色，这是自洽的）。这是Sprener染色。</p>
+<p>If \(\mathbf{v}\) is divergence-free, then \(\mathbf{v}\in \mathbf{P}_{k,d}.\)</p>
+\[\nabla\cdot(q(\mathbf{x})\mathbf{x}) =\nabla q(\mathbf{x})\cdot\mathbf{x}+q(\mathbf{x})\cdot d=(k+d)q(\mathbf{x}),\quad \forall q\in\mathrm{P}_{k,d}^H.\]</li>
+</ul>
+</li>
+</ul>
+<h3 id="brezzi-douglas-marini-elements">Brezzi-Douglas-Marini elements
+</h3><ul>
+<li>
+<p>多项式空间：\(\mathbf{P}_{k,d}\subsetneq \mathbb{RT}_{k,d}\).</p>
 </li>
 <li>
-<p>由Sprener引理，存在彩虹单纯形序列$A_1\supset A_2\supset A_{k-1}\supset A_k\supset \cdots$，$A_i$的直径趋于0。对于$A_i$，各顶点适当排序后记为\(\{\mathbf{v}_{j}^i\}_{j=1}^{n+1}\)，有
+<p>自由度：</p>
+<ul>
+<li>face：与\(\mathbb{RT}_{k,d}\)相同</li>
+<li>cell： \(\sigma_{K,i,j}(\mathbf{v})=\int_K\mathbf{v}\cdot\boldsymbol{\psi}_j\d \cuti{x},\quad \forall \psi_j\in \mathbb{N}_{k-2,d}.\)</li>
+</ul>
+\[\begin{aligned}
+  \mathrm{card}\{\sigma_{K,i,j}\}=&\mathrm{dim}(\mathbb{N}_{k-2,d})\\=&\frac{((k-2)+d+1)!}{(k-2)!(d-1)!k}\\
+  =&(k-1)\begin{pmatrix}k+d-1\\ d\end{pmatrix}\\
+  \mathrm{card}\{\sigma_{F,j}\}\ +\ &  \mathrm{card}\{\sigma_{K,i,j}\}=d\begin{pmatrix}k+d\\ d\end{pmatrix}\\
+  =&\mathrm{dim}(\mathbf{P}_{k,d}).
+  \end{aligned}
+  \]</li>
+</ul>
+<h2 id="hcurl-finite-elements">H(curl) finite elements
+</h2><h3 id="nedelec-finite-elements">Nédélec finite elements
+</h3><ul>
+<li>
+<p>多项式空间：\(\mathbb{N}_{k,d}=\mathbf{P}_{k,d}\oplus \mathbb{S}_{k+1,d}\subset\mathbf{P}_{k+2,d}\)，</p>
+<p>其中\(\mathbb{S}_{k+1,d}:=\{\mathbf{q}\in\mathbf{P}^H_{k+1,d}:\mathbf{q}(\mathbf{x})\cdot\mathbf{x}=0\}\)</p>
+<ul>
+<li>
+<p>\(\phi:\mathbf{P}^H_{k,d}\rightarrow \mathrm{P}^H_{k+1,d},\mathbf{q}\mapsto \mathbf{x}\cdot \mathbf{q}(\mathbf{x})\)是满射。</p>
+</li>
+<li>
+\[\begin{aligned}
+	\mathrm{dim}(\mathbb{S}_{k,d})& =\mathrm{dim}(\mathrm{ker}(\phi))\\&= \mathrm{dim}(\mathbf{P}^H_{k,d})-\mathrm{dim(Im}(\phi))\\
+	&=d\frac{(k+d-1)!}{k!(d-1)!}-\frac{(k+d)!}{(k+1)!(d-1)!}\\
+	& = k\frac{(k+d-1)!}{(k+1)!(d-2)!}\end{aligned}\]</li>
+<li>
+\[\begin{aligned}\mathrm{dim}(\mathbb{N}_{k,d})&=d\frac{(k+d)!}{k!d!}+(k+1)\frac{(k+d)!}{(k+2)!(d-2)!}\\&=\frac{(k+d+1)!}{k!(d-1)!(k+2)}\end{aligned}\]</li>
+</ul>
+</li>
+<li>
+<p>自由度：</p>
+<ol>
+<li>
+<p>$d=2$，</p>
+<ul>
+<li>
+<p>edge：\(\sigma_{E,j}(\mathbf{v})=\int_{E}\mathbf{v}\cdot\mathbf{t}_E q_j \d l,\quad \forall E\in\mathcal{E}_K,\ q_j\in \mathrm{P}_{k,1}\)</p>
+</li>
+<li>
+<p>cell：\(\sigma_{K,i,j}(\mathbf{v})=\int_{F}\mathbf{v}\cdot\mathbf{t}_{K,i} \psi_j \d \mathbf{x},\quad \forall i=1,2, \ \psi_j\in \mathrm{P}_{k-1,2}\)
 </p>
-\[\lambda_j(\mathbf{v}_j^i)\ge\tilde\lambda_j(\mathbf{v}_j^i)\]<p>
-由致密性定理，对每个$j$，存在$\mathbf{v}_j^{\ast}$，使得\(\tilde\lambda(\mathbf{v}_j^{\ast})\le \lambda(\mathbf{v}_j^{\ast}) \)。又由闭区间套定理可知所有\(\mathbf{v}_j^{\ast}\)都恰好是彩虹单纯形序列的极限点$\mathbf{v}^*$。因此</p>
+\[\begin{aligned}&\mathrm{card}\{\sigma_{E,j}\}+\mathrm{card}\{\sigma_{E,j}\}\\=&3(k+1)+2\frac{(k+1)k}{2}\\
+  =&(k+1)(k+3)\\
+  =&\mathrm{dim}(\mathbb{N}_{k,d})\end{aligned}\]<p>\(\mathbb{N}_{k,2}=R_{\frac{\pi}{2}}(\mathbb{RT}_{k,2})\)，即R-T元的旋转。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>$d=3$，</p>
+<ul>
+<li>edge：\(\sigma_{E,j}(\mathbf{v})=\int_{E}\mathbf{v}\cdot\mathbf{t}_E q_j \d l,\quad \forall E\in\mathcal{E}_K,\ q_j\in \mathrm{P}_{k,1}\)</li>
+<li>face：\(\sigma_{F,i,j}(\mathbf{v})=\int_{F}\mathbf{v}\cdot\mathbf{t}_{K,i} \psi_j \d s,\quad \forall i=1,2,\  \psi_j\in \mathrm{P}_{k-1,2}\)</li>
+<li>cell：\(\sigma_{K,i,j}(\mathbf{v})=\int_{F}\mathbf{v}\cdot\mathbf{t}_{K,i} \varphi_j \d \mathbf{x},\quad \forall i=1,2,3,\  \varphi_j\in \mathrm{P}_{k-2,3}\)</li>
+</ul>
 </li>
 </ol>
-\[\tilde\lambda_j(\mathbf{v}^{\ast})\le \lambda_j(\mathbf{v}^{\ast}),\quad  j=1,2,\cdots, n+1.\]<p>
-由于
-</p>
-\[\sum_{j=1}^{n+1}\tilde\lambda_j=\sum_{j=1}^{n+1}\lambda_j=1,\]<p>
-因此
-</p>
-\[\tilde\lambda_j(\mathbf{v}^{\ast})= \lambda_j(\mathbf{v}^{\ast}),\quad  j=1,2,\cdots, n+1,\]<p>
-即
-</p>
-\[F(\mathbf{v}^{\ast})=\mathbf{v}^{\ast}.\]
+</li>
+<li>
+<p>\(\forall \mathbf{v}\in\mathbb{N}_{k,d}\)，</p>
+<ul>
+<li>
+<p>$\nabla\times \mathbf{v}\in\mathbf{P}_{k,d}$，</p>
+</li>
+<li>
+<p>If \(\mathbf{v}\) is curl-free, then there exits $q\in\mathrm{P}_{k+1,d}$ such that \(\mathbf{v}=\nabla q\) and \(\mathbf{v}\in\mathbf{P}_{k,d}\).</p>
+<p>无旋场是有势场，$q(\mathbf{x})=\int_{\mathbf{x}_0}^{\mathbf{x}}\mathbf{v}\cdot\mathbf{t}\d l$，参见浅水方程笔记中的场论一节[2]。因此$q$仍是多项式。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="参考文献">参考文献
+</h2><ol>
+<li><a class="link" href="https://www.jianguoyun.com/p/DSlLaskQlsqoDRiK-IQGIAA"  target="_blank" rel="noopener"
+    >Finite Elements I. Ch 14-15.</a></li>
+<li><a class="link" href="https://www.jianguoyun.com/p/DfD8y2cQ_6nhCxik94QGIAA"  target="_blank" rel="noopener"
+    >Shallow Water. Section 1 场论.</a></li>
+</ol>
+
 </section>
 
 
@@ -462,6 +557,54 @@ $$\tilde{F}(\mathbf{x}) = \argmin_{\mathbf{y}\in M}\norm{\mathbf{x}-\mathbf{y}}.
     
 
     
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/wachspress-coordinates/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Wachspress Coordinates</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/mfem/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">MFEM</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E8%BE%93%E8%BF%90%E6%96%B9%E7%A8%8B%E7%AE%97%E4%BE%8B/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">输运方程算例</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
 
      
     

@@ -7,14 +7,51 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>百川</copyright>
-        <lastBuildDate>Sat, 26 Jul 2025 11:45:19 +0800</lastBuildDate><atom:link href="https://baichuan-blog.netlify.app/post/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Brouwer&#39;s fixed point theorem</title>
-        <link>https://baichuan-blog.netlify.app/p/brouwers-fixed-point-theorem/</link>
-        <pubDate>Sat, 26 Jul 2025 10:11:05 +0800</pubDate>
+        <lastBuildDate>Wed, 06 Aug 2025 10:09:56 +0800</lastBuildDate><atom:link href="https://baichuan-blog.netlify.app/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Fixed Point Theorems</title>
+        <link>https://baichuan-blog.netlify.app/p/fixed-point-theorems/</link>
+        <pubDate>Sat, 02 Aug 2025 20:28:33 +0800</pubDate>
         
-        <guid>https://baichuan-blog.netlify.app/p/brouwers-fixed-point-theorem/</guid>
-        <description>&lt;h2 id=&#34;sprener引理&#34;&gt;Sprener引理
-&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Sprener染色&lt;/strong&gt;
+        <guid>https://baichuan-blog.netlify.app/p/fixed-point-theorems/</guid>
+        <description>&lt;p&gt;不动点定理至少有以下三个比较有用的类别：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;for strict contractions——Banach&amp;rsquo;s fixed point theorem&lt;/li&gt;
+&lt;li&gt;for compact mappings——Schauder&amp;rsquo;s and Schaefer&amp;rsquo;s fixed point theorems&lt;/li&gt;
+&lt;li&gt;for order-preserving operators&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;brouwer不动点定理&#34;&gt;Brouwer不动点定理
+&lt;/h2&gt;&lt;h3 id=&#34;分析证法1-sect-81&#34;&gt;分析证法[1, Sect. 8.1]
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Null Lagrangians&lt;/strong&gt;
+&lt;/p&gt;
+\[L=L(P,z,x)=L(p_1^1,\cdots, p_n^m,z^1,\cdots,z^m,x_1,\cdots,x_n)\]&lt;p&gt;
+其中$P\in\mathbb{M}^{m\times n},z\in\R^m, x\in U$.&lt;/p&gt;
+&lt;!--$\mathbf{u}:U\rightarrow \R^m$--&gt;
+&lt;p&gt;Null Lagrangian的重要性在于相应的能量泛函
+&lt;/p&gt;
+\[I[\mathbf{w}]=\int_UL(D\mathbf{w},\mathbf{w},x)\d x\]&lt;p&gt;
+仅依赖于边值条件。&lt;/p&gt;
+&lt;p&gt;当$m=1$时，只有一类平凡的null Lagrangian，即$L$是关于$p$是线性的线性函数。&lt;/p&gt;
+\[L(P)=\mathrm{det}(P),\quad(P\in\mathbb{M}^{n\times n})\]&lt;p&gt;
+是一个null Lagrangian，利用
+&lt;/p&gt;
+\[\sum_{i=1}^n (\mathrm{cof}\ Du)_{k,i,x_i}=0,\quad  (k=1,\cdots,n)\]&lt;p&gt;
+证明。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Brouwer不动点定理&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;假设$\mathbf{u}:B(0,1)\rightarrow B(0,1)$是连续的，其中$B(0,1)$是$\R^n$中的单位闭球，则$\mathbf{u}$在$B(0,1)$中存在不动点。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Proof：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;不存在光滑函数\(\mathbf{w}: B\rightarrow\p B\)使得$\mathbf{w}(\mathbf{x})=\mathbf{x},\ \forall\mathbf{x}\in\p B$.
+若存在这样的$\mathbf{w}$，则其与恒等映射$\mathbf{id}$在边界处相等，取null Lagrangian $L(P)=\mathbf{det}(P)$，此时
+\[I[\mathbf{w}]=I[\mathbf{id}]=\int_{U}1\d x=|U|\ne 0.\]
+另一方面，由于$\mathbf{w}^T\mathbf{w}=1$，所以$(D\mathbf{w})^T\mathbf{w}=0$。对于任意$x\in U$，由于$\norm{\mathbf{w}}=1$，因此线性方程组的系数矩阵$(D\mathbf{w})^T$行列式为0，矛盾！&lt;/li&gt;
+&lt;li&gt;不存在连续函数\(\mathbf{w}: B\rightarrow\p B\)使得$\mathbf{w}(\mathbf{x})=\mathbf{x},\ \forall\mathbf{x}\in\p B$。&lt;/li&gt;
+&lt;li&gt;若连续函数\(\mathbf{u}: B\rightarrow B\)不存在不动点，则$u(\mathbf{x})\ne\mathbf{x},\forall \mathbf{x}$，定义$\mathbf{w}$为$\mathbf{x}$和$\mathbf{u}(\mathbf{x})$所在直线与$\p B$的交点，则$\mathbf{w}(x)$连续，且$\mathbf{w}(\mathbf{x})=\mathbf{x},\ \forall\mathbf{x}\in\p B$。与2矛盾，因此$\mathbf{u}(\mathbf{x})$存在不动点。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;组合证法2&#34;&gt;组合证法[2]
+&lt;/h3&gt;&lt;!--见[Brouwer&#39;s fixed point theorem](../brouwers-fixed-point-theorem/)
+
+#### Sprener引理--&gt;
+&lt;p&gt;&lt;strong&gt;Sprener染色&lt;/strong&gt;
 对于任意$n$维单纯形，考虑其上的单纯形剖分，我们采用如下方式对剖分得到的所有顶点进行染色：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;$n+1$个顶点用$n+1$种不同的颜色；&lt;/li&gt;
@@ -30,8 +67,8 @@ $$R+2Q= X+2Y.$$
 由于原始单纯形表面上包含颜色${1,2,\cdots,n}$的面片只出现在顶点${1,2,\cdots,n}$上，而由归纳假设，该$n-1$维单纯形上的$n-1$维彩虹单纯形有奇数个，即$X$为奇数，因此$R$也为奇数。&lt;/li&gt;
 &lt;li&gt;综上，我们证得彩虹单纯形个数为奇数，因此必定存在。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&#34;brouwer不动点定理&#34;&gt;Brouwer不动点定理
-&lt;/h2&gt;&lt;p&gt;设$M\subset \mathbb{R}^n$是有界凸闭集，$F:M\rightarrow M$是连续函数，则存在不动点$\mathbf{x}_0\in M$，使得$F(\mathbf{x}_0)=\mathbf{x}_0$。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Brouwer不动点定理&lt;/strong&gt;
+设$M\subset \mathbb{R}^n$是有界凸闭集，$F:M\rightarrow M$是连续函数，则存在不动点$\mathbf{x}_0\in M$，使得$F(\mathbf{x}_0)=\mathbf{x}_0$。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Proof：&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
@@ -60,7 +97,172 @@ $$\tilde{F}(\mathbf{x}) = \argmin_{\mathbf{y}\in M}\norm{\mathbf{x}-\mathbf{y}}.
 \[\tilde\lambda_j(\mathbf{v}^{\ast})= \lambda_j(\mathbf{v}^{\ast}),\quad  j=1,2,\cdots, n+1,\]&lt;p&gt;
 即
 &lt;/p&gt;
-\[F(\mathbf{v}^{\ast})=\mathbf{v}^{\ast}.\]</description>
+\[F(\mathbf{v}^{\ast})=\mathbf{v}^{\ast}.\]&lt;h2 id=&#34;schauder不动点定理&#34;&gt;Schauder不动点定理
+&lt;/h2&gt;&lt;p&gt;假设$X$是Banach空间，$K\subset X$是紧的凸集，且$A:K\rightarrow K$是连续的，则$A$在$K$中有不动点。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Proof：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;$K$是紧集，存在有限个闭球$B(u_i;\epsilon)$覆盖$K$。构造$K_{\epsilon}$为${u_i}$生成的闭凸包，则$K_{\epsilon}\subset K$。定义
+\[P_{\epsilon}[u]=\frac{\sum_{i=1}^n\mathrm{dist}(u,K-B(u_i;\epsilon))u_i}{\sum_{i=1}^n\mathrm{dist}(u,K-B(u_i;\epsilon))}\]
+则$P_{\epsilon}:K\rightarrow K_{\epsilon}$是连续函数且
+\[\norm{P_{\epsilon}[u]-u}\le\epsilon.\]&lt;/li&gt;
+&lt;li&gt;$K_{\epsilon}$与$B(0,1)$同胚，由Brouwer不动点定理，$A_{\epsilon}:K_{\epsilon}\rightarrow K_{\epsilon}, \ A_{\epsilon}[u]:=P_{\epsilon}[A[u]]$有不动点$u_{\epsilon}\in K$。由$K$的紧性，存在序列${u_{\epsilon_j}}$和$u$使得$u_{\epsilon_j}\rightarrow u$.
+\[\norm{u_{\epsilon_j}-A(u_{\epsilon_j})}=\norm{A_{\epsilon_j}(u_{\epsilon_j})-A(u_{\epsilon_j})}\le \epsilon_j,\]
+结合$A$的连续性即得$A(u)=u$。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;schaefer不动点定理&#34;&gt;Schaefer不动点定理
+&lt;/h2&gt;&lt;p&gt;假设$X$是Banach空间，$A:X\rightarrow X$是连续的紧映射（有界序列的像存在$X$中的收敛子列），且集合
+&lt;/p&gt;
+\[\{u\in X: u=\lambda A[u],\text{for some }0\le \lambda \le 1\}\]&lt;p&gt;
+是有界的，则$A$有不动点。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Remark：&lt;/strong&gt;
+如果我们能在假设解存在的前提下，证明解满足某些先验估计（有界），那么这些解实际上确实存在。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Proof：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;存在充分大的$M&amp;gt;0$，使得
+\[\norm{u}\le M,\quad \text{if }u=\lambda A[u] \text{ for some } 0\le \lambda\le 1.\]
+定义
+\[\tilde{A}[u]:=\begin{cases}A[u],&amp;\text{if }\norm{A[u]}\le M,\\\frac{MA[u]}{\norm{A[u]}},&amp;\text{if }\norm{A[u]}\ge M.\end{cases}\]
+则$\tilde{A}:B(0,M)\rightarrow B(0,M)$。令$K$为$\tilde{A}(B(0,M))$的闭凸包，由于$A$是紧映射，于是$\tilde{A}$也是紧映射，因此$K$是紧（度量空间列紧闭$\iff$紧）的凸集，$\tilde{A}:K\rightarrow K$。&lt;/li&gt;
+&lt;li&gt;由Schauder不动点定理，存在$u$，使得$\tilde{A}[u]=u$。下面证明$u$是$A$的不动点，若不然，$u\in K-B(0,M)$，即$\norm{A[u]}&amp;gt;M$。于是
+\[u=\tilde{A}[u]=\frac{MA[u]}{\norm{A[u]}}=\lambda A[u], \quad \lambda=\frac{M}{\norm{A[u]}}.\]
+从而\(\norm{u}=M\)，矛盾于1中假设。因此$u$是$A$的不动点。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;参考文献&#34;&gt;参考文献
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.jianguoyun.com/p/DaNNcoIQ-szkCBjx_pwFIAA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Partial Differential Equations. Lawrence C. Evans&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://zhuanlan.zhihu.com/p/26764450&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Banach空间和不动点定理（完）：有趣的Brouwer不动点&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        <item>
+        <title>H(div) and H(curl) finite elements</title>
+        <link>https://baichuan-blog.netlify.app/p/hdiv-and-hcurl-finite-elements/</link>
+        <pubDate>Fri, 01 Aug 2025 16:40:59 +0800</pubDate>
+        
+        <guid>https://baichuan-blog.netlify.app/p/hdiv-and-hcurl-finite-elements/</guid>
+        <description>&lt;h2 id=&#34;hdiv-finite-elements&#34;&gt;H(div) finite elements
+&lt;/h2&gt;&lt;h3 id=&#34;raviart-thomas-finite-elements&#34;&gt;Raviart-Thomas finite elements
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;多项式空间：\(\mathbb{RT}_{k,d} := \mathbf{P}_{k,d}\oplus \mathbf{x}\mathrm{P}^H_{k,d}\subset \mathbf{P}_{k+1,d}\)，&lt;/p&gt;
+&lt;p&gt;其中$\mathrm{P}^H_{k,d}$是$d$元齐次多项式全体，\(\mathrm{dim}(\mathrm{P}^H_{k,d})=\begin{pmatrix}k+d-1\\ d-1\end{pmatrix}\)，\(\mathrm{dim}(\mathrm{P}_{k,d})=\begin{pmatrix}k+d\\d\end{pmatrix}\)（由组合技巧隔板法易证）。&lt;/p&gt;
+\[\begin{aligned}\mathrm{dim}\mathbb{RT}_{k,d}
+	=&amp;d\cdot\mathrm{dim}(\mathrm{P}_{k,d})+\mathrm{dim}(\mathrm{P}^H_{k,d})\\
+	=&amp;\frac{d(k+d)!}{k!d!}+\begin{pmatrix}k+d-1\\ k\end{pmatrix}\\
+	=&amp;(k+d+1)\begin{pmatrix}k+d-1\\ k\end{pmatrix}=(k+d+1)\begin{pmatrix}k+d-1\\ d-1\end{pmatrix}.
+	\end{aligned}\]&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;自由度：$\forall\mathbf{v}\in \mathbb{RT}_{k,d} $，&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;face：\(\sigma_{F,j}(\mathbf{v})=\int_F\mathbf{v}\cdot \mathbf{n}_{F}q_j\d s,\quad \forall F\in\mathcal{F}_K,\  q_j\in \mathrm{P}_{k,d-1}.\)&lt;/li&gt;
+&lt;li&gt;cell：\(\sigma_{K,i,j}(\mathbf{v})=\int_K\mathbf{v}\cdot \mathbf{n}_{F_i}\psi_j\d \cuti{x},\quad \forall i\in\{1,\cdots,d\},\  \psi_j\in \mathrm{P}_{k-1,d}.\)&lt;/li&gt;
+&lt;/ul&gt;
+\[\begin{aligned}&amp;\mathrm{card}\{\sigma_{F,j}\}=(d+1)\mathrm{dim}(\mathrm{P}_{k,d-1}) = (d+1)\begin{pmatrix}k+d-1\\ d-1\end{pmatrix}\\
+  &amp;\mathrm{card}\{\sigma_{K,i,j}\}=d\cdot\mathrm{dim}(\mathrm{P}_{k-1,d})=k\begin{pmatrix}k+d-1\\ d-1\end{pmatrix}\\
+  &amp;\mathrm{card}\{\sigma_{F,j}\}+\mathrm{card}\{\sigma_{K,i,j}\}=\mathrm{dim}\mathbb{RT}_{k,d}
+  \end{aligned}
+  \]&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;\(\forall\mathbf{v}\in \mathbb{RT}_{k,d}\)，&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;\(\nabla\cdot\mathbf{v}\in \mathrm{P}_{k,d}\)，&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;If \(\mathbf{v}\) is divergence-free, then \(\mathbf{v}\in \mathbf{P}_{k,d}.\)&lt;/p&gt;
+\[\nabla\cdot(q(\mathbf{x})\mathbf{x}) =\nabla q(\mathbf{x})\cdot\mathbf{x}+q(\mathbf{x})\cdot d=(k+d)q(\mathbf{x}),\quad \forall q\in\mathrm{P}_{k,d}^H.\]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;brezzi-douglas-marini-elements&#34;&gt;Brezzi-Douglas-Marini elements
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;多项式空间：\(\mathbf{P}_{k,d}\subsetneq \mathbb{RT}_{k,d}\).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;自由度：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;face：与\(\mathbb{RT}_{k,d}\)相同&lt;/li&gt;
+&lt;li&gt;cell： \(\sigma_{K,i,j}(\mathbf{v})=\int_K\mathbf{v}\cdot\boldsymbol{\psi}_j\d \cuti{x},\quad \forall \psi_j\in \mathbb{N}_{k-2,d}.\)&lt;/li&gt;
+&lt;/ul&gt;
+\[\begin{aligned}
+  \mathrm{card}\{\sigma_{K,i,j}\}=&amp;\mathrm{dim}(\mathbb{N}_{k-2,d})\\=&amp;\frac{((k-2)+d+1)!}{(k-2)!(d-1)!k}\\
+  =&amp;(k-1)\begin{pmatrix}k+d-1\\ d\end{pmatrix}\\
+  \mathrm{card}\{\sigma_{F,j}\}\ +\ &amp;  \mathrm{card}\{\sigma_{K,i,j}\}=d\begin{pmatrix}k+d\\ d\end{pmatrix}\\
+  =&amp;\mathrm{dim}(\mathbf{P}_{k,d}).
+  \end{aligned}
+  \]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;hcurl-finite-elements&#34;&gt;H(curl) finite elements
+&lt;/h2&gt;&lt;h3 id=&#34;nedelec-finite-elements&#34;&gt;Nédélec finite elements
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;多项式空间：\(\mathbb{N}_{k,d}=\mathbf{P}_{k,d}\oplus \mathbb{S}_{k+1,d}\subset\mathbf{P}_{k+2,d}\)，&lt;/p&gt;
+&lt;p&gt;其中\(\mathbb{S}_{k+1,d}:=\{\mathbf{q}\in\mathbf{P}^H_{k+1,d}:\mathbf{q}(\mathbf{x})\cdot\mathbf{x}=0\}\)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;\(\phi:\mathbf{P}^H_{k,d}\rightarrow \mathrm{P}^H_{k+1,d},\mathbf{q}\mapsto \mathbf{x}\cdot \mathbf{q}(\mathbf{x})\)是满射。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+\[\begin{aligned}
+	\mathrm{dim}(\mathbb{S}_{k,d})&amp; =\mathrm{dim}(\mathrm{ker}(\phi))\\&amp;= \mathrm{dim}(\mathbf{P}^H_{k,d})-\mathrm{dim(Im}(\phi))\\
+	&amp;=d\frac{(k+d-1)!}{k!(d-1)!}-\frac{(k+d)!}{(k+1)!(d-1)!}\\
+	&amp; = k\frac{(k+d-1)!}{(k+1)!(d-2)!}\end{aligned}\]&lt;/li&gt;
+&lt;li&gt;
+\[\begin{aligned}\mathrm{dim}(\mathbb{N}_{k,d})&amp;=d\frac{(k+d)!}{k!d!}+(k+1)\frac{(k+d)!}{(k+2)!(d-2)!}\\&amp;=\frac{(k+d+1)!}{k!(d-1)!(k+2)}\end{aligned}\]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;自由度：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;$d=2$，&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;edge：\(\sigma_{E,j}(\mathbf{v})=\int_{E}\mathbf{v}\cdot\mathbf{t}_E q_j \d l,\quad \forall E\in\mathcal{E}_K,\ q_j\in \mathrm{P}_{k,1}\)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;cell：\(\sigma_{K,i,j}(\mathbf{v})=\int_{F}\mathbf{v}\cdot\mathbf{t}_{K,i} \psi_j \d \mathbf{x},\quad \forall i=1,2, \ \psi_j\in \mathrm{P}_{k-1,2}\)
+&lt;/p&gt;
+\[\begin{aligned}&amp;\mathrm{card}\{\sigma_{E,j}\}+\mathrm{card}\{\sigma_{E,j}\}\\=&amp;3(k+1)+2\frac{(k+1)k}{2}\\
+  =&amp;(k+1)(k+3)\\
+  =&amp;\mathrm{dim}(\mathbb{N}_{k,d})\end{aligned}\]&lt;p&gt;\(\mathbb{N}_{k,2}=R_{\frac{\pi}{2}}(\mathbb{RT}_{k,2})\)，即R-T元的旋转。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$d=3$，&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;edge：\(\sigma_{E,j}(\mathbf{v})=\int_{E}\mathbf{v}\cdot\mathbf{t}_E q_j \d l,\quad \forall E\in\mathcal{E}_K,\ q_j\in \mathrm{P}_{k,1}\)&lt;/li&gt;
+&lt;li&gt;face：\(\sigma_{F,i,j}(\mathbf{v})=\int_{F}\mathbf{v}\cdot\mathbf{t}_{K,i} \psi_j \d s,\quad \forall i=1,2,\  \psi_j\in \mathrm{P}_{k-1,2}\)&lt;/li&gt;
+&lt;li&gt;cell：\(\sigma_{K,i,j}(\mathbf{v})=\int_{F}\mathbf{v}\cdot\mathbf{t}_{K,i} \varphi_j \d \mathbf{x},\quad \forall i=1,2,3,\  \varphi_j\in \mathrm{P}_{k-2,3}\)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;\(\forall \mathbf{v}\in\mathbb{N}_{k,d}\)，&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;$\nabla\times \mathbf{v}\in\mathbf{P}_{k,d}$，&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;If \(\mathbf{v}\) is curl-free, then there exits $q\in\mathrm{P}_{k+1,d}$ such that \(\mathbf{v}=\nabla q\) and \(\mathbf{v}\in\mathbf{P}_{k,d}\).&lt;/p&gt;
+&lt;p&gt;无旋场是有势场，$q(\mathbf{x})=\int_{\mathbf{x}_0}^{\mathbf{x}}\mathbf{v}\cdot\mathbf{t}\d l$，参见浅水方程笔记中的场论一节[2]。因此$q$仍是多项式。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;参考文献&#34;&gt;参考文献
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.jianguoyun.com/p/DSlLaskQlsqoDRiK-IQGIAA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Finite Elements I. Ch 14-15.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.jianguoyun.com/p/DfD8y2cQ_6nhCxik94QGIAA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Shallow Water. Section 1 场论.&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
         </item>
         <item>
         <title>动手学深度学习</title>
