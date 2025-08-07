@@ -7,7 +7,7 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>百川</copyright>
-        <lastBuildDate>Wed, 06 Aug 2025 10:09:56 +0800</lastBuildDate><atom:link href="https://baichuan-blog.netlify.app/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 07 Aug 2025 17:07:10 +0800</lastBuildDate><atom:link href="https://baichuan-blog.netlify.app/post/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Fixed Point Theorems</title>
         <link>https://baichuan-blog.netlify.app/p/fixed-point-theorems/</link>
         <pubDate>Sat, 02 Aug 2025 20:28:33 +0800</pubDate>
@@ -133,6 +133,66 @@ $$\tilde{F}(\mathbf{x}) = \argmin_{\mathbf{y}\in M}\norm{\mathbf{x}-\mathbf{y}}.
     &gt;Partial Differential Equations. Lawrence C. Evans&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://zhuanlan.zhihu.com/p/26764450&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Banach空间和不动点定理（完）：有趣的Brouwer不动点&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        <item>
+        <title>Piola Transformations</title>
+        <link>https://baichuan-blog.netlify.app/p/piola-transformations/</link>
+        <pubDate>Fri, 01 Aug 2025 23:03:37 +0800</pubDate>
+        
+        <guid>https://baichuan-blog.netlify.app/p/piola-transformations/</guid>
+        <description>&lt;h2 id=&#34;piola变换&#34;&gt;Piola变换
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Lemma (Differential operators).&lt;/strong&gt;
+设$v\in C^1(K)$， $\mathbf{v}\in \mathbf{C}^1(K)$，$\hat{K}$为参考单元，$\mathbf{T}_K:\hat{K}\rightarrow K$为几何映射，\(\mathbb{J}_K=\frac{\p \mathbf{T}(\mathbf{x})}{\p \mathbf{\hat{x}}}=(\p_{j} (\mathbf{T}_K)_i)\)，令$\hat{v}(\hat{x}):=v\circ \mathbf{T}(\mathbf{\hat{\mathbf{x}}})$，$\hat{\mathbf{v}}(\hat{x}):=\mathbf{v}\circ \mathbf{T}(\mathbf{\hat{\mathbf{x}}})$，则下面等式关系成立：
+&lt;/p&gt;
+\[\begin{aligned}
+\hat\nabla\hat{v}&amp;=(\mathbb{J}_K(\hat{\mathbf{x}}))^T(\nabla v)|_{\mathbf{T}(K)(\hat{\mathbf{x}})},\\
+\hat\nabla\times (\mathbb{J}_K)^T\mathbf{\hat{v}}&amp;=\mathrm{det}(\mathbb{J}_K(\hat{\mathbf{x}}))\mathbb{J}_K^{-1}(\hat{\mathbf{x}})(\nabla\times \mathbf{v})|_{\mathbf{T}_K(\mathbf{\hat{x}})},\\
+\hat{\nabla}\cdot (\mathrm{det}(\mathbb{J}_K)\mathbb{J}_K^{-1}\mathbf{\hat{v}})&amp;=\mathrm{det}(\mathbb{J}_K(\hat{\mathbf{x}}))(\nabla\cdot\mathbf{v})|_{\mathbf{T}_K(\hat{\mathbf{x}})}.
+\end{aligned}\]&lt;p&gt;定义&lt;strong&gt;Piola变换&lt;/strong&gt;如下：
+&lt;/p&gt;
+\[\begin{aligned}
+&amp;\psi_K^g(v):=v\circ \mathbf{T}_K,\\
+&amp;\boldsymbol{\psi}_K^c(\mathbf{v}):=\mathbb{J}_K^T(\mathbf{v}\circ\mathbf{T}_K),\\
+&amp;\boldsymbol{\psi}_K^d(\mathbf{v}):=\mathrm{det}(\mathbb{J}_K)\mathbb{J}_K^{-1}(\mathbf{v}\circ\mathbf{T}_K),\\
+&amp;\psi^b_K(v):=\mathrm{det}(\mathbb{J}_K)(v\circ \mathbf{T}_K).
+\end{aligned}\]&lt;p&gt;
+其中$\psi^g_K$为geometic mapping的拉回，$\boldsymbol{\psi}^c_K$为covariant（协变）Piola transformation，$\boldsymbol{\psi}^d_K$为contravariant（反变）Piola transformation。&lt;/p&gt;
+&lt;p&gt;将前面引理的等式用Piola变换表示可得：
+&lt;strong&gt;Corollary (Commuting properties).&lt;/strong&gt;
+&lt;/p&gt;
+\[\begin{aligned}\hat\nabla(\psi_K^g(v))&amp;=\boldsymbol{\psi}_K^c(\nabla v)\\
+\hat\nabla\times (\boldsymbol{\psi}_K^c(\mathbf{v}))&amp;=\boldsymbol{\psi}_K^d(\nabla\times \mathbf{v})\\
+\hat{\nabla}\cdot(\boldsymbol{\psi}_K^d(\mathbf{v}))&amp;=\psi_K^d(\nabla\cdot\mathbf{v})
+\end{aligned}\]&lt;h2 id=&#34;法向和切向向量&#34;&gt;法向和切向向量
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Lemma (Normal and tangent).&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;法向：\[\mathbf{n}|_{K|F}(\mathbf{x})=\frac{1}{\norm{ (\mathbb{J}_K^{-T}\hat{\mathbf{n}}_{\hat{K}|\hat{F}})(\hat{\mathbf{x}})}_{l^2}}(\mathbb{J}_K^{-T}\hat{\mathbf{n}}_{\hat{K}|\hat{F}})(\hat{\mathbf{x}}).\]&lt;/li&gt;
+&lt;li&gt;切向：\[\boldsymbol{\tau}_E(\mathbf{x})=\frac{1}{\norm{(\mathbb{J}_K\hat{\boldsymbol{\tau}}_{\hat{E}})(\hat{\mathbf{x}})}_{l^2}}(\mathbb{J}_K\hat{\boldsymbol{\tau}}_{\hat{E}})(\hat{\mathbf{x}}).\]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Lemma (Surface and line measure).&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;面测度：
+\[\begin{aligned}&amp;\d s=|\mathrm{det}(\mathbb{J}_K)(\hat{\mathbf{x}})|\norm{ (\mathbb{J}_K^{-T}\hat{\mathbf{n}}_{\hat{K}|\hat{F}})(\hat{\mathbf{x}})}_{l^2}\d \hat s,\\
+&amp;\d \hat s=|\mathrm{det}(\mathbb{J}_K^{-1})({\mathbf{x}})|\norm{ (\mathbb{J}_K^{T}{\mathbf{n}}_{{K}|{F}})({\mathbf{x}})}_{l^2}\d  s.\\
+\end{aligned}\]&lt;/li&gt;
+&lt;li&gt;线测度：
+\[\begin{aligned}&amp;\d l=\norm{(\mathbb{J}_K\hat{\boldsymbol{\tau}_E})(\hat{\mathbf{{x}}})}_{l^2}\d \hat l,\\
+ &amp;\d \hat l=\norm{(\mathbb{J}^{-1}_K{\boldsymbol{\tau}_E})({\mathbf{{x}}})}_{l^2}\d l.
+ \end{aligned}\]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Lemma (Preservation of moments of normal and tangent).&lt;/strong&gt;
+设$\mathbf{v}\in \mathbf{C}^0(K)$， $q\in C^0(K)$，则
+&lt;/p&gt;
+\[\begin{aligned}
+&amp;\int_F (\mathbf{v}\cdot\mathbf{n}|_F)(\mathbf{x})q(\mathbf{x})\d s=\int_{\hat F} (\boldsymbol{\psi}^d_K(\mathbf{v})\cdot\mathbf{\hat{n}}|_{\hat F})(\mathbf{\hat{x}})\psi_K^g(q)(\mathbf{\hat{x}})\d \hat s,\\
+&amp;\int_E (\mathbf{v}\cdot\cuti{n}|_{E})(\mathbf{x})q(\mathbf{x})\d s=\int_{\hat E} (\boldsymbol{\psi}^c_K(\mathbf{v})\cdot\cuti{\hat{\tau}}|_{\hat E})(\mathbf{\hat{x}})\psi_K^g(q)(\mathbf{\hat{x}})\d \hat l.
+\end{aligned}
+\]&lt;h2 id=&#34;参考文献&#34;&gt;参考文献
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.jianguoyun.com/p/DSlLaskQlsqoDRiK-IQGIAA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Finite Elements I.&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
         </item>
