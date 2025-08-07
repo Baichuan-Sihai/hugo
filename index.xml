@@ -158,8 +158,8 @@ $$\tilde{F}(\mathbf{x}) = \argmin_{\mathbf{y}\in M}\norm{\mathbf{x}-\mathbf{y}}.
 &amp;\psi^b_K(v):=\mathrm{det}(\mathbb{J}_K)(v\circ \mathbf{T}_K).
 \end{aligned}\]&lt;p&gt;
 其中$\psi^g_K$为geometic mapping的拉回，$\boldsymbol{\psi}^c_K$为covariant（协变）Piola transformation，$\boldsymbol{\psi}^d_K$为contravariant（反变）Piola transformation。&lt;/p&gt;
-&lt;p&gt;将前面引理的等式用Piola变换表示可得：
-&lt;strong&gt;Corollary (Commuting properties).&lt;/strong&gt;
+&lt;p&gt;将前面引理的等式用Piola变换表示可得：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Corollary (Commuting properties).&lt;/strong&gt;
 &lt;/p&gt;
 \[\begin{aligned}\hat\nabla(\psi_K^g(v))&amp;=\boldsymbol{\psi}_K^c(\nabla v)\\
 \hat\nabla\times (\boldsymbol{\psi}_K^c(\mathbf{v}))&amp;=\boldsymbol{\psi}_K^d(\nabla\times \mathbf{v})\\
