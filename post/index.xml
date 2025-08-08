@@ -7,7 +7,161 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>百川</copyright>
-        <lastBuildDate>Thu, 07 Aug 2025 17:11:48 +0800</lastBuildDate><atom:link href="https://baichuan-blog.netlify.app/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 08 Aug 2025 10:48:41 +0800</lastBuildDate><atom:link href="https://baichuan-blog.netlify.app/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Projection from BR to RT and BDM</title>
+        <link>https://baichuan-blog.netlify.app/p/projection-from-br-to-rt-and-bdm/</link>
+        <pubDate>Thu, 07 Aug 2025 20:53:42 +0800</pubDate>
+        
+        <guid>https://baichuan-blog.netlify.app/p/projection-from-br-to-rt-and-bdm/</guid>
+        <description>&lt;p&gt;本文将介绍Bernardi–Raugel有限元到$\mathbb{RT}_{0,2}$和\(\mathbb{BDM}_{1,2}\)的插值算子，为代码实现做准备。&lt;/p&gt;
+&lt;h2 id=&#34;bernardiraugel有限元二维&#34;&gt;Bernardi–Raugel有限元（二维）
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;多项式空间：
+&lt;/p&gt;
+\[\mathbb{BR}:=\mathbf{P}_{1,2}\oplus\mathrm{Span}\{\mathbf{p}_i:\mathbf{p}_i= \mathbf{n}_i\prod_{j=1,j\ne i}^{3}\lambda_j,\quad i=1,2, 3\}\]&lt;p&gt;
+其中\(\{\lambda_i\}_{i=1}^{3}\)为重心坐标。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;自由度：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;顶点：$\sigma_{V,i}=\mathbf{v}(a_i),\quad i=1,2,3$.&lt;/li&gt;
+&lt;li&gt;边：$\sigma_{F,i}=\int_{F_i}\mathbf{v}\cdot\mathbf{n}_{F_i}\d s,\quad i=1,2,3$.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;整体的有限元空间\(\mathbb{BR}_h:=\{\mathbf{v}\in \mathbf{C}^0(\overline\Omega):\mathbf{v}|_K\in\mathbb{BR}(K),K\in\mathcal{K}_h\}\)是连续的分片多项式，因此$\mathbb{BR}_h\subset \mathbb{H}_0^1$。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;投影算子&#34;&gt;投影算子
+&lt;/h2&gt;&lt;p&gt;设\(\Pi^{RT}:\mathbb{BR}_h\rightarrow \mathbb{RT}_{0,2}\)、\(\Pi^{BDM}:\mathbb{BR}_h\rightarrow \mathbb{BDM}_{1,2}\)为投影算子，&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;$\int_F (\mathbf{v}_h-\Pi^{RT}\mathbf{v}_h)\cdot\mathbf{n}_F\d s=0$.&lt;/p&gt;
+&lt;p&gt;这里用到\(\mathbb{BR}_h\)在单元边界两侧的积分$\int_{F^{\pm}}\mathbf{v}\cdot\mathbf{n}_F\d s$相同（\(\mathbb{BR}_h\)是连续元），否则不能定义$\int_F$。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+\[\int_F(\mathbf{v}_h-\Pi^{BDM}\mathbf{v}_h)\cdot \mathbf{n}_Fq_h\d s=0,\quad F\in\mathcal{F}_h,q_h\in\mathbf{P}_{1,1}(F).\]&lt;p&gt;
+这里的良定性同样由$\mathbb{BR}_h$是连续元保证。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;$\mathrm{div}_h=\pi_0\circ \mathrm{div}:\mathbf{H}_0^1\rightarrow \mathbb{Q}_h$，其中$\mathbb{Q}_h$为分片常数空间，$\pi_0$为$L^2$到$\mathbb{Q}_h$的$L^2$投影，满足$(r,q_h)=(\pi_0(r),q_h),\quad \forall r\in L^2, q_h\in \mathbb{Q}_h$。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Prop.&lt;/strong&gt;
+$\forall \mathbf{v}_h\in\mathbb{BR}_h$，
+$\mathrm{div}_h\mathbf{v}_h=\mathrm{div}(\Pi \mathbf{v}_h)$，其中$\Pi=\Pi^{RT},\Pi^{BDM}$。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Proof：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;显然$\mathrm{div}_h\mathbf{v}_h=\mathrm{div}(\Pi \mathbf{v}_h)$两者都是分片常数，$\forall K\in\mathcal{K}_h$，
+&lt;/p&gt;
+\[\begin{aligned}&amp;\int_K\mathrm{div}_h\mathbf{v}_h\d\mathbf{x}\\=&amp;\int_K\mathrm{div}\mathbf{v}_h\d \mathbf{x}\\
+=&amp;\int_{\p K}\mathbf{v}_h\cdot \mathbf{n}\d s\\
+=&amp;\int_{\p K}\Pi\mathbf{v}_h\cdot\mathbf{n}\d s\\
+=&amp;\int_{K}\mathrm{div}(\Pi \mathbf{v}_h)\d \mathbf{x} \end{aligned}\]&lt;p&gt;
+因此，
+&lt;/p&gt;
+\[(\mathrm{div}_h\mathbf{v}_h)_K=(\mathrm{div}(\Pi \mathbf{v}_h))_K,\quad \forall K\in\mathcal{K}_h.\]&lt;h2 id=&#34;代码实现&#34;&gt;代码实现
+&lt;/h2&gt;&lt;p&gt;\(\mathbb{BR}_h\)沿单元边界连续，因此&lt;strong&gt;逐单元投影&lt;/strong&gt;到\(\mathbb{RT}_{0,2}(K)\)和\(\mathbb{BDM}_{1,2}(K)\)得到的分片多项式分别在\(\mathbb{RT}_{0,2}\)和\(\mathbb{BDM}_{1,2}\)中。&lt;/p&gt;
+&lt;p&gt;$\mathbb{BR}(K)$的一组基为
+&lt;/p&gt;
+\[\begin{cases}\cuti{\varphi}_{i}=\lambda_i\mathbf{e}_{1},\quad i=1,2,3,\\
+\cuti{\varphi}_{i+3}=\lambda_i\mathbf{e}_2,\quad i=1,2,3,\\
+\cuti{\varphi}_{i+6}=\mathbf{n}_i\prod_{j=1,j\ne i}^{3}\lambda_j,\quad i=1,2,3.
+\end{cases} \]&lt;h3 id=&#34;pirt&#34;&gt;$\Pi^{RT}$
+&lt;/h3&gt;&lt;p&gt;由于$\cuti{\varphi}_i,i\in{1,2,\cdots,6}$在各边均值（中点值）为0，于是
+&lt;/p&gt;
+\[\Pi^{RT}\cuti{\varphi}_i=\cuti{0},\quad i=1,2,\cdots, 6.\]&lt;p&gt;
+对于$\cuti{\varphi}_i,i=7,8,9$，\(\cuti{\varphi}_i|_{F_j}0,\quad j\ne i\)，因此
+&lt;/p&gt;
+\[\int_{F_j}\cuti{\varphi}_{i+6}\cdot \cuti{n}_{F_j}\d s=0,\quad j\ne i.\]&lt;p&gt;
+由&lt;/p&gt;
+\[\int_{F_k}\lambda_i^p\lambda_j^q\d s=\frac{p!q!}{(p+q+1)!}|F_k|,\quad (i,j,k\text{互不相同})\tag{1}\]&lt;p&gt;
+可得
+&lt;/p&gt;
+\[\int_{F_i}\cuti{\varphi}_{i+6}\cdot \cuti{n}_{F_i}\d s=\int_{F_i}\prod_{j=1,j\ne i}^{3}\lambda_j\d s=\frac16|F_i|.\]&lt;!--因此
+\[\Pi^{RT}\cuti{\varphi}_i=\frac16(1-2\lambda_i),\quad i=7,8,9.\]--&gt;
+&lt;p&gt;$\Pi^{RT}$插值可显式表示为：
+&lt;/p&gt;
+\[\Pi^{RT}\cuti{v}:=\cuti{a}_K+\frac{c_K}{2}(\cuti{x}-\cuti{x}_K)\tag{2}\]&lt;p&gt;
+其中
+&lt;/p&gt;
+\[\begin{aligned}&amp;c_K=\frac{1}{|K|}\int_{\p K}\cuti{v}\cdot\cuti{n}\d s,\\&amp;\cuti{a}_K=\frac{1}{|K|}\sum_{F\subset \p K}\int_F\cuti{v}\cdot\cuti{n}\d s(\cuti{x}_F-\cuti{x}_K),\end{aligned}\]&lt;p&gt;
+其中$\cuti{x}_K$和$\cuti{x}_F$分别是单元和边的重心。&lt;/p&gt;
+&lt;p&gt;利用公式(2)，
+&lt;/p&gt;
+\[\Pi^{RT}\cuti{\varphi}_{i+6}=\frac{|F_i|}{6|K|}\left((\cuti{x}_{F_i}-\cuti{x}_K)+\frac12(\cuti{x}-\cuti{x}_K)\right),\quad i=1,2,3.\]&lt;h3 id=&#34;pibdm&#34;&gt;$\Pi^{BDM}$
+&lt;/h3&gt;&lt;p&gt;由
+&lt;/p&gt;
+\[\varphi_i\in \mathbb{BDM}_{1,2}\quad i=\{1,2,\cdots,6\}\]&lt;p&gt;
+可知
+&lt;/p&gt;
+\[\Pi^{BDM}\mathbf{\varphi}_i=\varphi_i,\quad i=\{1,2,\cdots,6\}.\]&lt;p&gt;
+下面考虑$\Pi^{BDM}\varphi_i,\ i=7,8,9$。&lt;/p&gt;
+&lt;p&gt;在参考单元上定义自由度如下（为方便书写只在$\sigma$上加$\hat{\quad}$以表示在参考元上进行运算）
+&lt;/p&gt;
+\[\begin{aligned}\hat\sigma_1(\cuti{v})=\int_{F_1}{\cuti{v}}\cdot\cuti{n}_{F_1}\lambda_2\d s,\hat\sigma_2(\cuti{v})=\int_{F_1}\cuti{v}\cdot\cuti{n}_{F_1}\lambda_3\d s\\
+\hat\sigma_3(\cuti{v})=\int_{F_2}\cuti{v}\cdot\cuti{n}_{F_2}\lambda_1\d s,\hat\sigma_4(\cuti{v})=\int_{F_2}\cuti{v}\cdot\cuti{n}_{F_2}\lambda_3\d s\\
+\hat\sigma_5(\cuti{v})=\int_{F_3}\cuti{v}\cdot\cuti{n}_{F_3}\lambda_1\d s,\hat\sigma_6(\cuti{v})=\int_{F_3}\cuti{v}\cdot\cuti{n}_{F_3}\lambda_2\d s\\
+\end{aligned}\]&lt;p&gt;&lt;code&gt;fealpy&lt;/code&gt;中计算基函数梯度的方法是先计算各单元基函数关于$(\lambda_2,\lambda_3)$的梯度，然后利用
+&lt;/p&gt;
+\[\cuti{x}=\sum_{i=1}^3\cuti{x}_i\lambda_i=\cuti{x}_1+(\cuti{x}_2-\cuti{x}_1)\lambda_2+(\cuti{x}_3-\cuti{x}_1)\lambda_3\]&lt;p&gt;
+获得关于实际坐标$\cuti{x}$的梯度。&lt;/p&gt;
+&lt;p&gt;在坐标系$\lambda_2-\lambda_3$下，参考单元是以$(0,0),(1,0),(0,1)$作为顶点的等腰直角三角形。&lt;/p&gt;
+&lt;p&gt;由&lt;a class=&#34;link&#34; href=&#34;..//piola-transformations/&#34; &gt;Piola变换&lt;/a&gt;，
+&lt;/p&gt;
+\[\int_F (\mathbf{v}\cdot\mathbf{n}|_F)(\mathbf{x})q(\mathbf{x})\d s=\int_{\hat F} (\boldsymbol{\psi}^d_K(\mathbf{v})\cdot\mathbf{\hat{n}}|_{\hat F})(\mathbf{\hat{x}})\psi_K^g(q)(\mathbf{\hat{x}})\d \hat s\]&lt;p&gt;
+其中
+&lt;/p&gt;
+\[\begin{aligned}
+&amp;\psi_K^g(q)=v\circ \cuti{T}_K(\hat{\cuti{x}})\\
+&amp;\cuti{\psi}_K^d(\cuti{v})=\mathrm{det}(\mathbb{J}_K)\mathbb{J}_K^{-1}\mathbf{v}\circ\mathbf{T}_K(\hat{\cuti{x}})
+\end{aligned}\]&lt;!--在参考单元上的矩阵
+\[\hat{A}:=(\hat\sigma_i(\cuti{\hat{\varphi}}_j))\]
+容易计算，是固定的矩阵。--&gt;
+&lt;p&gt;考虑单元$K$上自由度为
+&lt;/p&gt;
+\[\begin{aligned}\sigma_1(\cuti{v})=\int_{F_1}\left(\frac{1}{\mathrm{det}(\mathbb{J}_K)}\mathbb{J}_K\cuti{v}\right)\cdot\cuti{n}_{F_1}\lambda_2\d s,\sigma_2(\cuti{v})=\int_{F_1}\left(\frac{1}{\mathrm{det}(\mathbb{J}_K)}\mathbb{J}_K\cuti{v}\right)\cdot\cuti{n}_{F_1}\lambda_3\d s\\
+\sigma_3(\cuti{v})=\int_{F_2}\left(\frac{1}{\mathrm{det}(\mathbb{J}_K)}\mathbb{J}_K\cuti{v}\right)\cdot\cuti{n}_{F_2}\lambda_1\d s,\sigma_4(\cuti{v})=\int_{F_2}\left(\frac{1}{\mathrm{det}(\mathbb{J}_K)}\mathbb{J}_K\cuti{v}\right)\cdot\cuti{n}_{F_2}\lambda_3\d s\\
+\sigma_5(\cuti{v})=\int_{F_3}\left(\frac{1}{\mathrm{det}(\mathbb{J}_K)}\mathbb{J}_K\cuti{v}\right)\cdot\cuti{n}_{F_3}\lambda_1\d s,\sigma_6(\cuti{v})=\int_{F_3}\left(\frac{1}{\mathrm{det}(\mathbb{J}_K)}\mathbb{J}_K\cuti{v}\right)\cdot\cuti{n}_{F_3}\lambda_2\d s\\
+\end{aligned}\]&lt;p&gt;
+则
+&lt;/p&gt;
+\[\sigma_i(\cuti{v})=\hat{\sigma}_i(\hat{\cuti{v}}),\quad i=1,2,\cdots,6\]&lt;p&gt;显然\(\{\cuti{\varphi}_i\}_{i=1}^6\)是$\mathbb{BDM}_{1,2}$的一组基，设\(\Pi^{BDM}\cuti{v}=\sum_{i=1}^6b_i\cuti{\varphi}_i\)。
+令
+&lt;/p&gt;
+\[A:=(\sigma_i(\cuti{\varphi}_j))=(\hat{\sigma}_i(\cuti{\hat{\varphi}}_j)),\]&lt;p&gt;
+则
+&lt;/p&gt;
+\[A\vec{b}=\vec{f}^{\cuti{v}},\quad {f}^{\cuti{v}}_i=\sigma_i(\cuti{v}).\]&lt;p&gt;
+$A$为&lt;strong&gt;固定矩阵&lt;/strong&gt;，通过在参考元上计算（利用公式(1)）可得：
+&lt;/p&gt;
+\[\begin{aligned}
+A&amp;=\begin{pmatrix}
+0&amp;-\frac13&amp;-\f16&amp;0&amp;0&amp;0\\
+0&amp;-\frac16&amp;-\f13&amp;0&amp;0&amp;0\\
+0&amp;0&amp;0&amp;-\frac13&amp;0&amp;-\f16\\
+0&amp;0&amp;0&amp;-\frac16&amp;0&amp;-\f13\\
+\f{1}{3}&amp;\f1{6}&amp;0&amp;\f{1}{3}&amp;\f1{6}&amp;0\\
+\f{1}{6}&amp;\f1{3}&amp;0&amp;\f{1}{6}&amp;\f1{3}&amp;0\\
+\end{pmatrix},\\
+A^{-1}&amp;=\begin{pmatrix}
+-2&amp;4&amp;0&amp;0&amp;4&amp;-2\\
+-4&amp;2&amp;0&amp;0&amp;0&amp;0\\
+2&amp;-4&amp;0&amp;0&amp;0&amp;0\\
+0&amp;0&amp;-4&amp;2&amp;0&amp;0\\
+4&amp;-2&amp;0&amp;0&amp;-2&amp;4\\
+0&amp;0&amp;2&amp;4&amp;0&amp;0\\
+\end{pmatrix}.\end{aligned}\]&lt;p&gt;再次利用公式(1)计算可得：
+&lt;/p&gt;
+\[\begin{aligned}\vec{f}^{\cuti{\varphi}_7}=\begin{pmatrix}\frac1{12}\\\f{1}{12}\\0\\0\\0\\0\end{pmatrix},\ \vec{f}^{\cuti{\varphi}_8}=\begin{pmatrix}0\\0\\\frac1{12}\\\f{1}{12}\\0\\0\end{pmatrix},\ \vec{f}^{\cuti{\varphi}_9}=\begin{pmatrix}0\\0\\0\\0\\\frac1{12}\\\f{1}{12}\end{pmatrix}.\end{aligned}\]&lt;p&gt;于是
+&lt;/p&gt;
+\[\Pi^{BDM}\cuti{\varphi}_{i}=(\cuti{\varphi}_1,\cdots,\cuti{\varphi}_6)A^{-1}\vec{f}^{\cuti{\varphi}_i},\quad i=7,8,9.\]&lt;h3 id=&#34;remarks&#34;&gt;Remarks
+&lt;/h3&gt;&lt;p&gt;我们可以在初始化阶段将基函数的插值计算并存储，即存储&lt;code&gt;phi,Pi_RT_phi,Pi_BDM_phi&lt;/code&gt;等变量。&lt;/p&gt;
+&lt;h2 id=&#34;参考文献&#34;&gt;参考文献
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;..//piola-transformations/&#34; &gt;Piola变换.&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        <item>
         <title>Fixed Point Theorems</title>
         <link>https://baichuan-blog.netlify.app/p/fixed-point-theorems/</link>
         <pubDate>Sat, 02 Aug 2025 20:28:33 +0800</pubDate>
@@ -192,7 +346,7 @@ $$\tilde{F}(\mathbf{x}) = \argmin_{\mathbf{y}\in M}\norm{\mathbf{x}-\mathbf{y}}.
 \]&lt;h2 id=&#34;参考文献&#34;&gt;参考文献
 &lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.jianguoyun.com/p/DSlLaskQlsqoDRiK-IQGIAA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Finite Elements I.&lt;/a&gt;&lt;/li&gt;
+    &gt;Finite Elements I. Ch 9.&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
         </item>
@@ -239,7 +393,7 @@ $$\tilde{F}(\mathbf{x}) = \argmin_{\mathbf{y}\in M}\norm{\mathbf{x}-\mathbf{y}}.
 &lt;h3 id=&#34;brezzi-douglas-marini-elements&#34;&gt;Brezzi-Douglas-Marini elements
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;多项式空间：\(\mathbf{P}_{k,d}\subsetneq \mathbb{RT}_{k,d}\).&lt;/p&gt;
+&lt;p&gt;多项式空间：\(\mathbb{BDM}_{k,d}:=\mathbf{P}_{k,d}\subsetneq \mathbb{RT}_{k,d}\).&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;自由度：&lt;/p&gt;

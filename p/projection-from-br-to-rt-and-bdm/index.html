@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="过如秋草芟难尽 学似春冰积不高 ">
-<title>Tag:  Ssh - 百川的小屋</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="本文将介绍Bernardi–Raugel有限元到$\\mathbb{RT}_{0,2}$和\\(\\mathbb{BDM}_{1,2}\\)的插值算子，为代码实现做准备。\n">
+<title>Projection from BR to RT and BDM</title>
 
-<link rel='canonical' href='https://baichuan-blog.netlify.app/tags/-ssh/'>
+<link rel='canonical' href='https://baichuan-blog.netlify.app/p/projection-from-br-to-rt-and-bdm/'>
 
-<link rel="stylesheet" href="/scss/style.min.581b0ff8e16d4ced90d8d155763886e081d6661e0e2b431242ff9dd44eae3a90.css"><meta property='og:title' content="Tag:  Ssh - 百川的小屋">
-<meta property='og:description' content="过如秋草芟难尽 学似春冰积不高 ">
-<meta property='og:url' content='https://baichuan-blog.netlify.app/tags/-ssh/'>
+<link rel="stylesheet" href="/scss/style.min.581b0ff8e16d4ced90d8d155763886e081d6661e0e2b431242ff9dd44eae3a90.css"><meta property='og:title' content="Projection from BR to RT and BDM">
+<meta property='og:description' content="本文将介绍Bernardi–Raugel有限元到$\\mathbb{RT}_{0,2}$和\\(\\mathbb{BDM}_{1,2}\\)的插值算子，为代码实现做准备。\n">
+<meta property='og:url' content='https://baichuan-blog.netlify.app/p/projection-from-br-to-rt-and-bdm/'>
 <meta property='og:site_name' content='百川的小屋'>
-<meta property='og:type' content='website'><meta property='og:updated_time' content=' 2025-08-08T10:48:41&#43;08:00 '/>
-<meta name="twitter:title" content="Tag:  Ssh - 百川的小屋">
-<meta name="twitter:description" content="过如秋草芟难尽 学似春冰积不高 "><link rel="alternate" type="application/rss&#43;xml" href="https://baichuan-blog.netlify.app/tags/-ssh/index.xml">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-08-07T20:53:42&#43;08:00'/><meta property='article:modified_time' content='2025-08-08T10:48:41&#43;08:00'/>
+<meta name="twitter:title" content="Projection from BR to RT and BDM">
+<meta name="twitter:description" content="本文将介绍Bernardi–Raugel有限元到$\\mathbb{RT}_{0,2}$和\\(\\mathbb{BDM}_{1,2}\\)的插值算子，为代码实现做准备。\n">
     <link rel="shortcut icon" href="/favicon2.ico" />
 
     </head>
-    <body class="">
+    <body class="
+    article-page
+    ">
     <script>
         (function() {
             const colorSchemeKey = 'StackColorScheme';
@@ -262,77 +264,10 @@
     <aside class="sidebar right-sidebar sticky">
         
             
-                <form action="/search/" class="search-form widget" >
-        <p>
-            <label>搜索</label>
-            <input name="keyword" required placeholder="输入关键词..." />
-        
-            <button title="搜索">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-            </button>
-        </p>
-    </form>
-            
-        
-            
-                <section class="widget archives">
+                
+    <section class="widget archives">
         <div class="widget-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-infinity" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M9.828 9.172a4 4 0 1 0 0 5.656 a10 10 0 0 0 2.172 -2.828a10 10 0 0 1 2.172 -2.828 a4 4 0 1 1 0 5.656a10 10 0 0 1 -2.172 -2.828a10 10 0 0 0 -2.172 -2.828" />
-</svg>
-
-
-
-        </div>
-        <h2 class="widget-title section-title">归档</h2>
-
-        
-        
-        
-        
-        
-        <div class="widget-archive--list">
-            <div class="archives-year">
-                    <a href="/archives/#2025">
-                        
-                            <span class="year">2025</span>
-                            <span class="count">18</span>
-                        
-                    </a> 
-                </div>
-            <div class="archives-year">
-                    <a href="/archives/#2019">
-                        
-                            <span class="year">2019</span>
-                            <span class="count">2</span>
-                        
-                    </a> 
-                </div>
-            <div class="archives-year">
-                    <a href="/archives/#0001">
-                        
-                            <span class="year">0001</span>
-                            <span class="count">1</span>
-                        
-                    </a> 
-                </div>
-            
-        </div>
-    </section>
-            
-        
-            
-                <section class="widget tagCloud">
-    <div class="widget-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <line x1="5" y1="9" x2="19" y2="9" />
   <line x1="5" y1="15" x2="19" y2="15" />
@@ -342,119 +277,387 @@
 
 
 
-    </div>
-    <h2 class="widget-title section-title">分类</h2>
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#bernardiraugel有限元二维">Bernardi–Raugel有限元（二维）</a></li>
+    <li><a href="#投影算子">投影算子</a></li>
+    <li><a href="#代码实现">代码实现</a>
+      <ol>
+        <li><a href="#pirt">$\Pi^{RT}$</a></li>
+        <li><a href="#pibdm">$\Pi^{BDM}$</a></li>
+        <li><a href="#remarks">Remarks</a></li>
+      </ol>
+    </li>
+    <li><a href="#参考文献">参考文献</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
 
-    <div class="tagCloud-tags">
-        
-            <a href="/categories/fem/" class="font_size_6">
-                FEM
-            </a>
-        
-            <a href="/categories/hugo/" class="font_size_3">
-                Hugo
-            </a>
-        
-            <a href="/categories/atmosphere/" class="font_size_2">
-                Atmosphere
-            </a>
-        
-            <a href="/categories/git/" class="font_size_2">
-                Git
-            </a>
-        
-            <a href="/categories/markdown/" class="font_size_2">
-                Markdown
-            </a>
-        
-            <a href="/categories/pde/" class="font_size_1">
-                PDE
-            </a>
-        
-    </div>
-</section>
-
-            
-        
-            
-                <section class="widget tagCloud">
-    <div class="widget-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
-  <circle cx="9" cy="9" r="2" />
-</svg>
-
-
-
-    </div>
-    <h2 class="widget-title section-title">标签云</h2>
-
-    <div class="tagCloud-tags">
-        
-            <a href="/tags/-scp/" class="font_size_1">
-                 Scp
-            </a>
-        
-            <a href="/tags/-ssh/" class="font_size_1">
-                 Ssh
-            </a>
-        
-            <a href="/tags/fealpy/" class="font_size_1">
-                Fealpy
-            </a>
-        
-            <a href="/tags/fnm/" class="font_size_1">
-                FNM
-            </a>
-        
-            <a href="/tags/linux/" class="font_size_1">
-                Linux
-            </a>
-        
-            <a href="/tags/piml/" class="font_size_1">
-                PIML
-            </a>
-        
-    </div>
-</section>
             
         
     </aside>
 
 
             <main class="main full-width">
-    <header>
-        <h3 class="section-title">
-            
-                Tags
-            
-        </h3>
+    <article class="main-article">
+    <header class="article-header">
 
-        <div class="section-card">
-            <div class="section-details">
-                <h3 class="section-count">1 个页面</h3>
-                <h1 class="section-term"> Ssh</h1>
-                
-            </div>
-        </div>
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/fem/" style="background-color: #7AC5CD; color: #fff;">
+                FEM
+            </a>
+        
     </header>
     
-    <section class="article-list--compact">
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/projection-from-br-to-rt-and-bdm/">Projection from BR to RT and BDM</a>
+        </h2>
+    
         
-            <article>
-    <a href="/p/git/">
+    </div>
+
+	
+		<footer class="article-time">
+			
+				<div>
+					<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+					<time class="article-time--published">2025-08-07 20:53</time>
+				</div>
+			
+
+			
+			
+						<span class="article-time--final-update">
+							最后更新于 <time class="article-time--updated" datetime="2025-08-08 10:48:41 &#43;0800 &#43;0800" title="2025-08-08 10:48:41 &#43;0800 &#43;0800">2025-08-08 10:48</time>
+						</span>
+
+			
+		</footer>
+	
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>本文将介绍Bernardi–Raugel有限元到$\mathbb{RT}_{0,2}$和\(\mathbb{BDM}_{1,2}\)的插值算子，为代码实现做准备。</p>
+<h2 id="bernardiraugel有限元二维">Bernardi–Raugel有限元（二维）
+</h2><ul>
+<li>
+<p>多项式空间：
+</p>
+\[\mathbb{BR}:=\mathbf{P}_{1,2}\oplus\mathrm{Span}\{\mathbf{p}_i:\mathbf{p}_i= \mathbf{n}_i\prod_{j=1,j\ne i}^{3}\lambda_j,\quad i=1,2, 3\}\]<p>
+其中\(\{\lambda_i\}_{i=1}^{3}\)为重心坐标。</p>
+</li>
+<li>
+<p>自由度：</p>
+<ul>
+<li>顶点：$\sigma_{V,i}=\mathbf{v}(a_i),\quad i=1,2,3$.</li>
+<li>边：$\sigma_{F,i}=\int_{F_i}\mathbf{v}\cdot\mathbf{n}_{F_i}\d s,\quad i=1,2,3$.</li>
+</ul>
+</li>
+<li>
+<p>整体的有限元空间\(\mathbb{BR}_h:=\{\mathbf{v}\in \mathbf{C}^0(\overline\Omega):\mathbf{v}|_K\in\mathbb{BR}(K),K\in\mathcal{K}_h\}\)是连续的分片多项式，因此$\mathbb{BR}_h\subset \mathbb{H}_0^1$。</p>
+</li>
+</ul>
+<h2 id="投影算子">投影算子
+</h2><p>设\(\Pi^{RT}:\mathbb{BR}_h\rightarrow \mathbb{RT}_{0,2}\)、\(\Pi^{BDM}:\mathbb{BR}_h\rightarrow \mathbb{BDM}_{1,2}\)为投影算子，</p>
+<ul>
+<li>
+<p>$\int_F (\mathbf{v}_h-\Pi^{RT}\mathbf{v}_h)\cdot\mathbf{n}_F\d s=0$.</p>
+<p>这里用到\(\mathbb{BR}_h\)在单元边界两侧的积分$\int_{F^{\pm}}\mathbf{v}\cdot\mathbf{n}_F\d s$相同（\(\mathbb{BR}_h\)是连续元），否则不能定义$\int_F$。</p>
+</li>
+<li>
+\[\int_F(\mathbf{v}_h-\Pi^{BDM}\mathbf{v}_h)\cdot \mathbf{n}_Fq_h\d s=0,\quad F\in\mathcal{F}_h,q_h\in\mathbf{P}_{1,1}(F).\]<p>
+这里的良定性同样由$\mathbb{BR}_h$是连续元保证。</p>
+</li>
+</ul>
+<p>$\mathrm{div}_h=\pi_0\circ \mathrm{div}:\mathbf{H}_0^1\rightarrow \mathbb{Q}_h$，其中$\mathbb{Q}_h$为分片常数空间，$\pi_0$为$L^2$到$\mathbb{Q}_h$的$L^2$投影，满足$(r,q_h)=(\pi_0(r),q_h),\quad \forall r\in L^2, q_h\in \mathbb{Q}_h$。</p>
+<p><strong>Prop.</strong>
+$\forall \mathbf{v}_h\in\mathbb{BR}_h$，
+$\mathrm{div}_h\mathbf{v}_h=\mathrm{div}(\Pi \mathbf{v}_h)$，其中$\Pi=\Pi^{RT},\Pi^{BDM}$。</p>
+<p><strong>Proof：</strong></p>
+<p>显然$\mathrm{div}_h\mathbf{v}_h=\mathrm{div}(\Pi \mathbf{v}_h)$两者都是分片常数，$\forall K\in\mathcal{K}_h$，
+</p>
+\[\begin{aligned}&\int_K\mathrm{div}_h\mathbf{v}_h\d\mathbf{x}\\=&\int_K\mathrm{div}\mathbf{v}_h\d \mathbf{x}\\
+=&\int_{\p K}\mathbf{v}_h\cdot \mathbf{n}\d s\\
+=&\int_{\p K}\Pi\mathbf{v}_h\cdot\mathbf{n}\d s\\
+=&\int_{K}\mathrm{div}(\Pi \mathbf{v}_h)\d \mathbf{x} \end{aligned}\]<p>
+因此，
+</p>
+\[(\mathrm{div}_h\mathbf{v}_h)_K=(\mathrm{div}(\Pi \mathbf{v}_h))_K,\quad \forall K\in\mathcal{K}_h.\]<h2 id="代码实现">代码实现
+</h2><p>\(\mathbb{BR}_h\)沿单元边界连续，因此<strong>逐单元投影</strong>到\(\mathbb{RT}_{0,2}(K)\)和\(\mathbb{BDM}_{1,2}(K)\)得到的分片多项式分别在\(\mathbb{RT}_{0,2}\)和\(\mathbb{BDM}_{1,2}\)中。</p>
+<p>$\mathbb{BR}(K)$的一组基为
+</p>
+\[\begin{cases}\cuti{\varphi}_{i}=\lambda_i\mathbf{e}_{1},\quad i=1,2,3,\\
+\cuti{\varphi}_{i+3}=\lambda_i\mathbf{e}_2,\quad i=1,2,3,\\
+\cuti{\varphi}_{i+6}=\mathbf{n}_i\prod_{j=1,j\ne i}^{3}\lambda_j,\quad i=1,2,3.
+\end{cases} \]<h3 id="pirt">$\Pi^{RT}$
+</h3><p>由于$\cuti{\varphi}_i,i\in{1,2,\cdots,6}$在各边均值（中点值）为0，于是
+</p>
+\[\Pi^{RT}\cuti{\varphi}_i=\cuti{0},\quad i=1,2,\cdots, 6.\]<p>
+对于$\cuti{\varphi}_i,i=7,8,9$，\(\cuti{\varphi}_i|_{F_j}0,\quad j\ne i\)，因此
+</p>
+\[\int_{F_j}\cuti{\varphi}_{i+6}\cdot \cuti{n}_{F_j}\d s=0,\quad j\ne i.\]<p>
+由</p>
+\[\int_{F_k}\lambda_i^p\lambda_j^q\d s=\frac{p!q!}{(p+q+1)!}|F_k|,\quad (i,j,k\text{互不相同})\tag{1}\]<p>
+可得
+</p>
+\[\int_{F_i}\cuti{\varphi}_{i+6}\cdot \cuti{n}_{F_i}\d s=\int_{F_i}\prod_{j=1,j\ne i}^{3}\lambda_j\d s=\frac16|F_i|.\]<!--因此
+\[\Pi^{RT}\cuti{\varphi}_i=\frac16(1-2\lambda_i),\quad i=7,8,9.\]-->
+<p>$\Pi^{RT}$插值可显式表示为：
+</p>
+\[\Pi^{RT}\cuti{v}:=\cuti{a}_K+\frac{c_K}{2}(\cuti{x}-\cuti{x}_K)\tag{2}\]<p>
+其中
+</p>
+\[\begin{aligned}&c_K=\frac{1}{|K|}\int_{\p K}\cuti{v}\cdot\cuti{n}\d s,\\&\cuti{a}_K=\frac{1}{|K|}\sum_{F\subset \p K}\int_F\cuti{v}\cdot\cuti{n}\d s(\cuti{x}_F-\cuti{x}_K),\end{aligned}\]<p>
+其中$\cuti{x}_K$和$\cuti{x}_F$分别是单元和边的重心。</p>
+<p>利用公式(2)，
+</p>
+\[\Pi^{RT}\cuti{\varphi}_{i+6}=\frac{|F_i|}{6|K|}\left((\cuti{x}_{F_i}-\cuti{x}_K)+\frac12(\cuti{x}-\cuti{x}_K)\right),\quad i=1,2,3.\]<h3 id="pibdm">$\Pi^{BDM}$
+</h3><p>由
+</p>
+\[\varphi_i\in \mathbb{BDM}_{1,2}\quad i=\{1,2,\cdots,6\}\]<p>
+可知
+</p>
+\[\Pi^{BDM}\mathbf{\varphi}_i=\varphi_i,\quad i=\{1,2,\cdots,6\}.\]<p>
+下面考虑$\Pi^{BDM}\varphi_i,\ i=7,8,9$。</p>
+<p>在参考单元上定义自由度如下（为方便书写只在$\sigma$上加$\hat{\quad}$以表示在参考元上进行运算）
+</p>
+\[\begin{aligned}\hat\sigma_1(\cuti{v})=\int_{F_1}{\cuti{v}}\cdot\cuti{n}_{F_1}\lambda_2\d s,\hat\sigma_2(\cuti{v})=\int_{F_1}\cuti{v}\cdot\cuti{n}_{F_1}\lambda_3\d s\\
+\hat\sigma_3(\cuti{v})=\int_{F_2}\cuti{v}\cdot\cuti{n}_{F_2}\lambda_1\d s,\hat\sigma_4(\cuti{v})=\int_{F_2}\cuti{v}\cdot\cuti{n}_{F_2}\lambda_3\d s\\
+\hat\sigma_5(\cuti{v})=\int_{F_3}\cuti{v}\cdot\cuti{n}_{F_3}\lambda_1\d s,\hat\sigma_6(\cuti{v})=\int_{F_3}\cuti{v}\cdot\cuti{n}_{F_3}\lambda_2\d s\\
+\end{aligned}\]<p><code>fealpy</code>中计算基函数梯度的方法是先计算各单元基函数关于$(\lambda_2,\lambda_3)$的梯度，然后利用
+</p>
+\[\cuti{x}=\sum_{i=1}^3\cuti{x}_i\lambda_i=\cuti{x}_1+(\cuti{x}_2-\cuti{x}_1)\lambda_2+(\cuti{x}_3-\cuti{x}_1)\lambda_3\]<p>
+获得关于实际坐标$\cuti{x}$的梯度。</p>
+<p>在坐标系$\lambda_2-\lambda_3$下，参考单元是以$(0,0),(1,0),(0,1)$作为顶点的等腰直角三角形。</p>
+<p>由<a class="link" href="..//piola-transformations/" >Piola变换</a>，
+</p>
+\[\int_F (\mathbf{v}\cdot\mathbf{n}|_F)(\mathbf{x})q(\mathbf{x})\d s=\int_{\hat F} (\boldsymbol{\psi}^d_K(\mathbf{v})\cdot\mathbf{\hat{n}}|_{\hat F})(\mathbf{\hat{x}})\psi_K^g(q)(\mathbf{\hat{x}})\d \hat s\]<p>
+其中
+</p>
+\[\begin{aligned}
+&\psi_K^g(q)=v\circ \cuti{T}_K(\hat{\cuti{x}})\\
+&\cuti{\psi}_K^d(\cuti{v})=\mathrm{det}(\mathbb{J}_K)\mathbb{J}_K^{-1}\mathbf{v}\circ\mathbf{T}_K(\hat{\cuti{x}})
+\end{aligned}\]<!--在参考单元上的矩阵
+\[\hat{A}:=(\hat\sigma_i(\cuti{\hat{\varphi}}_j))\]
+容易计算，是固定的矩阵。-->
+<p>考虑单元$K$上自由度为
+</p>
+\[\begin{aligned}\sigma_1(\cuti{v})=\int_{F_1}\left(\frac{1}{\mathrm{det}(\mathbb{J}_K)}\mathbb{J}_K\cuti{v}\right)\cdot\cuti{n}_{F_1}\lambda_2\d s,\sigma_2(\cuti{v})=\int_{F_1}\left(\frac{1}{\mathrm{det}(\mathbb{J}_K)}\mathbb{J}_K\cuti{v}\right)\cdot\cuti{n}_{F_1}\lambda_3\d s\\
+\sigma_3(\cuti{v})=\int_{F_2}\left(\frac{1}{\mathrm{det}(\mathbb{J}_K)}\mathbb{J}_K\cuti{v}\right)\cdot\cuti{n}_{F_2}\lambda_1\d s,\sigma_4(\cuti{v})=\int_{F_2}\left(\frac{1}{\mathrm{det}(\mathbb{J}_K)}\mathbb{J}_K\cuti{v}\right)\cdot\cuti{n}_{F_2}\lambda_3\d s\\
+\sigma_5(\cuti{v})=\int_{F_3}\left(\frac{1}{\mathrm{det}(\mathbb{J}_K)}\mathbb{J}_K\cuti{v}\right)\cdot\cuti{n}_{F_3}\lambda_1\d s,\sigma_6(\cuti{v})=\int_{F_3}\left(\frac{1}{\mathrm{det}(\mathbb{J}_K)}\mathbb{J}_K\cuti{v}\right)\cdot\cuti{n}_{F_3}\lambda_2\d s\\
+\end{aligned}\]<p>
+则
+</p>
+\[\sigma_i(\cuti{v})=\hat{\sigma}_i(\hat{\cuti{v}}),\quad i=1,2,\cdots,6\]<p>显然\(\{\cuti{\varphi}_i\}_{i=1}^6\)是$\mathbb{BDM}_{1,2}$的一组基，设\(\Pi^{BDM}\cuti{v}=\sum_{i=1}^6b_i\cuti{\varphi}_i\)。
+令
+</p>
+\[A:=(\sigma_i(\cuti{\varphi}_j))=(\hat{\sigma}_i(\cuti{\hat{\varphi}}_j)),\]<p>
+则
+</p>
+\[A\vec{b}=\vec{f}^{\cuti{v}},\quad {f}^{\cuti{v}}_i=\sigma_i(\cuti{v}).\]<p>
+$A$为<strong>固定矩阵</strong>，通过在参考元上计算（利用公式(1)）可得：
+</p>
+\[\begin{aligned}
+A&=\begin{pmatrix}
+0&-\frac13&-\f16&0&0&0\\
+0&-\frac16&-\f13&0&0&0\\
+0&0&0&-\frac13&0&-\f16\\
+0&0&0&-\frac16&0&-\f13\\
+\f{1}{3}&\f1{6}&0&\f{1}{3}&\f1{6}&0\\
+\f{1}{6}&\f1{3}&0&\f{1}{6}&\f1{3}&0\\
+\end{pmatrix},\\
+A^{-1}&=\begin{pmatrix}
+-2&4&0&0&4&-2\\
+-4&2&0&0&0&0\\
+2&-4&0&0&0&0\\
+0&0&-4&2&0&0\\
+4&-2&0&0&-2&4\\
+0&0&2&4&0&0\\
+\end{pmatrix}.\end{aligned}\]<p>再次利用公式(1)计算可得：
+</p>
+\[\begin{aligned}\vec{f}^{\cuti{\varphi}_7}=\begin{pmatrix}\frac1{12}\\\f{1}{12}\\0\\0\\0\\0\end{pmatrix},\ \vec{f}^{\cuti{\varphi}_8}=\begin{pmatrix}0\\0\\\frac1{12}\\\f{1}{12}\\0\\0\end{pmatrix},\ \vec{f}^{\cuti{\varphi}_9}=\begin{pmatrix}0\\0\\0\\0\\\frac1{12}\\\f{1}{12}\end{pmatrix}.\end{aligned}\]<p>于是
+</p>
+\[\Pi^{BDM}\cuti{\varphi}_{i}=(\cuti{\varphi}_1,\cdots,\cuti{\varphi}_6)A^{-1}\vec{f}^{\cuti{\varphi}_i},\quad i=7,8,9.\]<h3 id="remarks">Remarks
+</h3><p>我们可以在初始化阶段将基函数的插值计算并存储，即存储<code>phi,Pi_RT_phi,Pi_BDM_phi</code>等变量。</p>
+<h2 id="参考文献">参考文献
+</h2><ol>
+<li><a class="link" href="..//piola-transformations/" >Piola变换.</a></li>
+</ol>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    
+
+    
+</footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+			macros: {
+                "\\abs": "\\left| #1 \\right|",
+				"\\Sob": "W^{#1,#2}(#3)",  
+				"\\inn": "\\langle #1,#2 \\rangle",
+				"\\p": "\\partial",
+				"\\d": "\\mathrm{d}",
+				"\\f": "\\frac",
+				"\\D": "\\Delta",
+				"\\a": "\\alpha",
+				"\\b": "\\beta",
+				"\\cuti": "\\boldsymbol",
+                "\\norm": "\\|#1\\|"
+            },
+            ignoredClasses: ["gist"]
+        });})
+</script>
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/piola-transformations/">
+        
+        
+
         <div class="article-details">
-            <h2 class="article-title">Git</h2>
-            <footer class="article-time">
-                <time datetime='2025-05-27T18:46:25&#43;08:00'>2025-05-27 18:46</time>
-            </footer>
+            <h2 class="article-title">Piola Transformations</h2>
         </div>
     </a>
 </article>
+
+            
+                
+<article class="">
+    <a href="/p/hdiv-and-hcurl-finite-elements/">
         
-    </section>
-<footer class="site-footer">
+        
+
+        <div class="article-details">
+            <h2 class="article-title">H(div) and H(curl) finite elements</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/wachspress-coordinates/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Wachspress Coordinates</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/mfem/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">MFEM</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E8%BE%93%E8%BF%90%E6%96%B9%E7%A8%8B%E7%AE%97%E4%BE%8B/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">输运方程算例</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
     <section class="copyright">
         &copy; 
         
@@ -467,6 +670,84 @@
     </section>
 </footer>
 
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
 
             </main>
         </div>
