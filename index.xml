@@ -94,11 +94,11 @@ $\mathrm{div}_h\mathbf{v}_h=\mathrm{div}(\Pi \mathbf{v}_h)$，其中$\Pi=\Pi^{RT
 &lt;/p&gt;
 \[\Pi^{BDM}\mathbf{\varphi}_i=\varphi_i,\quad i=\{1,2,\cdots,6\}.\]&lt;p&gt;
 下面考虑$\Pi^{BDM}\varphi_i,\ i=7,8,9$。&lt;/p&gt;
-&lt;p&gt;在参考单元上定义自由度如下（为方便书写只在$\sigma$上加$\hat{\quad}$以表示在参考元上进行运算）
+&lt;p&gt;在参考单元上定义自由度如下：
 &lt;/p&gt;
-\[\begin{aligned}\hat\sigma_1(\cuti{v})=\int_{F_1}{\cuti{v}}\cdot\cuti{n}_{F_1}\lambda_2\d s,\hat\sigma_2(\cuti{v})=\int_{F_1}\cuti{v}\cdot\cuti{n}_{F_1}\lambda_3\d s\\
-\hat\sigma_3(\cuti{v})=\int_{F_2}\cuti{v}\cdot\cuti{n}_{F_2}\lambda_1\d s,\hat\sigma_4(\cuti{v})=\int_{F_2}\cuti{v}\cdot\cuti{n}_{F_2}\lambda_3\d s\\
-\hat\sigma_5(\cuti{v})=\int_{F_3}\cuti{v}\cdot\cuti{n}_{F_3}\lambda_1\d s,\hat\sigma_6(\cuti{v})=\int_{F_3}\cuti{v}\cdot\cuti{n}_{F_3}\lambda_2\d s\\
+\[\begin{aligned}\hat\sigma_1(\cuti{\hat v})=\int_{\hat{F}_1}{\cuti{\hat v}}\cdot\cuti{\hat n}_{\hat{F}_1}\hat\lambda_2\d \hat s,\hat\sigma_2(\cuti{\hat v})=\int_{\hat F_1}\cuti{\hat v}\cdot\cuti{\hat n}_{\hat F_1}\hat \lambda_3\d \hat s\\
+\hat\sigma_3(\cuti{\hat v})=\int_{\hat F_2}\cuti{\hat v}\cdot\cuti{\hat n }_{\hat F_2}\hat \lambda_1\d \hat s,\hat\sigma_4(\cuti{\hat v})=\int_{\hat F_2}\cuti{v}\cdot\cuti{\hat n}_{\hat F_2}\hat \lambda_3\d \hat s\\
+\hat\sigma_5(\cuti{\hat v})=\int_{\hat F_3}\cuti{\hat v}\cdot\cuti{\hat n}_{\hat F_3}\hat \lambda_1\d \hat s,\hat\sigma_6(\cuti{\hat v})=\int_{\hat F_3}\cuti{\hat v}\cdot\cuti{\hat n}_{\hat F_3}\hat \lambda_2\d \hat s\\
 \end{aligned}\]&lt;p&gt;&lt;code&gt;fealpy&lt;/code&gt;中计算基函数梯度的方法是先计算各单元基函数关于$(\lambda_2,\lambda_3)$的梯度，然后利用
 &lt;/p&gt;
 \[\cuti{x}=\sum_{i=1}^3\cuti{x}_i\lambda_i=\cuti{x}_1+(\cuti{x}_2-\cuti{x}_1)\lambda_2+(\cuti{x}_3-\cuti{x}_1)\lambda_3\]&lt;p&gt;
@@ -115,7 +115,7 @@ $\mathrm{div}_h\mathbf{v}_h=\mathrm{div}(\Pi \mathbf{v}_h)$，其中$\Pi=\Pi^{RT
 \end{aligned}\]&lt;!--在参考单元上的矩阵
 \[\hat{A}:=(\hat\sigma_i(\cuti{\hat{\varphi}}_j))\]
 容易计算，是固定的矩阵。--&gt;
-&lt;p&gt;考虑单元$K$上自由度为
+&lt;p&gt;考虑单元$K$上自由度（变量替换到参考元上可证线性独立性）：
 &lt;/p&gt;
 \[\begin{aligned}\sigma_1(\cuti{v})=\int_{F_1}\left(\frac{1}{\mathrm{det}(\mathbb{J}_K)}\mathbb{J}_K\cuti{v}\right)\cdot\cuti{n}_{F_1}\lambda_2\d s,\sigma_2(\cuti{v})=\int_{F_1}\left(\frac{1}{\mathrm{det}(\mathbb{J}_K)}\mathbb{J}_K\cuti{v}\right)\cdot\cuti{n}_{F_1}\lambda_3\d s\\
 \sigma_3(\cuti{v})=\int_{F_2}\left(\frac{1}{\mathrm{det}(\mathbb{J}_K)}\mathbb{J}_K\cuti{v}\right)\cdot\cuti{n}_{F_2}\lambda_1\d s,\sigma_4(\cuti{v})=\int_{F_2}\left(\frac{1}{\mathrm{det}(\mathbb{J}_K)}\mathbb{J}_K\cuti{v}\right)\cdot\cuti{n}_{F_2}\lambda_3\d s\\

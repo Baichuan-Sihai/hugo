@@ -10,7 +10,7 @@
 <meta property='og:description' content="本文将介绍Bernardi–Raugel有限元到$\\mathbb{RT}_{0,2}$和\\(\\mathbb{BDM}_{1,2}\\)的插值算子，为代码实现做准备。\n">
 <meta property='og:url' content='https://baichuan-blog.netlify.app/p/projection-from-br-to-rt-and-bdm/'>
 <meta property='og:site_name' content='百川的小屋'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-08-07T20:53:42&#43;08:00'/><meta property='article:modified_time' content='2025-08-08T10:48:41&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-08-07T20:53:42&#43;08:00'/><meta property='article:modified_time' content='2025-08-08T11:09:11&#43;08:00'/>
 <meta name="twitter:title" content="Projection from BR to RT and BDM">
 <meta name="twitter:description" content="本文将介绍Bernardi–Raugel有限元到$\\mathbb{RT}_{0,2}$和\\(\\mathbb{BDM}_{1,2}\\)的插值算子，为代码实现做准备。\n">
     <link rel="shortcut icon" href="/favicon2.ico" />
@@ -346,7 +346,7 @@
 			
 			
 						<span class="article-time--final-update">
-							最后更新于 <time class="article-time--updated" datetime="2025-08-08 10:48:41 &#43;0800 &#43;0800" title="2025-08-08 10:48:41 &#43;0800 &#43;0800">2025-08-08 10:48</time>
+							最后更新于 <time class="article-time--updated" datetime="2025-08-08 11:09:11 &#43;0800 &#43;0800" title="2025-08-08 11:09:11 &#43;0800 &#43;0800">2025-08-08 11:09</time>
 						</span>
 
 			
@@ -443,11 +443,11 @@ $\mathrm{div}_h\mathbf{v}_h=\mathrm{div}(\Pi \mathbf{v}_h)$，其中$\Pi=\Pi^{RT
 </p>
 \[\Pi^{BDM}\mathbf{\varphi}_i=\varphi_i,\quad i=\{1,2,\cdots,6\}.\]<p>
 下面考虑$\Pi^{BDM}\varphi_i,\ i=7,8,9$。</p>
-<p>在参考单元上定义自由度如下（为方便书写只在$\sigma$上加$\hat{\quad}$以表示在参考元上进行运算）
+<p>在参考单元上定义自由度如下：
 </p>
-\[\begin{aligned}\hat\sigma_1(\cuti{v})=\int_{F_1}{\cuti{v}}\cdot\cuti{n}_{F_1}\lambda_2\d s,\hat\sigma_2(\cuti{v})=\int_{F_1}\cuti{v}\cdot\cuti{n}_{F_1}\lambda_3\d s\\
-\hat\sigma_3(\cuti{v})=\int_{F_2}\cuti{v}\cdot\cuti{n}_{F_2}\lambda_1\d s,\hat\sigma_4(\cuti{v})=\int_{F_2}\cuti{v}\cdot\cuti{n}_{F_2}\lambda_3\d s\\
-\hat\sigma_5(\cuti{v})=\int_{F_3}\cuti{v}\cdot\cuti{n}_{F_3}\lambda_1\d s,\hat\sigma_6(\cuti{v})=\int_{F_3}\cuti{v}\cdot\cuti{n}_{F_3}\lambda_2\d s\\
+\[\begin{aligned}\hat\sigma_1(\cuti{\hat v})=\int_{\hat{F}_1}{\cuti{\hat v}}\cdot\cuti{\hat n}_{\hat{F}_1}\hat\lambda_2\d \hat s,\hat\sigma_2(\cuti{\hat v})=\int_{\hat F_1}\cuti{\hat v}\cdot\cuti{\hat n}_{\hat F_1}\hat \lambda_3\d \hat s\\
+\hat\sigma_3(\cuti{\hat v})=\int_{\hat F_2}\cuti{\hat v}\cdot\cuti{\hat n }_{\hat F_2}\hat \lambda_1\d \hat s,\hat\sigma_4(\cuti{\hat v})=\int_{\hat F_2}\cuti{v}\cdot\cuti{\hat n}_{\hat F_2}\hat \lambda_3\d \hat s\\
+\hat\sigma_5(\cuti{\hat v})=\int_{\hat F_3}\cuti{\hat v}\cdot\cuti{\hat n}_{\hat F_3}\hat \lambda_1\d \hat s,\hat\sigma_6(\cuti{\hat v})=\int_{\hat F_3}\cuti{\hat v}\cdot\cuti{\hat n}_{\hat F_3}\hat \lambda_2\d \hat s\\
 \end{aligned}\]<p><code>fealpy</code>中计算基函数梯度的方法是先计算各单元基函数关于$(\lambda_2,\lambda_3)$的梯度，然后利用
 </p>
 \[\cuti{x}=\sum_{i=1}^3\cuti{x}_i\lambda_i=\cuti{x}_1+(\cuti{x}_2-\cuti{x}_1)\lambda_2+(\cuti{x}_3-\cuti{x}_1)\lambda_3\]<p>
@@ -464,7 +464,7 @@ $\mathrm{div}_h\mathbf{v}_h=\mathrm{div}(\Pi \mathbf{v}_h)$，其中$\Pi=\Pi^{RT
 \end{aligned}\]<!--在参考单元上的矩阵
 \[\hat{A}:=(\hat\sigma_i(\cuti{\hat{\varphi}}_j))\]
 容易计算，是固定的矩阵。-->
-<p>考虑单元$K$上自由度为
+<p>考虑单元$K$上自由度（变量替换到参考元上可证线性独立性）：
 </p>
 \[\begin{aligned}\sigma_1(\cuti{v})=\int_{F_1}\left(\frac{1}{\mathrm{det}(\mathbb{J}_K)}\mathbb{J}_K\cuti{v}\right)\cdot\cuti{n}_{F_1}\lambda_2\d s,\sigma_2(\cuti{v})=\int_{F_1}\left(\frac{1}{\mathrm{det}(\mathbb{J}_K)}\mathbb{J}_K\cuti{v}\right)\cdot\cuti{n}_{F_1}\lambda_3\d s\\
 \sigma_3(\cuti{v})=\int_{F_2}\left(\frac{1}{\mathrm{det}(\mathbb{J}_K)}\mathbb{J}_K\cuti{v}\right)\cdot\cuti{n}_{F_2}\lambda_1\d s,\sigma_4(\cuti{v})=\int_{F_2}\left(\frac{1}{\mathrm{det}(\mathbb{J}_K)}\mathbb{J}_K\cuti{v}\right)\cdot\cuti{n}_{F_2}\lambda_3\d s\\
