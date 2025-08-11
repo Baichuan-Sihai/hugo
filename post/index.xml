@@ -7,7 +7,7 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>百川</copyright>
-        <lastBuildDate>Fri, 08 Aug 2025 11:09:11 +0800</lastBuildDate><atom:link href="https://baichuan-blog.netlify.app/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 11 Aug 2025 15:03:56 +0800</lastBuildDate><atom:link href="https://baichuan-blog.netlify.app/post/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Projection from BR to RT and BDM</title>
         <link>https://baichuan-blog.netlify.app/p/projection-from-br-to-rt-and-bdm/</link>
         <pubDate>Thu, 07 Aug 2025 20:53:42 +0800</pubDate>
@@ -25,7 +25,7 @@
 &lt;li&gt;
 &lt;p&gt;自由度：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;顶点：$\sigma_{V,i}=\mathbf{v}(a_i),\quad i=1,2,3$.&lt;/li&gt;
+&lt;li&gt;顶点：$\sigma_{V,i,j}=\mathbf{v}(a_i)\cdot\cuti{e}_j,\quad i=1,2,3,\ j=1,2$.&lt;/li&gt;
 &lt;li&gt;边：$\sigma_{F,i}=\int_{F_i}\mathbf{v}\cdot\mathbf{n}_{F_i}\d s,\quad i=1,2,3$.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
@@ -66,28 +66,28 @@ $\mathrm{div}_h\mathbf{v}_h=\mathrm{div}(\Pi \mathbf{v}_h)$，其中$\Pi=\Pi^{RT
 \cuti{\varphi}_{i+3}=\lambda_i\mathbf{e}_2,\quad i=1,2,3,\\
 \cuti{\varphi}_{i+6}=\mathbf{n}_i\prod_{j=1,j\ne i}^{3}\lambda_j,\quad i=1,2,3.
 \end{cases} \]&lt;h3 id=&#34;pirt&#34;&gt;$\Pi^{RT}$
-&lt;/h3&gt;&lt;p&gt;由于$\cuti{\varphi}_i,i\in{1,2,\cdots,6}$在各边均值（中点值）为0，于是
-&lt;/p&gt;
-\[\Pi^{RT}\cuti{\varphi}_i=\cuti{0},\quad i=1,2,\cdots, 6.\]&lt;p&gt;
-对于$\cuti{\varphi}_i,i=7,8,9$，\(\cuti{\varphi}_i|_{F_j}0,\quad j\ne i\)，因此
-&lt;/p&gt;
-\[\int_{F_j}\cuti{\varphi}_{i+6}\cdot \cuti{n}_{F_j}\d s=0,\quad j\ne i.\]&lt;p&gt;
-由&lt;/p&gt;
-\[\int_{F_k}\lambda_i^p\lambda_j^q\d s=\frac{p!q!}{(p+q+1)!}|F_k|,\quad (i,j,k\text{互不相同})\tag{1}\]&lt;p&gt;
+&lt;/h3&gt;&lt;p&gt;$\lambda_i$在边$F_j$均值（中点值）为\(\frac12(1-\delta_{ij})\).&lt;/p&gt;
+&lt;!--
+对于$\cuti{\varphi}_i,i=7,8,9$，\(\cuti{\varphi}_i|_{F_j}=0,\quad j\ne i\)，因此
+\[\int_{F_j}\cuti{\varphi}_{i+6}\cdot \cuti{n}_{F_j}\d s=0,\quad i,j=1,2,3,\  i\ne j.\]
+由\[\int_{F_k}\lambda_i^p\lambda_j^q\d s=\frac{p!q!}{(p+q+1)!}|F_k|,\quad (i,j,k\text{互不相同})\tag{1}\]
 可得
-&lt;/p&gt;
-\[\int_{F_i}\cuti{\varphi}_{i+6}\cdot \cuti{n}_{F_i}\d s=\int_{F_i}\prod_{j=1,j\ne i}^{3}\lambda_j\d s=\frac16|F_i|.\]&lt;!--因此
+\[\int_{F_i}\cuti{\varphi}_{i+6}\cdot \cuti{n}_{F_i}\d s=\int_{F_i}\prod_{j=1,j\ne i}^{3}\lambda_j\d s=\frac16|F_i|.\]--&gt;
+&lt;!--因此
 \[\Pi^{RT}\cuti{\varphi}_i=\frac16(1-2\lambda_i),\quad i=7,8,9.\]--&gt;
 &lt;p&gt;$\Pi^{RT}$插值可显式表示为：
 &lt;/p&gt;
-\[\Pi^{RT}\cuti{v}:=\cuti{a}_K+\frac{c_K}{2}(\cuti{x}-\cuti{x}_K)\tag{2}\]&lt;p&gt;
+\[\Pi^{RT}\cuti{v}:=\cuti{a}_K+\frac{c_K}{2}(\cuti{x}-\cuti{x}_K)\tag{1}\]&lt;p&gt;
 其中
 &lt;/p&gt;
 \[\begin{aligned}&amp;c_K=\frac{1}{|K|}\int_{\p K}\cuti{v}\cdot\cuti{n}\d s,\\&amp;\cuti{a}_K=\frac{1}{|K|}\sum_{F\subset \p K}\int_F\cuti{v}\cdot\cuti{n}\d s(\cuti{x}_F-\cuti{x}_K),\end{aligned}\]&lt;p&gt;
 其中$\cuti{x}_K$和$\cuti{x}_F$分别是单元和边的重心。&lt;/p&gt;
-&lt;p&gt;利用公式(2)，
+&lt;p&gt;利用公式(1)，
 &lt;/p&gt;
-\[\Pi^{RT}\cuti{\varphi}_{i+6}=\frac{|F_i|}{6|K|}\left((\cuti{x}_{F_i}-\cuti{x}_K)+\frac12(\cuti{x}-\cuti{x}_K)\right),\quad i=1,2,3.\]&lt;h3 id=&#34;pibdm&#34;&gt;$\Pi^{BDM}$
+\[\begin{aligned}&amp;\Pi^{RT}\cuti{\varphi}_{i+3(j-1)}\\
+=&amp;\frac{1}{|K|}\left(\sum_{k\ne i}\frac12|F_k|(\mathbf{x}_{F_k}-\mathbf{x}_K)+\frac{\sum_{k\ne i}\frac12|F_k|}{2}(\cuti{x}-\cuti{x}_K)\right),\quad i=1,2,3,\ j=1,2,\\
+&amp;\Pi^{RT}\cuti{\varphi}_{i+6}\\
+=&amp;\frac{|F_i|}{6|K|}\left((\cuti{x}_{F_i}-\cuti{x}_K)+\frac12(\cuti{x}-\cuti{x}_K)\right),\quad i=1,2,3.\end{aligned}\]&lt;h3 id=&#34;pibdm&#34;&gt;$\Pi^{BDM}$
 &lt;/h3&gt;&lt;p&gt;由
 &lt;/p&gt;
 \[\varphi_i\in \mathbb{BDM}_{1,2}\quad i=\{1,2,\cdots,6\}\]&lt;p&gt;
@@ -131,7 +131,11 @@ $\mathrm{div}_h\mathbf{v}_h=\mathrm{div}(\Pi \mathbf{v}_h)$，其中$\Pi=\Pi^{RT
 则
 &lt;/p&gt;
 \[A\vec{b}=\vec{f}^{\cuti{v}},\quad {f}^{\cuti{v}}_i=\sigma_i(\cuti{v}).\]&lt;p&gt;
-$A$为&lt;strong&gt;固定矩阵&lt;/strong&gt;，通过在参考元上计算（利用公式(1)）可得：
+其中$A$为&lt;strong&gt;固定矩阵&lt;/strong&gt;。
+由于
+&lt;/p&gt;
+\[\int_{F_k}\lambda_i^p\lambda_j^q\d s=\frac{p!q!}{(p+q+1)!}|F_k|,\quad (i,j,k\text{互不相同})\tag{2}\]&lt;p&gt;
+通过在参考元上计算（利用公式(2)）可得：
 &lt;/p&gt;
 \[\begin{aligned}
 A&amp;=\begin{pmatrix}
@@ -155,7 +159,29 @@ A^{-1}&amp;=\begin{pmatrix}
 &lt;/p&gt;
 \[\Pi^{BDM}\cuti{\varphi}_{i}=(\cuti{\varphi}_1,\cdots,\cuti{\varphi}_6)A^{-1}\vec{f}^{\cuti{\varphi}_i},\quad i=7,8,9.\]&lt;h3 id=&#34;remarks&#34;&gt;Remarks
 &lt;/h3&gt;&lt;p&gt;我们可以在初始化阶段将基函数的插值计算并存储，即存储&lt;code&gt;phi,Pi_RT_phi,Pi_BDM_phi&lt;/code&gt;等变量。&lt;/p&gt;
-&lt;h2 id=&#34;参考文献&#34;&gt;参考文献
+&lt;h2 id=&#34;插值算子&#34;&gt;插值算子
+&lt;/h2&gt;&lt;p&gt;本节考虑将光滑函数插值到$\mathbb{BR}$空间，该空间全局自由度为：
+&lt;/p&gt;
+\[\begin{aligned}&amp;\sigma^G_{V,i,j}(\cuti{v})=\cuti{v}(\cuti{x}_i)\cdot\cuti{e}_j,\quad\cuti{x}_i\in\mathcal{V}_h,\  j=1,2,\\
+&amp;\sigma^G_{F,i}(\cuti{v}) = \frac{1}{|F_i|}\int_{F_i}\cuti{v}\cdot\cuti{n}\d s,\quad F_i\in \mathcal{E}_h.
+\end{aligned}\]&lt;p&gt;
+其中$\mathcal{V}_h,\mathcal{E}_h$分别是网格的顶点集和边集，$G$表示global。&lt;/p&gt;
+&lt;p&gt;当$\cuti{v}$为连续函数时，在任意$F$上$\cuti{v}$连续，我们同样可以逐单元插值。在$\mathbb{BR}(K)$上，取
+&lt;/p&gt;
+\[\begin{aligned}
+&amp;\cuti{\psi}_i = \cuti{\varphi}_i-\frac{1}2\sum_{j\ne i}\left((\cuti{n}_{F_j}\cdot\cuti{e}_1)(6\cuti{\varphi}_{j+6})\right),\quad i=1,2,3,\\
+&amp;\cuti{\psi}_{i+3} = \cuti{\varphi}_{i+3}-\frac{1}2\sum_{j\ne i}\left((\cuti{n}_{F_j}\cdot\cuti{e}_2)(6\cuti{\varphi}_{j+6})\right),\quad i=1,2,3,\\
+&amp;\cuti{\psi}_{i+6} = 6\cuti{\varphi}_{i+6},\quad i=1,2,3,
+\end{aligned}\]&lt;p&gt;
+作为一组基。取单元自由度如下：
+&lt;/p&gt;
+\[\begin{aligned}&amp;\sigma_i=\sigma_{V,i,1},\quad i=1,2,3,\\
+&amp;\sigma_{i+3}=\sigma_{V,i,2},\quad i=1,2,3,\\
+&amp;\sigma_{i+6}=\frac{1}{|F_i|}\sigma_{F,i},\quad i=1,2,3,\\
+\end{aligned}\]&lt;p&gt;
+则
+&lt;/p&gt;
+\[\sigma_i(\cuti{\psi}_j)=\delta_{ij},\quad i,j=1,2,\cdots,9.\]&lt;h2 id=&#34;参考文献&#34;&gt;参考文献
 &lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;..//piola-transformations/&#34; &gt;Piola变换.&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
