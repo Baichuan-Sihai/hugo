@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="本文将介绍Bernardi–Raugel有限元到$\\mathbb{RT}_{0,2}$和\\(\\mathbb{BDM}_{1,2}\\)的插值算子，为代码实现做准备。\n">
-<title>Projection from BR to RT and BDM</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="BR, RT, BDM">
+<title>Bernardi–Raugel Finite Element</title>
 
-<link rel='canonical' href='https://baichuan-blog.netlify.app/p/projection-from-br-to-rt-and-bdm/'>
+<link rel='canonical' href='https://baichuan-blog.netlify.app/p/bernardiraugel-finite-element/'>
 
-<link rel="stylesheet" href="/scss/style.min.581b0ff8e16d4ced90d8d155763886e081d6661e0e2b431242ff9dd44eae3a90.css"><meta property='og:title' content="Projection from BR to RT and BDM">
-<meta property='og:description' content="本文将介绍Bernardi–Raugel有限元到$\\mathbb{RT}_{0,2}$和\\(\\mathbb{BDM}_{1,2}\\)的插值算子，为代码实现做准备。\n">
-<meta property='og:url' content='https://baichuan-blog.netlify.app/p/projection-from-br-to-rt-and-bdm/'>
+<link rel="stylesheet" href="/scss/style.min.581b0ff8e16d4ced90d8d155763886e081d6661e0e2b431242ff9dd44eae3a90.css"><meta property='og:title' content="Bernardi–Raugel Finite Element">
+<meta property='og:description' content="BR, RT, BDM">
+<meta property='og:url' content='https://baichuan-blog.netlify.app/p/bernardiraugel-finite-element/'>
 <meta property='og:site_name' content='百川的小屋'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-08-07T20:53:42&#43;08:00'/><meta property='article:modified_time' content='2025-08-11T15:03:56&#43;08:00'/>
-<meta name="twitter:title" content="Projection from BR to RT and BDM">
-<meta name="twitter:description" content="本文将介绍Bernardi–Raugel有限元到$\\mathbb{RT}_{0,2}$和\\(\\mathbb{BDM}_{1,2}\\)的插值算子，为代码实现做准备。\n">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-08-07T20:53:42&#43;08:00'/><meta property='article:modified_time' content='2025-08-16T16:01:27&#43;08:00'/>
+<meta name="twitter:title" content="Bernardi–Raugel Finite Element">
+<meta name="twitter:description" content="BR, RT, BDM">
     <link rel="shortcut icon" href="/favicon2.ico" />
 
     </head>
@@ -284,15 +284,24 @@
             <nav id="TableOfContents">
   <ol>
     <li><a href="#bernardiraugel有限元二维">Bernardi–Raugel有限元（二维）</a></li>
-    <li><a href="#投影算子">投影算子</a></li>
-    <li><a href="#代码实现">代码实现</a>
+    <li><a href="#投影算子">投影算子</a>
       <ol>
-        <li><a href="#pirt">$\Pi^{RT}$</a></li>
-        <li><a href="#pibdm">$\Pi^{BDM}$</a></li>
-        <li><a href="#remarks">Remarks</a></li>
+        <li><a href="#代码实现">代码实现</a>
+          <ol>
+            <li><a href="#pirt">$\Pi^{RT}$</a></li>
+            <li><a href="#pibdm">$\Pi^{BDM}$</a></li>
+            <li><a href="#remarks">Remarks</a></li>
+          </ol>
+        </li>
       </ol>
     </li>
-    <li><a href="#插值算子">插值算子</a></li>
+    <li><a href="#br元的基函数及其梯度">BR元的基函数及其梯度</a>
+      <ol>
+        <li><a href="#上的基函数">上的基函数</a></li>
+        <li><a href="#上基函数的梯度">上基函数的梯度</a></li>
+        <li><a href="#全局基函数">全局基函数</a></li>
+      </ol>
+    </li>
     <li><a href="#参考文献">参考文献</a></li>
   </ol>
 </nav>
@@ -321,9 +330,13 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/projection-from-br-to-rt-and-bdm/">Projection from BR to RT and BDM</a>
+            <a href="/p/bernardiraugel-finite-element/">Bernardi–Raugel Finite Element</a>
         </h2>
     
+        
+        <h3 class="article-subtitle">
+            BR, RT, BDM
+        </h3>
         
     </div>
 
@@ -347,7 +360,7 @@
 			
 			
 						<span class="article-time--final-update">
-							最后更新于 <time class="article-time--updated" datetime="2025-08-11 15:03:56 &#43;0800 &#43;0800" title="2025-08-11 15:03:56 &#43;0800 &#43;0800">2025-08-11 15:03</time>
+							最后更新于 <time class="article-time--updated" datetime="2025-08-16 16:01:27 &#43;0800 &#43;0800" title="2025-08-16 16:01:27 &#43;0800 &#43;0800">2025-08-16 16:01</time>
 						</span>
 
 			
@@ -362,13 +375,13 @@
     <section class="article-content">
     
     
-    <p>本文将介绍Bernardi–Raugel有限元到$\mathbb{RT}_{0,2}$和\(\mathbb{BDM}_{1,2}\)的插值算子，为代码实现做准备。</p>
+    <p>本文将介绍Bernardi–Raugel有限元到$\mathbb{RT}_{0,2}$和\(\mathbb{BDM}_{1,2}\)的插值算子，以及该空间基函数的选取和基函数梯度的计算方法，为代码实现做准备。</p>
 <h2 id="bernardiraugel有限元二维">Bernardi–Raugel有限元（二维）
 </h2><ul>
 <li>
 <p>多项式空间：
 </p>
-\[\mathbb{BR}:=\mathbf{P}_{1,2}\oplus\mathrm{Span}\{\mathbf{p}_i:\mathbf{p}_i= \mathbf{n}_i\prod_{j=1,j\ne i}^{3}\lambda_j,\quad i=1,2, 3\}\]<p>
+\[\mathbb{BR}(K):=\mathbf{P}_{1,2}(K)\oplus\mathrm{Span}\{\mathbf{p}_i:\mathbf{p}_i= \mathbf{n}_i\prod_{j=1,j\ne i}^{3}\lambda_j,\quad i=1,2, 3\}\]<p>
 其中\(\{\lambda_i\}_{i=1}^{3}\)为重心坐标。</p>
 </li>
 <li>
@@ -407,15 +420,15 @@ $\mathrm{div}_h\mathbf{v}_h=\mathrm{div}(\Pi \mathbf{v}_h)$，其中$\Pi=\Pi^{RT
 =&\int_{K}\mathrm{div}(\Pi \mathbf{v}_h)\d \mathbf{x} \end{aligned}\]<p>
 因此，
 </p>
-\[(\mathrm{div}_h\mathbf{v}_h)_K=(\mathrm{div}(\Pi \mathbf{v}_h))_K,\quad \forall K\in\mathcal{K}_h.\]<h2 id="代码实现">代码实现
-</h2><p>\(\mathbb{BR}_h\)沿单元边界连续，因此<strong>逐单元投影</strong>到\(\mathbb{RT}_{0,2}(K)\)和\(\mathbb{BDM}_{1,2}(K)\)得到的分片多项式分别在\(\mathbb{RT}_{0,2}\)和\(\mathbb{BDM}_{1,2}\)中。</p>
+\[(\mathrm{div}_h\mathbf{v}_h)_K=(\mathrm{div}(\Pi \mathbf{v}_h))_K,\quad \forall K\in\mathcal{K}_h.\]<h3 id="代码实现">代码实现
+</h3><p>\(\mathbb{BR}_h\)沿单元边界连续，因此<strong>逐单元投影</strong>到\(\mathbb{RT}_{0,2}(K)\)和\(\mathbb{BDM}_{1,2}(K)\)得到的分片多项式分别在\(\mathbb{RT}_{0,2}\)和\(\mathbb{BDM}_{1,2}\)中。</p>
 <p>$\mathbb{BR}(K)$的一组基为
 </p>
 \[\begin{cases}\cuti{\varphi}_{i}=\lambda_i\mathbf{e}_{1},\quad i=1,2,3,\\
 \cuti{\varphi}_{i+3}=\lambda_i\mathbf{e}_2,\quad i=1,2,3,\\
 \cuti{\varphi}_{i+6}=\mathbf{n}_i\prod_{j=1,j\ne i}^{3}\lambda_j,\quad i=1,2,3.
-\end{cases} \]<h3 id="pirt">$\Pi^{RT}$
-</h3><p>$\lambda_i$在边$F_j$均值（中点值）为\(\frac12(1-\delta_{ij})\).</p>
+\end{cases} \]<h4 id="pirt">$\Pi^{RT}$
+</h4><p>$\lambda_i$在边$F_j$均值（中点值）为\(\frac12(1-\delta_{ij})\).</p>
 <!--
 对于$\cuti{\varphi}_i,i=7,8,9$，\(\cuti{\varphi}_i|_{F_j}=0,\quad j\ne i\)，因此
 \[\int_{F_j}\cuti{\varphi}_{i+6}\cdot \cuti{n}_{F_j}\d s=0,\quad i,j=1,2,3,\  i\ne j.\]
@@ -436,14 +449,14 @@ $\mathrm{div}_h\mathbf{v}_h=\mathrm{div}(\Pi \mathbf{v}_h)$，其中$\Pi=\Pi^{RT
 \[\begin{aligned}&\Pi^{RT}\cuti{\varphi}_{i+3(j-1)}\\
 =&\frac{1}{|K|}\left(\sum_{k\ne i}\frac12|F_k|(\mathbf{x}_{F_k}-\mathbf{x}_K)+\frac{\sum_{k\ne i}\frac12|F_k|}{2}(\cuti{x}-\cuti{x}_K)\right),\quad i=1,2,3,\ j=1,2,\\
 &\Pi^{RT}\cuti{\varphi}_{i+6}\\
-=&\frac{|F_i|}{6|K|}\left((\cuti{x}_{F_i}-\cuti{x}_K)+\frac12(\cuti{x}-\cuti{x}_K)\right),\quad i=1,2,3.\end{aligned}\]<h3 id="pibdm">$\Pi^{BDM}$
-</h3><p>由
+=&\frac{|F_i|}{6|K|}\left((\cuti{x}_{F_i}-\cuti{x}_K)+\frac12(\cuti{x}-\cuti{x}_K)\right),\quad i=1,2,3.\end{aligned}\]<h4 id="pibdm">$\Pi^{BDM}$
+</h4><p>由
 </p>
-\[\varphi_i\in \mathbb{BDM}_{1,2}\quad i=\{1,2,\cdots,6\}\]<p>
+\[\cuti{\varphi}_i\in \mathbb{BDM}_{1,2}\quad i=\{1,2,\cdots,6\}\]<p>
 可知
 </p>
-\[\Pi^{BDM}\mathbf{\varphi}_i=\varphi_i,\quad i=\{1,2,\cdots,6\}.\]<p>
-下面考虑$\Pi^{BDM}\varphi_i,\ i=7,8,9$。</p>
+\[\Pi^{BDM}\cuti{\varphi}_i=\varphi_i,\quad i=\{1,2,\cdots,6\}.\]<p>
+下面考虑$\Pi^{BDM}\cuti{\varphi_i},\ i=7,8,9$。</p>
 <p>在参考单元上定义自由度如下：
 </p>
 \[\begin{aligned}\hat\sigma_1(\cuti{\hat v})=\int_{\hat{F}_1}{\cuti{\hat v}}\cdot\cuti{\hat n}_{\hat{F}_1}\hat\lambda_2\d \hat s,\hat\sigma_2(\cuti{\hat v})=\int_{\hat F_1}\cuti{\hat v}\cdot\cuti{\hat n}_{\hat F_1}\hat \lambda_3\d \hat s\\
@@ -484,38 +497,35 @@ $\mathrm{div}_h\mathbf{v}_h=\mathrm{div}(\Pi \mathbf{v}_h)$，其中$\Pi=\Pi^{RT
 由于
 </p>
 \[\int_{F_k}\lambda_i^p\lambda_j^q\d s=\frac{p!q!}{(p+q+1)!}|F_k|,\quad (i,j,k\text{互不相同})\tag{2}\]<p>
-通过在参考元上计算（利用公式(2)）可得：
-</p>
+通过在参考元上计算（利用公式(2)）可得：</p>
 \[\begin{aligned}
 A&=\begin{pmatrix}
-0&-\frac13&-\f16&0&0&0\\
-0&-\frac16&-\f13&0&0&0\\
-0&0&0&-\frac13&0&-\f16\\
-0&0&0&-\frac16&0&-\f13\\
-\f{1}{3}&\f1{6}&0&\f{1}{3}&\f1{6}&0\\
-\f{1}{6}&\f1{3}&0&\f{1}{6}&\f1{3}&0\\
+0&\f{1}{3}&\f1{6}&0&\f{1}{3}&\f1{6}\\
+0&\f{1}{6}&\f1{3}&0&\f{1}{6}&\f1{3}\\
+-\frac13&0&-\f16&0&0&0\\
+-\frac16&0&-\f13&0&0&0\\
+0&0&0&-\frac13&-\f16&0\\
+0&0&0&-\frac16&-\f13&0\\
 \end{pmatrix},\\
 A^{-1}&=\begin{pmatrix}
--2&4&0&0&4&-2\\
--4&2&0&0&0&0\\
-2&-4&0&0&0&0\\
-0&0&-4&2&0&0\\
+0&0&-4&2&0\\
 4&-2&0&0&-2&4\\
-0&0&2&4&0&0\\
+0&0&2&-4&0&0\\
+0&0&0&0&-4&2\\
+0&0&0&0&2&-4\\
+-2&4&-2&4&0&0\\
 \end{pmatrix}.\end{aligned}\]<p>再次利用公式(1)计算可得：
 </p>
-\[\begin{aligned}\vec{f}^{\cuti{\varphi}_7}=\begin{pmatrix}\frac1{12}\\\f{1}{12}\\0\\0\\0\\0\end{pmatrix},\ \vec{f}^{\cuti{\varphi}_8}=\begin{pmatrix}0\\0\\\frac1{12}\\\f{1}{12}\\0\\0\end{pmatrix},\ \vec{f}^{\cuti{\varphi}_9}=\begin{pmatrix}0\\0\\0\\0\\\frac1{12}\\\f{1}{12}\end{pmatrix}.\end{aligned}\]<p>于是
+\[\begin{aligned}\vec{f}^{\cuti{\varphi}_7}=|\hat{F}_1|\begin{pmatrix}\frac1{12}\\\f{1}{12}\\0\\0\\0\\0\end{pmatrix},\ \vec{f}^{\cuti{\varphi}_8}=|\hat{F}_2|\begin{pmatrix}0\\0\\\frac1{12}\\\f{1}{12}\\0\\0\end{pmatrix},\ \vec{f}^{\cuti{\varphi}_9}=|\hat{F}_3|\begin{pmatrix}0\\0\\0\\0\\\frac1{12}\\\f{1}{12}\end{pmatrix},\end{aligned}\]<p>
+其中$|\hat{F}_1|=\sqrt{2},|\hat{F}_2|=|\hat{F}_3|=1$。</p>
+<p>于是
 </p>
-\[\Pi^{BDM}\cuti{\varphi}_{i}=(\cuti{\varphi}_1,\cdots,\cuti{\varphi}_6)A^{-1}\vec{f}^{\cuti{\varphi}_i},\quad i=7,8,9.\]<h3 id="remarks">Remarks
-</h3><p>我们可以在初始化阶段将基函数的插值计算并存储，即存储<code>phi,Pi_RT_phi,Pi_BDM_phi</code>等变量。</p>
-<h2 id="插值算子">插值算子
-</h2><p>本节考虑将光滑函数插值到$\mathbb{BR}$空间，该空间全局自由度为：
-</p>
-\[\begin{aligned}&\sigma^G_{V,i,j}(\cuti{v})=\cuti{v}(\cuti{x}_i)\cdot\cuti{e}_j,\quad\cuti{x}_i\in\mathcal{V}_h,\  j=1,2,\\
-&\sigma^G_{F,i}(\cuti{v}) = \frac{1}{|F_i|}\int_{F_i}\cuti{v}\cdot\cuti{n}\d s,\quad F_i\in \mathcal{E}_h.
-\end{aligned}\]<p>
-其中$\mathcal{V}_h,\mathcal{E}_h$分别是网格的顶点集和边集，$G$表示global。</p>
-<p>当$\cuti{v}$为连续函数时，在任意$F$上$\cuti{v}$连续，我们同样可以逐单元插值。在$\mathbb{BR}(K)$上，取
+\[\Pi^{BDM}\cuti{\varphi}_{i}=(\cuti{\varphi}_1,\cdots,\cuti{\varphi}_6)A^{-1}\vec{f}^{\cuti{\varphi}_i},\quad i=7,8,9.\]<h4 id="remarks">Remarks
+</h4><p>我们可以在初始化阶段将基函数的插值计算并存储，即存储<code>phi,Pi_RT_phi,Pi_BDM_phi</code>等变量。</p>
+<h2 id="br元的基函数及其梯度">BR元的基函数及其梯度
+</h2><!--本节考虑将光滑函数插值到$\mathbb{BR}$空间，-->
+<h3 id="上的基函数">\(\mathbb{BR}(K)\)上的基函数
+</h3><p>在$\mathbb{BR}(K)$上，取
 </p>
 \[\begin{aligned}
 &\cuti{\psi}_i = \cuti{\varphi}_i-\frac{1}2\sum_{j\ne i}\left((\cuti{n}_{F_j}\cdot\cuti{e}_1)(6\cuti{\varphi}_{j+6})\right),\quad i=1,2,3,\\
@@ -530,7 +540,35 @@ A^{-1}&=\begin{pmatrix}
 \end{aligned}\]<p>
 则
 </p>
-\[\sigma_i(\cuti{\psi}_j)=\delta_{ij},\quad i,j=1,2,\cdots,9.\]<h2 id="参考文献">参考文献
+\[\sigma_i(\cuti{\psi}_j)=\delta_{ij},\quad i,j=1,2,\cdots,9.\]<h3 id="上基函数的梯度">\(\mathbb{BR}(K)\)上基函数的梯度
+</h3><p>我们不妨先计算\(\{\cuti{\varphi}_i\}_{i=1}^9\)的梯度，再做线性组合即可得到\(\{\cuti{\psi}_i\}_{i=1}^9\)的梯度。</p>
+<p>\(\cuti{\varphi}_i\)可以表示为\(f_i(\cuti{x})\cuti{c}_i\)，$f_i(\cuti{x})$和向量\(\cuti{c}_i\)表示如下：
+</p>
+\[\begin{aligned}
+&f_i(\cuti{x}) = \lambda_i,&\cuti{c}_i=\cuti{e}_1,&\quad i=1,2,3,\\
+&f_{i+3}(\cuti{x}) = \lambda_i,&\cuti{c}_{i+3}=\cuti{e}_2,&\quad i=1,2,3,\\
+&f_{i+6}(\cuti{x}) = 6\prod_{k\ne i}\lambda_k,&\cuti{c}_{i+6}=\cuti{n}_{F_i},&\quad i=1,2,3,
+\end{aligned}\]<p>
+其中$\cuti{c}_i$（列向量）在各单元上为常数。于是
+</p>
+\[\nabla\cuti{\varphi}_i:=(\p_{x}\cuti{\varphi}_i,\p_y\cuti{\varphi}_i)=\cuti{c}_i\nabla^T f_i(\cuti{x})\]\[\begin{aligned}
+\nabla f_i(\cuti{x})&=\begin{pmatrix}\p_{x}\lambda_2&\p_{x}\lambda_3\\\p_y\lambda_2&\p_y\lambda_3\end{pmatrix}\begin{pmatrix}\p_{\lambda_2}f_i\\\p_{\lambda_3}f_i\end{pmatrix}\\
+&=(\mathbb{J}_K)^{-T}\begin{pmatrix}-\p_{\lambda_1}f_i+\p_{\lambda_2}f_i\\-\p_{\lambda_1}f_i+\p_{\lambda_3}f_i\end{pmatrix},
+\end{aligned}\]<p>
+其中倒数第二个等号的$f_i$自变量为\(\lambda_2,\lambda_3\)，最后一个等号的$f_i$自变量为\(\lambda_1,\lambda_2,\lambda_3\)。为简化表示，此处用了相同记号。$\mathbb{J}_K$是$T_K:\hat{K}\rightarrow K$的雅可比矩阵，参考元$\hat{K}$是等边直角三角形，直角边长为1，\(\begin{pmatrix}x\\y\end{pmatrix}=T_K\begin{pmatrix}\lambda_2\\\lambda_3\end{pmatrix}\)。
+由于
+</p>
+\[\begin{pmatrix}1\\x\\y\end{pmatrix}=\begin{pmatrix}1&1&1\\x_1&x_2&x_3\\y_1&y_2&y_3\end{pmatrix}\begin{pmatrix}\lambda_1\\\lambda_2\\\lambda_3\end{pmatrix},\]<p>
+由Cramer法则容易计算矩阵\(\begin{pmatrix}\p_{x}\lambda_2&\p_{x}\lambda_3\\\p_y\lambda_2&\p_y\lambda_3\end{pmatrix}\)。</p>
+<h3 id="全局基函数">全局基函数
+</h3><p>选择\(\mathbb{BR}_h\)空间全局自由度为：
+</p>
+\[\begin{aligned}&\sigma^G_{V,i,j}(\cuti{v})=\cuti{v}(\cuti{x}_i)\cdot\cuti{e}_j,\quad\cuti{x}_i\in\mathcal{V}_h,\  j=1,2,\\
+&\sigma^G_{F,i}(\cuti{v}) = \frac{1}{|F_i|}\int_{F_i}\cuti{v}\cdot\cuti{n}\d s,\quad F_i\in \mathcal{E}_h.
+\end{aligned}\]<p>
+其中$\mathcal{V}_h,\mathcal{E}_h$分别是网格的顶点集和边集，$G$表示global。</p>
+<p>当$\cuti{v}$为连续函数时，在任意$F$上$\cuti{v}$连续，我们同样可以逐单元插值：对单元$K$，由全局自由度确定各局部自由度取值$v_i(i=1,\cdots,9)$，需要注意$\cuti{n}_{F_i}$的方向与全局自由度中的该边对应法向方向是否一致；随后由\(\sum_{i=1}^9v_i\cuti{\psi}_i\)即得$\cuti{v}$在单元$K$上的插值函数。利用该方法也可以构造全局自由度的对偶基。</p>
+<h2 id="参考文献">参考文献
 </h2><ol>
 <li><a class="link" href="..//piola-transformations/" >Piola变换.</a></li>
 </ol>
