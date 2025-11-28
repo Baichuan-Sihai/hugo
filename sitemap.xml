@@ -2,14 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://baichuan-blog.netlify.app/post/</loc>
+    <lastmod>2025-11-28T22:13:38+08:00</lastmod>
+  </url><url>
+    <loc>https://baichuan-blog.netlify.app/p/tensor-calculus/</loc>
+    <lastmod>2025-11-28T22:13:38+08:00</lastmod>
+  </url><url>
+    <loc>https://baichuan-blog.netlify.app/p/scalar-conservation-laws/</loc>
+    <lastmod>2025-11-28T22:13:38+08:00</lastmod>
+  </url><url>
     <loc>https://baichuan-blog.netlify.app/p/bernardiraugel-finite-element/</loc>
     <lastmod>2025-08-16T16:01:27+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-blog.netlify.app/categories/</loc>
-    <lastmod>2025-08-16T16:01:27+08:00</lastmod>
-  </url><url>
-    <loc>https://baichuan-blog.netlify.app/post/</loc>
-    <lastmod>2025-08-16T16:01:27+08:00</lastmod>
+    <lastmod>2025-11-28T22:13:38+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-blog.netlify.app/p/fixed-point-theorems/</loc>
     <lastmod>2025-08-06T10:09:56+08:00</lastmod>
@@ -33,7 +39,7 @@
     <lastmod>2025-07-17T13:31:17+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-blog.netlify.app/tags/</loc>
-    <lastmod>2025-07-17T13:31:17+08:00</lastmod>
+    <lastmod>2025-11-28T22:13:38+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-blog.netlify.app/p/finite-neuron-method/</loc>
     <lastmod>2025-07-15T23:49:42+08:00</lastmod>
@@ -66,13 +72,13 @@
     <lastmod>2025-06-03T11:17:11+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-blog.netlify.app/tags/-scp/</loc>
-    <lastmod>2025-06-08T11:18:45+08:00</lastmod>
+    <lastmod>2025-11-28T22:13:38+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-blog.netlify.app/tags/-ssh/</loc>
-    <lastmod>2025-06-08T11:18:45+08:00</lastmod>
+    <lastmod>2025-11-28T22:13:38+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-blog.netlify.app/p/git/</loc>
-    <lastmod>2025-06-08T11:18:45+08:00</lastmod>
+    <lastmod>2025-11-28T22:13:38+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-blog.netlify.app/p/hugo-markdown%E6%8A%80%E5%B7%A7/</loc>
     <lastmod>2025-07-17T13:31:17+08:00</lastmod>

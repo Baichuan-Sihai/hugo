@@ -7,7 +7,89 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>百川</copyright>
-        <lastBuildDate>Sat, 16 Aug 2025 16:01:27 +0800</lastBuildDate><atom:link href="https://baichuan-blog.netlify.app/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 28 Nov 2025 22:13:38 +0800</lastBuildDate><atom:link href="https://baichuan-blog.netlify.app/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Tensor calculus</title>
+        <link>https://baichuan-blog.netlify.app/p/tensor-calculus/</link>
+        <pubDate>Fri, 28 Nov 2025 21:54:39 +0800</pubDate>
+        
+        <guid>https://baichuan-blog.netlify.app/p/tensor-calculus/</guid>
+        <description>&lt;h2 id=&#34;epsilon-delta-等式&#34;&gt;$\epsilon-\delta$ 等式
+&lt;/h2&gt;&lt;p&gt;定义
+&lt;/p&gt;
+$$\epsilon_{ijk} := \begin{cases}0&amp;\text{若}i,j,k\text{中存在相同}\\1&amp;\text{奇排列}\\-1&amp;\text{偶排列}\end{cases},$$&lt;p&gt;
+存在$\epsilon-\delta$ 等式
+&lt;/p&gt;
+\[\epsilon_{ijk}\epsilon^{imn}=\delta_{jm}\delta_{kn}-\delta_{jn}\delta_{km}.\]&lt;h3 id=&#34;应用&#34;&gt;应用
+&lt;/h3&gt;&lt;p&gt;旋度可表示为:
+&lt;/p&gt;
+\[(\mathrm{curl}\mathbf{u})_i = \epsilon^{ijk}\partial_ju_k,\]&lt;p&gt;
+则应用 $\epsilon-\delta$ 等式有:
+&lt;/p&gt;
+\[\mathrm{curl}\ \mathrm{curl} = \nabla\ \mathrm{div}-\Delta.\]&lt;p&gt;
+证明：
+&lt;/p&gt;
+$$\begin{aligned}
+(\mathrm{curl}(\mathrm{curl}\mathbf{u}))_i &amp;=\epsilon_{ijk}\partial_j(\epsilon^{kmn}\partial_mu_n)\\
+&amp; = \epsilon_{kij}\epsilon^{kmn}\partial_{j}\partial_mu_n\\
+&amp; = (\delta_{im}\delta_{jn}-\delta_{in}\delta_{jm})\partial_{j}\partial_mu_n\\
+&amp; = \partial_{ij}u_j-\partial_{jj}u_i\\
+&amp; = (\nabla \mathrm{div}\mathbf{u})_i-(\Delta \mathbf{u})_i.
+\end{aligned}$$</description>
+        </item>
+        <item>
+        <title>Scalar Conservation Laws</title>
+        <link>https://baichuan-blog.netlify.app/p/scalar-conservation-laws/</link>
+        <pubDate>Tue, 26 Aug 2025 15:42:37 +0800</pubDate>
+        
+        <guid>https://baichuan-blog.netlify.app/p/scalar-conservation-laws/</guid>
+        <description>&lt;h2 id=&#34;riemann问题&#34;&gt;Riemann问题
+&lt;/h2&gt;&lt;p&gt;考虑一维Riemann问题：
+&lt;/p&gt;
+\[\begin{cases}\p_t \bm{u}+\p_x(\bm{f}(\bm{u})\cdot\bm{n})=0,\quad (x,t)\in\R\times \R_+,\\\bm{u}(x,0)=\begin{cases}\bm{u}_L&amp;\text{if } x&lt;0,\\\bm{u}_R&amp;\text{if }x&gt;0. \end{cases}\end{cases}\]&lt;p&gt;
+其中$(\bm{u}_L,\bm{u}_R)\in \mathcal{A}\times\mathcal{A}$，$\mathcal{A}\subset \R^m$。&lt;/p&gt;
+&lt;p&gt;When the system is strictly hyperbolic with smooth ﬂux and all the characteristic ﬁelds are either genuinely non-linear or linearly degenerate, it is possible to show that there exists $\delta&amp;gt; 0$ such that the Riemann problem has a unique self-similar weak solution in Lax’s form for any initial data such that
+\(\norm{\cuti{u}_L-\cuti{u}_R}_{l^2}\le\delta\).
+In particular, there are $2m$ numbers
+&lt;/p&gt;
+\[\lambda_1^-\le\lambda_1^+\le\lambda_2^-\le\lambda_2^+\le \cdots\le \lambda_m^-\le\lambda_m^+\]&lt;p&gt;
+defining up to $2m+1$ sectors (some could be empty) in the $(x,t)$ plane[1].&lt;/p&gt;
+&lt;p&gt;定义最大传播速度$\lambda_{\max}(\bm{u},\bm{u}_L,\bm{u}_R):=\max(|\lambda_1^-|,|\lambda_m^+|)$，则对$t\ge 0$，有
+&lt;/p&gt;
+\[\bm{u}(x,t)=\begin{cases}\bm{u}_L&amp;\text{if }x\le -t\lambda_{\max},\\\bm{u}_R &amp; \text{if } x\ge t\lambda_{\max}. \end{cases}\]&lt;p&gt;&lt;strong&gt;引理：&lt;/strong&gt; 定义
+&lt;/p&gt;
+\[\bar{\bm{u}}(t,\bm{n},\bm{u}_L,\bm{u}_R):=\int_{-\f12}^{\f12}\bm{u}(\bm{n},\bm{u}_L,\bm{u}_R)(x,t)\mathrm{d}x,\tag{1}\]&lt;p&gt;
+并假设$t\lambda_{\max}(\bm{n},\bm{u}_L,\bm{u}_R)\le \f12$，则
+&lt;/p&gt;
+\[\bar{\bm{u}}(t,\bm{n},\bm{u}_L,\bm{u}_R)=\f12(\bm{u}_L+\bm{u}_R)-t(\bm{f}(\bm{u}_R)-\bm{f}(\bm{u}_L))\cdot\bm{n}.\tag{2}\]&lt;p&gt;&lt;strong&gt;Proof：&lt;/strong&gt;
+对于$t\lambda_{\max}(\bm{n},\bm{u}_L,\bm{u}_R)\le \f12$，$\bm{u}(-\f12,t)=\bm{u}_L$，$\bm{u}(\f12,t)=\bm{u}_R$，于是
+&lt;/p&gt;
+\[\int_{-\f12}^{\f12}\partial_t \bm{u}\mathrm{d}x=-\int_{-\f12}^{\f12}\p_x(\bm{f}(\bm{u})\cdot \bm{n})\mathrm{d}x=-(\bm{f}(\bm{u}_R)-\bm{f}(\bm{u}_L))\cdot \bm{n}.\]&lt;p&gt;
+右端为常数，因此
+&lt;/p&gt;
+\[\begin{aligned}
+\int_{-\f12}^{\f12}\bm{u}(x,t)\mathrm{d}x=&amp;\int_{-\f12}^{\f12}\bm{u}(x,0)\mathrm{d}x-t(\bm{f}(\bm{u}_R)-\bm{f}(\bm{u}_L))\cdot \bm{n}\\
+=&amp;\f12(\bm{u}_L+\bm{u}_R)-t(\bm{f}(\bm{u}_R)-\bm{f}(\bm{u}_L))\cdot\bm{n}.
+\end{aligned}\]&lt;h3 id=&#34;保极值方法&#34;&gt;保极值方法
+&lt;/h3&gt;&lt;p&gt;FCT实际上并不保持狭义的局部极值原理（$\min_{j\in\mathcal{I}(S_i)}\rho_j^{n}\le\rho_i^{n+1}\le \max_{j\in\mathcal{I}(S_i)}\rho_j^{n}$），
+&lt;/p&gt;
+\[\min_{k\in\mathcal{I}(S_j),j\in\mathcal{I}(S_i)}\rho_k^{n}\le \min_{j\in\mathcal{I}(S_i)}\rho_j^{n+1,L}\le\rho_i^{n+1,FCT}\le \max_{j\in\mathcal{I}(S_i)}\rho_j^{n+1,L}\le \max_{k\in\mathcal{I}(S_j),j\in\mathcal{I}(S_i)}\rho_k^{n},\]&lt;p&gt;
+其因采用两步方法（先获得低阶解，随后通过修正通量来使解在保持极值的基础上尽可能贴近高阶解）而扩大了stencil的大小[2]。&lt;/p&gt;
+&lt;p&gt;文章[3]取消两步分裂方法，获得真正的保局部极值的方法，且构造的通量修正\(f_{ij}^*\)关于自由度连续（the continuous dependence of the limited fluxes \(f^*_{ij}\) on the degrees of freedom implies existence of a solution to the nonlinear discrete problem by Brouwer’s fixed-point theorem）。&lt;/p&gt;
+&lt;p&gt;文章[4]中在构造可压缩Euler系统的高阶保极值格式时通过对$E$和$\frac12|\bm{u}|^2$的界做合适的设计以保证最终得到的解能满足$e=\f{1}{\rho}E-\f12|\mathbf{u}|^2\ge0$。&lt;/p&gt;
+&lt;h2 id=&#34;参考文献&#34;&gt;参考文献
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.jianguoyun.com/p/DeMlom8QlsqoDRjp7IcGIAA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Invariant Domains and First-Order Continuous Finite Element Approximation for Hyperbolic Systems. Jean-Luc Guermond, Bojan Popov. 2016.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.jianguoyun.com/p/DYEfyysQlsqoDRie8YcGIAA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Physics-Compatible Finite Element Methods for Scalar and Tensorial Advection Problems. Christoph Lohmann. 2019. P92-93.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.jianguoyun.com/p/DZLFqXYQlsqoDRig8YcGIAA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Monolithic convex limiting for continuous finite element discretizations of hyperbolic conservation laws. Dmitri Kuzmin. 2020.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.jianguoyun.com/p/Dfsl4osQlsqoDRje8YcGIAA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Sequential limiting in continuous and discontinuous Galerkin methods for the Euler equations. Kuzmin, et al.. 2018&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        <item>
         <title>Bernardi–Raugel Finite Element</title>
         <link>https://baichuan-blog.netlify.app/p/bernardiraugel-finite-element/</link>
         <pubDate>Thu, 07 Aug 2025 20:53:42 +0800</pubDate>
@@ -2169,7 +2251,42 @@ $$&lt;p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;&lt;code&gt;git reset [commitid]&lt;/code&gt;默认采用&lt;code&gt;--mixed&lt;/code&gt;，所谓暂存区重置是恢复快照（每次commit提交时Git都会记录下这一刻所有文件的样子），实际上从vscode的源代码管理中看暂存区是空的，工作区则仍是修改后的文件，不会被&lt;code&gt;reset&lt;/code&gt;覆盖。该操作可用于合并提交历史。&lt;/p&gt;
-&lt;h3 id=&#34;远程提交&#34;&gt;远程提交
+&lt;h3 id=&#34;撤销某次提交&#34;&gt;撤销某次提交
+&lt;/h3&gt;&lt;p&gt;使用&lt;code&gt;git log --oneline&lt;/code&gt;查看提交历史, 你会看到&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;a68f1f9 (HEAD -&amp;gt; main, origin/main) Makefile
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;33b04bc -
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;705f495 Add Cloud_MP_Kessler.F90
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;32fcfd4 sync
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dd5c21b modify yml
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;aca689c sync from github to gitee
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;35e60d7 Transplant ATHAM-Fluidity to this version for getting the right result of the warm bubble case and Add  the warm bubble case
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;27a1886 gitignore files
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;197a785 Original version of fluidity for ubuntu 18.04
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;复制你想要撤销的那个提交的哈希值, 如撤销Makefile选&lt;code&gt;a68f1f9&lt;/code&gt;,&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git revert a68f1f9
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;远程提交&#34;&gt;远程提交
 &lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -3136,11 +3253,13 @@ Invoke-Expression (New-Object System.Net.WebClient).DownloadString(&#39;https://
 &lt;h4 id=&#34;blockquote-without-attribution&#34;&gt;Blockquote without attribution
 &lt;/h4&gt;&lt;blockquote&gt;
 &lt;p&gt;Tiam, ad mint andaepu dandae nostion secatur sequo quae.
-&lt;strong&gt;Note&lt;/strong&gt; that you can use &lt;em&gt;Markdown syntax&lt;/em&gt; within a blockquote.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;strong&gt;Note&lt;/strong&gt; that you can use &lt;em&gt;Markdown syntax&lt;/em&gt; within a blockquote.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h4 id=&#34;blockquote-with-attribution&#34;&gt;Blockquote with attribution
 &lt;/h4&gt;&lt;blockquote&gt;
 &lt;p&gt;Don&amp;rsquo;t communicate by sharing memory, share memory by communicating.&lt;br&gt;
-— &lt;cite&gt;Rob Pike&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/cite&gt;&lt;/p&gt;&lt;/blockquote&gt;
+— &lt;cite&gt;Rob Pike&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2 id=&#34;tables&#34;&gt;Tables
 &lt;/h2&gt;&lt;p&gt;Tables aren&amp;rsquo;t part of the core Markdown spec, but Hugo supports supports them out-of-the-box.&lt;/p&gt;
 &lt;table&gt;
