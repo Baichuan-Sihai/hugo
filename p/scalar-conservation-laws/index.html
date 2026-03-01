@@ -10,7 +10,7 @@
 <meta property='og:description' content="Riemann问题 考虑一维Riemann问题： \\[\\begin{cases}\\p_t \\bm{u}+\\p_x(\\bm{f}(\\bm{u})\\cdot\\bm{n})=0,\\quad (x,t)\\in\\R\\times \\R_+,\\\\\\bm{u}(x,0)=\\begin{cases}\\bm{u}_L&\\text{if } x<0,\\\\\\bm{u}_R&\\text{if }x>0. \\end{cases}\\end{cases}\\] 其中$(\\bm{u}_L,\\bm{u}_R)\\in \\mathcal{A}\\times\\mathcal{A}$，$\\mathcal{A}\\subset \\R^m$。\n">
 <meta property='og:url' content='https://baichuan-blog.netlify.app/p/scalar-conservation-laws/'>
 <meta property='og:site_name' content='百川的小屋'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-08-26T15:42:37&#43;08:00'/><meta property='article:modified_time' content='2026-03-01T12:11:30&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-08-26T15:42:37&#43;08:00'/><meta property='article:modified_time' content='2026-03-01T21:11:10&#43;08:00'/>
 <meta name="twitter:title" content="Scalar Conservation Laws">
 <meta name="twitter:description" content="Riemann问题 考虑一维Riemann问题： \\[\\begin{cases}\\p_t \\bm{u}+\\p_x(\\bm{f}(\\bm{u})\\cdot\\bm{n})=0,\\quad (x,t)\\in\\R\\times \\R_+,\\\\\\bm{u}(x,0)=\\begin{cases}\\bm{u}_L&\\text{if } x<0,\\\\\\bm{u}_R&\\text{if }x>0. \\end{cases}\\end{cases}\\] 其中$(\\bm{u}_L,\\bm{u}_R)\\in \\mathcal{A}\\times\\mathcal{A}$，$\\mathcal{A}\\subset \\R^m$。\n">
     <link rel="shortcut icon" href="/favicon2.ico" />
@@ -342,7 +342,7 @@
 			
 			
 						<span class="article-time--final-update">
-							最后更新于 <time class="article-time--updated" datetime="2026-03-01 12:11:30 &#43;0800 &#43;0800" title="2026-03-01 12:11:30 &#43;0800 &#43;0800">2026-03-01 12:11</time>
+							最后更新于 <time class="article-time--updated" datetime="2026-03-01 21:11:10 &#43;0800 &#43;0800" title="2026-03-01 21:11:10 &#43;0800 &#43;0800">2026-03-01 21:11</time>
 						</span>
 
 			
@@ -442,7 +442,11 @@ s_{\rho}=-p\rho^{-2}T^{-1},\quad \text{i.e., } p = -\rho^{2}s_{\rho}s_e^{-1}.
 		data-flex-basis="508px"
 	
 ></p>
-<h3 id="quasiconcavity-of-s">Quasiconcavity of $s$
+<p><strong>注：</strong> 对于多方气体(polytropic ideal gas)，比熵为
+</p>
+$$
+s(\rho,e)=s_0+c_v\ln(e\rho^{-(\gamma-1)}).
+$$<h3 id="quasiconcavity-of-s">Quasiconcavity of $s$
 </h3><p><strong>定义（拟凹性）</strong><br>
 给定一个凸集 $\mathcal{A} \subset \mathbb{R}^m$，我们称函数 $\Psi: \mathcal{A} \to \mathbb{R}$ 是<strong>拟凹的</strong>，如果它的每一个上水平集都是凸集；也就是说，对任意 $\lambda \in \mathbb{R}$（在 $\Psi$ 的值域内），集合<br>
 </p>

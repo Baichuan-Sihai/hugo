@@ -126,7 +126,11 @@ s_{\rho}=-p\rho^{-2}T^{-1},\quad \text{i.e., } p = -\rho^{2}s_{\rho}s_e^{-1}.
 		data-flex-basis=&#34;508px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;h3 id=&#34;quasiconcavity-of-s&#34;&gt;Quasiconcavity of $s$
+&lt;p&gt;&lt;strong&gt;注：&lt;/strong&gt; 对于多方气体(polytropic ideal gas)，比熵为
+&lt;/p&gt;
+$$
+s(\rho,e)=s_0+c_v\ln(e\rho^{-(\gamma-1)}).
+$$&lt;h3 id=&#34;quasiconcavity-of-s&#34;&gt;Quasiconcavity of $s$
 &lt;/h3&gt;&lt;p&gt;&lt;strong&gt;定义（拟凹性）&lt;/strong&gt;&lt;br&gt;
 给定一个凸集 $\mathcal{A} \subset \mathbb{R}^m$，我们称函数 $\Psi: \mathcal{A} \to \mathbb{R}$ 是&lt;strong&gt;拟凹的&lt;/strong&gt;，如果它的每一个上水平集都是凸集；也就是说，对任意 $\lambda \in \mathbb{R}$（在 $\Psi$ 的值域内），集合&lt;br&gt;
 &lt;/p&gt;
