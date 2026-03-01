@@ -10,7 +10,7 @@
 <meta property='og:description' content="Riemann问题 考虑一维Riemann问题： \\[\\begin{cases}\\p_t \\bm{u}+\\p_x(\\bm{f}(\\bm{u})\\cdot\\bm{n})=0,\\quad (x,t)\\in\\R\\times \\R_+,\\\\\\bm{u}(x,0)=\\begin{cases}\\bm{u}_L&\\text{if } x<0,\\\\\\bm{u}_R&\\text{if }x>0. \\end{cases}\\end{cases}\\] 其中$(\\bm{u}_L,\\bm{u}_R)\\in \\mathcal{A}\\times\\mathcal{A}$，$\\mathcal{A}\\subset \\R^m$。\n">
 <meta property='og:url' content='https://baichuan-blog.netlify.app/p/scalar-conservation-laws/'>
 <meta property='og:site_name' content='百川的小屋'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-08-26T15:42:37&#43;08:00'/><meta property='article:modified_time' content='2025-11-28T22:13:38&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-08-26T15:42:37&#43;08:00'/><meta property='article:modified_time' content='2026-03-01T12:11:30&#43;08:00'/>
 <meta name="twitter:title" content="Scalar Conservation Laws">
 <meta name="twitter:description" content="Riemann问题 考虑一维Riemann问题： \\[\\begin{cases}\\p_t \\bm{u}+\\p_x(\\bm{f}(\\bm{u})\\cdot\\bm{n})=0,\\quad (x,t)\\in\\R\\times \\R_+,\\\\\\bm{u}(x,0)=\\begin{cases}\\bm{u}_L&\\text{if } x<0,\\\\\\bm{u}_R&\\text{if }x>0. \\end{cases}\\end{cases}\\] 其中$(\\bm{u}_L,\\bm{u}_R)\\in \\mathcal{A}\\times\\mathcal{A}$，$\\mathcal{A}\\subset \\R^m$。\n">
     <link rel="shortcut icon" href="/favicon2.ico" />
@@ -285,7 +285,15 @@
   <ol>
     <li><a href="#riemann问题">Riemann问题</a>
       <ol>
-        <li><a href="#保极值方法">保极值方法</a></li>
+        <li><a href="#熵不等式">熵不等式</a></li>
+      </ol>
+    </li>
+    <li><a href="#保极值方法">保极值方法</a></li>
+    <li><a href="#specific-entropy">Specific entropy</a>
+      <ol>
+        <li><a href="#quasiconcavity-of-s">Quasiconcavity of $s$</a></li>
+        <li><a href="#引理1证明过程反证法">引理1证明过程（反证法）</a></li>
+        <li><a href="#应用">应用</a></li>
       </ol>
     </li>
     <li><a href="#参考文献">参考文献</a></li>
@@ -334,7 +342,7 @@
 			
 			
 						<span class="article-time--final-update">
-							最后更新于 <time class="article-time--updated" datetime="2025-11-28 22:13:38 &#43;0800 &#43;0800" title="2025-11-28 22:13:38 &#43;0800 &#43;0800">2025-11-28 22:13</time>
+							最后更新于 <time class="article-time--updated" datetime="2026-03-01 12:11:30 &#43;0800 &#43;0800" title="2026-03-01 12:11:30 &#43;0800 &#43;0800">2026-03-01 12:11</time>
 						</span>
 
 			
@@ -376,13 +384,212 @@ defining up to $2m+1$ sectors (some could be empty) in the $(x,t)$ plane[1].</p>
 \[\begin{aligned}
 \int_{-\f12}^{\f12}\bm{u}(x,t)\mathrm{d}x=&\int_{-\f12}^{\f12}\bm{u}(x,0)\mathrm{d}x-t(\bm{f}(\bm{u}_R)-\bm{f}(\bm{u}_L))\cdot \bm{n}\\
 =&\f12(\bm{u}_L+\bm{u}_R)-t(\bm{f}(\bm{u}_R)-\bm{f}(\bm{u}_L))\cdot\bm{n}.
-\end{aligned}\]<h3 id="保极值方法">保极值方法
-</h3><p>FCT实际上并不保持狭义的局部极值原理（$\min_{j\in\mathcal{I}(S_i)}\rho_j^{n}\le\rho_i^{n+1}\le \max_{j\in\mathcal{I}(S_i)}\rho_j^{n}$），
+\end{aligned}\]<h3 id="熵不等式">熵不等式
+</h3><p>我们要证明如下不等式成立：</p>
+$$\eta(\bar{\mathbf{u}}(t, \mathbf{n}, \mathbf{u}_L, \mathbf{u}_R)) \leq \frac{1}{2}(\eta(\mathbf{u}_L) + \eta(\mathbf{u}_R)) - t(\mathbf{q}(\mathbf{u}_R)\cdot\mathbf{n} - \mathbf{q}(\mathbf{u}_L)\cdot\mathbf{n})$$<ol>
+<li>基本假设与定义</li>
+</ol>
+<ul>
+<li><strong>熵对性质</strong>：设 $(\eta, \mathbf{q})$ 为系统的熵对，满足熵不等式：
+$$  \partial_t \eta(\mathbf{u}) + \partial_x (\mathbf{q}(\mathbf{u}) \cdot \mathbf{n}) \leq 0  $$ 对于光滑解取等号，对于包含激波的弱解取严格不等号。</li>
+<li><strong>Riemann 扇区平均值</strong>：定义 $\bar{\mathbf{u}}$ 为自相似变量 $\xi = x/t$ 在区间 $[-\frac{1}{2}, \frac{1}{2}]$ 上的积分平均值：
+$$  \bar{\mathbf{u}} = \int_{-\frac{1}{2}}^{\frac{1}{2}} \mathbf{u}(\xi) \, d\xi  $$</li>
+</ul>
+<ol start="2">
+<li>积分形式的熵不等式将熵不等式写为关于自相似变量 $\xi$ 的形式。由于 $\partial_t = -\frac{\xi}{t} \partial_\xi$ 且 $\partial_x = \frac{1}{t} \partial_\xi$，代入得：
+$$-\frac{\xi}{t} \partial_\xi \eta(\mathbf{u}) + \frac{1}{t} \partial_\xi (\mathbf{q}(\mathbf{u}) \cdot \mathbf{n}) \leq 0$$整理后：
+$$\partial_\xi \left( \mathbf{q}(\mathbf{u}) \cdot \mathbf{n} - \xi \eta(\mathbf{u}) \right) \leq 0$$</li>
+<li>在扇区上积分对上述不等式在区间 $[-\frac{1}{2}, \frac{1}{2}]$ 上积分：
+$$\int_{-\frac{1}{2}}^{\frac{1}{2}} \partial_\xi \left( \mathbf{q}(\mathbf{u}) \cdot \mathbf{n} - \xi \eta(\mathbf{u}) \right) d\xi \leq 0$$利用牛顿-莱布尼茨公式计算积分：
+$$\left[ \mathbf{q}(\mathbf{u}) \cdot \mathbf{n} - \xi \eta(\mathbf{u}) \right]_{\xi=-\frac{1}{2}}^{\xi=\frac{1}{2}} \leq 0$$展开边界项：
+$$\left( \mathbf{q}(\mathbf{u}_R) \cdot \mathbf{n} - \frac{1}{2} \eta(\mathbf{u}_R) \right) - \left( \mathbf{q}(\mathbf{u}_L) \cdot \mathbf{n} + \frac{1}{2} \eta(\mathbf{u}_L) \right) \leq 0$$整理得：
+$$\mathbf{q}(\mathbf{u}_R) \cdot \mathbf{n} - \mathbf{q}(\mathbf{u}_L) \cdot \mathbf{n} \leq \frac{1}{2} (\eta(\mathbf{u}_L) + \eta(\mathbf{u}_R))$$
+4. 利用熵的凸性由于 $\eta$ 是凸函数，根据 Jensen 不等式，积分平均值的熵不大于熵的平均值：
+$$\eta(\bar{\mathbf{u}}) \leq \int_{-\frac{1}{2}}^{\frac{1}{2}} \eta(\mathbf{u}(\xi)) \, d\xi$$结合步骤 3 的结果，我们将不等式两边乘以 $t$ 并移项，得到：
+$$\eta(\bar{\mathbf{u}}) \leq \frac{1}{2}(\eta(\mathbf{u}_L) + \eta(\mathbf{u}_R)) - t(\mathbf{q}(\mathbf{u}_R)\cdot\mathbf{n} - \mathbf{q}(\mathbf{u}_L)\cdot\mathbf{n})$$
+证毕。</li>
+</ol>
+<h2 id="保极值方法">保极值方法
+</h2><p>FCT实际上并不保持狭义的局部极值原理（$\min_{j\in\mathcal{I}(S_i)}\rho_j^{n}\le\rho_i^{n+1}\le \max_{j\in\mathcal{I}(S_i)}\rho_j^{n}$），
 </p>
 \[\min_{k\in\mathcal{I}(S_j),j\in\mathcal{I}(S_i)}\rho_k^{n}\le \min_{j\in\mathcal{I}(S_i)}\rho_j^{n+1,L}\le\rho_i^{n+1,FCT}\le \max_{j\in\mathcal{I}(S_i)}\rho_j^{n+1,L}\le \max_{k\in\mathcal{I}(S_j),j\in\mathcal{I}(S_i)}\rho_k^{n},\]<p>
 其因采用两步方法（先获得低阶解，随后通过修正通量来使解在保持极值的基础上尽可能贴近高阶解）而扩大了stencil的大小[2]。</p>
 <p>文章[3]取消两步分裂方法，获得真正的保局部极值的方法，且构造的通量修正\(f_{ij}^*\)关于自由度连续（the continuous dependence of the limited fluxes \(f^*_{ij}\) on the degrees of freedom implies existence of a solution to the nonlinear discrete problem by Brouwer’s fixed-point theorem）。</p>
-<p>文章[4]中在构造可压缩Euler系统的高阶保极值格式时通过对$E$和$\frac12|\bm{u}|^2$的界做合适的设计以保证最终得到的解能满足$e=\f{1}{\rho}E-\f12|\mathbf{u}|^2\ge0$。</p>
+<p>文章[4]中在构造可压缩Euler系统的高阶保极值格式时通过对$E$和$\frac12|\bm{u}|^2$的界做合适的设计以保证最终得到的解能满足$e={\rho}^{-1}E-\f12|\mathbf{v}|^2\ge0$。</p>
+<h2 id="specific-entropy">Specific entropy
+</h2><p>记比熵(specific entropy)为$s=s(\rho,e)$, 满足热力学恒等式[6]：
+</p>
+$$
+Tds=de-p\rho^{-2}d\rho,
+$$<p>
+其中$e:=\rho^{-1}E-\frac12|\mathbf{v}|^2$为比内能(specific internal energy)。
+由此关系可以得到
+</p>
+$$
+\begin{cases}s_e=T^{-1},\\
+s_{\rho}=-p\rho^{-2}T^{-1},\quad \text{i.e., } p = -\rho^{2}s_{\rho}s_e^{-1}.
+\end{cases}$$<p><img src="/p/scalar-conservation-laws/image.png"
+	width="1516"
+	height="716"
+	srcset="/p/scalar-conservation-laws/image_hu_e5ea74077b18b35.png 480w, /p/scalar-conservation-laws/image_hu_65cbb14a9923a633.png 1024w"
+	loading="lazy"
+	
+		alt="[5, p18]"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="211"
+		data-flex-basis="508px"
+	
+></p>
+<h3 id="quasiconcavity-of-s">Quasiconcavity of $s$
+</h3><p><strong>定义（拟凹性）</strong><br>
+给定一个凸集 $\mathcal{A} \subset \mathbb{R}^m$，我们称函数 $\Psi: \mathcal{A} \to \mathbb{R}$ 是<strong>拟凹的</strong>，如果它的每一个上水平集都是凸集；也就是说，对任意 $\lambda \in \mathbb{R}$（在 $\Psi$ 的值域内），集合<br>
+</p>
+$$
+L_\lambda(\Psi) := \{ \mathbf{U} \in \mathcal{A} : \Psi(\mathbf{U}) \geq \lambda \}
+$$<p><br>
+是凸集。</p>
+<p>定义函数$\varphi:(\rho,\mathbf{m},E)\mapsto (\rho, e)$, 即从守恒变量映到$s$的自变量，接着我们定义函数$G:=s\circ\varphi$，则$G$是关于守恒变量的函数，借此我们可以讨论熵在守恒变量下的拟凹性。</p>
+<p>定义
+</p>
+$$
+\alpha:=d\varphi_2=de=(\rho^{-3}|\mathbf{m}|^2-\rho^{-2}E)d\rho-\rho^{-2}\mathbf{m}\cdot d\mathbf{m}+\rho^{-1}dE
+$$<p><strong>从矩阵视角来看二次型$X^TD^2GX^T$</strong>,
+根据复合函数求导法则：
+</p>
+$$D^2G=(D\varphi)^TD^2S(D\varphi)+\sum_{i=1}^2\partial _iSD^2\varphi_i,$$<p>
+于是
+</p>
+$$
+X^TD^2GX=Y^TD^2SY+\sum_{i=1}^2\partial_iSX^TD^2\varphi_iX,
+$$<p>
+其中$Y=D\varphi X=(d\rho,de)^T$。</p>
+<p><strong>从微分形式视角来看二次型</strong>，
+</p>
+$$dG=s_{\rho}d\rho +s_ede$$<p>
+</p>
+$$\begin{aligned}
+d^2G=&s_{\rho\rho}(d\rho)^2+s_{\rho e}d\rho de+s_{\rho}d^2\rho+s_{ee}(de)^2+s_{e\rho}d\rho de+s_ed^2e\\
+=&Y^TD^2SY+s_ed^2e,
+\end{aligned}$$<p>
+其中$d^2\rho=0$(关于守恒变量线性), $d^2e\ne 0$(关于守恒变量非线性)。
+</p>
+$$
+\begin{aligned}
+d^2e=&d\alpha\\
+=&-2\rho^{-2}d\rho dE-\rho^{-2}|d\mathbf{m}|^2+4\rho^{-3}\mathbf{m}\cdot d\mathbf{m}d\rho+(2E\rho^{-3}-3|\mathbf{m}|^2\rho^{-4})(d\rho)^2\\
+=&-2\rho^{-1}\alpha d\rho-|\rho^{-1}d\mathbf{m}-\rho^{-2}\mathbf{m}d\rho|^2
+\end{aligned}
+$$<p>由<strong>引理1</strong>我们可以看到，为了证明严格拟凹性，我们只需证明Hessian矩阵在切空间上是严格负定的。
+考虑切空间$dG^{\perp}:={X=(d\rho,d\mathbf{m},dE)\in\mathbb{R}^3: Ds\cdot D\varphi X=0}$，其上
+有$
+s_\rho d\varphi_1 +s_ed\varphi_2=0,$
+即
+</p>
+$$
+s_{\rho} d\rho+s_e\alpha=0\text{ or }\alpha = -s_{\rho}s_e^{-1}d\rho=\rho^{-2}pd\rho.
+$$<p>
+于是(将$de$的项化成与$d\rho$相关)
+</p>
+$$
+\begin{aligned}
+X^TD^2GX=&s_{\rho\rho}(d\rho)^2+2s_{\rho e}\alpha d\rho+s_{ee}\alpha^2-s_e(2\rho^{-1}\alpha d\rho+|\rho^{-1}d\mathbf{m}-\rho^{-2}\mathbf{m}d\rho|^2)\\
+=&(s_{\rho\rho}+2\rho^{-2}p s_{\rho e}+\rho^{-4}p^2s_{ee})(d\rho)^2-\rho^{-2}s_e(|d\mathbf{m}-vd\rho|^2+2\rho^{-1}p(d\rho)^2)
+\end{aligned}
+$$<p>
+由于$s_e&gt;0$, $X^TD^2GX&lt; 0$的一个充分条件是：
+</p>
+$$
+s_{\rho\rho}+2\rho^{-2}ps_{\rho e}+\rho^{-4}p^2s_{ee}<2\rho^{-3}s_ep,
+$$<p>
+即
+</p>
+$$
+2\rho p s_{e}\ge \rho^4s_{\rho\rho}+2\rho^2ps_{\rho e}+p^2s_{ee}.
+$$<p>
+由于$\rho^2s_{\rho}+ps_e=0$, 求导得
+</p>
+$$
+\begin{cases}
+2\rho s_{\rho}+\rho^2s_{\rho\rho}+p_{\rho}s_{e}+ps_{\rho e}=0\\
+\rho^2s_{\rho e}+p_es_e+ps_{ee}=0
+\end{cases}
+$$<p>
+结合$s_{\rho}=-\rho^{-2}ps_e$可将原不等式化为
+</p>
+$$
+\rho^2p_{\rho}+pp_e> 0.\tag{1}
+$$<p>
+在$dG^{\perp}$上有
+</p>
+$$
+dp = p_{\rho}d\rho+p_ede=(p_{\rho}+\rho^{-2}pp_e)d\rho,
+$$<p>
+于是声速
+</p>
+$$c^2={\frac{dp}{d\rho}}=\rho^{-2}(\rho^2p_{\rho}+pp_e)$$<p>
+也即不等式(1)等价于声速满足$c^2&gt; 0$，等价于Euler系统是严格双曲的。</p>
+<hr>
+<blockquote>
+<p><strong>引理1(局部凸性判据)</strong>：
+设 $G: \mathbb{R}^n \to \mathbb{R}$ 光滑。若对任意 $u$ 及所有满足 $dG(u)(X)=0$ 的非零向量 $X$，均有 $X^T D^2 G(u) X &lt; 0$，则上水平集 $A_r = \{u : G(u) \geq r\}$ 是<strong>严格凸集</strong>。</p>
+</blockquote>
+<blockquote>
+<p><strong>定理2(拟凹性)[5, Thm. 8.22]</strong>
+我们假设完全气体动力学的 Euler 方程组是<strong>严格双曲的</strong>，即满足 $\rho^2 p_\rho + p p_e &gt; 0$，则形如 $A_r = \{ u \in \mathscr{U} : s\geq r \}$ 的区域具有<strong>特征边界</strong>且是<strong>严格凸集</strong>，即比熵函数$s$是拟凹函数。</p>
+</blockquote>
+<hr>
+<h3 id="引理1证明过程反证法">引理1证明过程（反证法）
+</h3><p><strong>1. 假设反面</strong>
+假设 $A_r$ <strong>不是</strong>严格凸集。
+则存在两点 $u_1, u_2 \in A_r$ ($u_1 \neq u_2$) 以及参数 $t_0 \in (0,1)$，使得线段上的点 $u_{mid} = (1-t_0)u_1 + t_0 u_2$ 满足：
+</p>
+$$ G(u_{mid}) \leq r $$<p>
+<em>(注：已知 $G(u_1) \geq r, G(u_2) \geq r$)</em></p>
+<p><strong>2. 构造单变量函数</strong>
+定义沿该线段的函数 $h(t) = G((1-t)u_1 + t u_2)$，其中 $t \in [0,1]$。
+令方向向量 $v = u_2 - u_1 \neq 0$。
+由假设可知：$h(0) \geq r, h(1) \geq r$，且存在 $t_0$ 使 $h(t_0) \leq r$。</p>
+<p><strong>3. 利用极值性质</strong>
+根据连续函数的性质，$h(t)$ 在开区间 $(0,1)$ 内必存在一个<strong>局部极小值点</strong> $t^{\ast}$。
+在该点 $t^{\ast}$ 处，必须满足微积分中的极值必要条件：</p>
+<ul>
+<li><strong>一阶条件</strong>：$h'(t^*) = 0$</li>
+<li><strong>二阶条件</strong>：$h''(t^*) \geq 0$</li>
+</ul>
+<p><strong>4. 展开导数项</strong>
+利用链式法则计算 $h(t)$ 的导数：</p>
+<ul>
+<li>$h'(t) = \nabla G(\gamma(t)) \cdot v = dG(\gamma(t))(v)$</li>
+<li>$h''(t) = v^T D^2 G(\gamma(t)) v$</li>
+</ul>
+<p>代入 $t^*$ 处的条件：</p>
+<ol>
+<li>$dG(u^*)(v) = 0 \implies$ <strong>向量 $v$ 位于梯度正交空间（切空间）内</strong>。</li>
+<li>$v^T D^2 G(u^*) v \geq 0$。</li>
+</ol>
+<p><strong>5. 导出矛盾</strong>
+回顾<strong>题设条件</strong>：</p>
+<blockquote>
+<p>对所有满足 $dG(u)(X)=0$ 的非零向量 $X$，都有 $X^T D^2 G(u) X &lt; 0$。</p>
+</blockquote>
+<p>由于 $v \neq 0$ 且 $dG(u^{\ast})(v)=0$，根据题设应有：
+</p>
+$$ v^T D^2 G(u^*) v < 0 $$<p>
+这与步骤 4 中由极小值推导出的 $v^T D^2 G(u^*) v \geq 0$ <strong>直接矛盾</strong>。</p>
+<p><strong>6. 结论</strong>
+假设错误。因此，线段上任意内点的函数值必须严格大于 $r$。
+即 $A_r$ 是<strong>严格凸集</strong>。 $\square$</p>
+<h3 id="应用">应用
+</h3><blockquote>
+<p>$\mathcal{D}:=\{\mathbf{U}:=(\rho,\mathbf{m},E)|\rho &gt;0, e&gt;0, s\ge r\}$是凸集[6,Remark 4.2]。</p>
+</blockquote>
+<p>考虑$\mathcal{A}=\{\mathbf{U}:=(\rho,\mathbf{m},E)|\rho &gt;0\}$, 令$\Psi(\mathbf{U})=\rho e$是凹函数(当$\rho&gt;0$时,
+</p>
+$$\nabla^2\Psi = \begin{pmatrix}-\rho^{-3}|m|^2&\rho^{-2}m&0\\
+\rho^{-2}m^T&-\rho^{-1}&0\\
+0&0&0\end{pmatrix}$$<p>是半负定矩阵)，所以$\{\mathbf{U}:=(\rho,\mathbf{m},E)|\rho &gt;0,e&gt;0\}$是凸集，再结合$s$是拟凹函数，可知其上水平集是凸集，因此$\mathcal{D}$是凸集。</p>
 <h2 id="参考文献">参考文献
 </h2><ol>
 <li><a class="link" href="https://www.jianguoyun.com/p/DeMlom8QlsqoDRjp7IcGIAA"  target="_blank" rel="noopener"
@@ -392,7 +599,11 @@ defining up to $2m+1$ sectors (some could be empty) in the $(x,t)$ plane[1].</p>
 <li><a class="link" href="https://www.jianguoyun.com/p/DZLFqXYQlsqoDRig8YcGIAA"  target="_blank" rel="noopener"
     >Monolithic convex limiting for continuous finite element discretizations of hyperbolic conservation laws. Dmitri Kuzmin. 2020.</a></li>
 <li><a class="link" href="https://www.jianguoyun.com/p/Dfsl4osQlsqoDRje8YcGIAA"  target="_blank" rel="noopener"
-    >Sequential limiting in continuous and discontinuous Galerkin methods for the Euler equations. Kuzmin, et al.. 2018</a></li>
+    >Sequential limiting in continuous and discontinuous Galerkin methods for the Euler equations. Kuzmin, et al. 2018.</a></li>
+<li><a class="link" href="https://www.jianguoyun.com/p/DQvFQegQlsqoDRitqZ0GIAA"  target="_blank" rel="noopener"
+    >Systems of conservation laws 2. Serre D. 2000</a></li>
+<li><a class="link" href="https://www.jianguoyun.com/p/DRiM0PQQlsqoDRisqZ0GIAA"  target="_blank" rel="noopener"
+    >Second-order invariant domain preserving approximation of the Euler equations using convex limiting. Guermond, et al. 2017.</a></li>
 </ol>
 
 </section>

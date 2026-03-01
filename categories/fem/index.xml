@@ -243,16 +243,20 @@ A^{-1}&amp;=\begin{pmatrix}
 \end{aligned}\]&lt;h2 id=&#34;法向和切向向量&#34;&gt;法向和切向向量
 &lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Lemma (Normal and tangent).&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;法向：\[\mathbf{n}|_{K|F}(\mathbf{x})=\frac{1}{\norm{ (\mathbb{J}_K^{-T}\hat{\mathbf{n}}_{\hat{K}|\hat{F}})(\hat{\mathbf{x}})}_{l^2}}(\mathbb{J}_K^{-T}\hat{\mathbf{n}}_{\hat{K}|\hat{F}})(\hat{\mathbf{x}}).\]&lt;/li&gt;
-&lt;li&gt;切向：\[\boldsymbol{\tau}_E(\mathbf{x})=\frac{1}{\norm{(\mathbb{J}_K\hat{\boldsymbol{\tau}}_{\hat{E}})(\hat{\mathbf{x}})}_{l^2}}(\mathbb{J}_K\hat{\boldsymbol{\tau}}_{\hat{E}})(\hat{\mathbf{x}}).\]&lt;/li&gt;
+&lt;li&gt;法向：
+\[\mathbf{n}|_{K|F}(\mathbf{x})=\frac{1}{\norm{ (\mathbb{J}_K^{-T}\hat{\mathbf{n}}_{\hat{K}|\hat{F}})(\hat{\mathbf{x}})}_{l^2}}(\mathbb{J}_K^{-T}\hat{\mathbf{n}}_{\hat{K}|\hat{F}})(\hat{\mathbf{x}}).\]&lt;/li&gt;
+&lt;li&gt;切向：
+\[\boldsymbol{\tau}_E(\mathbf{x})=\frac{1}{\norm{(\mathbb{J}_K\hat{\boldsymbol{\tau}}_{\hat{E}})(\hat{\mathbf{x}})}_{l^2}}(\mathbb{J}_K\hat{\boldsymbol{\tau}}_{\hat{E}})(\hat{\mathbf{x}}).\]&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;Lemma (Surface and line measure).&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;面测度：
+
 \[\begin{aligned}&amp;\d s=|\mathrm{det}(\mathbb{J}_K)(\hat{\mathbf{x}})|\norm{ (\mathbb{J}_K^{-T}\hat{\mathbf{n}}_{\hat{K}|\hat{F}})(\hat{\mathbf{x}})}_{l^2}\d \hat s,\\
 &amp;\d \hat s=|\mathrm{det}(\mathbb{J}_K^{-1})({\mathbf{x}})|\norm{ (\mathbb{J}_K^{T}{\mathbf{n}}_{{K}|{F}})({\mathbf{x}})}_{l^2}\d  s.\\
 \end{aligned}\]&lt;/li&gt;
 &lt;li&gt;线测度：
+
 \[\begin{aligned}&amp;\d l=\norm{(\mathbb{J}_K\hat{\boldsymbol{\tau}_E})(\hat{\mathbf{{x}}})}_{l^2}\d \hat l,\\
  &amp;\d \hat l=\norm{(\mathbb{J}^{-1}_K{\boldsymbol{\tau}_E})({\mathbf{{x}}})}_{l^2}\d l.
  \end{aligned}\]&lt;/li&gt;
@@ -451,9 +455,11 @@ $$&lt;p&gt;综上，Wachspress coordinates满足如下性质：&lt;/p&gt;
 &lt;/p&gt;
 \[\mathbb{I}_f(v): = \sum_{i=1}^N\lambda_i(v)f_i\]&lt;ul&gt;
 &lt;li&gt;当$f$是线性多项式时，
+
 \[f(v) = f(\sum_{i=1}^N \lambda_iv_i )=\sum_{i=1}^N\lambda_i(v)f_i =\mathbb{I}_f(v)\]
 即$f = \mathbb{I}_f$。&lt;/li&gt;
 &lt;li&gt;当$f$为一般光滑函数时，对$f$进行一阶Taylor展开：$f = P_1(f)+O(h^2)$，$h$为单元直径。于是，
+
 $$\begin{aligned}\mathbb{I}_f(v) &amp;= \sum_{i=1}^N\lambda_i f_i \\
   &amp;= \sum_i \lambda_iP_1(f)(v_i)+O(h^2) \\
   &amp; = P_1(f)(v)+O(h^2)\quad (P_1\text{是线性函数})\\

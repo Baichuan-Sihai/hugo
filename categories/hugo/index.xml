@@ -12,7 +12,9 @@
         <pubDate>Sun, 25 May 2025 11:07:01 +0800</pubDate>
         
         <guid>https://baichuan-blog.netlify.app/p/hugo-markdown%E6%8A%80%E5%B7%A7/</guid>
-        <description>&lt;h2 id=&#34;-的渲染&#34;&gt;* 的渲染
+        <description>&lt;h2 id=&#34;-的渲染&#34;&gt;{} 的渲染
+&lt;/h2&gt;&lt;p&gt;需要两个反斜杠&lt;code&gt;\\{...\\}&lt;/code&gt;才能显示$\{&amp;hellip;\}$。如果采用&lt;code&gt;\{...\}&lt;/code&gt;会显示为${&amp;hellip;}$。&lt;/p&gt;
+&lt;h2 id=&#34;-的渲染-1&#34;&gt;* 的渲染
 &lt;/h2&gt;&lt;p&gt;Markdown行内公式&lt;code&gt;$a^*b^*$&lt;/code&gt;渲染会出错（两个*间会变成斜体$a^&lt;em&gt;b^&lt;/em&gt;$），改成&lt;code&gt;$a^\*b^\*$&lt;/code&gt;（$a^*b^*$），但这样在vscode中的渲染有问题，一种安全的写法是&lt;code&gt;$a^\ast b^\ast$&lt;/code&gt;（$a^\ast b^\ast$）。&lt;/p&gt;
 &lt;h2 id=&#34;行内公式渲染问题&#34;&gt;行内公式渲染问题
 &lt;/h2&gt;&lt;p&gt;有时候行内公式用&lt;code&gt;$$&lt;/code&gt;渲染不出，可以改用&lt;code&gt;\(\)&lt;/code&gt;的方式。&lt;/p&gt;

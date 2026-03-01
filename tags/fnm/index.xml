@@ -86,12 +86,15 @@ where $m\ge 0$ is an integer, $\Omega\subset \R^d$ is a bounded domain and  $\ep
     &gt;Approximation Rates for Shallow ReLU$^k$ Neural Networks on Sobolev Spaces via the Radon Transform&lt;/a&gt;
 &lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;Space embedding result (Theorem 1):
+
 $$W^{s,2}(\Omega)\subset \mathcal{H}(\mathbb{P}_k^d),$$
 where $s=\frac{d+2k+1}2$.&lt;/li&gt;
 &lt;li&gt;Approximation inequality (Corollary 1):
+
 $$\inf_{f_n\in\Sigma_n^k(\R^d)}\norm{f-f_n}_{L^{\infty}(\Omega)}\le C\norm{f}_{W^{s,2}(\Omega)}n^{-\frac{s}{d}},$$
 where $s=\frac{d+2k+1}2$.&lt;/li&gt;
 &lt;li&gt;Generalization of 2:
+
 $$\inf_{f_n\in\Sigma_n^k(\R^d)}\norm{f-f_n}_{L^{p}(\Omega)}\le C\norm{f}_{W^{s,p}(\Omega)}n^{-\frac{s}{d}},$$
 where $2\le p\le \infty$ and $0\le s\le \frac{d+2k+1}2$.&lt;/li&gt;
 &lt;/ol&gt;

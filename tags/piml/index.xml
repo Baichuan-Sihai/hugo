@@ -36,8 +36,10 @@
 &lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;前处理(嵌入embedding)： 例如用Fourier特征由输入坐标获得嵌入向量，可以更容易学到高频信息。&lt;/li&gt;
 &lt;li&gt;多神经网络：用多个神经网络学习不同函数，如对于Dirichlet边值问题
+
 $$\begin{cases}\mathcal{F}(u)(\mathbf{x})=0, &amp;x\in\Omega\\u(\mathbf(x))=g(\mathbf{x}),&amp;x\in\p \Omega\end{cases},$$
 将解分解为两个部分
+
 $$u(\mathbf{x}) = v(\mathbf{x})+D(\mathbf{x})y(\mathbf{x}),$$
 其中$D(\mathbf{x})$再区域边界为0 (如距离函数$\min_{\mathbf{x}_b\in\p \Omega}\norm{\mathbf{x}-\mathbf{x}_b}_2$)，可以用一个神经网络学习；$v(\mathbf{x})$满足边界条件，用第二个神经网络学习；最后利用PDE残量学习$y(\mathbf{x})$。&lt;/li&gt;
 &lt;li&gt;序列神经网络：对于带时序的问题如非定常PDE，可以考虑Recurrent Neural Networks (RNN), Long-Short Term Memeory (LSTM), Gate Recurrent Unit (GRU), Transformer等架构。&lt;/li&gt;
