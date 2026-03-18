@@ -291,7 +291,7 @@
     <li><a href="#保极值方法">保极值方法</a></li>
     <li><a href="#specific-entropy">Specific entropy</a>
       <ol>
-        <li><a href="#quasiconcavity-of-s">Quasiconcavity of $s$</a></li>
+        <li><a href="#quasiconcavity-of">Quasiconcavity of </a></li>
         <li><a href="#引理1证明过程反证法">引理1证明过程（反证法）</a></li>
         <li><a href="#应用">应用</a></li>
       </ol>
@@ -362,7 +362,7 @@
 </p>
 \[\begin{cases}\p_t \bm{u}+\p_x(\bm{f}(\bm{u})\cdot\bm{n})=0,\quad (x,t)\in\R\times \R_+,\\\bm{u}(x,0)=\begin{cases}\bm{u}_L&\text{if } x<0,\\\bm{u}_R&\text{if }x>0. \end{cases}\end{cases}\]<p>
 其中$(\bm{u}_L,\bm{u}_R)\in \mathcal{A}\times\mathcal{A}$，$\mathcal{A}\subset \R^m$。</p>
-<p>When the system is strictly hyperbolic with smooth ﬂux and all the characteristic ﬁelds are either genuinely non-linear or linearly degenerate, it is possible to show that there exists $\delta&gt; 0$ such that the Riemann problem has a unique self-similar weak solution in Lax’s form for any initial data such that
+<p>When the system is strictly hyperbolic with smooth ﬂux and all the characteristic ﬁelds are either genuinely non-linear or linearly degenerate, it is possible to show that there exists $\delta> 0$ such that the Riemann problem has a unique self-similar weak solution in Lax’s form for any initial data such that
 \(\norm{\cuti{u}_L-\cuti{u}_R}_{l^2}\le\delta\).
 In particular, there are $2m$ numbers
 </p>
@@ -446,7 +446,7 @@ s_{\rho}=-p\rho^{-2}T^{-1},\quad \text{i.e., } p = -\rho^{2}s_{\rho}s_e^{-1}.
 </p>
 $$
 s(\rho,e)=s_0+c_v\ln(e\rho^{-(\gamma-1)}).
-$$<h3 id="quasiconcavity-of-s">Quasiconcavity of $s$
+$$<h3 id="quasiconcavity-of">Quasiconcavity of $s$
 </h3><p><strong>定义（拟凹性）</strong><br>
 给定一个凸集 $\mathcal{A} \subset \mathbb{R}^m$，我们称函数 $\Psi: \mathcal{A} \to \mathbb{R}$ 是<strong>拟凹的</strong>，如果它的每一个上水平集都是凸集；也就是说，对任意 $\lambda \in \mathbb{R}$（在 $\Psi$ 的值域内），集合<br>
 </p>
@@ -486,7 +486,7 @@ d^2e=&d\alpha\\
 =&-2\rho^{-1}\alpha d\rho-|\rho^{-1}d\mathbf{m}-\rho^{-2}\mathbf{m}d\rho|^2
 \end{aligned}
 $$<p>由<strong>引理1</strong>我们可以看到，为了证明严格拟凹性，我们只需证明Hessian矩阵在切空间上是严格负定的。
-考虑切空间$dG^{\perp}:={X=(d\rho,d\mathbf{m},dE)\in\mathbb{R}^3: Ds\cdot D\varphi X=0}$，其上
+考虑切空间$dG^{\perp}:=\{X=(d\rho,d\mathbf{m},dE)\in\mathbb{R}^3: Ds\cdot D\varphi X=0\}$，其上
 有$
 s_\rho d\varphi_1 +s_ed\varphi_2=0,$
 即
@@ -502,7 +502,7 @@ X^TD^2GX=&s_{\rho\rho}(d\rho)^2+2s_{\rho e}\alpha d\rho+s_{ee}\alpha^2-s_e(2\rho
 =&(s_{\rho\rho}+2\rho^{-2}p s_{\rho e}+\rho^{-4}p^2s_{ee})(d\rho)^2-\rho^{-2}s_e(|d\mathbf{m}-vd\rho|^2+2\rho^{-1}p(d\rho)^2)
 \end{aligned}
 $$<p>
-由于$s_e&gt;0$, $X^TD^2GX&lt; 0$的一个充分条件是：
+由于$s_e>0$, $X^TD^2GX< 0$的一个充分条件是：
 </p>
 $$
 s_{\rho\rho}+2\rho^{-2}ps_{\rho e}+\rho^{-4}p^2s_{ee}<2\rho^{-3}s_ep,
@@ -533,15 +533,15 @@ $$<p>
 于是声速
 </p>
 $$c^2={\frac{dp}{d\rho}}=\rho^{-2}(\rho^2p_{\rho}+pp_e)$$<p>
-也即不等式(1)等价于声速满足$c^2&gt; 0$，等价于Euler系统是严格双曲的。</p>
+也即不等式(1)等价于声速满足$c^2> 0$，等价于Euler系统是严格双曲的。</p>
 <hr>
 <blockquote>
 <p><strong>引理1(局部凸性判据)</strong>：
-设 $G: \mathbb{R}^n \to \mathbb{R}$ 光滑。若对任意 $u$ 及所有满足 $dG(u)(X)=0$ 的非零向量 $X$，均有 $X^T D^2 G(u) X &lt; 0$，则上水平集 $A_r = \{u : G(u) \geq r\}$ 是<strong>严格凸集</strong>。</p>
+设 $G: \mathbb{R}^n \to \mathbb{R}$ 光滑。若对任意 $u$ 及所有满足 $dG(u)(X)=0$ 的非零向量 $X$，均有 $X^T D^2 G(u) X < 0$，则上水平集 $A_r = \\{u : G(u) \geq r\\}$ 是<strong>严格凸集</strong>。</p>
 </blockquote>
 <blockquote>
 <p><strong>定理2(拟凹性)[5, Thm. 8.22]</strong>
-我们假设完全气体动力学的 Euler 方程组是<strong>严格双曲的</strong>，即满足 $\rho^2 p_\rho + p p_e &gt; 0$，则形如 $A_r = \{ u \in \mathscr{U} : s\geq r \}$ 的区域具有<strong>特征边界</strong>且是<strong>严格凸集</strong>，即比熵函数$s$是拟凹函数。</p>
+我们假设完全气体动力学的 Euler 方程组是<strong>严格双曲的</strong>，即满足 $\rho^2 p_\rho + p p_e > 0$，则形如 $A_r = \\{ u \in \mathscr{U} : s\geq r \\}$ 的区域具有<strong>特征边界</strong>且是<strong>严格凸集</strong>，即比熵函数$s$是拟凹函数。</p>
 </blockquote>
 <hr>
 <h3 id="引理1证明过程反证法">引理1证明过程（反证法）
@@ -559,14 +559,14 @@ $$ G(u_{mid}) \leq r $$<p>
 根据连续函数的性质，$h(t)$ 在开区间 $(0,1)$ 内必存在一个<strong>局部极小值点</strong> $t^{\ast}$。
 在该点 $t^{\ast}$ 处，必须满足微积分中的极值必要条件：</p>
 <ul>
-<li><strong>一阶条件</strong>：$h'(t^*) = 0$</li>
-<li><strong>二阶条件</strong>：$h''(t^*) \geq 0$</li>
+<li><strong>一阶条件</strong>：$h\'(t^*) = 0$</li>
+<li><strong>二阶条件</strong>：$h\'\'(t^*) \geq 0$</li>
 </ul>
 <p><strong>4. 展开导数项</strong>
 利用链式法则计算 $h(t)$ 的导数：</p>
 <ul>
-<li>$h'(t) = \nabla G(\gamma(t)) \cdot v = dG(\gamma(t))(v)$</li>
-<li>$h''(t) = v^T D^2 G(\gamma(t)) v$</li>
+<li>$h\'(t) = \nabla G(\gamma(t)) \cdot v = dG(\gamma(t))(v)$</li>
+<li>$h\'\'(t) = v^T D^2 G(\gamma(t)) v$</li>
 </ul>
 <p>代入 $t^*$ 处的条件：</p>
 <ol>
@@ -576,7 +576,7 @@ $$ G(u_{mid}) \leq r $$<p>
 <p><strong>5. 导出矛盾</strong>
 回顾<strong>题设条件</strong>：</p>
 <blockquote>
-<p>对所有满足 $dG(u)(X)=0$ 的非零向量 $X$，都有 $X^T D^2 G(u) X &lt; 0$。</p>
+<p>对所有满足 $dG(u)(X)=0$ 的非零向量 $X$，都有 $X^T D^2 G(u) X < 0$。</p>
 </blockquote>
 <p>由于 $v \neq 0$ 且 $dG(u^{\ast})(v)=0$，根据题设应有：
 </p>
@@ -587,13 +587,13 @@ $$ v^T D^2 G(u^*) v < 0 $$<p>
 即 $A_r$ 是<strong>严格凸集</strong>。 $\square$</p>
 <h3 id="应用">应用
 </h3><blockquote>
-<p>$\mathcal{D}:=\{\mathbf{U}:=(\rho,\mathbf{m},E)|\rho &gt;0, e&gt;0, s\ge r\}$是凸集[6,Remark 4.2]。</p>
+<p>$\mathcal{D}:=\\{\mathbf{U}:=(\rho,\mathbf{m},E)|\rho >0, e>0, s\ge r\\}$是凸集[6,Remark 4.2]。</p>
 </blockquote>
-<p>考虑$\mathcal{A}=\{\mathbf{U}:=(\rho,\mathbf{m},E)|\rho &gt;0\}$, 令$\Psi(\mathbf{U})=\rho e$是凹函数(当$\rho&gt;0$时,
+<p>考虑$\mathcal{A}=\\{\mathbf{U}:=(\rho,\mathbf{m},E)|\rho >0\\}$, 令$\Psi(\mathbf{U})=\rho e$是凹函数(当$\rho>0$时,
 </p>
 $$\nabla^2\Psi = \begin{pmatrix}-\rho^{-3}|m|^2&\rho^{-2}m&0\\
 \rho^{-2}m^T&-\rho^{-1}&0\\
-0&0&0\end{pmatrix}$$<p>是半负定矩阵)，所以$\{\mathbf{U}:=(\rho,\mathbf{m},E)|\rho &gt;0,e&gt;0\}$是凸集，再结合$s$是拟凹函数，可知其上水平集是凸集，因此$\mathcal{D}$是凸集。</p>
+0&0&0\end{pmatrix}$$<p>是半负定矩阵)，所以$\\{\mathbf{U}:=(\rho,\mathbf{m},E)|\rho >0,e>0\\}$是凸集，再结合$s$是拟凹函数，可知其上水平集是凸集，因此$\mathcal{D}$是凸集。</p>
 <h2 id="参考文献">参考文献
 </h2><ol>
 <li><a class="link" href="https://www.jianguoyun.com/p/DeMlom8QlsqoDRjp7IcGIAA"  target="_blank" rel="noopener"
@@ -648,29 +648,34 @@ $$\nabla^2\Psi = \begin{pmatrix}-\rho^{-3}|m|^2&\rho^{-2}m&0\\
                 >
             </script><script>
     window.addEventListener("DOMContentLoaded", () => {
-	const mainArticleElement = document.querySelector(".main-article");
+        const mainArticleElement = document.querySelector(".main-article");
+        const macros = {
+            "\\abs": "\\left| #1 \\right|",
+            "\\Sob": "W^{#1,#2}(#3)",
+            "\\inn": "\\langle #1,#2 \\rangle",
+            "\\p": "\\partial",
+            "\\d": "\\mathrm{d}",
+            "\\f": "\\frac{#1}{#2}",
+            "\\D": "\\Delta",
+            "\\a": "\\alpha",
+            "\\b": "\\beta",
+            "\\cuti": "\\boldsymbol{#1}",
+            "\\norm": "\\|#1\\|",
+            "\\llbracket": "[\\!\\![",
+            "\\rrbracket": "]\\!\\!]"
+        };
         renderMathInElement(mainArticleElement, {
+            macros,
+            globalGroup: true,
             delimiters: [
                 { left: "$$", right: "$$", display: true },
                 { left: "$", right: "$", display: false },
                 { left: "\\(", right: "\\)", display: false },
                 { left: "\\[", right: "\\]", display: true }
             ],
-			macros: {
-                "\\abs": "\\left| #1 \\right|",
-				"\\Sob": "W^{#1,#2}(#3)",  
-				"\\inn": "\\langle #1,#2 \\rangle",
-				"\\p": "\\partial",
-				"\\d": "\\mathrm{d}",
-				"\\f": "\\frac",
-				"\\D": "\\Delta",
-				"\\a": "\\alpha",
-				"\\b": "\\beta",
-				"\\cuti": "\\boldsymbol",
-                "\\norm": "\\|#1\\|"
-            },
             ignoredClasses: ["gist"]
-        });})
+        });
+    });
 </script>
 
     

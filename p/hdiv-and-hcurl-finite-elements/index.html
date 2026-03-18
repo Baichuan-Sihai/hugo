@@ -526,29 +526,34 @@
                 >
             </script><script>
     window.addEventListener("DOMContentLoaded", () => {
-	const mainArticleElement = document.querySelector(".main-article");
+        const mainArticleElement = document.querySelector(".main-article");
+        const macros = {
+            "\\abs": "\\left| #1 \\right|",
+            "\\Sob": "W^{#1,#2}(#3)",
+            "\\inn": "\\langle #1,#2 \\rangle",
+            "\\p": "\\partial",
+            "\\d": "\\mathrm{d}",
+            "\\f": "\\frac{#1}{#2}",
+            "\\D": "\\Delta",
+            "\\a": "\\alpha",
+            "\\b": "\\beta",
+            "\\cuti": "\\boldsymbol{#1}",
+            "\\norm": "\\|#1\\|",
+            "\\llbracket": "[\\!\\![",
+            "\\rrbracket": "]\\!\\!]"
+        };
         renderMathInElement(mainArticleElement, {
+            macros,
+            globalGroup: true,
             delimiters: [
                 { left: "$$", right: "$$", display: true },
                 { left: "$", right: "$", display: false },
                 { left: "\\(", right: "\\)", display: false },
                 { left: "\\[", right: "\\]", display: true }
             ],
-			macros: {
-                "\\abs": "\\left| #1 \\right|",
-				"\\Sob": "W^{#1,#2}(#3)",  
-				"\\inn": "\\langle #1,#2 \\rangle",
-				"\\p": "\\partial",
-				"\\d": "\\mathrm{d}",
-				"\\f": "\\frac",
-				"\\D": "\\Delta",
-				"\\a": "\\alpha",
-				"\\b": "\\beta",
-				"\\cuti": "\\boldsymbol",
-                "\\norm": "\\|#1\\|"
-            },
             ignoredClasses: ["gist"]
-        });})
+        });
+    });
 </script>
 
     

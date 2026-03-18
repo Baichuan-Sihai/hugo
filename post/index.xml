@@ -7,61 +7,51 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>百川</copyright>
-        <lastBuildDate>Wed, 18 Mar 2026 08:59:18 +0800</lastBuildDate><atom:link href="https://baichuan-blog.netlify.app/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 18 Mar 2026 09:49:20 +0800</lastBuildDate><atom:link href="https://baichuan-blog.netlify.app/post/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Flux-Balanced Patankar-type Schemes for the Compressible Euler Equations</title>
         <link>https://baichuan-blog.netlify.app/p/flux-balanced-patankar-type-schemes-for-the-compressible-euler-equations/</link>
         <pubDate>Tue, 17 Mar 2026 09:34:06 +0800</pubDate>
         
         <guid>https://baichuan-blog.netlify.app/p/flux-balanced-patankar-type-schemes-for-the-compressible-euler-equations/</guid>
         <description>&lt;h1 id=&#34;一引言&#34;&gt;一、引言
-&lt;/h1&gt;&lt;p&gt;流体模拟中，密度、内能等物理量必须保持正性，否则状态方程无意义。显式格式通常依赖 CFL 条件保证正性；要得到&lt;strong&gt;无条件正性&lt;/strong&gt;（任意 $\Delta t$ 下保持正），格式必须是&lt;strong&gt;非线性的&lt;/strong&gt;。Patankar 型方法通过引入非线性权重实现这一点，同时保持守恒性。MPRK（Modified Patankar–Runge–Kutta）即基于 Runge–Kutta 框架的 Patankar 型格式。&lt;/p&gt;
+&lt;/h1&gt;&lt;p&gt;流体模拟中，密度、内能等物理量必须保持正性，否则状态方程无意义。显式格式通常依赖 CFL 条件保证正性；要得到&lt;strong&gt;无条件正性&lt;/strong&gt;（任意 \(\Delta t\) 下保持正），格式必须是&lt;strong&gt;非线性的&lt;/strong&gt;。Patankar 型方法通过引入非线性权重实现这一点，同时保持守恒性。MPRK（Modified Patankar–Runge–Kutta）即基于 Runge–Kutta 框架的 Patankar 型格式。&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;二pdrs-理论基础&#34;&gt;二、PDRS 理论基础
 &lt;/h1&gt;&lt;h2 id=&#34;21-定义&#34;&gt;2.1 定义
 &lt;/h2&gt;&lt;p&gt;MPRK 针对 &lt;strong&gt;Production-Destruction-Rest System (PDRS)&lt;/strong&gt; 设计，形式为&lt;/p&gt;
-&lt;p&gt;$$
-u&amp;rsquo;&lt;em&gt;i(t) = r_i(u,t) + \sum&lt;/em&gt;{j=1}^{N} \bigl( p_{ij}(u,t) - d_{ij}(u,t) \bigr), \quad u(0) = u_0 \in \mathbb{R}^N_{&amp;gt;0}&lt;/p&gt;
-&lt;p&gt;$$&lt;/p&gt;
-&lt;p&gt;其中：&lt;/p&gt;
+$$
+u_{i}&#39;(t) = r_i(u,t) + \sum_{j=1}^{N} \bigl( p_{ij}(u,t) - d_{ij}(u,t) \bigr), \quad u(0) = u_0 \in \mathbb{R}^N_{&gt;0}
+$$&lt;p&gt;其中：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;$p_{ij}, d_{ij} \geq 0$：产生项与消灭项&lt;/li&gt;
-&lt;li&gt;$r_i = r^p_i - r^d_i$，$r^p_i, r^d_i \geq 0$：剩余项&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;守恒配对&lt;/strong&gt;：$p_{ij} = d_{ji}$，$p_{ii} = d_{ii} = 0$&lt;/li&gt;
+&lt;li&gt;\(p_{ij}, d_{ij} \geq 0\)：产生项与消灭项&lt;/li&gt;
+&lt;li&gt;\(r_i = r^p_i - r^d_i\)，\(r^p_i, r^d_i \geq 0\)：剩余项&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;守恒配对&lt;/strong&gt;：\(p_{ij} = d_{ji}\)，\(p_{ii} = d_{ii} = 0\)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;22-通量分解从半离散到-pdrs&#34;&gt;2.2 通量分解：从半离散到 PDRS
-&lt;/h2&gt;&lt;p&gt;对半离散形式 $\frac{du_i}{dt} = \frac{1}{\Delta x}(\hat{F}&lt;em&gt;{i-1/2} - \hat{F}&lt;/em&gt;{i+1/2})$，利用恒等式&lt;/p&gt;
-&lt;p&gt;$$
-\hat{F} = \max{0,\hat{F}} - \bigl(-\min{0,\hat{F}}\bigr)&lt;/p&gt;
-&lt;p&gt;$$&lt;/p&gt;
-&lt;p&gt;将通量差写成非负产生减非负消灭。界面 $i+\frac{1}{2}$ 上：&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;对半离散形式 \(\frac{du_i}{dt} = \frac{1}{\Delta x}(\hat{F}_{i-1/2} - \hat{F}_{i+1/2})\)，利用恒等式&lt;/p&gt;
+$$
+\hat{F} = \max\{0,\hat{F}\} - \bigl(-\min\{0,\hat{F}\}\bigr)
+$$&lt;p&gt;将通量差写成非负产生减非负消灭。界面 \(i+\frac{1}{2}\) 上：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;$\hat{F}&lt;em&gt;{i+1/2} &amp;gt; 0$（左→右）：$d&lt;/em&gt;{i,i+1} = p_{i+1,i} = \hat{F}_{i+1/2}$&lt;/li&gt;
-&lt;li&gt;$\hat{F}&lt;em&gt;{i+1/2} &amp;lt; 0$（右→左）：$p&lt;/em&gt;{i,i+1} = d_{i+1,i} = -\hat{F}_{i+1/2}$&lt;/li&gt;
+&lt;li&gt;\(\hat{F}_{i+1/2} &gt; 0\)（左→右）：\(d_{i,i+1} = p_{i+1,i} = \hat{F}_{i+1/2}\)&lt;/li&gt;
+&lt;li&gt;\(\hat{F}_{i+1/2} &lt; 0\)（右→左）：\(p_{i,i+1} = d_{i+1,i} = -\hat{F}_{i+1/2}\)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;边界通量同理拆成 $r^p$、$r^d$。流出单元 $i$ 的贡献等于流入相邻单元的贡献，满足 $p_{ij} = d_{ji}$。&lt;/p&gt;
+&lt;p&gt;边界通量同理拆成 \(r^p\)、\(r^d\)。流出单元 \(i\) 的贡献等于流入相邻单元的贡献，满足 \(p_{ij} = d_{ji}\)。&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;三mprk-格式&#34;&gt;三、MPRK 格式
 &lt;/h1&gt;&lt;h2 id=&#34;31-格式定义&#34;&gt;3.1 格式定义
-&lt;/h2&gt;&lt;p&gt;给定 s 级显式 RK 方法（Butcher 表 &lt;strong&gt;$A,b,c \geq 0$&lt;/strong&gt;），对应的 MPRK 格式为&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;中间步&lt;/strong&gt;（$k = 1,\ldots,s$）：&lt;/p&gt;
-&lt;p&gt;$$
-u^{(k)}&lt;em&gt;i = u^n_i + \Delta t \sum&lt;/em&gt;{\nu=1}^{k-1} a_{k\nu} \Biggl(
-r^p_i + \sum_j p_{ij} \frac{u^{(k)}_j}{\pi^{(k)}_j}&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;\Bigl( r^d_i + \sum_j d_{ij} \Bigr) \frac{u^{(k)}_i}{\pi^{(k)}_i}
-\Biggr)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;$$&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;最终步&lt;/strong&gt;：&lt;/p&gt;
-&lt;p&gt;$$
-u^{n+1}&lt;em&gt;i = u^n_i + \Delta t \sum&lt;/em&gt;{k=1}^{s} b_k \Biggl(
-r^p_i + \sum_j p_{ij} \frac{u^{n+1}_j}{\sigma_j}&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;\Bigl( r^d_i + \sum_j d_{ij} \Bigr) \frac{u^{n+1}_i}{\sigma_i}
-\Biggr)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;$$&lt;/p&gt;
-&lt;p&gt;$\pi^{(k)}_i$、$\sigma_i$ 为 &lt;strong&gt;Patankar 权分母 (PWDs)&lt;/strong&gt;，须 $\pi^{(k)}_i, \sigma_i &amp;gt; 0$。产生项乘 $u^{n+1}_j/\sigma_j$，消灭项乘 $u^{n+1}_i/\sigma_i$。&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;给定 s 级显式 RK 方法（Butcher 表 &lt;strong&gt;\(A,b,c \geq 0\)&lt;/strong&gt;），对应的 MPRK 格式为&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;中间步&lt;/strong&gt;（\(k = 1,\ldots,s\)）：&lt;/p&gt;
+$$
+u^{(k)}_i = u^n_i + \Delta t \sum_{\nu=1}^{k-1} a_{k\nu} \Biggl(
+  r^p_i + \sum_j p_{ij} \frac{u^{(k)}_j}{\pi^{(k)}_j} - \Bigl( r^d_i + \sum_j d_{ij} \Bigr) \frac{u^{(k)}_i}{\pi^{(k)}_i}
+\Biggr)
+$$&lt;p&gt;&lt;strong&gt;最终步&lt;/strong&gt;：&lt;/p&gt;
+$$
+u^{n+1}_i = u^n_i + \Delta t \sum_{k=1}^{s} b_k \Biggl(
+  r^p_i + \sum_j p_{ij} \frac{u^{n+1}_j}{\sigma_j} - \Bigl( r^d_i + \sum_j d_{ij} \Bigr) \frac{u^{n+1}_i}{\sigma_i}
+\Biggr)
+$$&lt;p&gt;\(\pi^{(k)}_i\)、\(\sigma_i\) 为 &lt;strong&gt;Patankar 权分母 (PWDs)&lt;/strong&gt;，须 \(\pi^{(k)}_i, \sigma_i &gt; 0\)。产生项乘 \(u^{n+1}_j/\sigma_j\)，消灭项乘 \(u^{n+1}_i/\sigma_i\)。&lt;/p&gt;
 &lt;h2 id=&#34;32-pwd-选取&#34;&gt;3.2 PWD 选取
 &lt;/h2&gt;&lt;table&gt;
   &lt;thead&gt;
@@ -74,20 +64,20 @@ r^p_i + \sum_j p_{ij} \frac{u^{n+1}_j}{\sigma_j}&lt;/p&gt;
   &lt;tbody&gt;
       &lt;tr&gt;
           &lt;td&gt;&lt;strong&gt;MPE&lt;/strong&gt;（一阶）&lt;/td&gt;
-          &lt;td&gt;$\sigma_i = u^n_i$&lt;/td&gt;
+          &lt;td&gt;\(\sigma_i = u^n_i\)&lt;/td&gt;
           &lt;td&gt;基于前向 Euler&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
           &lt;td&gt;&lt;strong&gt;MPHeun&lt;/strong&gt;（二阶）&lt;/td&gt;
-          &lt;td&gt;$\pi^{(2)}_i = u^n_i$，$\sigma_i = u^{(2)}_i$&lt;/td&gt;
+          &lt;td&gt;\(\pi^{(2)}_i = u^n_i\)，\(\sigma_i = u^{(2)}_i\)&lt;/td&gt;
           &lt;td&gt;基于 Heun 法&lt;/td&gt;
       &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;Patankar 权 $\frac{u^{n+1}_i}{u^n_i}$ 在 $\Delta t \to 0$ 时趋于 1，故不破坏收敛阶。&lt;/p&gt;
-&lt;h2 id=&#34;33-矩阵形式与-mk-的构成&#34;&gt;3.3 矩阵形式与 $M^{(k)}$ 的构成
-&lt;/h2&gt;&lt;p&gt;移项后可写成 $M^{(k)} u^{(k)} = u^n + \Delta t \sum_\nu a_{k\nu} r^p$ 及 $M u^{n+1} = u^n + \Delta t \sum_k b_k r^p$。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;$M^{(k)}$ 的构成&lt;/strong&gt;：将右端所有乘在 $u^{(k)}$ 上的项移到左端，左端 $u^{(k)}$ 的系数即 $M^{(k)}$ 的元素。对角元来自 $1$ 与消灭项，非对角元来自产生项（带负号）。&lt;/p&gt;
+&lt;p&gt;Patankar 权 \(\frac{u^{n+1}_i}{u^n_i}\) 在 \(\Delta t \to 0\) 时趋于 1，故不破坏收敛阶。&lt;/p&gt;
+&lt;h2 id=&#34;33-矩阵形式与--的构成&#34;&gt;3.3 矩阵形式与 \(M^{(k)}\) 的构成
+&lt;/h2&gt;&lt;p&gt;移项后可写成 \(M^{(k)} u^{(k)} = u^n + \Delta t \sum_\nu a_{k\nu} r^p\) 及 \(M u^{n+1} = u^n + \Delta t \sum_k b_k r^p\)。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;\(M^{(k)}\) 的构成&lt;/strong&gt;：将右端所有乘在 \(u^{(k)}\) 上的项移到左端，左端 \(u^{(k)}\) 的系数即 \(M^{(k)}\) 的元素。对角元来自 \(1\) 与消灭项，非对角元来自产生项（带负号）。&lt;/p&gt;
 &lt;h2 id=&#34;34-格式性质&#34;&gt;3.4 格式性质
 &lt;/h2&gt;&lt;table&gt;
   &lt;thead&gt;
@@ -99,280 +89,241 @@ r^p_i + \sum_j p_{ij} \frac{u^{n+1}_j}{\sigma_j}&lt;/p&gt;
   &lt;tbody&gt;
       &lt;tr&gt;
           &lt;td&gt;&lt;strong&gt;隐格式&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;未知量$u^{(k)}$、$u^{n+1}$ 在等式两端，需解线性系统；为&lt;strong&gt;线性隐式&lt;/strong&gt;（无需 Newton 迭代）&lt;/td&gt;
+          &lt;td&gt;未知量\(u^{(k)}\)、\(u^{n+1}\) 在等式两端，需解线性系统；为&lt;strong&gt;线性隐式&lt;/strong&gt;（无需 Newton 迭代）&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
           &lt;td&gt;&lt;strong&gt;M-矩阵&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;当$M^{(k)}$、$M$ 为 M-矩阵时无条件正性。$\Delta t$ 充分小时 $M \approx I$ 自然成立；任意 $\Delta t$ 下需 PWD 与 $p_{ij}=d_{ji}$ 保证&lt;/td&gt;
+          &lt;td&gt;当\(M^{(k)}\)、\(M\) 为 M-矩阵时无条件正性。\(\Delta t\) 充分小时 \(M \approx I\) 自然成立；任意 \(\Delta t\) 下需 PWD 与 \(p_{ij}=d_{ji}\) 保证&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
           &lt;td&gt;&lt;strong&gt;Butcher 非负&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;要求$a_{k\nu}, b_k, c_k \geq 0$，否则破坏 $m_{ij} \leq 0$，无法保证 M-矩阵。适用 Euler、Heun、SSP-RK 等&lt;/td&gt;
+          &lt;td&gt;要求\(a_{k\nu}, b_k, c_k \geq 0\)，否则破坏 \(m_{ij} \leq 0\)，无法保证 M-矩阵。适用 Euler、Heun、SSP-RK 等&lt;/td&gt;
       &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h2 id=&#34;35-从-pdrs-到-mpe&#34;&gt;3.5 从 PDRS 到 MPE
-&lt;/h2&gt;&lt;p&gt;取 $\sigma_i = u^n_i$，MPE 的更新为&lt;/p&gt;
-&lt;p&gt;$$
-u^{n+1}_i = u^n_i + \Delta t r^p_i&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;\Delta t \left( \sum_j p_{ij} \frac{u^{n+1}_j}{u^n_j}&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;\Bigl(r^d_i + \sum_j d_{ij}\Bigr) \frac{u^{n+1}_i}{u^n_i} \right)&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;$$&lt;/p&gt;
-&lt;p&gt;移项得 $M u^{n+1} = u^n + \Delta t r^p$，$M$ 为三对角 M-矩阵。&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;取 \(\sigma_i = u^n_i\)，MPE 的更新为&lt;/p&gt;
+$$
+u^{n+1}_i = u^n_i + \Delta t r^p_i - \Delta t \left( \sum_j p_{ij} \frac{u^{n+1}_j}{u^n_j} - \Bigl(r^d_i + \sum_j d_{ij}\Bigr) \frac{u^{n+1}_i}{u^n_i} \right)
+$$&lt;p&gt;移项得 \(M u^{n+1} = u^n + \Delta t r^p\)，\(M\) 为三对角 M-矩阵。&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;四密度方程的-mpe-应用&#34;&gt;四、密度方程的 MPE 应用
 &lt;/h1&gt;&lt;h2 id=&#34;41-半离散方程-16&#34;&gt;4.1 半离散方程 (16)
-&lt;/h2&gt;&lt;p&gt;$$
-\frac{d\rho_i}{dt} = \frac{1}{\Delta x}\left(\hat{F}&lt;em&gt;{i-1/2,1} - \hat{F}&lt;/em&gt;{i+1/2,1}\right), \quad i = 1, \ldots, N&lt;/p&gt;
-&lt;p&gt;$$&lt;/p&gt;
-&lt;p&gt;$S_1(U_i) = 0$。非周期边界下 $\sum_i (\hat{F}&lt;em&gt;{i-1/2,1} - \hat{F}&lt;/em&gt;{i+1/2,1}) \neq 0$，故需写成 PDRS。&lt;/p&gt;
+&lt;/h2&gt;$$
+\frac{d\rho_i}{dt} = \frac{1}{\Delta x}\left(\hat{F}_{i-1/2,1} - \hat{F}_{i+1/2,1}\right), \quad i = 1, \ldots, N
+$$&lt;p&gt;\(S_1(U_i) = 0\)。非周期边界下 \(\sum_i (\hat{F}_{i-1/2,1} - \hat{F}_{i+1/2,1}) \neq 0\)，故需写成 PDRS。&lt;/p&gt;
 &lt;h2 id=&#34;42-pdrs-形式-17&#34;&gt;4.2 PDRS 形式 (17)
-&lt;/h2&gt;&lt;p&gt;$$
-\frac{d\rho_i}{dt} = \frac{1}{\Delta x}\left(r^p_{i,1} - r^d_{i,1} + \sum_{j=1}^{N}(p_{i,j,1} - d_{i,j,1})\right)&lt;/p&gt;
-&lt;p&gt;$$&lt;/p&gt;
-&lt;p&gt;其中 $r^p_{i,1}, r^d_{i,1}, p_{i,j,1}, d_{i,j,1} \geq 0$，$p_{i,j,1} = d_{j,i,1}$：&lt;/p&gt;
+&lt;/h2&gt;$$
+\frac{d\rho_i}{dt} = \frac{1}{\Delta x}\left(r^p_{i,1} - r^d_{i,1} + \sum_{j=1}^{N}(p_{i,j,1} - d_{i,j,1})\right)
+$$&lt;p&gt;其中 \(r^p_{i,1}, r^d_{i,1}, p_{i,j,1}, d_{i,j,1} \geq 0\)，\(p_{i,j,1} = d_{j,i,1}\)：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;内界面：$p_{i+1,i,1} = d_{i,i+1,1} = \max{0, \hat{F}&lt;em&gt;{i+1/2,1}}$，$p&lt;/em&gt;{i,i+1,1} = d_{i+1,i,1} = -\min{0, \hat{F}_{i+1/2,1}}$&lt;/li&gt;
-&lt;li&gt;$|i-j| \neq 1$ 时 $p_{i,j,1} = d_{j,i,1} = 0$&lt;/li&gt;
+&lt;li&gt;内界面：
+\[p_{i+1,i,1} = d_{i,i+1,1} = \max\{0, \hat{F}_{i+1/2,1}\},\quad p_{i,i+1,1} = d_{i+1,i,1} = -\min\{0, \hat{F}_{i+1/2,1}\}\]&lt;/li&gt;
+&lt;li&gt;\(\lvert i-j \rvert \neq 1\) 时 \(p_{i,j,1} = d_{j,i,1} = 0\)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;边界项 (19)：&lt;/p&gt;
-&lt;p&gt;$$
-r^p_1 = \max{0, \hat{F}&lt;em&gt;{1/2,1}}, e_1 + \max{0, -\hat{F}&lt;/em&gt;{N+1/2,1}}, e_N&lt;/p&gt;
-&lt;p&gt;$$&lt;/p&gt;
-&lt;p&gt;$$
-r^d_1 = -\left(\min{0, \hat{F}&lt;em&gt;{1/2,1}}, e_1 + \min{0, -\hat{F}&lt;/em&gt;{N+1/2,1}}, e_N\right)&lt;/p&gt;
-&lt;p&gt;$$&lt;/p&gt;
-&lt;h2 id=&#34;43-i1-时的具体形式&#34;&gt;4.3 $i=1$ 时的具体形式
-&lt;/h2&gt;&lt;p&gt;$$
+$$
+r^p_1 = \max\{0, \hat{F}_{1/2,1}\}\, e_1 + \max\{0, -\hat{F}_{N+1/2,1}\}\, e_N
+$$$$
+r^d_1 = -\left(\min\{0, \hat{F}_{1/2,1}\}\, e_1 + \min\{0, -\hat{F}_{N+1/2,1}\}\, e_N\right)
+$$&lt;h2 id=&#34;43--时的具体形式&#34;&gt;4.3 \(i=1\) 时的具体形式
+&lt;/h2&gt;$$
 \begin{aligned}
-r^p_{1,1} &amp;amp;= \max{0,, \hat{F}&lt;em&gt;{\frac{1}{2},1}}, \quad
-r^d&lt;/em&gt;{1,1} = -\min{0,, \hat{F}&lt;em&gt;{\frac{1}{2},1}} \[4pt]
-p&lt;/em&gt;{1,j,1} &amp;amp;= \begin{cases} -\min{0,, \hat{F}&lt;em&gt;{\frac{3}{2},1}}, &amp;amp; j=2 \ 0, &amp;amp; j\neq 2 \end{cases} \[4pt]
-d&lt;/em&gt;{1,j,1} &amp;amp;= \begin{cases} \max{0,, \hat{F}_{\frac{3}{2},1}}, &amp;amp; j=2 \ 0, &amp;amp; j\neq 2 \end{cases}
-\end{aligned}&lt;/p&gt;
-&lt;p&gt;$$&lt;/p&gt;
-&lt;h2 id=&#34;44-mpe-更新-20&#34;&gt;4.4 MPE 更新 (20)
-&lt;/h2&gt;&lt;p&gt;取 $\sigma_i = \rho^n_i$，&lt;/p&gt;
-&lt;p&gt;$$
-\rho^{n+1}&lt;em&gt;i = \rho^n_i + \frac{\Delta t}{\Delta x} r^{p,n}&lt;/em&gt;{i,1}&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;\frac{\Delta t}{\Delta x}\left(\sum_{j=1}^{N} p^n_{i,j,1},\frac{\rho^{n+1}_j}{\rho^n_j}&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul&gt;
-&lt;li&gt;\Bigl(r^{d,n}&lt;em&gt;{i,1} + \sum&lt;/em&gt;{j=1}^{N} d^n_{i,j,1}\Bigr)\frac{\rho^{n+1}_i}{\rho^n_i}\right)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;$$&lt;/p&gt;
-&lt;p&gt;产生项乘 $\rho^{n+1}_j/\rho^n_j$，消灭项乘 $\rho^{n+1}_i/\rho^n_i$，保证 unconditionally positive。&lt;/p&gt;
+r^p_{1,1} &amp;= \max\{0,\, \hat{F}_{\frac{1}{2},1}\}, \quad
+r^d_{1,1} = -\min\{0,\, \hat{F}_{\frac{1}{2},1}\} \\[4pt]
+p_{1,j,1} &amp;= \begin{cases} -\min\{0,\, \hat{F}_{\frac{3}{2},1}\}, &amp; j=2 \\ 0, &amp; j\neq 2 \end{cases} \\[4pt]
+d_{1,j,1} &amp;= \begin{cases} \max\{0,\, \hat{F}_{\frac{3}{2},1}\}, &amp; j=2 \\ 0, &amp; j\neq 2 \end{cases}
+\end{aligned}
+$$&lt;h2 id=&#34;44-mpe-更新-20&#34;&gt;4.4 MPE 更新 (20)
+&lt;/h2&gt;&lt;p&gt;取 \(\sigma_i = \rho^n_i\)，&lt;/p&gt;
+$$
+\rho^{n+1}_i = \rho^n_i + \frac{\Delta t}{\Delta x} r^{p,n}_{i,1} + \frac{\Delta t}{\Delta x}\left(\sum_{j=1}^{N} p^n_{i,j,1}\,\frac{\rho^{n+1}_j}{\rho^n_j} - \Bigl(r^{d,n}_{i,1} + \sum_{j=1}^{N} d^n_{i,j,1}\Bigr)\frac{\rho^{n+1}_i}{\rho^n_i}\right)
+$$&lt;p&gt;产生项乘 \(\rho^{n+1}_j/\rho^n_j\)，消灭项乘 \(\rho^{n+1}_i/\rho^n_i\)，保证 unconditionally positive。&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;五源项的-patankar-加权反应-euler&#34;&gt;五、源项的 Patankar 加权（反应 Euler）
-&lt;/h1&gt;&lt;p&gt;对耦合反应 $S_k = S^p_k - S^d_k$，在 MPE 中加源项时采用 Patankar 权：&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;$U_{i,1}$ 方程&lt;/strong&gt;：&lt;/p&gt;
+&lt;/h1&gt;&lt;p&gt;对耦合反应 \(S_k = S^p_k - S^d_k\)，在 MPE 中加源项时采用 Patankar 权：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;\(U_{i,1}\) 方程&lt;/strong&gt;：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;$S^p_1$ 乘 $\Delta t\frac{U_{i,2}^{n+1}}{U_{i,2}^n}$（产生来自 $U_2$）&lt;/li&gt;
-&lt;li&gt;$S^d_1$ 乘 $\Delta t\frac{U_{i,1}^{n+1}}{U_{i,1}^n}$（消灭针对 $U_1$）&lt;/li&gt;
+&lt;li&gt;\(S^p_1\) 乘 \(\Delta t\frac{U_{i,2}^{n+1}}{U_{i,2}^n}\)（产生来自 \(U_2\)）&lt;/li&gt;
+&lt;li&gt;\(S^d_1\) 乘 \(\Delta t\frac{U_{i,1}^{n+1}}{U_{i,1}^n}\)（消灭针对 \(U_1\)）&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;$U_{i,2}$ 方程&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;\(U_{i,2}\) 方程&lt;/strong&gt;：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;$S^p_2$ 乘 $\Delta t\frac{U_{i,1}^{n+1}}{U_{i,1}^n}$（产生来自 $U_1$）&lt;/li&gt;
-&lt;li&gt;$S^d_2$ 乘 $\Delta t\frac{U_{i,2}^{n+1}}{U_{i,2}^n}$（消灭针对 $U_2$）&lt;/li&gt;
+&lt;li&gt;\(S^p_2\) 乘 \(\Delta t\frac{U_{i,1}^{n+1}}{U_{i,1}^n}\)（产生来自 \(U_1\)）&lt;/li&gt;
+&lt;li&gt;\(S^d_2\) 乘 \(\Delta t\frac{U_{i,2}^{n+1}}{U_{i,2}^n}\)（消灭针对 \(U_2\)）&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;守恒关系 $S^p_1 = S^d_2$、$S^d_1 = S^p_2$ 使两方程源项之和为零，保持质量守恒。权重 $\frac{U^{n+1}}{U^n}$ 实现交叉耦合与自反馈，有助于 stiff 源项的数值稳定。&lt;/p&gt;
+&lt;p&gt;守恒关系 \(S^p_1 = S^d_2\)、\(S^d_1 = S^p_2\) 使两方程源项之和为零，保持质量守恒。权重 \(\frac{U^{n+1}}{U^n}\) 实现交叉耦合与自反馈，有助于 stiff 源项的数值稳定。&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;六mp-trick盲目应用之弊端与-flux-balanced-策略小结&#34;&gt;六、MP trick、盲目应用之弊端与 flux-balanced 策略（小结）
 &lt;/h1&gt;&lt;h2 id=&#34;mp-trick-与无条件正性&#34;&gt;MP trick 与无条件正性
-&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;MP trick（Patankar trick）&lt;/strong&gt;：在产生项乘 $u_j^{n+1}/u_j^n$、消灭项乘 $u_i^{n+1}/u_i^n$，使格式变为隐式，且 $M$ 为 M-矩阵，从而在任意 $\Delta t &amp;gt; 0$ 下保证 $u^{n+1} &amp;gt; 0$。代价是格式非线性。&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;MP trick（Patankar trick）&lt;/strong&gt;：在产生项乘 \(u_j^{n+1}/u_j^n\)、消灭项乘 \(u_i^{n+1}/u_i^n\)，使格式变为隐式，且 \(M\) 为 M-矩阵，从而在任意 \(\Delta t &gt; 0\) 下保证 \(u^{n+1} &gt; 0\)。代价是格式非线性。&lt;/p&gt;
 &lt;h2 id=&#34;盲目应用的-drawback&#34;&gt;盲目应用的 drawback
-&lt;/h2&gt;&lt;p&gt;若对&lt;strong&gt;每个正守恒变量&lt;/strong&gt;（密度 $\rho$ 与总能量 $\rho E$）都使用 MP trick（即 MPE-ρE、MPHeun-ρE）：&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;若对&lt;strong&gt;每个正守恒变量&lt;/strong&gt;（密度 \(\rho\) 与总能量 \(\rho E\)）都使用 MP trick（即 MPE-ρE、MPHeun-ρE）：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;理论&lt;/strong&gt;：为保持 contact discontinuity（$u$、$p$ 常数），动量、能量通量须与密度通量采用&lt;strong&gt;同一组&lt;/strong&gt; Patankar 权重；而对能量单独做 MP trick 会引入&lt;strong&gt;另一套&lt;/strong&gt;权重，二者冲突。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;理论&lt;/strong&gt;：为保持 contact discontinuity（\(u\)、\(p\) 常数），动量、能量通量须与密度通量采用&lt;strong&gt;同一组&lt;/strong&gt; Patankar 权重；而对能量单独做 MP trick 会引入&lt;strong&gt;另一套&lt;/strong&gt;权重，二者冲突。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;数值&lt;/strong&gt;：破坏接触间断（Figure 2）；真空算例出现非物理振荡与负压（Table 5）；CFL 限制更严、效率更低（Table 3、4）。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;flux-balanced-策略仅对密度做-mp-trick&#34;&gt;Flux-balanced 策略：仅对密度做 MP trick
-&lt;/h2&gt;&lt;p&gt;文中的最终方案：&lt;strong&gt;只对密度方程用 MP trick&lt;/strong&gt;，动量、能量通量&lt;strong&gt;不&lt;/strong&gt;单独做 MP trick，而是按&lt;strong&gt;密度方程的 Patankar 权重&lt;/strong&gt; $w_i = \rho^{n+1}_i / \rho^n_i$ 对相关通量部分加权。&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;文中的最终方案：&lt;strong&gt;只对密度方程用 MP trick&lt;/strong&gt;，动量、能量通量&lt;strong&gt;不&lt;/strong&gt;单独做 MP trick，而是按&lt;strong&gt;密度方程的 Patankar 权重&lt;/strong&gt; \(w_i = \rho^{n+1}_i / \rho^n_i\) 对相关通量部分加权。&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;能量通量拆成 $\hat{F}^w + \hat{F}^u$：与密度通量结构类似的部分用 $w_i$ 加权，其余保持显式。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;$\rho E$ 的处理&lt;/strong&gt;：不做 MP trick，无理论上的无条件正性；但数值上压强正性更好、接触间断保持、CFL 更大（如 MPHeun-s 可达 CFL ≈ 0.86），且 momentum/energy 不再额外解线性系统。&lt;/li&gt;
+&lt;li&gt;能量通量拆成 \(\hat{F}^w + \hat{F}^u\)：与密度通量结构类似的部分用 \(w_i\) 加权，其余保持显式。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;\(\rho E\) 的处理&lt;/strong&gt;：不做 MP trick，无理论上的无条件正性；但数值上压强正性更好、接触间断保持、CFL 更大（如 MPHeun-s 可达 CFL ≈ 0.86），且 momentum/energy 不再额外解线性系统。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;七cr格式与pdrs的结合&#34;&gt;七、CR格式与PDRS的结合
 &lt;/h1&gt;&lt;p&gt;界面、边界和源项也许可以考虑PDRS，产生-消耗-残留。&lt;/p&gt;
 &lt;h2 id=&#34;61-分解结构&#34;&gt;6.1 分解结构
 &lt;/h2&gt;&lt;p&gt;CR 高阶格式的 antidiffusive flux 可写为&lt;/p&gt;
-&lt;p&gt;$$
+$$
 f_i = f^K_i + f^F_i, \quad
-f^K_i = \sum_{K} \int_K (f(u_h) - f_h) \cdot \nabla\varphi_i , dx, \quad
-f^F_i = -\sum_{F} \int_F \hat{f}(u_h^-, u_h^+; n_F) \llbracket\varphi_i\rrbracket , ds&lt;/p&gt;
-&lt;p&gt;$$&lt;/p&gt;
-&lt;p&gt;单元部分 $f^K_i$ 保持原有 FCT：$f^K_{ij} = \frac{1}{3}(f^K_i - f^K_j)$，$f^K_{ij} = -f^K_{ji}$，再对 $g^K_{ij} = f^K_{ij} - d^n_{ij}(U^n_j - U^n_i)$ 做 limiter。下面&lt;strong&gt;仅对面通量部分&lt;/strong&gt; $f^F_i$ 设计 PDRS 算法。&lt;/p&gt;
+f^K_i = \sum_{K} \int_K (f(u_h) - f_h) \cdot \nabla\varphi_i \, dx, \quad
+f^F_i = -\sum_{F} \int_F \hat{f}(u_h^-, u_h^+; n_F) [\![\varphi_i]\!] \, ds
+$$&lt;p&gt;单元部分 \(f^K_i\) 保持原有 FCT：\(f^K_{ij} = \frac{1}{3}(f^K_i - f^K_j)\)，\(f^K_{ij} = -f^K_{ji}\)，再对 \(g^K_{ij} = f^K_{ij} - d^n_{ij}(U^n_j - U^n_i)\) 做 limiter。下面&lt;strong&gt;仅对面通量部分&lt;/strong&gt; \(f^F_i\) 设计 PDRS 算法。&lt;/p&gt;
 &lt;h2 id=&#34;62-面通量的-pdrs-分解&#34;&gt;6.2 面通量的 PDRS 分解
-&lt;/h2&gt;&lt;p&gt;对每条内边 $F \in \mathcal{F}_h^i$，记 $\hat{f}_F := \int_F \hat{f}(u_h^-, u_h^+; n_F), ds$（或中点求积）。$n_F$ 由 $F^-$ 指向 $F^+$。记 $I^-(F)$ 为 $F^-$ 侧单元的边指标集，$I^+(F)$ 为 $F^+$ 侧边指标集，满足 $I(F) = I^-(F) \cup I^+(F)$，且公共边 $F$ 可任归一侧。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;步骤 1–2&lt;/strong&gt;：将 $\hat{f}_F$ 分配到 DOF 对。设权重 $w^+_i,, w^-&lt;em&gt;j \geq 0$，$\sum&lt;/em&gt;{i \in I^+(F)} w^+&lt;em&gt;i = \sum&lt;/em&gt;{j \in I^-(F)} w^-_j = 1$。定义配对通量（$j \in I^-(F) \to i \in I^+(F)$ 表示从 $F^-$ 到 $F^+$）&lt;/p&gt;
-&lt;p&gt;$$
-f^F_{ij} := \hat{f}_F \cdot w^+&lt;em&gt;i \cdot w^-&lt;em&gt;j \quad (i \in I^+(F),, j \in I^-(F)), \qquad
-f^F&lt;/em&gt;{ji} := -f^F&lt;/em&gt;{ij}&lt;/p&gt;
-&lt;p&gt;$$&lt;/p&gt;
-&lt;p&gt;再按 Izgin 做符号分解：$p^F_{ij} := \max{0, f^F_{ij}}$，$d^F_{ij} := \max{0, -f^F_{ij}}$。则 $p^F_{ij} - d^F_{ij} = f^F_{ij}$ 且 $p^F_{ij} = d^F_{ji}$。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;权重选取&lt;/strong&gt;：为与 $f^F_i = -\int_F \hat{f}\llbracket\varphi_i\rrbracket$ 一致，可取&lt;/p&gt;
-&lt;p&gt;$$
-w^{\pm}&lt;em&gt;i := \frac{m_i , |\llbracket\varphi_i\rrbracket_F|}{\sum&lt;/em&gt;{k \in I^{\pm}(F)} m_k , |\llbracket\varphi_k\rrbracket_F|}&lt;/p&gt;
-&lt;p&gt;$$&lt;/p&gt;
-&lt;p&gt;其中 $\llbracket\varphi_i\rrbracket_F$ 为 $\varphi_i$ 在 $F$ 上的跳变（一侧为 0 时取另一侧绝对值）。分母为 0 时改用均匀权重。&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;对每条内边 \(F \in \mathcal{F}_h^i\)，记 \(\hat{f}_F := \int_F \hat{f}(u_h^-, u_h^+; n_F)\, ds\)（或中点求积）。\(n_F\) 由 \(F^-\) 指向 \(F^+\)。记 \(I^-(F)\) 为 \(F^-\) 侧单元的边指标集，\(I^+(F)\) 为 \(F^+\) 侧边指标集，满足 \(I(F) = I^-(F) \cup I^+(F)\)，且公共边 \(F\) 可任归一侧。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;步骤 1–2&lt;/strong&gt;：将 \(\hat{f}_F\) 分配到 DOF 对。设权重 \(w^+_i,\, w^-_j \geq 0\)，\(\sum_{i \in I^+(F)} w^+_i = \sum_{j \in I^-(F)} w^-_j = 1\)。定义配对通量（\(j \in I^-(F) \to i \in I^+(F)\) 表示从 \(F^-\) 到 \(F^+\)）&lt;/p&gt;
+$$
+f^F_{ij} := \hat{f}_F \cdot w^+_i \cdot w^-_j \quad (i \in I^+(F),\, j \in I^-(F)), \qquad
+f^F_{ji} := -f^F_{ij}
+$$&lt;p&gt;再按 Izgin 做符号分解：\(p^F_{ij} := \max\{0, f^F_{ij}\}\)，\(d^F_{ij} := \max\{0, -f^F_{ij}\}\)。则 \(p^F_{ij} - d^F_{ij} = f^F_{ij}\) 且 \(p^F_{ij} = d^F_{ji}\)。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;权重选取&lt;/strong&gt;：为与 \(f^F_i = -\int_F \hat{f}[\![\varphi_i]\!]\) 一致，可取&lt;/p&gt;
+$$
+w^{\pm}_i := \frac{m_i \, |[\![\varphi_i]\!]_F|}{\sum_{k \in I^{\pm}(F)} m_k \, |[\![\varphi_k]\!]_F|}
+$$&lt;p&gt;其中 \([\![\varphi_i]\!]_F\) 为 \(\varphi_i\) 在 \(F\) 上的跳变（一侧为 0 时取另一侧绝对值）。分母为 0 时改用均匀权重。&lt;/p&gt;
 &lt;h2 id=&#34;63-时间步格式与完整算法&#34;&gt;6.3 时间步格式与完整算法
-&lt;/h2&gt;&lt;p&gt;对 DOF $i$，记 $J^+_i := { (F,j) : F \ni i,, i \in I^+(F),, j \in I^-(F) }$，$J^-_i := { (F,j) : F \ni i,, i \in I^-(F),, j \in I^+(F) }$。面通量的 Patankar 修正为&lt;/p&gt;
-&lt;p&gt;$$
+&lt;/h2&gt;&lt;p&gt;对 DOF \(i\)，记 \(J^+_i := \{ (F,j) : F \ni i,\, i \in I^+(F),\, j \in I^-(F) \}\)，\(J^-_i := \{ (F,j) : F \ni i,\, i \in I^-(F),\, j \in I^+(F) \}\)。面通量的 Patankar 修正为&lt;/p&gt;
+$$
 C^F_i = \frac{\Delta t}{m_i} \Biggl(
-\sum_{(F,j) \in J^+&lt;em&gt;i} p^F&lt;/em&gt;{ij} \frac{U^{n+1}_j}{U^n_j}&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;\sum_{(F,j) \in J^-&lt;em&gt;i} p^F&lt;/em&gt;{ji} \frac{U^{n+1}_i}{U^n_i}&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul&gt;
-&lt;li&gt;\sum_{(F,j) \in J^-&lt;em&gt;i} d^F&lt;/em&gt;{ij} \frac{U^{n+1}_i}{U^n_i}&lt;/li&gt;
-&lt;li&gt;\sum_{(F,j) \in J^+&lt;em&gt;i} d^F&lt;/em&gt;{ji} \frac{U^{n+1}_j}{U^n_j}
-\Biggr)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;$$&lt;/p&gt;
-&lt;p&gt;由 $p^F_{ij} = d^F_{ji}$，可统一写成（与 Izgin 一致）&lt;/p&gt;
-&lt;p&gt;$$
-C^F_i = \frac{\Delta t}{m_i} \Biggl( \sum_j p^F_{ij} \frac{U^{n+1}_j}{U^n_j}&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;\Bigl( r^{d,F}&lt;em&gt;i + \sum_j d^F&lt;/em&gt;{ij} \Bigr) \frac{U^{n+1}_i}{U^n_i} \Biggr)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;$$&lt;/p&gt;
-&lt;p&gt;其中 $r^{d,F}&lt;em&gt;i$ 为边界面贡献，$p^F&lt;/em&gt;{ij},, d^F_{ij}$ 由步骤 1–2 组装。完整更新为&lt;/p&gt;
-&lt;p&gt;$$
-U^{n+1}&lt;em&gt;i = U^{n+1,L}&lt;em&gt;i + \frac{\Delta t}{m_i} \sum_j l^n&lt;/em&gt;{ij} g^n&lt;/em&gt;{ij} + C^F_i&lt;/p&gt;
-&lt;p&gt;$$&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;算法流程&lt;/strong&gt;：&lt;/p&gt;
+  \sum_{(F,j) \in J^+_i} p^F_{ij} \frac{U^{n+1}_j}{U^n_j} + \sum_{(F,j) \in J^-_i} p^F_{ji} \frac{U^{n+1}_i}{U^n_i} - \sum_{(F,j) \in J^-_i} d^F_{ij} \frac{U^{n+1}_i}{U^n_i} - \sum_{(F,j) \in J^+_i} d^F_{ji} \frac{U^{n+1}_j}{U^n_j}
+\Biggr)
+$$&lt;p&gt;由 \(p^F_{ij} = d^F_{ji}\)，可统一写成（与 Izgin 一致）&lt;/p&gt;
+$$
+C^F_i = \frac{\Delta t}{m_i} \Biggl( \sum_j p^F_{ij} \frac{U^{n+1}_j}{U^n_j} - \Bigl( r^{d,F}_i + \sum_j d^F_{ij} \Bigr) \frac{U^{n+1}_i}{U^n_i} \Biggr)
+$$&lt;p&gt;其中 \(r^{d,F}_i\) 为边界面贡献，\(p^F_{ij},\, d^F_{ij}\) 由步骤 1–2 组装。完整更新为&lt;/p&gt;
+$$
+U^{n+1}_i = U^{n+1,L}_i + \frac{\Delta t}{m_i} \sum_j l^n_{ij} g^n_{ij} + C^F_i
+$$&lt;p&gt;&lt;strong&gt;算法流程&lt;/strong&gt;：&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;计算低阶解 $U^{n+1,L}$；&lt;/li&gt;
-&lt;li&gt;计算 $f^K_i$，单元分解 $f^K_{ij}$，形成 $g^K_{ij} = f^K_{ij} - d^n_{ij}(U^n_j - U^n_i)$，应用 limiter 得 $l^K_{ij}$；&lt;/li&gt;
-&lt;li&gt;对每条内边 $F$：计算 $\hat{f}&lt;em&gt;F$，按权重得 $f^F&lt;/em&gt;{ij}$，再得 $p^F_{ij} = \max{0, f^F_{ij}}$、$d^F_{ij} = \max{0, -f^F_{ij}}$；&lt;/li&gt;
-&lt;li&gt;求解耦合系统：$U^{n+1}&lt;em&gt;i = U^{n+1,L}&lt;em&gt;i + \frac{\Delta t}{m_i}\sum_j l^K&lt;/em&gt;{ij} g^K&lt;/em&gt;{ij} + C^F_i$，其中 $C^F_i$ 含 $U^{n+1}/U^n$，为线性隐式（每次迭代或直接求解 $M U^{n+1} = b$）。&lt;/li&gt;
+&lt;li&gt;计算低阶解 \(U^{n+1,L}\)；&lt;/li&gt;
+&lt;li&gt;计算 \(f^K_i\)，单元分解 \(f^K_{ij}\)，形成 \(g^K_{ij} = f^K_{ij} - d^n_{ij}(U^n_j - U^n_i)\)，应用 limiter 得 \(l^K_{ij}\)；&lt;/li&gt;
+&lt;li&gt;对每条内边 \(F\)：计算 \(\hat{f}_F\)，按权重得 \(f^F_{ij}\)，再得 \(p^F_{ij} = \max\{0, f^F_{ij}\}\)、\(d^F_{ij} = \max\{0, -f^F_{ij}\}\)；&lt;/li&gt;
+&lt;li&gt;求解耦合系统：\(U^{n+1}_i = U^{n+1,L}_i + \frac{\Delta t}{m_i}\sum_j l^K_{ij} g^K_{ij} + C^F_i\)，其中 \(C^F_i\) 含 \(U^{n+1}/U^n\)，为线性隐式（每次迭代或直接求解 \(M U^{n+1} = b\)）。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h3 id=&#34;631-l_ij-的保正构造&#34;&gt;6.3.1 $l_{ij}$ 的保正构造
-&lt;/h3&gt;&lt;p&gt;将完整更新移项后写成 $M U^{n+1} = \tilde{b}$，其中矩阵 $M$ 来自 $C^F_i$（定理 6.1 已证为 M-矩阵），右端为&lt;/p&gt;
+&lt;h3 id=&#34;631--的保正构造&#34;&gt;6.3.1 \(l_{ij}\) 的保正构造
+&lt;/h3&gt;&lt;p&gt;将完整更新移项后写成 \(M U^{n+1} = \tilde{b}\)，其中矩阵 \(M\) 来自 \(C^F_i\)（定理 6.1 已证为 M-矩阵），右端为&lt;/p&gt;
 $$
 \tilde{b}_i = U^{n+1,L}_i + \frac{\Delta t}{m_i} \sum_j l_{ij} g_{ij}.
-$$&lt;p&gt;因 $M^{-1} \geq 0$，要 $U^{n+1} = M^{-1} \tilde{b} \geq 0$，只需 &lt;strong&gt;$\tilde{b} \geq 0$&lt;/strong&gt;。故 $l_{ij}$ 须满足&lt;/p&gt;
+$$&lt;p&gt;因 \(M^{-1} \geq 0\)，要 \(U^{n+1} = M^{-1} \tilde{b} \geq 0\)，只需 &lt;strong&gt;\(\tilde{b} \geq 0\)&lt;/strong&gt;。故 \(l_{ij}\) 须满足&lt;/p&gt;
 $$
 U^{n+1,L}_i + \frac{\Delta t}{m_i} \sum_j l_{ij} g_{ij} \geq 0 \quad \forall i.
-$$&lt;p&gt;由 $g_{ij} = -g_{ji}$ 知单元修正守恒。对节点 $i$，当 $g_{ij} &amp;lt; 0$ 时，$(Δt/m_i) l_{ij} g_{ij} &amp;lt; 0$ 会使 $\tilde{b}_i$ 下降。故&lt;strong&gt;关键约束&lt;/strong&gt;为：流出 $i$ 的反扩散通量之和不能超过 $U^{n+1,L}_i$：&lt;/p&gt;
+$$&lt;p&gt;由 \(g_{ij} = -g_{ji}\) 知单元修正守恒。对节点 \(i\)，当 \(g_{ij} &lt; 0\) 时，\((Δt/m_i) l_{ij} g_{ij} &lt; 0\) 会使 \(\tilde{b}_i\) 下降。故&lt;strong&gt;关键约束&lt;/strong&gt;为：流出 \(i\) 的反扩散通量之和不能超过 \(U^{n+1,L}_i\)：&lt;/p&gt;
 $$
 \frac{\Delta t}{m_i} \sum_{j \,:\, g_{ij} &lt; 0} l_{ij} |g_{ij}| \leq U^{n+1,L}_i.
-$$&lt;p&gt;&lt;strong&gt;构造思路&lt;/strong&gt;（对称 $l_{ij} = l_{ji} \in [0,1]$）：下面三种方式均保证 $\tilde{b} \geq 0$ 且守恒。&lt;/p&gt;
+$$&lt;p&gt;&lt;strong&gt;构造思路&lt;/strong&gt;（对称 \(l_{ij} = l_{ji} \in [0,1]\)）：下面三种方式均保证 \(\tilde{b} \geq 0\) 且守恒。&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;方式一：单点比例法&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;对每个节点 $i$，记其“流出容量”（$l=1$ 时的最大可能流出）
-&lt;/p&gt;
+&lt;p&gt;对每个节点 \(i\)，记其“流出容量”（\(l=1\) 时的最大可能流出）&lt;/p&gt;
 $$
 Q^-_i := \sum_{j \,:\, g_{ij} &lt; 0} |g_{ij}|.
-$$&lt;p&gt;
-保正约束 $(Δt/m_i) \sum_{j:g_{ij}&amp;lt;0} l_{ij}|g_{ij}| \leq U^{n+1,L}&lt;em&gt;i$ 等价于：若对所有 $j \sim i$ 使用同一因子 $\theta_i$，则需 $\theta_i Q^-&lt;em&gt;i \leq U^{n+1,L}&lt;em&gt;i m_i/\Delta t$。定义
+$$&lt;p&gt;保正约束 \((Δt/m_i) \sum_{j:g_{ij}&lt;0} l_{ij}|g_{ij}| \leq U^{n+1,L}_i\) 等价于：若对所有 \(j \sim i\) 使用同一因子 \(\theta_i\)，则需 \(\theta_i Q^-_i \leq U^{n+1,L}_i m_i/\Delta t\)。定义&lt;/p&gt;
 $$
 \theta_i := \begin{cases}
 \min\bigl\{1,\, \dfrac{U^{n+1,L}_i \, m_i}{\Delta t \, Q^-_i}\bigr\}, &amp; Q^-_i &gt; 0 \\
 1, &amp; Q^-_i = 0
 \end{cases}
-$$
-对每条边 $(i,j)$：当 $g&lt;/em&gt;{ij} &amp;lt; 0$ 时，$i$ 为捐出端，限制来自 $\theta_i$；当 $g&lt;/em&gt;{ij} &amp;gt; 0$ 时，$j$ 为捐出端，限制来自 $\theta_j$。取对称
+$$&lt;p&gt;对每条边 \((i,j)\)：当 \(g_{ij} &lt; 0\) 时，\(i\) 为捐出端，限制来自 \(\theta_i\)；当 \(g_{ij} &gt; 0\) 时，\(j\) 为捐出端，限制来自 \(\theta_j\)。取对称&lt;/p&gt;
 $$
 l_{ij} = l_{ji} := \min\{\theta_i,\, \theta_j\}
-$$
-即同时满足 $i,j$ 的约束，且 $l&lt;/em&gt;{ij} = l_{ji}$ 保持守恒。验证：对 $i$，$\sum_{j:g_{ij}&amp;lt;0} l_{ij}|g_{ij}| \leq \theta_i Q^-_i \leq U^{n+1,L}_i m_i/\Delta t$。&lt;/p&gt;
+$$&lt;p&gt;即同时满足 \(i,j\) 的约束，且 \(l_{ij} = l_{ji}\) 保持守恒。验证：对 \(i\)，\(\sum_{j:g_{ij}&lt;0} l_{ij}|g_{ij}| \leq \theta_i Q^-_i \leq U^{n+1,L}_i m_i/\Delta t\)。&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;方式二：逐对 Zalesak 型（推荐）&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;对每条边 $(i,j)$ 单独限幅。记节点 $k$ 可捐出量为 $R^-&lt;em&gt;k := U^{n+1,L}&lt;em&gt;k$。边 $(i,j)$ 上的反扩散通量为 $(Δt/m_i) l&lt;/em&gt;{ij} g&lt;/em&gt;{ij}$（对 $i$）与 $(Δt/m_j) l_{ji} g_{ji} = -(Δt/m_j) l_{ij} g_{ij}$（对 $j$，因 $g_{ji}=-g_{ij}$）。&lt;/p&gt;
+&lt;p&gt;对每条边 \((i,j)\) 单独限幅。记节点 \(k\) 可捐出量为 \(R^-_k := U^{n+1,L}_k\)。边 \((i,j)\) 上的反扩散通量为 \((Δt/m_i) l_{ij} g_{ij}\)（对 \(i\)）与 \((Δt/m_j) l_{ji} g_{ji} = -(Δt/m_j) l_{ij} g_{ij}\)（对 \(j\)，因 \(g_{ji}=-g_{ij}\)）。&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;$g_{ij} &amp;gt; 0$&lt;/strong&gt;：通量 $j \to i$。$j$ 捐出 $(Δt/m_j) l_{ij} g_{ij}$，$i$ 接收。约束：$(Δt/m_j) l_{ij} g_{ij} \leq R^-_j$，故
+&lt;li&gt;&lt;strong&gt;\(g_{ij} &gt; 0\)&lt;/strong&gt;：通量 \(j \to i\)。\(j\) 捐出 \((Δt/m_j) l_{ij} g_{ij}\)，\(i\) 接收。约束：\((Δt/m_j) l_{ij} g_{ij} \leq R^-_j\)，故
 
 $$
   l_{ij} \leq \dfrac{R^-_j \, m_j}{\Delta t \, g_{ij}} = \dfrac{U^{n+1,L}_j \, m_j}{\Delta t \, g_{ij}}.
   $$&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;$g_{ij} &amp;lt; 0$&lt;/strong&gt;：通量 $i \to j$。$i$ 捐出 $(Δt/m_i) l_{ij} |g_{ij}|$。约束：$(Δt/m_i) l_{ij} |g_{ij}| \leq R^-_i$，故
+&lt;li&gt;&lt;strong&gt;\(g_{ij} &lt; 0\)&lt;/strong&gt;：通量 \(i \to j\)。\(i\) 捐出 \((Δt/m_i) l_{ij} |g_{ij}|\)。约束：\((Δt/m_i) l_{ij} |g_{ij}| \leq R^-_i\)，故
 
 $$
   l_{ij} \leq \dfrac{R^-_i \, m_i}{\Delta t \, |g_{ij}|} = \dfrac{U^{n+1,L}_i \, m_i}{\Delta t \, |g_{ij}|}.
   $$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;综合并保持 $l_{ij} \in [0,1]$：
-&lt;/p&gt;
+&lt;p&gt;综合并保持 \(l_{ij} \in [0,1]\)：&lt;/p&gt;
 $$
 l_{ij} = l_{ji} := \begin{cases}
 \min\Bigl\{1,\, \dfrac{U^{n+1,L}_j \, m_j}{\Delta t \, g_{ij}}\Bigr\}, &amp; g_{ij} &gt; 0 \\[6pt]
 \min\Bigl\{1,\, \dfrac{U^{n+1,L}_i \, m_i}{\Delta t \, |g_{ij}|}\Bigr\}, &amp; g_{ij} &lt; 0 \\
 1, &amp; g_{ij} = 0
 \end{cases}
-$$&lt;p&gt;
-（$g_{ij}=0$ 时该边无贡献，取 $l_{ij}=1$ 无影响。）&lt;/p&gt;
+$$&lt;p&gt;（\(g_{ij}=0\) 时该边无贡献，取 \(l_{ij}=1\) 无影响。）&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;方式三：迭代裁剪&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;初值：$l_{ij} = l_{ji} = 1$ 对所有边 $(i,j)$。&lt;/p&gt;
+&lt;p&gt;初值：\(l_{ij} = l_{ji} = 1\) 对所有边 \((i,j)\)。&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;计算 $\tilde{b}&lt;em&gt;i = U^{n+1,L}&lt;em&gt;i + \frac{\Delta t}{m_i} \sum_j l&lt;/em&gt;{ij} g&lt;/em&gt;{ij}$；&lt;/li&gt;
-&lt;li&gt;若 $\tilde{b}_k \geq 0$ 对所有 $k$，停止；&lt;/li&gt;
-&lt;li&gt;否则取 $k$ 使得 $\tilde{b}&lt;em&gt;k &amp;lt; 0$。记 $k$ 的流入、流出为
+&lt;li&gt;
+&lt;p&gt;计算 \(\tilde{b}_i = U^{n+1,L}_i + \frac{\Delta t}{m_i} \sum_j l_{ij} g_{ij}\)；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;若 \(\tilde{b}_k \geq 0\) 对所有 \(k\)，停止；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;否则取 \(k\) 使得 \(\tilde{b}_k &lt; 0\)。记 \(k\) 的流入、流出为&lt;/p&gt;
 $$
    P_k := \sum_{j \,:\, g_{kj} &gt; 0} l_{kj} g_{kj}, \qquad
    D_k := \sum_{j \,:\, g_{kj} &lt; 0} l_{kj} |g_{kj}|.
-   $$
-则 $\tilde{b}&lt;em&gt;k = U^{n+1,L}&lt;em&gt;k + \frac{\Delta t}{m_k}(P_k - D_k)$。若将流出端系数 $l&lt;/em&gt;{kj}$（$g&lt;/em&gt;{kj}&amp;lt;0$）统一乘以 $\theta_k$，则新流出为 $\theta_k D_k$，新右端为
+   $$&lt;p&gt;则 \(\tilde{b}_k = U^{n+1,L}_k + \frac{\Delta t}{m_k}(P_k - D_k)\)。若将流出端系数 \(l_{kj}\)（\(g_{kj}&lt;0\)）统一乘以 \(\theta_k\)，则新流出为 \(\theta_k D_k\)，新右端为&lt;/p&gt;
 $$
    \tilde{b}_k^{\mathrm{new}} = U^{n+1,L}_k + \frac{\Delta t}{m_k}(P_k - \theta_k D_k).
-   $$
-令其 $\geq 0$ 得 $\theta_k D_k \leq U^{n+1,L}&lt;em&gt;k m_k/\Delta t + P_k$，即
+   $$&lt;p&gt;令其 \(\geq 0\) 得 \(\theta_k D_k \leq U^{n+1,L}_k m_k/\Delta t + P_k\)，即&lt;/p&gt;
 $$
    \theta_k := \min\Bigl\{1,\, \frac{U^{n+1,L}_k \, m_k/\Delta t + P_k}{D_k}\Bigr\}
-   $$
-（$D_k=0$ 时取 $\theta_k=1$）。对所有 $j \in \mathcal{N}^-&lt;em&gt;k := {j : g&lt;/em&gt;{kj} &amp;lt; 0}$ 做 $l&lt;/em&gt;{kj} \leftarrow \theta_k , l&lt;/em&gt;{kj}$，$l_{jk} \leftarrow \theta_k , l_{jk}$。返回步骤 1。&lt;/li&gt;
+   $$&lt;p&gt;（\(D_k=0\) 时取 \(\theta_k=1\)）。对所有 \(j \in \mathcal{N}^-_k := \{j : g_{kj} &lt; 0\}\) 做 \(l_{kj} \leftarrow \theta_k \, l_{kj}\)，\(l_{jk} \leftarrow \theta_k \, l_{jk}\)。返回步骤 1。&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;strong&gt;说明&lt;/strong&gt;：缩减 $l_{kj}$ 会减少 $k$ 的流出（提升 $\tilde{b}_k$），但同时也减少 $j$ 的流入（可能使 $\tilde{b}_j$ 降低）。故单次修正 $k$ 后，可能与 $k$ 相邻的 $j$ 变为负；需多轮遍历直至全体 $\tilde{b} \geq 0$。实际中通常数轮即可。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;说明&lt;/strong&gt;：缩减 \(l_{kj}\) 会减少 \(k\) 的流出（提升 \(\tilde{b}_k\)），但同时也减少 \(j\) 的流入（可能使 \(\tilde{b}_j\) 降低）。故单次修正 \(k\) 后，可能与 \(k\) 相邻的 \(j\) 变为负；需多轮遍历直至全体 \(\tilde{b} \geq 0\)。实际中通常数轮即可。&lt;/p&gt;
 &lt;hr&gt;
 &lt;blockquote&gt;
-&lt;p&gt;ex_article 的 monolithic convex limiting（Remark 4.2）在无 PDRS 时保 DMP；此处需额外保证 $\tilde{b} \geq 0$。在 $U^n &amp;gt; 0$ 且 CFL 满足时 $U^{n+1,L} &amp;gt; 0$，上述三种方式均可达成 $\tilde{b} \geq 0$。&lt;/p&gt;
+&lt;p&gt;ex_article 的 monolithic convex limiting（Remark 4.2）在无 PDRS 时保 DMP；此处需额外保证 \(\tilde{b} \geq 0\)。在 \(U^n &gt; 0\) 且 CFL 满足时 \(U^{n+1,L} &gt; 0\)，上述三种方式均可达成 \(\tilde{b} \geq 0\)。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;632-向保极值的扩展&#34;&gt;6.3.2 向保极值的扩展
-&lt;/h3&gt;&lt;p&gt;记 $U_{\min} := \min_j U^n_j$，$U_{\max} := \max_j U^n_j$。要得到 &lt;strong&gt;DMP&lt;/strong&gt;（$U^{n+1}&lt;em&gt;i \in [U&lt;/em&gt;{\min},, U_{\max}]$），有三条可行路径。&lt;/p&gt;
+&lt;/h3&gt;&lt;p&gt;记 \(U_{\min} := \min_j U^n_j\)，\(U_{\max} := \max_j U^n_j\)。要得到 &lt;strong&gt;DMP&lt;/strong&gt;（\(U^{n+1}_i \in [U_{\min},\, U_{\max}]\)），有三条可行路径。&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;思路 A：加强 $l_{ij}$ 约束，使 $\tilde{b} \in [U_{\min},, U_{\max}]$&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;将保正条件 $U_{\min} \leq \tilde{b}&lt;em&gt;i$（当 $U&lt;/em&gt;{\min} &amp;gt; 0$ 时比 $\tilde{b}_i \geq 0$ 更紧）和上界 $\tilde{b}&lt;em&gt;i \leq U&lt;/em&gt;{\max}$ 一并施加：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;思路 A：加强 \(l_{ij}\) 约束，使 \(\tilde{b} \in [U_{\min},\, U_{\max}]\)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;将保正条件 \(U_{\min} \leq \tilde{b}_i\)（当 \(U_{\min} &gt; 0\) 时比 \(\tilde{b}_i \geq 0\) 更紧）和上界 \(\tilde{b}_i \leq U_{\max}\) 一并施加：&lt;/p&gt;
 $$
 U_{\min} \leq U^{n+1,L}_i + \frac{\Delta t}{m_i} \sum_j l_{ij} g_{ij} \leq U_{\max} \quad \forall i.
-$$&lt;p&gt;记 $P_i = \sum_{j:g_{ij}&amp;gt;0} l_{ij} g_{ij}$，$D_i = \sum_{j:g_{ij}&amp;lt;0} l_{ij}|g_{ij}|$，则：&lt;/p&gt;
+$$&lt;p&gt;记 \(P_i = \sum_{j:g_{ij}&gt;0} l_{ij} g_{ij}\)，\(D_i = \sum_{j:g_{ij}&lt;0} l_{ij}|g_{ij}|\)，则：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;下界&lt;/strong&gt;：$(Δt/m_i) D_i \leq U^{n+1,L}&lt;em&gt;i - U&lt;/em&gt;{\min} + (Δt/m_i) P_i$&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;上界&lt;/strong&gt;：$(Δt/m_i)(P_i - D_i) \leq U_{\max} - U^{n+1,L}_i$&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;下界&lt;/strong&gt;：\((Δt/m_i) D_i \leq U^{n+1,L}_i - U_{\min} + (Δt/m_i) P_i\)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;上界&lt;/strong&gt;：\((Δt/m_i)(P_i - D_i) \leq U_{\max} - U^{n+1,L}_i\)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;以&lt;strong&gt;方式二&lt;/strong&gt;为例，保极值扩展为：边 $(i,j)$ 上捐出端最多捐出到边界的距离，接收端最多接收到边界的距离。取&lt;/p&gt;
+&lt;p&gt;以&lt;strong&gt;方式二&lt;/strong&gt;为例，保极值扩展为：边 \((i,j)\) 上捐出端最多捐出到边界的距离，接收端最多接收到边界的距离。取&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;$g_{ij} &amp;gt; 0$（$j \to i$）：捐出端 $j$ 可捐 $\leq U^{n+1,L}&lt;em&gt;j - U&lt;/em&gt;{\min}$，接收端 $i$ 可收 $\leq U_{\max} - U^{n+1,L}_i$，故
+&lt;li&gt;\(g_{ij} &gt; 0\)（\(j \to i\)）：捐出端 \(j\) 可捐 \(\leq U^{n+1,L}_j - U_{\min}\)，接收端 \(i\) 可收 \(\leq U_{\max} - U^{n+1,L}_i\)，故
 
 $$
   l_{ij} = \min\Bigl\{1,\, \frac{(U^{n+1,L}_j - U_{\min}) m_j}{\Delta t \, g_{ij}},\, \frac{(U_{\max} - U^{n+1,L}_i) m_i}{\Delta t \, g_{ij}}\Bigr\};
   $$&lt;/li&gt;
-&lt;li&gt;$g_{ij} &amp;lt; 0$（$i \to j$）：对称地
+&lt;li&gt;\(g_{ij} &lt; 0\)（\(i \to j\)）：对称地
 
 $$
   l_{ij} = \min\Bigl\{1,\, \frac{(U^{n+1,L}_i - U_{\min}) m_i}{\Delta t \, |g_{ij}|},\, \frac{(U_{\max} - U^{n+1,L}_j) m_j}{\Delta t \, |g_{ij}|}\Bigr\}.
   $$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;方式一、三可类似将 $R^-_k$ 从 $U^{n+1,L}&lt;em&gt;k$ 改为 $\min{U^{n+1,L}&lt;em&gt;k - U&lt;/em&gt;{\min},, U&lt;/em&gt;{\max} - U^{n+1,L}_k}$，并加上接收端约束。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：$\tilde{b} \in [U_{\min},, U_{\max}]$ 只能控制右端；最终解为 $U^{n+1} = M^{-1} \tilde{b}$。当 $M$ 为 M-矩阵且&lt;strong&gt;行和为 1&lt;/strong&gt;（$M \mathbf{1} = \mathbf{1}$）时，$M^{-1}$ 非负且每行和为 1，故凸组合保持区间，从而 $U^{n+1} \in [U_{\min},, U_{\max}]$。PDRS 矩阵 $M$ 是否满足行和 1，需根据 $p^F_{ij} = d^F_{ji}$ 及守恒性具体验证；若不满足，则需思路 B。&lt;/p&gt;
+&lt;p&gt;方式一、三可类似将 \(R^-_k\) 从 \(U^{n+1,L}_k\) 改为 \(\min\{U^{n+1,L}_k - U_{\min},\, U_{\max} - U^{n+1,L}_k\}\)，并加上接收端约束。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：\(\tilde{b} \in [U_{\min},\, U_{\max}]\) 只能控制右端；最终解为 \(U^{n+1} = M^{-1} \tilde{b}\)。当 \(M\) 为 M-矩阵且&lt;strong&gt;行和为 1&lt;/strong&gt;（\(M \mathbf{1} = \mathbf{1}\)）时，\(M^{-1}\) 非负且每行和为 1，故凸组合保持区间，从而 \(U^{n+1} \in [U_{\min},\, U_{\max}]\)。PDRS 矩阵 \(M\) 是否满足行和 1，需根据 \(p^F_{ij} = d^F_{ji}\) 及守恒性具体验证；若不满足，则需思路 B。&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;思路 B：后处理裁剪（6.4 已给）&lt;/strong&gt;&lt;/p&gt;
 $$
 U^{n+1}_i \leftarrow \operatorname{median}\bigl(U^{n+1}_i,\, U_{\min},\, U_{\max}\bigr)
-$$&lt;p&gt;实现简单，但会破坏守恒（裁剪会改变 $\sum_i m_i U^{n+1}_i$）。若守恒重要，可改为：先裁剪，再对超限节点做局部守恒修正（如 scaling 或 flux redistribution），使总质量不变。&lt;/p&gt;
+$$&lt;p&gt;实现简单，但会破坏守恒（裁剪会改变 \(\sum_i m_i U^{n+1}_i\)）。若守恒重要，可改为：先裁剪，再对超限节点做局部守恒修正（如 scaling 或 flux redistribution），使总质量不变。&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;思路 C：$C^F$ 较小时的近似&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;当面通量 $C^F_i$ 相对单元修正较小时，$M \approx I$，$U^{n+1} \approx \tilde{b}$。此时只要 $\tilde{b} \in [U_{\min},, U_{\max}]$，即有 $U^{n+1} \in [U_{\min},, U_{\max}]$，思路 A 的 $l_{ij}$ 约束在实践上足够。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;思路 C：\(C^F\) 较小时的近似&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;当面通量 \(C^F_i\) 相对单元修正较小时，\(M \approx I\)，\(U^{n+1} \approx \tilde{b}\)。此时只要 \(\tilde{b} \in [U_{\min},\, U_{\max}]\)，即有 \(U^{n+1} \in [U_{\min},\, U_{\max}]\)，思路 A 的 \(l_{ij}\) 约束在实践上足够。&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;小结&lt;/strong&gt;：若 PDRS 矩阵行和为 1，可将三种方式的 $R^-_k$ 改为到边界的距离，得到保极值格式；否则建议用后处理 median，并视需要做守恒修正。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;小结&lt;/strong&gt;：若 PDRS 矩阵行和为 1，可将三种方式的 \(R^-_k\) 改为到边界的距离，得到保极值格式；否则建议用后处理 median，并视需要做守恒修正。&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -714,7 +665,7 @@ $$&lt;p&gt;实现简单，但会破坏守恒（裁剪会改变 $\sum_i m_i U^{n+
         <pubDate>Fri, 28 Nov 2025 21:54:39 +0800</pubDate>
         
         <guid>https://baichuan-blog.netlify.app/p/tensor-calculus/</guid>
-        <description>&lt;h2 id=&#34;epsilon-delta-等式&#34;&gt;$\epsilon-\delta$ 等式
+        <description>&lt;h2 id=&#34;等式&#34;&gt;$\epsilon-\delta$ 等式
 &lt;/h2&gt;&lt;p&gt;定义&lt;/p&gt;
 $$
 \epsilon_{ijk} := \begin{cases}0&amp;\text{若}i,j,k\text{中存在相同}\\1&amp;\text{奇排列}\\-1&amp;\text{偶排列}\end{cases},
@@ -750,7 +701,7 @@ $$</description>
 &lt;/p&gt;
 \[\begin{cases}\p_t \bm{u}+\p_x(\bm{f}(\bm{u})\cdot\bm{n})=0,\quad (x,t)\in\R\times \R_+,\\\bm{u}(x,0)=\begin{cases}\bm{u}_L&amp;\text{if } x&lt;0,\\\bm{u}_R&amp;\text{if }x&gt;0. \end{cases}\end{cases}\]&lt;p&gt;
 其中$(\bm{u}_L,\bm{u}_R)\in \mathcal{A}\times\mathcal{A}$，$\mathcal{A}\subset \R^m$。&lt;/p&gt;
-&lt;p&gt;When the system is strictly hyperbolic with smooth ﬂux and all the characteristic ﬁelds are either genuinely non-linear or linearly degenerate, it is possible to show that there exists $\delta&amp;gt; 0$ such that the Riemann problem has a unique self-similar weak solution in Lax’s form for any initial data such that
+&lt;p&gt;When the system is strictly hyperbolic with smooth ﬂux and all the characteristic ﬁelds are either genuinely non-linear or linearly degenerate, it is possible to show that there exists $\delta&gt; 0$ such that the Riemann problem has a unique self-similar weak solution in Lax’s form for any initial data such that
 \(\norm{\cuti{u}_L-\cuti{u}_R}_{l^2}\le\delta\).
 In particular, there are $2m$ numbers
 &lt;/p&gt;
@@ -834,7 +785,7 @@ s_{\rho}=-p\rho^{-2}T^{-1},\quad \text{i.e., } p = -\rho^{2}s_{\rho}s_e^{-1}.
 &lt;/p&gt;
 $$
 s(\rho,e)=s_0+c_v\ln(e\rho^{-(\gamma-1)}).
-$$&lt;h3 id=&#34;quasiconcavity-of-s&#34;&gt;Quasiconcavity of $s$
+$$&lt;h3 id=&#34;quasiconcavity-of&#34;&gt;Quasiconcavity of $s$
 &lt;/h3&gt;&lt;p&gt;&lt;strong&gt;定义（拟凹性）&lt;/strong&gt;&lt;br&gt;
 给定一个凸集 $\mathcal{A} \subset \mathbb{R}^m$，我们称函数 $\Psi: \mathcal{A} \to \mathbb{R}$ 是&lt;strong&gt;拟凹的&lt;/strong&gt;，如果它的每一个上水平集都是凸集；也就是说，对任意 $\lambda \in \mathbb{R}$（在 $\Psi$ 的值域内），集合&lt;br&gt;
 &lt;/p&gt;
@@ -874,7 +825,7 @@ d^2e=&amp;d\alpha\\
 =&amp;-2\rho^{-1}\alpha d\rho-|\rho^{-1}d\mathbf{m}-\rho^{-2}\mathbf{m}d\rho|^2
 \end{aligned}
 $$&lt;p&gt;由&lt;strong&gt;引理1&lt;/strong&gt;我们可以看到，为了证明严格拟凹性，我们只需证明Hessian矩阵在切空间上是严格负定的。
-考虑切空间$dG^{\perp}:={X=(d\rho,d\mathbf{m},dE)\in\mathbb{R}^3: Ds\cdot D\varphi X=0}$，其上
+考虑切空间$dG^{\perp}:=\{X=(d\rho,d\mathbf{m},dE)\in\mathbb{R}^3: Ds\cdot D\varphi X=0\}$，其上
 有$
 s_\rho d\varphi_1 +s_ed\varphi_2=0,$
 即
@@ -890,7 +841,7 @@ X^TD^2GX=&amp;s_{\rho\rho}(d\rho)^2+2s_{\rho e}\alpha d\rho+s_{ee}\alpha^2-s_e(2
 =&amp;(s_{\rho\rho}+2\rho^{-2}p s_{\rho e}+\rho^{-4}p^2s_{ee})(d\rho)^2-\rho^{-2}s_e(|d\mathbf{m}-vd\rho|^2+2\rho^{-1}p(d\rho)^2)
 \end{aligned}
 $$&lt;p&gt;
-由于$s_e&amp;gt;0$, $X^TD^2GX&amp;lt; 0$的一个充分条件是：
+由于$s_e&gt;0$, $X^TD^2GX&lt; 0$的一个充分条件是：
 &lt;/p&gt;
 $$
 s_{\rho\rho}+2\rho^{-2}ps_{\rho e}+\rho^{-4}p^2s_{ee}&lt;2\rho^{-3}s_ep,
@@ -921,15 +872,15 @@ $$&lt;p&gt;
 于是声速
 &lt;/p&gt;
 $$c^2={\frac{dp}{d\rho}}=\rho^{-2}(\rho^2p_{\rho}+pp_e)$$&lt;p&gt;
-也即不等式(1)等价于声速满足$c^2&amp;gt; 0$，等价于Euler系统是严格双曲的。&lt;/p&gt;
+也即不等式(1)等价于声速满足$c^2&gt; 0$，等价于Euler系统是严格双曲的。&lt;/p&gt;
 &lt;hr&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;引理1(局部凸性判据)&lt;/strong&gt;：
-设 $G: \mathbb{R}^n \to \mathbb{R}$ 光滑。若对任意 $u$ 及所有满足 $dG(u)(X)=0$ 的非零向量 $X$，均有 $X^T D^2 G(u) X &amp;lt; 0$，则上水平集 $A_r = \{u : G(u) \geq r\}$ 是&lt;strong&gt;严格凸集&lt;/strong&gt;。&lt;/p&gt;
+设 $G: \mathbb{R}^n \to \mathbb{R}$ 光滑。若对任意 $u$ 及所有满足 $dG(u)(X)=0$ 的非零向量 $X$，均有 $X^T D^2 G(u) X &lt; 0$，则上水平集 $A_r = \\{u : G(u) \geq r\\}$ 是&lt;strong&gt;严格凸集&lt;/strong&gt;。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;定理2(拟凹性)[5, Thm. 8.22]&lt;/strong&gt;
-我们假设完全气体动力学的 Euler 方程组是&lt;strong&gt;严格双曲的&lt;/strong&gt;，即满足 $\rho^2 p_\rho + p p_e &amp;gt; 0$，则形如 $A_r = \{ u \in \mathscr{U} : s\geq r \}$ 的区域具有&lt;strong&gt;特征边界&lt;/strong&gt;且是&lt;strong&gt;严格凸集&lt;/strong&gt;，即比熵函数$s$是拟凹函数。&lt;/p&gt;
+我们假设完全气体动力学的 Euler 方程组是&lt;strong&gt;严格双曲的&lt;/strong&gt;，即满足 $\rho^2 p_\rho + p p_e &gt; 0$，则形如 $A_r = \\{ u \in \mathscr{U} : s\geq r \\}$ 的区域具有&lt;strong&gt;特征边界&lt;/strong&gt;且是&lt;strong&gt;严格凸集&lt;/strong&gt;，即比熵函数$s$是拟凹函数。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;引理1证明过程反证法&#34;&gt;引理1证明过程（反证法）
@@ -947,14 +898,14 @@ $$ G(u_{mid}) \leq r $$&lt;p&gt;
 根据连续函数的性质，$h(t)$ 在开区间 $(0,1)$ 内必存在一个&lt;strong&gt;局部极小值点&lt;/strong&gt; $t^{\ast}$。
 在该点 $t^{\ast}$ 处，必须满足微积分中的极值必要条件：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;一阶条件&lt;/strong&gt;：$h&#39;(t^*) = 0$&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;二阶条件&lt;/strong&gt;：$h&#39;&#39;(t^*) \geq 0$&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;一阶条件&lt;/strong&gt;：$h\&#39;(t^*) = 0$&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;二阶条件&lt;/strong&gt;：$h\&#39;\&#39;(t^*) \geq 0$&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;4. 展开导数项&lt;/strong&gt;
 利用链式法则计算 $h(t)$ 的导数：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;$h&#39;(t) = \nabla G(\gamma(t)) \cdot v = dG(\gamma(t))(v)$&lt;/li&gt;
-&lt;li&gt;$h&#39;&#39;(t) = v^T D^2 G(\gamma(t)) v$&lt;/li&gt;
+&lt;li&gt;$h\&#39;(t) = \nabla G(\gamma(t)) \cdot v = dG(\gamma(t))(v)$&lt;/li&gt;
+&lt;li&gt;$h\&#39;\&#39;(t) = v^T D^2 G(\gamma(t)) v$&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;代入 $t^*$ 处的条件：&lt;/p&gt;
 &lt;ol&gt;
@@ -964,7 +915,7 @@ $$ G(u_{mid}) \leq r $$&lt;p&gt;
 &lt;p&gt;&lt;strong&gt;5. 导出矛盾&lt;/strong&gt;
 回顾&lt;strong&gt;题设条件&lt;/strong&gt;：&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;对所有满足 $dG(u)(X)=0$ 的非零向量 $X$，都有 $X^T D^2 G(u) X &amp;lt; 0$。&lt;/p&gt;
+&lt;p&gt;对所有满足 $dG(u)(X)=0$ 的非零向量 $X$，都有 $X^T D^2 G(u) X &lt; 0$。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;由于 $v \neq 0$ 且 $dG(u^{\ast})(v)=0$，根据题设应有：
 &lt;/p&gt;
@@ -975,13 +926,13 @@ $$ v^T D^2 G(u^*) v &lt; 0 $$&lt;p&gt;
 即 $A_r$ 是&lt;strong&gt;严格凸集&lt;/strong&gt;。 $\square$&lt;/p&gt;
 &lt;h3 id=&#34;应用&#34;&gt;应用
 &lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;$\mathcal{D}:=\{\mathbf{U}:=(\rho,\mathbf{m},E)|\rho &amp;gt;0, e&amp;gt;0, s\ge r\}$是凸集[6,Remark 4.2]。&lt;/p&gt;
+&lt;p&gt;$\mathcal{D}:=\\{\mathbf{U}:=(\rho,\mathbf{m},E)|\rho &gt;0, e&gt;0, s\ge r\\}$是凸集[6,Remark 4.2]。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;考虑$\mathcal{A}=\{\mathbf{U}:=(\rho,\mathbf{m},E)|\rho &amp;gt;0\}$, 令$\Psi(\mathbf{U})=\rho e$是凹函数(当$\rho&amp;gt;0$时,
+&lt;p&gt;考虑$\mathcal{A}=\\{\mathbf{U}:=(\rho,\mathbf{m},E)|\rho &gt;0\\}$, 令$\Psi(\mathbf{U})=\rho e$是凹函数(当$\rho&gt;0$时,
 &lt;/p&gt;
 $$\nabla^2\Psi = \begin{pmatrix}-\rho^{-3}|m|^2&amp;\rho^{-2}m&amp;0\\
 \rho^{-2}m^T&amp;-\rho^{-1}&amp;0\\
-0&amp;0&amp;0\end{pmatrix}$$&lt;p&gt;是半负定矩阵)，所以$\{\mathbf{U}:=(\rho,\mathbf{m},E)|\rho &amp;gt;0,e&amp;gt;0\}$是凸集，再结合$s$是拟凹函数，可知其上水平集是凸集，因此$\mathcal{D}$是凸集。&lt;/p&gt;
+0&amp;0&amp;0\end{pmatrix}$$&lt;p&gt;是半负定矩阵)，所以$\\{\mathbf{U}:=(\rho,\mathbf{m},E)|\rho &gt;0,e&gt;0\\}$是凸集，再结合$s$是拟凹函数，可知其上水平集是凸集，因此$\mathcal{D}$是凸集。&lt;/p&gt;
 &lt;h2 id=&#34;参考文献&#34;&gt;参考文献
 &lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.jianguoyun.com/p/DeMlom8QlsqoDRjp7IcGIAA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -1057,7 +1008,7 @@ $\mathrm{div}_h\mathbf{v}_h=\mathrm{div}(\Pi \mathbf{v}_h)$，其中$\Pi=\Pi^{RT
 \[\begin{cases}\cuti{\varphi}_{i}=\lambda_i\mathbf{e}_{1},\quad i=1,2,3,\\
 \cuti{\varphi}_{i+3}=\lambda_i\mathbf{e}_2,\quad i=1,2,3,\\
 \cuti{\varphi}_{i+6}=\mathbf{n}_i\prod_{j=1,j\ne i}^{3}\lambda_j,\quad i=1,2,3.
-\end{cases} \]&lt;h4 id=&#34;pirt&#34;&gt;$\Pi^{RT}$
+\end{cases} \]&lt;h4 id=&#34;&#34;&gt;$\Pi^{RT}$
 &lt;/h4&gt;&lt;p&gt;$\lambda_i$在边$F_j$均值（中点值）为\(\frac12(1-\delta_{ij})\).&lt;/p&gt;
 &lt;!--
 对于$\cuti{\varphi}_i,i=7,8,9$，\(\cuti{\varphi}_i|_{F_j}=0,\quad j\ne i\)，因此
@@ -1079,7 +1030,7 @@ $\mathrm{div}_h\mathbf{v}_h=\mathrm{div}(\Pi \mathbf{v}_h)$，其中$\Pi=\Pi^{RT
 \[\begin{aligned}&amp;\Pi^{RT}\cuti{\varphi}_{i+3(j-1)}\\
 =&amp;\frac{1}{|K|}\left(\sum_{k\ne i}\frac12|F_k|(\mathbf{x}_{F_k}-\mathbf{x}_K)+\frac{\sum_{k\ne i}\frac12|F_k|}{2}(\cuti{x}-\cuti{x}_K)\right),\quad i=1,2,3,\ j=1,2,\\
 &amp;\Pi^{RT}\cuti{\varphi}_{i+6}\\
-=&amp;\frac{|F_i|}{6|K|}\left((\cuti{x}_{F_i}-\cuti{x}_K)+\frac12(\cuti{x}-\cuti{x}_K)\right),\quad i=1,2,3.\end{aligned}\]&lt;h4 id=&#34;pibdm&#34;&gt;$\Pi^{BDM}$
+=&amp;\frac{|F_i|}{6|K|}\left((\cuti{x}_{F_i}-\cuti{x}_K)+\frac12(\cuti{x}-\cuti{x}_K)\right),\quad i=1,2,3.\end{aligned}\]&lt;h4 id=&#34;&#34;&gt;$\Pi^{BDM}$
 &lt;/h4&gt;&lt;p&gt;由
 &lt;/p&gt;
 \[\cuti{\varphi}_i\in \mathbb{BDM}_{1,2}\quad i=\{1,2,\cdots,6\}\]&lt;p&gt;
@@ -1253,17 +1204,17 @@ A^{-1}&amp;=\begin{pmatrix}
 对于任意$n$维单纯形，考虑其上的单纯形剖分，我们采用如下方式对剖分得到的所有顶点进行染色：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;$n+1$个顶点用$n+1$种不同的颜色；&lt;/li&gt;
-&lt;li&gt;对于任意子单纯形${i_1,i_2,\cdots,i_k}$，其中$k=1,2,\cdots,n$，$i_1,i_2,\cdots,i_k\in{1,2,\cdots,n+1}$，若一个顶点落在该子单纯形中，则任选顶点集${i_1,i_2,\cdots,i_k}$所染颜色中的一种对该点进行染色。&lt;/li&gt;
+&lt;li&gt;对于任意子单纯形$\{i_1,i_2,\cdots,i_k\}$，其中$k=1,2,\cdots,n$，$i_1,i_2,\cdots,i_k\in\{1,2,\cdots,n+1\}$，若一个顶点落在该子单纯形中，则任选顶点集$\{i_1,i_2,\cdots,i_k\}$所染颜色中的一种对该点进行染色。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;strong&gt;Sprener引理&lt;/strong&gt;
 $n$维单纯形中的任意一个Sprener染色，必定存在一个子单纯形的顶点集包含所有的$n+1$种颜色。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Proof：&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;当$n=1$时，单纯形是一个区间，不妨记为$[0,1]$，区间两端点分别为不同颜色，从左到右顶点的变色次数必为奇数，且端点颜色不同子区间有奇数个。因此必定存在一个子区间，其两个端点颜色不同。&lt;/li&gt;
-&lt;li&gt;假设对于$n=k$，彩虹单纯形（顶点颜色互不相同）数目为奇数。当$n= k+1$时，我们利用归纳法进行证明。设$R$是彩虹单纯形个数，$Q$是恰好有${1,2,\cdots,n}$这$n$种颜色的单纯形个数，$X$是原始单纯形的表面上包含颜色${1,2,\cdots,n}$的面片个数，$Y$是内部面中恰好包含颜色${1,2,\cdots,n}$的面片个数，则观察恰好包含颜色${1,2,\cdots,n}$的面片数量可以得到下面关系式：
+&lt;li&gt;假设对于$n=k$，彩虹单纯形（顶点颜色互不相同）数目为奇数。当$n= k+1$时，我们利用归纳法进行证明。设$R$是彩虹单纯形个数，$Q$是恰好有$\{1,2,\cdots,n\}$这$n$种颜色的单纯形个数，$X$是原始单纯形的表面上包含颜色$\{1,2,\cdots,n\}$的面片个数，$Y$是内部面中恰好包含颜色$\{1,2,\cdots,n\}$的面片个数，则观察恰好包含颜色$\{1,2,\cdots,n\}$的面片数量可以得到下面关系式：
 
 $$R+2Q= X+2Y.$$
-由于原始单纯形表面上包含颜色${1,2,\cdots,n}$的面片只出现在顶点${1,2,\cdots,n}$上，而由归纳假设，该$n-1$维单纯形上的$n-1$维彩虹单纯形有奇数个，即$X$为奇数，因此$R$也为奇数。&lt;/li&gt;
+由于原始单纯形表面上包含颜色$\{1,2,\cdots,n\}$的面片只出现在顶点$\{1,2,\cdots,n\}$上，而由归纳假设，该$n-1$维单纯形上的$n-1$维彩虹单纯形有奇数个，即$X$为奇数，因此$R$也为奇数。&lt;/li&gt;
 &lt;li&gt;综上，我们证得彩虹单纯形个数为奇数，因此必定存在。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;strong&gt;Brouwer不动点定理&lt;/strong&gt;
@@ -1278,7 +1229,7 @@ $$\tilde{F}(\mathbf{x}) = \argmin_{\mathbf{y}\in M}\norm{\mathbf{x}-\mathbf{y}}.
 若$\mathbf{x}\in M$，则$\tilde{F}(\mathbf{x}) = \mathbf{x}$，且$\tilde{F}(B)\subset M\subset B$。于是，只要对单纯形的情形证明了结论，则存在$\mathbf{x}_0\in B$，使得$\mathbf{x}_0=\tilde{F}(\mathbf{x}_0)\in M$。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;不妨设$M$为$n$维单纯形，记\(\{\mathbf{v}_i\}_{i=1}^{n+1}\)为$M$的$n+1$个顶点。设\(\{\lambda_i(\mathbf{x})\}_{i=1}^{n+1}\)是点$\mathbf{x}\in M$的重心坐标，则$\sum_{i=1}^{n+1}\lambda_i= 1$。定义\(\tilde{\lambda}_i(\mathbf{x}) = \lambda_i({F}(\mathbf{x}))\)，则\(\sum_{i=1}^{n+1}\tilde{\lambda}_i=1\)。考虑对$M$进行嵌套的单纯形剖分，使得单纯形直径趋于0。由于\(\sum_{i}\lambda_i=\sum_i\tilde{\lambda}_i=1\)，因此剖分中的单纯形顶点可考虑按照顶点$\mathbf{v}_{\argmin{i:\lambda_i\ge \tilde{\lambda_i}}}$染色（对于$M$的顶点$\mathbf{v}_i$，只有$\lambda_i=1$，因此恰好是根据其自身染色，这是自洽的）。这是Sprener染色。&lt;/p&gt;
+&lt;p&gt;不妨设$M$为$n$维单纯形，记\(\{\mathbf{v}_i\}_{i=1}^{n+1}\)为$M$的$n+1$个顶点。设\(\{\lambda_i(\mathbf{x})\}_{i=1}^{n+1}\)是点$\mathbf{x}\in M$的重心坐标，则$\sum_{i=1}^{n+1}\lambda_i= 1$。定义\(\tilde{\lambda}_i(\mathbf{x}) = \lambda_i({F}(\mathbf{x}))\)，则\(\sum_{i=1}^{n+1}\tilde{\lambda}_i=1\)。考虑对$M$进行嵌套的单纯形剖分，使得单纯形直径趋于0。由于\(\sum_{i}\lambda_i=\sum_i\tilde{\lambda}_i=1\)，因此剖分中的单纯形顶点可考虑按照顶点$\mathbf{v}_{\argmin\{i:\lambda_i\ge \tilde{\lambda_i}\}}$染色（对于$M$的顶点$\mathbf{v}_i$，只有$\lambda_i=1$，因此恰好是根据其自身染色，这是自洽的）。这是Sprener染色。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;由Sprener引理，存在彩虹单纯形序列$A_1\supset A_2\supset A_{k-1}\supset A_k\supset \cdots$，$A_i$的直径趋于0。对于$A_i$，各顶点适当排序后记为\(\{\mathbf{v}_{j}^i\}_{j=1}^{n+1}\)，有
@@ -1300,13 +1251,13 @@ $$\tilde{F}(\mathbf{x}) = \argmin_{\mathbf{y}\in M}\norm{\mathbf{x}-\mathbf{y}}.
 &lt;/h2&gt;&lt;p&gt;假设$X$是Banach空间，$K\subset X$是紧的凸集，且$A:K\rightarrow K$是连续的，则$A$在$K$中有不动点。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Proof：&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;$K$是紧集，存在有限个闭球$B(u_i;\epsilon)$覆盖$K$。构造$K_{\epsilon}$为${u_i}$生成的闭凸包，则$K_{\epsilon}\subset K$。定义
+&lt;li&gt;$K$是紧集，存在有限个闭球$B(u_i;\epsilon)$覆盖$K$。构造$K_{\epsilon}$为$\{u_i\}$生成的闭凸包，则$K_{\epsilon}\subset K$。定义
 
 \[P_{\epsilon}[u]=\frac{\sum_{i=1}^n\mathrm{dist}(u,K-B(u_i;\epsilon))u_i}{\sum_{i=1}^n\mathrm{dist}(u,K-B(u_i;\epsilon))}\]
 则$P_{\epsilon}:K\rightarrow K_{\epsilon}$是连续函数且
 
 \[\norm{P_{\epsilon}[u]-u}\le\epsilon.\]&lt;/li&gt;
-&lt;li&gt;$K_{\epsilon}$与$B(0,1)$同胚，由Brouwer不动点定理，$A_{\epsilon}:K_{\epsilon}\rightarrow K_{\epsilon}, \ A_{\epsilon}[u]:=P_{\epsilon}[A[u]]$有不动点$u_{\epsilon}\in K$。由$K$的紧性，存在序列${u_{\epsilon_j}}$和$u$使得$u_{\epsilon_j}\rightarrow u$.
+&lt;li&gt;$K_{\epsilon}$与$B(0,1)$同胚，由Brouwer不动点定理，$A_{\epsilon}:K_{\epsilon}\rightarrow K_{\epsilon}, \ A_{\epsilon}[u]:=P_{\epsilon}[A[u]]$有不动点$u_{\epsilon}\in K$。由$K$的紧性，存在序列$\{u_{\epsilon_j}\}$和$u$使得$u_{\epsilon_j}\rightarrow u$.
 
 \[\norm{u_{\epsilon_j}-A(u_{\epsilon_j})}=\norm{A_{\epsilon_j}(u_{\epsilon_j})-A(u_{\epsilon_j})}\le \epsilon_j,\]
 结合$A$的连续性即得$A(u)=u$。&lt;/li&gt;
@@ -1320,14 +1271,14 @@ $$\tilde{F}(\mathbf{x}) = \argmin_{\mathbf{y}\in M}\norm{\mathbf{x}-\mathbf{y}}.
 如果我们能在假设解存在的前提下，证明解满足某些先验估计（有界），那么这些解实际上确实存在。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Proof：&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;存在充分大的$M&amp;gt;0$，使得
+&lt;li&gt;存在充分大的$M&gt;0$，使得
 
 \[\norm{u}\le M,\quad \text{if }u=\lambda A[u] \text{ for some } 0\le \lambda\le 1.\]
 定义
 
 \[\tilde{A}[u]:=\begin{cases}A[u],&amp;\text{if }\norm{A[u]}\le M,\\\frac{MA[u]}{\norm{A[u]}},&amp;\text{if }\norm{A[u]}\ge M.\end{cases}\]
 则$\tilde{A}:B(0,M)\rightarrow B(0,M)$。令$K$为$\tilde{A}(B(0,M))$的闭凸包，由于$A$是紧映射，于是$\tilde{A}$也是紧映射，因此$K$是紧（度量空间列紧闭$\iff$紧）的凸集，$\tilde{A}:K\rightarrow K$。&lt;/li&gt;
-&lt;li&gt;由Schauder不动点定理，存在$u$，使得$\tilde{A}[u]=u$。下面证明$u$是$A$的不动点，若不然，$u\in K-B(0,M)$，即$\norm{A[u]}&amp;gt;M$。于是
+&lt;li&gt;由Schauder不动点定理，存在$u$，使得$\tilde{A}[u]=u$。下面证明$u$是$A$的不动点，若不然，$u\in K-B(0,M)$，即$\norm{A[u]}&gt;M$。于是
 
 \[u=\tilde{A}[u]=\frac{MA[u]}{\norm{A[u]}}=\lambda A[u], \quad \lambda=\frac{M}{\norm{A[u]}}.\]
 从而\(\norm{u}=M\)，矛盾于1中假设。因此$u$是$A$的不动点。&lt;/li&gt;
@@ -2071,8 +2022,7 @@ $$\begin{aligned}
         <pubDate>Mon, 14 Jul 2025 22:09:35 +0800</pubDate>
         
         <guid>https://baichuan-blog.netlify.app/p/finite-neuron-method/</guid>
-        <description>&lt;h2 id=&#34;the-finite-neuron-method-and-convergence-analysis&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.jianguoyun.com/p/DYb3upYQlsqoDRi31YIGIAA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;The Finite Neuron Method and Convergence Analysis&lt;/a&gt;
+        <description>&lt;h2 id=&#34;the-finite-neuron-method-and-convergence-analysis&#34;&gt;The Finite Neuron Method and Convergence Analysis
 &lt;/h2&gt;&lt;h3 id=&#34;some-remarks&#34;&gt;Some remarks
 &lt;/h3&gt;&lt;p&gt;The general construction of $H^m$-conforming elements in any dimension is still an open problem. &lt;strong&gt;This paper studies $H^m$-conforming functions based on artificial nerual network.&lt;/strong&gt; With ReLU$^k$ as activation function, there&amp;rsquo;s a family of $H^m$-conforming piecewise polynomials.&lt;/p&gt;
 &lt;p&gt;For finite neuron method, the underlying finite element grids are not given a priori and the discrete solution can only be obtained by solving a nonlinear and non-convex optimization problem.
@@ -2140,8 +2090,7 @@ $$\norm{u-u_N}_{H^m(\Omega)}\lesssim N^{-\frac12}\norm{u}_{B^s(\Omega)}.$$&lt;p&
 &lt;/p&gt;
 $$\norm{u}_{H^m(\Omega)}\lesssim \norm{v}_{B^s(\Omega)} \norm{v}_{H^{m+\frac{d}2+\epsilon}(\Omega)},$$&lt;p&gt;
 where $m\ge 0$ is an integer, $\Omega\subset \R^d$ is a bounded domain and  $\epsilon$ is any positive real number.&lt;/p&gt;
-&lt;h2 id=&#34;approximation-rates-for-shallow-reluk-neural-networks-on-sobolev-spaces-via-the-radon-transform&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.jianguoyun.com/p/DTDnoSwQlsqoDRi41YIGIAA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Approximation Rates for Shallow ReLU$^k$ Neural Networks on Sobolev Spaces via the Radon Transform&lt;/a&gt;
+&lt;h2 id=&#34;approximation-rates-for-shallow-reluk-neural-networks-on-sobolev-spaces-via-the-radon-transform&#34;&gt;Approximation Rates for Shallow ReLU^k Neural Networks on Sobolev Spaces via the Radon Transform
 &lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;Space embedding result (Theorem 1):
 
@@ -2190,7 +2139,7 @@ $w_i$衡量了衡量点$v$靠近点$v_i$的程度：当$v$往$v_i$靠近时，$D
 &lt;p&gt;最后对$w_i$进行归一化：
 &lt;/p&gt;
 \[\lambda_i = \frac{w_i}{\sum_{i=1}^N w_i},\quad i=1,\cdots N\]&lt;p&gt;
-由于$\lambda_i\ge0$且$\sum_{i=1}^N \lambda_i = 1$，因此${\lambda_i}_{i=1}^N$构成了一组凸组合系数，称为Wachspress coordinates。&lt;/p&gt;
+由于$\lambda_i\ge0$且$\sum_{i=1}^N \lambda_i = 1$，因此$\{\lambda_i\}_{i=1}^N$构成了一组凸组合系数，称为Wachspress coordinates。&lt;/p&gt;
 &lt;p&gt;当$v$恰好为某个顶点，如$v_j$时，$\lambda_i=\delta_{ij}$。 此时$\sum_{i=1}^N\lambda_iv_i = v_j=v$。&lt;/p&gt;
 &lt;p&gt;下面我们证明对一般的$v$，也有：
 &lt;/p&gt;
@@ -2588,7 +2537,7 @@ $$\begin{cases}p = p_0(z)+p&#39;,\\\rho=\rho_0(z)+\rho&#39;,\\T = T_0(z)+T&#39;\
 满足静力平衡条件：
 &lt;/p&gt;
 \[\f{\p p_0}{\p z}=-\rho_0g\]&lt;p&gt;
-对于积云对流，扰动温度$T&#39;$很少超过$10K$，扰动压力$p&#39;$很少超过$10$hPa（$p_{00}=1000$hPa），故：
+对于积云对流，扰动温度$T\&#39;$很少超过$10K$，扰动压力$p\&#39;$很少超过$10$hPa（$p_{00}=1000$hPa），故：
 &lt;/p&gt;
 \[\begin{cases}\f{p&#39;}{p_0}\ll 1\\\f{\rho&#39;}{\rho_0}\ll 1\\\f{T&#39;}{T_0}\ll 1\end{cases}\]&lt;p&gt;
 将(3)代入(2)得到：
@@ -2606,7 +2555,7 @@ p =  \rho R T =\rho R_d T(1+0.608q_v)\end{cases}\]&lt;p&gt;
 \[\f{p&#39;}{p_0}\approx  \f{\rho&#39;}{\rho_0}+\f{T&#39;}{T_0}+0.608\f{(q_v)&#39;}{1+0.608(q_v)_0}\]&lt;p&gt;
 由于比湿$(q_v)_0\ll 1$，因此对上式可做近似如下：
 &lt;/p&gt;
-\[\f{p&#39;}{p_0}\approx  \f{\rho&#39;}{\rho_0}+\f{T&#39;}{T_0}+0.608(q_v)&#39;\tag{5}\]&lt;p&gt;当数值方法中无法直接求得密度时，我们可利用(5)将$\rho&#39;$代入(4)中得到：
+\[\f{p&#39;}{p_0}\approx  \f{\rho&#39;}{\rho_0}+\f{T&#39;}{T_0}+0.608(q_v)&#39;\tag{5}\]&lt;p&gt;当数值方法中无法直接求得密度时，我们可利用(5)将$\rho\&#39;$代入(4)中得到：
 &lt;/p&gt;
 \[\rho\frac{d\cuti{V}}{dt}=-\nabla p&#39;+\rho_0(\f{p&#39;}{p_0}-\f{T&#39;}{T_0}-0.608(q_v)&#39;)\cuti{g}+\rho q_w\cuti{g}+\rho D_{\cuti{V}}\]&lt;p&gt;
 此时将其余$\rho$用平衡解$\rho_0$代替，可得：
@@ -2834,7 +2783,7 @@ p =  \rho R T =\rho R_d T(1+0.608q_v)\end{cases}\]&lt;p&gt;
 &lt;p&gt;$\Omega=[0,1]^2$, $\a=1$, $\vec{\beta} = \f12(x,y)^T$, $\mathrm{div}\vec{\b}=1$, $f = u+\f12\pi(x \cos(\pi x)\sin(\pi y)+y\sin(\pi x)\cos(\pi y))$,
 &lt;/p&gt;
 \[u=\sin(\pi x)\sin(\pi y)+1.\]&lt;p&gt;
-保证$\a-\f12\mathrm{div}\vec{\beta}&amp;gt;0$.&lt;/p&gt;
+保证$\a-\f12\mathrm{div}\vec{\beta}&gt;0$.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;间断解&#34;&gt;间断解
@@ -3352,41 +3301,42 @@ $$&lt;p&gt;
         
         <guid>https://baichuan-blog.netlify.app/p/hugo-markdown%E6%8A%80%E5%B7%A7/</guid>
         <description>&lt;h2 id=&#34;-的渲染&#34;&gt;{} 的渲染
-&lt;/h2&gt;&lt;p&gt;需要两个反斜杠&lt;code&gt;\\{...\\}&lt;/code&gt;才能显示$\{&amp;hellip;\}$。如果采用&lt;code&gt;\{...\}&lt;/code&gt;会显示为${&amp;hellip;}$。&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;需要两个反斜杠&lt;code&gt;\\{...\\}&lt;/code&gt;才能显示$\\{...\\}$。如果采用&lt;code&gt;\{...\}&lt;/code&gt;会显示为$\{...\}$。&lt;/p&gt;
 &lt;h2 id=&#34;-的渲染-1&#34;&gt;* 的渲染
-&lt;/h2&gt;&lt;p&gt;Markdown行内公式&lt;code&gt;$a^*b^*$&lt;/code&gt;渲染会出错（两个*间会变成斜体$a^&lt;em&gt;b^&lt;/em&gt;$），改成&lt;code&gt;$a^\*b^\*$&lt;/code&gt;（$a^*b^*$），但这样在vscode中的渲染有问题，一种安全的写法是&lt;code&gt;$a^\ast b^\ast$&lt;/code&gt;（$a^\ast b^\ast$）。&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;Markdown行内公式&lt;code&gt;$a^*b^*$&lt;/code&gt;渲染会出错（两个*间会变成斜体$a^*b^*$），改成&lt;code&gt;$a^\*b^\*$&lt;/code&gt;（$a^\*b^\*$），但这样在vscode中的渲染有问题，一种安全的写法是&lt;code&gt;$a^\ast b^\ast$&lt;/code&gt;（$a^\ast b^\ast$）。&lt;/p&gt;
 &lt;h2 id=&#34;行内公式渲染问题&#34;&gt;行内公式渲染问题
-&lt;/h2&gt;&lt;p&gt;有时候行内公式用&lt;code&gt;$$&lt;/code&gt;渲染不出，可以改用&lt;code&gt;\(\)&lt;/code&gt;的方式。&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;&lt;code&gt;hugo.yaml&lt;/code&gt; 中已将 &lt;code&gt;$&lt;/code&gt; 加入 passthrough，故 &lt;code&gt;$...$&lt;/code&gt; 与 &lt;code&gt;\(...\)&lt;/code&gt; 均可用。若仍有问题可改用 &lt;code&gt;\(\)&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;完整规范见项目 &lt;code&gt;docs/hugo-math-rendering-guide.md&lt;/code&gt;，或 Cursor 规则 &lt;code&gt;.cursor/rules/hugo-math-rendering.mdc&lt;/code&gt;。&lt;/p&gt;
 &lt;h2 id=&#34;引用自己的博客文章&#34;&gt;引用自己的博客文章
 &lt;/h2&gt;&lt;p&gt;&lt;code&gt;[](../article-name)&lt;/code&gt;，其中&lt;code&gt;article-name&lt;/code&gt;是要引用的文章名（以&lt;code&gt;url&lt;/code&gt;中的文章名为主）。例如，引用文章&lt;code&gt;Markdown Syntax Guide&lt;/code&gt;时为&lt;code&gt;../markdown-syntax-guide&lt;/code&gt;，效果：&lt;a class=&#34;link&#34; href=&#34;../markdown-syntax-guide&#34; &gt;Markdown Syntax Guide&lt;/a&gt;。&lt;/p&gt;
 &lt;h2 id=&#34;自定义数学命令&#34;&gt;自定义数学命令
 &lt;/h2&gt;&lt;h3 id=&#34;全局定义&#34;&gt;全局定义
 &lt;/h3&gt;&lt;p&gt;所有开启&lt;code&gt;math=true&lt;/code&gt;的文章中均可使用。&lt;/p&gt;
-&lt;p&gt;在&lt;code&gt;layouts\partials\article\components\math.html&lt;/code&gt;中的&lt;code&gt;ignoredClasses: [&amp;quot;gist&amp;quot;]&lt;/code&gt;前面添加：&lt;/p&gt;
+&lt;p&gt;在&lt;code&gt;layouts/partials/article/components/math.html&lt;/code&gt;的&lt;code&gt;macros&lt;/code&gt;中添加，例如：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;macros: {
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&amp;#34;\\abs&amp;#34;: &amp;#34;\\left| #1 \\right|&amp;#34;,
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&amp;#34;\\Sob&amp;#34;: &amp;#34;W^{#1,#2}(#3)&amp;#34;  // 三参数：k, p, 区域
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;},
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;\\abs&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\\left| #1 \\right|&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;\\Sob&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;W^{#1,#2}(#3)&amp;#34;&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;// 三参数：k, p, 区域
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;效果为：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;$\abs{x + y}$&lt;/code&gt;：$\abs{x + y}$&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;$\Sob{1}{2}{\Omega}$&lt;/code&gt;：$\Sob{1}{2}{\Omega}$&lt;/li&gt;
-&lt;/ol&gt;
+&lt;/div&gt;&lt;p&gt;效果：$\abs{x + y}$、$\Sob{1}{2}{\Omega}$&lt;/p&gt;
 $$
 \gdef\wkp#1#2#3{W^{#1,#2}(#3)}
 $$&lt;h3 id=&#34;局部定义&#34;&gt;局部定义
 &lt;/h3&gt;&lt;p&gt;仅限于定义所在的文章从定义后到文章结束的部分。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;$$\gdef\wkp#1#2#3{W^{#1,#2}(#3)}$$&lt;/code&gt;：$\wkp{1}{2}{\Omega}$&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$$\gdef\wkp&lt;span class=&#34;ni&#34;&gt;#1#2#3&lt;/span&gt;{W^{&lt;span class=&#34;ni&#34;&gt;#1&lt;/span&gt;,&lt;span class=&#34;ni&#34;&gt;#2&lt;/span&gt;}(&lt;span class=&#34;ni&#34;&gt;#3&lt;/span&gt;)}$$
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;之后可用 $\wkp{1}{2}{\Omega}$。&lt;/p&gt;
 &lt;h3 id=&#34;使用标题但不编号&#34;&gt;使用标题但不编号
 &lt;/h3&gt;&lt;p&gt;&lt;code&gt;&amp;lt;h5&amp;gt; 标题 &amp;lt;/h5&amp;gt;&lt;/code&gt;可以产生五级标题效果，但不会参与目录的编号。&lt;/p&gt;
 &lt;h5&gt; 标题 &lt;/h5&gt;
@@ -3512,7 +3462,7 @@ $$\theta^{(2)}+\gamma q_v^{(2)}=\theta^{(1)}+\gamma q_v^{(1)} \tag{3}$$&lt;p&gt;
 &lt;/p&gt;
 $$q_v^{(2)}+q_c^{(2)} = q_v^{(1)}+q_c^{(1)}\tag{4}$$&lt;p&gt;利用Teten&amp;rsquo;s formula, 将$q_v$在$\theta^*$处做一阶Taylor展开有:
 &lt;/p&gt;
-$$q_v^{(2)}=q_{vs}^{(2)}\approx q_v^{(1)}(1+\frac{4093\Pi}{(\Pi\theta^{(1)}-36)^2}(\theta^{(2)}-\theta^{(1)}))\tag{5}$$&lt;p&gt;第一个等号是由饱和假设, 假如$q_v^{(1)} &amp;gt;q_{vs}^{(1)}$,
+$$q_v^{(2)}=q_{vs}^{(2)}\approx q_v^{(1)}(1+\frac{4093\Pi}{(\Pi\theta^{(1)}-36)^2}(\theta^{(2)}-\theta^{(1)}))\tag{5}$$&lt;p&gt;第一个等号是由饱和假设, 假如$q_v^{(1)} &gt;q_{vs}^{(1)}$,
 此时过饱和, 将会通过转换到达饱和状态[3, Appendix: Saturation
 Technique]. 将该式代入(3)可得:
 &lt;/p&gt;

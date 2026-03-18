@@ -377,7 +377,7 @@ $w_i$衡量了衡量点$v$靠近点$v_i$的程度：当$v$往$v_i$靠近时，$D
 <p>最后对$w_i$进行归一化：
 </p>
 \[\lambda_i = \frac{w_i}{\sum_{i=1}^N w_i},\quad i=1,\cdots N\]<p>
-由于$\lambda_i\ge0$且$\sum_{i=1}^N \lambda_i = 1$，因此${\lambda_i}_{i=1}^N$构成了一组凸组合系数，称为Wachspress coordinates。</p>
+由于$\lambda_i\ge0$且$\sum_{i=1}^N \lambda_i = 1$，因此$\{\lambda_i\}_{i=1}^N$构成了一组凸组合系数，称为Wachspress coordinates。</p>
 <p>当$v$恰好为某个顶点，如$v_j$时，$\lambda_i=\delta_{ij}$。 此时$\sum_{i=1}^N\lambda_iv_i = v_j=v$。</p>
 <p>下面我们证明对一般的$v$，也有：
 </p>
@@ -460,29 +460,34 @@ $$\begin{aligned}\mathbb{I}_f(v) &= \sum_{i=1}^N\lambda_i f_i \\
                 >
             </script><script>
     window.addEventListener("DOMContentLoaded", () => {
-	const mainArticleElement = document.querySelector(".main-article");
+        const mainArticleElement = document.querySelector(".main-article");
+        const macros = {
+            "\\abs": "\\left| #1 \\right|",
+            "\\Sob": "W^{#1,#2}(#3)",
+            "\\inn": "\\langle #1,#2 \\rangle",
+            "\\p": "\\partial",
+            "\\d": "\\mathrm{d}",
+            "\\f": "\\frac{#1}{#2}",
+            "\\D": "\\Delta",
+            "\\a": "\\alpha",
+            "\\b": "\\beta",
+            "\\cuti": "\\boldsymbol{#1}",
+            "\\norm": "\\|#1\\|",
+            "\\llbracket": "[\\!\\![",
+            "\\rrbracket": "]\\!\\!]"
+        };
         renderMathInElement(mainArticleElement, {
+            macros,
+            globalGroup: true,
             delimiters: [
                 { left: "$$", right: "$$", display: true },
                 { left: "$", right: "$", display: false },
                 { left: "\\(", right: "\\)", display: false },
                 { left: "\\[", right: "\\]", display: true }
             ],
-			macros: {
-                "\\abs": "\\left| #1 \\right|",
-				"\\Sob": "W^{#1,#2}(#3)",  
-				"\\inn": "\\langle #1,#2 \\rangle",
-				"\\p": "\\partial",
-				"\\d": "\\mathrm{d}",
-				"\\f": "\\frac",
-				"\\D": "\\Delta",
-				"\\a": "\\alpha",
-				"\\b": "\\beta",
-				"\\cuti": "\\boldsymbol",
-                "\\norm": "\\|#1\\|"
-            },
             ignoredClasses: ["gist"]
-        });})
+        });
+    });
 </script>
 
     

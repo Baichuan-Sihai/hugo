@@ -441,7 +441,7 @@ $$\theta^{(2)}+\gamma q_v^{(2)}=\theta^{(1)}+\gamma q_v^{(1)} \tag{3}$$<p>
 </p>
 $$q_v^{(2)}+q_c^{(2)} = q_v^{(1)}+q_c^{(1)}\tag{4}$$<p>利用Teten&rsquo;s formula, 将$q_v$在$\theta^*$处做一阶Taylor展开有:
 </p>
-$$q_v^{(2)}=q_{vs}^{(2)}\approx q_v^{(1)}(1+\frac{4093\Pi}{(\Pi\theta^{(1)}-36)^2}(\theta^{(2)}-\theta^{(1)}))\tag{5}$$<p>第一个等号是由饱和假设, 假如$q_v^{(1)} &gt;q_{vs}^{(1)}$,
+$$q_v^{(2)}=q_{vs}^{(2)}\approx q_v^{(1)}(1+\frac{4093\Pi}{(\Pi\theta^{(1)}-36)^2}(\theta^{(2)}-\theta^{(1)}))\tag{5}$$<p>第一个等号是由饱和假设, 假如$q_v^{(1)} >q_{vs}^{(1)}$,
 此时过饱和, 将会通过转换到达饱和状态[3, Appendix: Saturation
 Technique]. 将该式代入(3)可得:
 </p>
@@ -562,29 +562,34 @@ Park</a></p>
                 >
             </script><script>
     window.addEventListener("DOMContentLoaded", () => {
-	const mainArticleElement = document.querySelector(".main-article");
+        const mainArticleElement = document.querySelector(".main-article");
+        const macros = {
+            "\\abs": "\\left| #1 \\right|",
+            "\\Sob": "W^{#1,#2}(#3)",
+            "\\inn": "\\langle #1,#2 \\rangle",
+            "\\p": "\\partial",
+            "\\d": "\\mathrm{d}",
+            "\\f": "\\frac{#1}{#2}",
+            "\\D": "\\Delta",
+            "\\a": "\\alpha",
+            "\\b": "\\beta",
+            "\\cuti": "\\boldsymbol{#1}",
+            "\\norm": "\\|#1\\|",
+            "\\llbracket": "[\\!\\![",
+            "\\rrbracket": "]\\!\\!]"
+        };
         renderMathInElement(mainArticleElement, {
+            macros,
+            globalGroup: true,
             delimiters: [
                 { left: "$$", right: "$$", display: true },
                 { left: "$", right: "$", display: false },
                 { left: "\\(", right: "\\)", display: false },
                 { left: "\\[", right: "\\]", display: true }
             ],
-			macros: {
-                "\\abs": "\\left| #1 \\right|",
-				"\\Sob": "W^{#1,#2}(#3)",  
-				"\\inn": "\\langle #1,#2 \\rangle",
-				"\\p": "\\partial",
-				"\\d": "\\mathrm{d}",
-				"\\f": "\\frac",
-				"\\D": "\\Delta",
-				"\\a": "\\alpha",
-				"\\b": "\\beta",
-				"\\cuti": "\\boldsymbol",
-                "\\norm": "\\|#1\\|"
-            },
             ignoredClasses: ["gist"]
-        });})
+        });
+    });
 </script>
 
     

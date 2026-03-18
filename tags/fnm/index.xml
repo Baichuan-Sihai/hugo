@@ -7,14 +7,13 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>百川</copyright>
-        <lastBuildDate>Tue, 15 Jul 2025 23:49:42 +0800</lastBuildDate><atom:link href="https://baichuan-blog.netlify.app/tags/fnm/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 18 Mar 2026 09:49:20 +0800</lastBuildDate><atom:link href="https://baichuan-blog.netlify.app/tags/fnm/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Finite Neuron Method</title>
         <link>https://baichuan-blog.netlify.app/p/finite-neuron-method/</link>
         <pubDate>Mon, 14 Jul 2025 22:09:35 +0800</pubDate>
         
         <guid>https://baichuan-blog.netlify.app/p/finite-neuron-method/</guid>
-        <description>&lt;h2 id=&#34;the-finite-neuron-method-and-convergence-analysis&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.jianguoyun.com/p/DYb3upYQlsqoDRi31YIGIAA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;The Finite Neuron Method and Convergence Analysis&lt;/a&gt;
+        <description>&lt;h2 id=&#34;the-finite-neuron-method-and-convergence-analysis&#34;&gt;The Finite Neuron Method and Convergence Analysis
 &lt;/h2&gt;&lt;h3 id=&#34;some-remarks&#34;&gt;Some remarks
 &lt;/h3&gt;&lt;p&gt;The general construction of $H^m$-conforming elements in any dimension is still an open problem. &lt;strong&gt;This paper studies $H^m$-conforming functions based on artificial nerual network.&lt;/strong&gt; With ReLU$^k$ as activation function, there&amp;rsquo;s a family of $H^m$-conforming piecewise polynomials.&lt;/p&gt;
 &lt;p&gt;For finite neuron method, the underlying finite element grids are not given a priori and the discrete solution can only be obtained by solving a nonlinear and non-convex optimization problem.
@@ -82,8 +81,7 @@ $$\norm{u-u_N}_{H^m(\Omega)}\lesssim N^{-\frac12}\norm{u}_{B^s(\Omega)}.$$&lt;p&
 &lt;/p&gt;
 $$\norm{u}_{H^m(\Omega)}\lesssim \norm{v}_{B^s(\Omega)} \norm{v}_{H^{m+\frac{d}2+\epsilon}(\Omega)},$$&lt;p&gt;
 where $m\ge 0$ is an integer, $\Omega\subset \R^d$ is a bounded domain and  $\epsilon$ is any positive real number.&lt;/p&gt;
-&lt;h2 id=&#34;approximation-rates-for-shallow-reluk-neural-networks-on-sobolev-spaces-via-the-radon-transform&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.jianguoyun.com/p/DTDnoSwQlsqoDRi41YIGIAA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Approximation Rates for Shallow ReLU$^k$ Neural Networks on Sobolev Spaces via the Radon Transform&lt;/a&gt;
+&lt;h2 id=&#34;approximation-rates-for-shallow-reluk-neural-networks-on-sobolev-spaces-via-the-radon-transform&#34;&gt;Approximation Rates for Shallow ReLU^k Neural Networks on Sobolev Spaces via the Radon Transform
 &lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;Space embedding result (Theorem 1):
 

@@ -283,7 +283,7 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#epsilon-delta-等式">$\epsilon-\delta$ 等式</a>
+    <li><a href="#等式"> 等式</a>
       <ol>
         <li><a href="#应用">应用</a></li>
       </ol>
@@ -348,7 +348,7 @@
     <section class="article-content">
     
     
-    <h2 id="epsilon-delta-等式">$\epsilon-\delta$ 等式
+    <h2 id="等式">$\epsilon-\delta$ 等式
 </h2><p>定义</p>
 $$
 \epsilon_{ijk} := \begin{cases}0&\text{若}i,j,k\text{中存在相同}\\1&\text{奇排列}\\-1&\text{偶排列}\end{cases},
@@ -410,29 +410,34 @@ $$
                 >
             </script><script>
     window.addEventListener("DOMContentLoaded", () => {
-	const mainArticleElement = document.querySelector(".main-article");
+        const mainArticleElement = document.querySelector(".main-article");
+        const macros = {
+            "\\abs": "\\left| #1 \\right|",
+            "\\Sob": "W^{#1,#2}(#3)",
+            "\\inn": "\\langle #1,#2 \\rangle",
+            "\\p": "\\partial",
+            "\\d": "\\mathrm{d}",
+            "\\f": "\\frac{#1}{#2}",
+            "\\D": "\\Delta",
+            "\\a": "\\alpha",
+            "\\b": "\\beta",
+            "\\cuti": "\\boldsymbol{#1}",
+            "\\norm": "\\|#1\\|",
+            "\\llbracket": "[\\!\\![",
+            "\\rrbracket": "]\\!\\!]"
+        };
         renderMathInElement(mainArticleElement, {
+            macros,
+            globalGroup: true,
             delimiters: [
                 { left: "$$", right: "$$", display: true },
                 { left: "$", right: "$", display: false },
                 { left: "\\(", right: "\\)", display: false },
                 { left: "\\[", right: "\\]", display: true }
             ],
-			macros: {
-                "\\abs": "\\left| #1 \\right|",
-				"\\Sob": "W^{#1,#2}(#3)",  
-				"\\inn": "\\langle #1,#2 \\rangle",
-				"\\p": "\\partial",
-				"\\d": "\\mathrm{d}",
-				"\\f": "\\frac",
-				"\\D": "\\Delta",
-				"\\a": "\\alpha",
-				"\\b": "\\beta",
-				"\\cuti": "\\boldsymbol",
-                "\\norm": "\\|#1\\|"
-            },
             ignoredClasses: ["gist"]
-        });})
+        });
+    });
 </script>
 
     

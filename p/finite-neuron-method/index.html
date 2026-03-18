@@ -10,7 +10,7 @@
 <meta property='og:description' content="Relationship between FEM and nerual network, some error estimates">
 <meta property='og:url' content='https://baichuan-blog.netlify.app/p/finite-neuron-method/'>
 <meta property='og:site_name' content='百川的小屋'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='FNM' /><meta property='article:published_time' content='2025-07-14T22:09:35&#43;08:00'/><meta property='article:modified_time' content='2025-07-15T23:49:42&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='FNM' /><meta property='article:published_time' content='2025-07-14T22:09:35&#43;08:00'/><meta property='article:modified_time' content='2026-03-18T09:49:20&#43;08:00'/>
 <meta name="twitter:title" content="Finite Neuron Method">
 <meta name="twitter:description" content="Relationship between FEM and nerual network, some error estimates">
     <link rel="shortcut icon" href="/favicon2.ico" />
@@ -290,7 +290,7 @@
         <li><a href="#barron-spetral-space">Barron spetral space</a></li>
       </ol>
     </li>
-    <li><a href="#approximation-rates-for-shallow-reluk-neural-networks-on-sobolev-spaces-via-the-radon-transform">Approximation Rates for Shallow ReLU$^k$ Neural Networks on Sobolev Spaces via the Radon Transform</a></li>
+    <li><a href="#approximation-rates-for-shallow-reluk-neural-networks-on-sobolev-spaces-via-the-radon-transform">Approximation Rates for Shallow ReLU^k Neural Networks on Sobolev Spaces via the Radon Transform</a></li>
     <li><a href="#参考文献">参考文献</a></li>
   </ol>
 </nav>
@@ -341,7 +341,7 @@
 			
 			
 						<span class="article-time--final-update">
-							最后更新于 <time class="article-time--updated" datetime="2025-07-15 23:49:42 &#43;0800 &#43;0800" title="2025-07-15 23:49:42 &#43;0800 &#43;0800">2025-07-15 23:49</time>
+							最后更新于 <time class="article-time--updated" datetime="2026-03-18 09:49:20 &#43;0800 &#43;0800" title="2026-03-18 09:49:20 &#43;0800 &#43;0800">2026-03-18 09:49</time>
 						</span>
 
 			
@@ -356,8 +356,7 @@
     <section class="article-content">
     
     
-    <h2 id="the-finite-neuron-method-and-convergence-analysis"><a class="link" href="https://www.jianguoyun.com/p/DYb3upYQlsqoDRi31YIGIAA"  target="_blank" rel="noopener"
-    >The Finite Neuron Method and Convergence Analysis</a>
+    <h2 id="the-finite-neuron-method-and-convergence-analysis">The Finite Neuron Method and Convergence Analysis
 </h2><h3 id="some-remarks">Some remarks
 </h3><p>The general construction of $H^m$-conforming elements in any dimension is still an open problem. <strong>This paper studies $H^m$-conforming functions based on artificial nerual network.</strong> With ReLU$^k$ as activation function, there&rsquo;s a family of $H^m$-conforming piecewise polynomials.</p>
 <p>For finite neuron method, the underlying finite element grids are not given a priori and the discrete solution can only be obtained by solving a nonlinear and non-convex optimization problem.
@@ -425,8 +424,7 @@ $$\norm{u-u_N}_{H^m(\Omega)}\lesssim N^{-\frac12}\norm{u}_{B^s(\Omega)}.$$<p>Lem
 </p>
 $$\norm{u}_{H^m(\Omega)}\lesssim \norm{v}_{B^s(\Omega)} \norm{v}_{H^{m+\frac{d}2+\epsilon}(\Omega)},$$<p>
 where $m\ge 0$ is an integer, $\Omega\subset \R^d$ is a bounded domain and  $\epsilon$ is any positive real number.</p>
-<h2 id="approximation-rates-for-shallow-reluk-neural-networks-on-sobolev-spaces-via-the-radon-transform"><a class="link" href="https://www.jianguoyun.com/p/DTDnoSwQlsqoDRi41YIGIAA"  target="_blank" rel="noopener"
-    >Approximation Rates for Shallow ReLU$^k$ Neural Networks on Sobolev Spaces via the Radon Transform</a>
+<h2 id="approximation-rates-for-shallow-reluk-neural-networks-on-sobolev-spaces-via-the-radon-transform">Approximation Rates for Shallow ReLU^k Neural Networks on Sobolev Spaces via the Radon Transform
 </h2><ol>
 <li>Space embedding result (Theorem 1):
 
@@ -493,29 +491,34 @@ where $2\le p\le \infty$ and $0\le s\le \frac{d+2k+1}2$.</li>
                 >
             </script><script>
     window.addEventListener("DOMContentLoaded", () => {
-	const mainArticleElement = document.querySelector(".main-article");
+        const mainArticleElement = document.querySelector(".main-article");
+        const macros = {
+            "\\abs": "\\left| #1 \\right|",
+            "\\Sob": "W^{#1,#2}(#3)",
+            "\\inn": "\\langle #1,#2 \\rangle",
+            "\\p": "\\partial",
+            "\\d": "\\mathrm{d}",
+            "\\f": "\\frac{#1}{#2}",
+            "\\D": "\\Delta",
+            "\\a": "\\alpha",
+            "\\b": "\\beta",
+            "\\cuti": "\\boldsymbol{#1}",
+            "\\norm": "\\|#1\\|",
+            "\\llbracket": "[\\!\\![",
+            "\\rrbracket": "]\\!\\!]"
+        };
         renderMathInElement(mainArticleElement, {
+            macros,
+            globalGroup: true,
             delimiters: [
                 { left: "$$", right: "$$", display: true },
                 { left: "$", right: "$", display: false },
                 { left: "\\(", right: "\\)", display: false },
                 { left: "\\[", right: "\\]", display: true }
             ],
-			macros: {
-                "\\abs": "\\left| #1 \\right|",
-				"\\Sob": "W^{#1,#2}(#3)",  
-				"\\inn": "\\langle #1,#2 \\rangle",
-				"\\p": "\\partial",
-				"\\d": "\\mathrm{d}",
-				"\\f": "\\frac",
-				"\\D": "\\Delta",
-				"\\a": "\\alpha",
-				"\\b": "\\beta",
-				"\\cuti": "\\boldsymbol",
-                "\\norm": "\\|#1\\|"
-            },
             ignoredClasses: ["gist"]
-        });})
+        });
+    });
 </script>
 
     

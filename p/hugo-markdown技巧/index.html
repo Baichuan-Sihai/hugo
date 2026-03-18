@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="{} 的渲染 需要两个反斜杠\\\\{...\\\\}才能显示$\\{&hellip;\\}$。如果采用\\{...\\}会显示为${&hellip;}$。\n* 的渲染 Markdown行内公式$a^*b^*$渲染会出错（两个*间会变成斜体$a^b^$），改成$a^\\*b^\\*$（$a^*b^*$），但这样在vscode中的渲染有问题，一种安全的写法是$a^\\ast b^\\ast$（$a^\\ast b^\\ast$）。\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="{} 的渲染 需要两个反斜杠\\\\{...\\\\}才能显示$\\\\{...\\\\}$。如果采用\\{...\\}会显示为$\\{...\\}$。\n* 的渲染 Markdown行内公式$a^*b^*$渲染会出错（两个*间会变成斜体$a^*b^*$），改成$a^\\*b^\\*$（$a^\\*b^\\*$），但这样在vscode中的渲染有问题，一种安全的写法是$a^\\ast b^\\ast$（$a^\\ast b^\\ast$）。\n">
 <title>Hugo Markdown技巧</title>
 
 <link rel='canonical' href='https://baichuan-blog.netlify.app/p/hugo-markdown%E6%8A%80%E5%B7%A7/'>
 
 <link rel="stylesheet" href="/scss/style.min.aa4e5bb4873d63f64e9e948d6fe299ba8efe6c037f997068cf681de3fe33d371.css"><meta property='og:title' content="Hugo Markdown技巧">
-<meta property='og:description' content="{} 的渲染 需要两个反斜杠\\\\{...\\\\}才能显示$\\{&hellip;\\}$。如果采用\\{...\\}会显示为${&hellip;}$。\n* 的渲染 Markdown行内公式$a^*b^*$渲染会出错（两个*间会变成斜体$a^b^$），改成$a^\\*b^\\*$（$a^*b^*$），但这样在vscode中的渲染有问题，一种安全的写法是$a^\\ast b^\\ast$（$a^\\ast b^\\ast$）。\n">
+<meta property='og:description' content="{} 的渲染 需要两个反斜杠\\\\{...\\\\}才能显示$\\\\{...\\\\}$。如果采用\\{...\\}会显示为$\\{...\\}$。\n* 的渲染 Markdown行内公式$a^*b^*$渲染会出错（两个*间会变成斜体$a^*b^*$），改成$a^\\*b^\\*$（$a^\\*b^\\*$），但这样在vscode中的渲染有问题，一种安全的写法是$a^\\ast b^\\ast$（$a^\\ast b^\\ast$）。\n">
 <meta property='og:url' content='https://baichuan-blog.netlify.app/p/hugo-markdown%E6%8A%80%E5%B7%A7/'>
 <meta property='og:site_name' content='百川的小屋'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-05-25T11:07:01&#43;08:00'/><meta property='article:modified_time' content='2026-03-01T12:11:30&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-05-25T11:07:01&#43;08:00'/><meta property='article:modified_time' content='2026-03-18T09:49:20&#43;08:00'/>
 <meta name="twitter:title" content="Hugo Markdown技巧">
-<meta name="twitter:description" content="{} 的渲染 需要两个反斜杠\\\\{...\\\\}才能显示$\\{&hellip;\\}$。如果采用\\{...\\}会显示为${&hellip;}$。\n* 的渲染 Markdown行内公式$a^*b^*$渲染会出错（两个*间会变成斜体$a^b^$），改成$a^\\*b^\\*$（$a^*b^*$），但这样在vscode中的渲染有问题，一种安全的写法是$a^\\ast b^\\ast$（$a^\\ast b^\\ast$）。\n">
+<meta name="twitter:description" content="{} 的渲染 需要两个反斜杠\\\\{...\\\\}才能显示$\\\\{...\\\\}$。如果采用\\{...\\}会显示为$\\{...\\}$。\n* 的渲染 Markdown行内公式$a^*b^*$渲染会出错（两个*间会变成斜体$a^*b^*$），改成$a^\\*b^\\*$（$a^\\*b^\\*$），但这样在vscode中的渲染有问题，一种安全的写法是$a^\\ast b^\\ast$（$a^\\ast b^\\ast$）。\n">
     <link rel="shortcut icon" href="/favicon2.ico" />
 
     </head>
@@ -352,7 +352,7 @@
 			
 			
 						<span class="article-time--final-update">
-							最后更新于 <time class="article-time--updated" datetime="2026-03-01 12:11:30 &#43;0800 &#43;0800" title="2026-03-01 12:11:30 &#43;0800 &#43;0800">2026-03-01 12:11</time>
+							最后更新于 <time class="article-time--updated" datetime="2026-03-18 09:49:20 &#43;0800 &#43;0800" title="2026-03-18 09:49:20 &#43;0800 &#43;0800">2026-03-18 09:49</time>
 						</span>
 
 			
@@ -368,41 +368,42 @@
     
     
     <h2 id="-的渲染">{} 的渲染
-</h2><p>需要两个反斜杠<code>\\{...\\}</code>才能显示$\{&hellip;\}$。如果采用<code>\{...\}</code>会显示为${&hellip;}$。</p>
+</h2><p>需要两个反斜杠<code>\\{...\\}</code>才能显示$\\{...\\}$。如果采用<code>\{...\}</code>会显示为$\{...\}$。</p>
 <h2 id="-的渲染-1">* 的渲染
-</h2><p>Markdown行内公式<code>$a^*b^*$</code>渲染会出错（两个*间会变成斜体$a^<em>b^</em>$），改成<code>$a^\*b^\*$</code>（$a^*b^*$），但这样在vscode中的渲染有问题，一种安全的写法是<code>$a^\ast b^\ast$</code>（$a^\ast b^\ast$）。</p>
+</h2><p>Markdown行内公式<code>$a^*b^*$</code>渲染会出错（两个*间会变成斜体$a^*b^*$），改成<code>$a^\*b^\*$</code>（$a^\*b^\*$），但这样在vscode中的渲染有问题，一种安全的写法是<code>$a^\ast b^\ast$</code>（$a^\ast b^\ast$）。</p>
 <h2 id="行内公式渲染问题">行内公式渲染问题
-</h2><p>有时候行内公式用<code>$$</code>渲染不出，可以改用<code>\(\)</code>的方式。</p>
+</h2><p><code>hugo.yaml</code> 中已将 <code>$</code> 加入 passthrough，故 <code>$...$</code> 与 <code>\(...\)</code> 均可用。若仍有问题可改用 <code>\(\)</code>。</p>
+<p>完整规范见项目 <code>docs/hugo-math-rendering-guide.md</code>，或 Cursor 规则 <code>.cursor/rules/hugo-math-rendering.mdc</code>。</p>
 <h2 id="引用自己的博客文章">引用自己的博客文章
 </h2><p><code>[](../article-name)</code>，其中<code>article-name</code>是要引用的文章名（以<code>url</code>中的文章名为主）。例如，引用文章<code>Markdown Syntax Guide</code>时为<code>../markdown-syntax-guide</code>，效果：<a class="link" href="../markdown-syntax-guide" >Markdown Syntax Guide</a>。</p>
 <h2 id="自定义数学命令">自定义数学命令
 </h2><h3 id="全局定义">全局定义
 </h3><p>所有开启<code>math=true</code>的文章中均可使用。</p>
-<p>在<code>layouts\partials\article\components\math.html</code>中的<code>ignoredClasses: [&quot;gist&quot;]</code>前面添加：</p>
+<p>在<code>layouts/partials/article/components/math.html</code>的<code>macros</code>中添加，例如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">macros: {
-</span></span><span class="line"><span class="cl">	&#34;\\abs&#34;: &#34;\\left| #1 \\right|&#34;,
-</span></span><span class="line"><span class="cl">	&#34;\\Sob&#34;: &#34;W^{#1,#2}(#3)&#34;  // 三参数：k, p, 区域
-</span></span><span class="line"><span class="cl">},
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="s2">&#34;\\abs&#34;</span><span class="o">:</span> <span class="s2">&#34;\\left| #1 \\right|&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;\\Sob&#34;</span><span class="o">:</span> <span class="s2">&#34;W^{#1,#2}(#3)&#34;</span>  <span class="c1">// 三参数：k, p, 区域
+</span></span></span></code></pre></td></tr></table>
 </div>
-</div><p>效果为：</p>
-<ol>
-<li><code>$\abs{x + y}$</code>：$\abs{x + y}$</li>
-<li><code>$\Sob{1}{2}{\Omega}$</code>：$\Sob{1}{2}{\Omega}$</li>
-</ol>
+</div><p>效果：$\abs{x + y}$、$\Sob{1}{2}{\Omega}$</p>
 $$
 \gdef\wkp#1#2#3{W^{#1,#2}(#3)}
 $$<h3 id="局部定义">局部定义
 </h3><p>仅限于定义所在的文章从定义后到文章结束的部分。</p>
-<p><code>$$\gdef\wkp#1#2#3{W^{#1,#2}(#3)}$$</code>：$\wkp{1}{2}{\Omega}$</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">$$\gdef\wkp<span class="ni">#1#2#3</span>{W^{<span class="ni">#1</span>,<span class="ni">#2</span>}(<span class="ni">#3</span>)}$$
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>之后可用 $\wkp{1}{2}{\Omega}$。</p>
 <h3 id="使用标题但不编号">使用标题但不编号
 </h3><p><code>&lt;h5&gt; 标题 &lt;/h5&gt;</code>可以产生五级标题效果，但不会参与目录的编号。</p>
 <h5> 标题 </h5>
@@ -471,29 +472,34 @@ $$<h3 id="局部定义">局部定义
                 >
             </script><script>
     window.addEventListener("DOMContentLoaded", () => {
-	const mainArticleElement = document.querySelector(".main-article");
+        const mainArticleElement = document.querySelector(".main-article");
+        const macros = {
+            "\\abs": "\\left| #1 \\right|",
+            "\\Sob": "W^{#1,#2}(#3)",
+            "\\inn": "\\langle #1,#2 \\rangle",
+            "\\p": "\\partial",
+            "\\d": "\\mathrm{d}",
+            "\\f": "\\frac{#1}{#2}",
+            "\\D": "\\Delta",
+            "\\a": "\\alpha",
+            "\\b": "\\beta",
+            "\\cuti": "\\boldsymbol{#1}",
+            "\\norm": "\\|#1\\|",
+            "\\llbracket": "[\\!\\![",
+            "\\rrbracket": "]\\!\\!]"
+        };
         renderMathInElement(mainArticleElement, {
+            macros,
+            globalGroup: true,
             delimiters: [
                 { left: "$$", right: "$$", display: true },
                 { left: "$", right: "$", display: false },
                 { left: "\\(", right: "\\)", display: false },
                 { left: "\\[", right: "\\]", display: true }
             ],
-			macros: {
-                "\\abs": "\\left| #1 \\right|",
-				"\\Sob": "W^{#1,#2}(#3)",  
-				"\\inn": "\\langle #1,#2 \\rangle",
-				"\\p": "\\partial",
-				"\\d": "\\mathrm{d}",
-				"\\f": "\\frac",
-				"\\D": "\\Delta",
-				"\\a": "\\alpha",
-				"\\b": "\\beta",
-				"\\cuti": "\\boldsymbol",
-                "\\norm": "\\|#1\\|"
-            },
             ignoredClasses: ["gist"]
-        });})
+        });
+    });
 </script>
 
     

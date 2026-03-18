@@ -377,7 +377,7 @@ $$\begin{cases}p = p_0(z)+p',\\\rho=\rho_0(z)+\rho',\\T = T_0(z)+T'\end{cases}\t
 满足静力平衡条件：
 </p>
 \[\f{\p p_0}{\p z}=-\rho_0g\]<p>
-对于积云对流，扰动温度$T'$很少超过$10K$，扰动压力$p'$很少超过$10$hPa（$p_{00}=1000$hPa），故：
+对于积云对流，扰动温度$T\'$很少超过$10K$，扰动压力$p\'$很少超过$10$hPa（$p_{00}=1000$hPa），故：
 </p>
 \[\begin{cases}\f{p'}{p_0}\ll 1\\\f{\rho'}{\rho_0}\ll 1\\\f{T'}{T_0}\ll 1\end{cases}\]<p>
 将(3)代入(2)得到：
@@ -395,7 +395,7 @@ p =  \rho R T =\rho R_d T(1+0.608q_v)\end{cases}\]<p>
 \[\f{p'}{p_0}\approx  \f{\rho'}{\rho_0}+\f{T'}{T_0}+0.608\f{(q_v)'}{1+0.608(q_v)_0}\]<p>
 由于比湿$(q_v)_0\ll 1$，因此对上式可做近似如下：
 </p>
-\[\f{p'}{p_0}\approx  \f{\rho'}{\rho_0}+\f{T'}{T_0}+0.608(q_v)'\tag{5}\]<p>当数值方法中无法直接求得密度时，我们可利用(5)将$\rho'$代入(4)中得到：
+\[\f{p'}{p_0}\approx  \f{\rho'}{\rho_0}+\f{T'}{T_0}+0.608(q_v)'\tag{5}\]<p>当数值方法中无法直接求得密度时，我们可利用(5)将$\rho\'$代入(4)中得到：
 </p>
 \[\rho\frac{d\cuti{V}}{dt}=-\nabla p'+\rho_0(\f{p'}{p_0}-\f{T'}{T_0}-0.608(q_v)')\cuti{g}+\rho q_w\cuti{g}+\rho D_{\cuti{V}}\]<p>
 此时将其余$\rho$用平衡解$\rho_0$代替，可得：
@@ -446,29 +446,34 @@ p =  \rho R T =\rho R_d T(1+0.608q_v)\end{cases}\]<p>
                 >
             </script><script>
     window.addEventListener("DOMContentLoaded", () => {
-	const mainArticleElement = document.querySelector(".main-article");
+        const mainArticleElement = document.querySelector(".main-article");
+        const macros = {
+            "\\abs": "\\left| #1 \\right|",
+            "\\Sob": "W^{#1,#2}(#3)",
+            "\\inn": "\\langle #1,#2 \\rangle",
+            "\\p": "\\partial",
+            "\\d": "\\mathrm{d}",
+            "\\f": "\\frac{#1}{#2}",
+            "\\D": "\\Delta",
+            "\\a": "\\alpha",
+            "\\b": "\\beta",
+            "\\cuti": "\\boldsymbol{#1}",
+            "\\norm": "\\|#1\\|",
+            "\\llbracket": "[\\!\\![",
+            "\\rrbracket": "]\\!\\!]"
+        };
         renderMathInElement(mainArticleElement, {
+            macros,
+            globalGroup: true,
             delimiters: [
                 { left: "$$", right: "$$", display: true },
                 { left: "$", right: "$", display: false },
                 { left: "\\(", right: "\\)", display: false },
                 { left: "\\[", right: "\\]", display: true }
             ],
-			macros: {
-                "\\abs": "\\left| #1 \\right|",
-				"\\Sob": "W^{#1,#2}(#3)",  
-				"\\inn": "\\langle #1,#2 \\rangle",
-				"\\p": "\\partial",
-				"\\d": "\\mathrm{d}",
-				"\\f": "\\frac",
-				"\\D": "\\Delta",
-				"\\a": "\\alpha",
-				"\\b": "\\beta",
-				"\\cuti": "\\boldsymbol",
-                "\\norm": "\\|#1\\|"
-            },
             ignoredClasses: ["gist"]
-        });})
+        });
+    });
 </script>
 
     

@@ -288,8 +288,8 @@
       <ol>
         <li><a href="#代码实现">代码实现</a>
           <ol>
-            <li><a href="#pirt">$\Pi^{RT}$</a></li>
-            <li><a href="#pibdm">$\Pi^{BDM}$</a></li>
+            <li></li>
+            <li></li>
             <li><a href="#remarks">Remarks</a></li>
           </ol>
         </li>
@@ -427,7 +427,7 @@ $\mathrm{div}_h\mathbf{v}_h=\mathrm{div}(\Pi \mathbf{v}_h)$，其中$\Pi=\Pi^{RT
 \[\begin{cases}\cuti{\varphi}_{i}=\lambda_i\mathbf{e}_{1},\quad i=1,2,3,\\
 \cuti{\varphi}_{i+3}=\lambda_i\mathbf{e}_2,\quad i=1,2,3,\\
 \cuti{\varphi}_{i+6}=\mathbf{n}_i\prod_{j=1,j\ne i}^{3}\lambda_j,\quad i=1,2,3.
-\end{cases} \]<h4 id="pirt">$\Pi^{RT}$
+\end{cases} \]<h4 id="">$\Pi^{RT}$
 </h4><p>$\lambda_i$在边$F_j$均值（中点值）为\(\frac12(1-\delta_{ij})\).</p>
 <!--
 对于$\cuti{\varphi}_i,i=7,8,9$，\(\cuti{\varphi}_i|_{F_j}=0,\quad j\ne i\)，因此
@@ -449,7 +449,7 @@ $\mathrm{div}_h\mathbf{v}_h=\mathrm{div}(\Pi \mathbf{v}_h)$，其中$\Pi=\Pi^{RT
 \[\begin{aligned}&\Pi^{RT}\cuti{\varphi}_{i+3(j-1)}\\
 =&\frac{1}{|K|}\left(\sum_{k\ne i}\frac12|F_k|(\mathbf{x}_{F_k}-\mathbf{x}_K)+\frac{\sum_{k\ne i}\frac12|F_k|}{2}(\cuti{x}-\cuti{x}_K)\right),\quad i=1,2,3,\ j=1,2,\\
 &\Pi^{RT}\cuti{\varphi}_{i+6}\\
-=&\frac{|F_i|}{6|K|}\left((\cuti{x}_{F_i}-\cuti{x}_K)+\frac12(\cuti{x}-\cuti{x}_K)\right),\quad i=1,2,3.\end{aligned}\]<h4 id="pibdm">$\Pi^{BDM}$
+=&\frac{|F_i|}{6|K|}\left((\cuti{x}_{F_i}-\cuti{x}_K)+\frac12(\cuti{x}-\cuti{x}_K)\right),\quad i=1,2,3.\end{aligned}\]<h4 id="">$\Pi^{BDM}$
 </h4><p>由
 </p>
 \[\cuti{\varphi}_i\in \mathbb{BDM}_{1,2}\quad i=\{1,2,\cdots,6\}\]<p>
@@ -611,29 +611,34 @@ A^{-1}&=\begin{pmatrix}
                 >
             </script><script>
     window.addEventListener("DOMContentLoaded", () => {
-	const mainArticleElement = document.querySelector(".main-article");
+        const mainArticleElement = document.querySelector(".main-article");
+        const macros = {
+            "\\abs": "\\left| #1 \\right|",
+            "\\Sob": "W^{#1,#2}(#3)",
+            "\\inn": "\\langle #1,#2 \\rangle",
+            "\\p": "\\partial",
+            "\\d": "\\mathrm{d}",
+            "\\f": "\\frac{#1}{#2}",
+            "\\D": "\\Delta",
+            "\\a": "\\alpha",
+            "\\b": "\\beta",
+            "\\cuti": "\\boldsymbol{#1}",
+            "\\norm": "\\|#1\\|",
+            "\\llbracket": "[\\!\\![",
+            "\\rrbracket": "]\\!\\!]"
+        };
         renderMathInElement(mainArticleElement, {
+            macros,
+            globalGroup: true,
             delimiters: [
                 { left: "$$", right: "$$", display: true },
                 { left: "$", right: "$", display: false },
                 { left: "\\(", right: "\\)", display: false },
                 { left: "\\[", right: "\\]", display: true }
             ],
-			macros: {
-                "\\abs": "\\left| #1 \\right|",
-				"\\Sob": "W^{#1,#2}(#3)",  
-				"\\inn": "\\langle #1,#2 \\rangle",
-				"\\p": "\\partial",
-				"\\d": "\\mathrm{d}",
-				"\\f": "\\frac",
-				"\\D": "\\Delta",
-				"\\a": "\\alpha",
-				"\\b": "\\beta",
-				"\\cuti": "\\boldsymbol",
-                "\\norm": "\\|#1\\|"
-            },
             ignoredClasses: ["gist"]
-        });})
+        });
+    });
 </script>
 
     
