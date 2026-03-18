@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Claude Code on 百川的小屋</title>
+        <link>https://baichuan-blog.netlify.app/tags/claude-code/</link>
+        <description>Recent content in Claude Code on 百川的小屋</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>百川</copyright>
+        <lastBuildDate>Wed, 18 Mar 2026 08:59:18 +0800</lastBuildDate><atom:link href="https://baichuan-blog.netlify.app/tags/claude-code/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Plugins</title>
+        <link>https://baichuan-blog.netlify.app/p/plugins/</link>
+        <pubDate>Fri, 06 Mar 2026 11:04:28 +0800</pubDate>
+        
+        <guid>https://baichuan-blog.netlify.app/p/plugins/</guid>
+        <description>&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/Baichuan-Sihai/mdnotes&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Baichuan-Sihai/mdnotes&lt;/a&gt;: Markdown note plugin for Zotero 7&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/Baichuan-Sihai/markdown-editor&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Baichuan-Sihai/markdown-editor&lt;/a&gt;): Markdown editor for Cursor&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;mdnotes&#34;&gt;mdnotes
+&lt;/h2&gt;&lt;h3 id=&#34;to-do&#34;&gt;TO-DO
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 固定整页、允许打开其他条目文献时在侧边栏保持&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 与pdf批注绑定，形成双链&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 黑色主题&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;vscode-markdown-editor&#34;&gt;vscode-markdown-editor
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 在页面最后一行，按向下键，输入内容会直接跳到最上方&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 增加实时更新功能，目前cursor对文件进行修改后文件渲染不会更新，需要关掉重新打开才能看到&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 在页面添加Ctrl+F查找功能&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

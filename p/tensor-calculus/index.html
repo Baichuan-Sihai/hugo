@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="$\\epsilon-\\delta$ 等式 定义 $$\\epsilon_{ijk} := \\begin{cases}0&\\text{若}i,j,k\\text{中存在相同}\\\\1&\\text{奇排列}\\\\-1&\\text{偶排列}\\end{cases},$$ 存在$\\epsilon-\\delta$ 等式 ">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="$\\epsilon-\\delta$ 等式 定义\n$$ \\epsilon_{ijk} := \\begin{cases}0&\\text{若}i,j,k\\text{中存在相同}\\\\1&\\text{奇排列}\\\\-1&\\text{偶排列}\\end{cases}, $$存在$\\epsilon-\\delta$ 等式\n">
 <title>Tensor calculus</title>
 
 <link rel='canonical' href='https://baichuan-blog.netlify.app/p/tensor-calculus/'>
 
 <link rel="stylesheet" href="/scss/style.min.aa4e5bb4873d63f64e9e948d6fe299ba8efe6c037f997068cf681de3fe33d371.css"><meta property='og:title' content="Tensor calculus">
-<meta property='og:description' content="$\\epsilon-\\delta$ 等式 定义 $$\\epsilon_{ijk} := \\begin{cases}0&\\text{若}i,j,k\\text{中存在相同}\\\\1&\\text{奇排列}\\\\-1&\\text{偶排列}\\end{cases},$$ 存在$\\epsilon-\\delta$ 等式 ">
+<meta property='og:description' content="$\\epsilon-\\delta$ 等式 定义\n$$ \\epsilon_{ijk} := \\begin{cases}0&\\text{若}i,j,k\\text{中存在相同}\\\\1&\\text{奇排列}\\\\-1&\\text{偶排列}\\end{cases}, $$存在$\\epsilon-\\delta$ 等式\n">
 <meta property='og:url' content='https://baichuan-blog.netlify.app/p/tensor-calculus/'>
 <meta property='og:site_name' content='百川的小屋'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-11-28T21:54:39&#43;08:00'/><meta property='article:modified_time' content='2025-11-28T22:13:38&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-11-28T21:54:39&#43;08:00'/><meta property='article:modified_time' content='2026-03-18T08:59:18&#43;08:00'/>
 <meta name="twitter:title" content="Tensor calculus">
-<meta name="twitter:description" content="$\\epsilon-\\delta$ 等式 定义 $$\\epsilon_{ijk} := \\begin{cases}0&\\text{若}i,j,k\\text{中存在相同}\\\\1&\\text{奇排列}\\\\-1&\\text{偶排列}\\end{cases},$$ 存在$\\epsilon-\\delta$ 等式 ">
+<meta name="twitter:description" content="$\\epsilon-\\delta$ 等式 定义\n$$ \\epsilon_{ijk} := \\begin{cases}0&\\text{若}i,j,k\\text{中存在相同}\\\\1&\\text{奇排列}\\\\-1&\\text{偶排列}\\end{cases}, $$存在$\\epsilon-\\delta$ 等式\n">
     <link rel="shortcut icon" href="/favicon2.ico" />
 
     </head>
@@ -333,7 +333,7 @@
 			
 			
 						<span class="article-time--final-update">
-							最后更新于 <time class="article-time--updated" datetime="2025-11-28 22:13:38 &#43;0800 &#43;0800" title="2025-11-28 22:13:38 &#43;0800 &#43;0800">2025-11-28 22:13</time>
+							最后更新于 <time class="article-time--updated" datetime="2026-03-18 08:59:18 &#43;0800 &#43;0800" title="2026-03-18 08:59:18 &#43;0800 &#43;0800">2026-03-18 08:59</time>
 						</span>
 
 			
@@ -349,27 +349,29 @@
     
     
     <h2 id="epsilon-delta-等式">$\epsilon-\delta$ 等式
-</h2><p>定义
-</p>
-$$\epsilon_{ijk} := \begin{cases}0&\text{若}i,j,k\text{中存在相同}\\1&\text{奇排列}\\-1&\text{偶排列}\end{cases},$$<p>
-存在$\epsilon-\delta$ 等式
-</p>
-\[\epsilon_{ijk}\epsilon^{imn}=\delta_{jm}\delta_{kn}-\delta_{jn}\delta_{km}.\]<h3 id="应用">应用
-</h3><p>旋度可表示为:
-</p>
-\[(\mathrm{curl}\mathbf{u})_i = \epsilon^{ijk}\partial_ju_k,\]<p>
-则应用 $\epsilon-\delta$ 等式有:
-</p>
-\[\mathrm{curl}\ \mathrm{curl} = \nabla\ \mathrm{div}-\Delta.\]<p>
-证明：
-</p>
-$$\begin{aligned}
+</h2><p>定义</p>
+$$
+\epsilon_{ijk} := \begin{cases}0&\text{若}i,j,k\text{中存在相同}\\1&\text{奇排列}\\-1&\text{偶排列}\end{cases},
+$$<p>存在$\epsilon-\delta$ 等式</p>
+$$
+\epsilon_{ijk}\epsilon^{imn}=\delta_{jm}\delta_{kn}-\delta_{jn}\delta_{km}.
+$$<h3 id="应用">应用
+</h3><p>旋度可表示为:</p>
+$$
+(\mathrm{curl}\mathbf{u})_i = \epsilon^{ijk}\partial_ju_k,
+$$<p>则应用 $\epsilon-\delta$ 等式有:</p>
+$$
+\mathrm{curl}\ \mathrm{curl} = \nabla\ \mathrm{div}-\Delta.
+$$<p>证明：</p>
+$$
+\begin{aligned}
 (\mathrm{curl}(\mathrm{curl}\mathbf{u}))_i &=\epsilon_{ijk}\partial_j(\epsilon^{kmn}\partial_mu_n)\\
 & = \epsilon_{kij}\epsilon^{kmn}\partial_{j}\partial_mu_n\\
 & = (\delta_{im}\delta_{jn}-\delta_{in}\delta_{jm})\partial_{j}\partial_mu_n\\
 & = \partial_{ij}u_j-\partial_{jj}u_i\\
 & = (\nabla \mathrm{div}\mathbf{u})_i-(\Delta \mathbf{u})_i.
-\end{aligned}$$
+\end{aligned}
+$$
 </section>
 
 

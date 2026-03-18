@@ -2,20 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://baichuan-blog.netlify.app/categories/</loc>
+    <lastmod>2026-03-18T08:59:18+08:00</lastmod>
+  </url><url>
+    <loc>https://baichuan-blog.netlify.app/p/flux-balanced-patankar-type-schemes-for-the-compressible-euler-equations/</loc>
+    <lastmod>2026-03-18T08:59:18+08:00</lastmod>
+  </url><url>
+    <loc>https://baichuan-blog.netlify.app/tags/mathematics---numerical-analysis/</loc>
+    <lastmod>2026-03-18T08:59:18+08:00</lastmod>
+  </url><url>
     <loc>https://baichuan-blog.netlify.app/post/</loc>
-    <lastmod>2026-03-01T21:11:10+08:00</lastmod>
+    <lastmod>2026-03-18T08:59:18+08:00</lastmod>
+  </url><url>
+    <loc>https://baichuan-blog.netlify.app/tags/</loc>
+    <lastmod>2026-03-18T08:59:18+08:00</lastmod>
+  </url><url>
+    <loc>https://baichuan-blog.netlify.app/categories/ai/</loc>
+    <lastmod>2026-03-18T08:59:18+08:00</lastmod>
+  </url><url>
+    <loc>https://baichuan-blog.netlify.app/p/openclaw/</loc>
+    <lastmod>2026-03-18T08:59:18+08:00</lastmod>
+  </url><url>
+    <loc>https://baichuan-blog.netlify.app/tags/claude-code/</loc>
+    <lastmod>2026-03-18T08:59:18+08:00</lastmod>
+  </url><url>
+    <loc>https://baichuan-blog.netlify.app/p/plugins/</loc>
+    <lastmod>2026-03-18T08:59:18+08:00</lastmod>
+  </url><url>
+    <loc>https://baichuan-blog.netlify.app/tags/plugins/</loc>
+    <lastmod>2026-03-18T08:59:18+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-blog.netlify.app/p/tensor-calculus/</loc>
-    <lastmod>2025-11-28T22:13:38+08:00</lastmod>
+    <lastmod>2026-03-18T08:59:18+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-blog.netlify.app/p/scalar-conservation-laws/</loc>
     <lastmod>2026-03-01T21:11:10+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-blog.netlify.app/p/bernardiraugel-finite-element/</loc>
     <lastmod>2025-08-16T16:01:27+08:00</lastmod>
-  </url><url>
-    <loc>https://baichuan-blog.netlify.app/categories/</loc>
-    <lastmod>2026-03-01T12:11:30+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-blog.netlify.app/p/fixed-point-theorems/</loc>
     <lastmod>2025-08-06T10:09:56+08:00</lastmod>
@@ -37,9 +61,6 @@
   </url><url>
     <loc>https://baichuan-blog.netlify.app/tags/piml/</loc>
     <lastmod>2025-07-17T13:31:17+08:00</lastmod>
-  </url><url>
-    <loc>https://baichuan-blog.netlify.app/tags/</loc>
-    <lastmod>2026-02-02T11:05:32+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-blog.netlify.app/p/finite-neuron-method/</loc>
     <lastmod>2025-07-15T23:49:42+08:00</lastmod>
@@ -124,6 +145,9 @@
   </url><url>
     <loc>https://baichuan-blog.netlify.app/categories/markdown/</loc>
     <lastmod>2025-05-25T11:41:35+08:00</lastmod>
+  </url><url>
+    <loc>https://baichuan-blog.netlify.app/categories/reading-notes/</loc>
+    <lastmod>2026-03-06T11:29:50+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-blog.netlify.app/%E5%85%B3%E4%BA%8E/</loc>
     <lastmod>2025-05-24T21:29:45+08:00</lastmod>

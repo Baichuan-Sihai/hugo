@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>AI on 百川的小屋</title>
+        <link>https://baichuan-blog.netlify.app/categories/ai/</link>
+        <description>Recent content in AI on 百川的小屋</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>百川</copyright>
+        <lastBuildDate>Wed, 18 Mar 2026 08:59:18 +0800</lastBuildDate><atom:link href="https://baichuan-blog.netlify.app/categories/ai/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>OpenClaw</title>
+        <link>https://baichuan-blog.netlify.app/p/openclaw/</link>
+        <pubDate>Sun, 15 Mar 2026 09:34:00 +0800</pubDate>
+        
+        <guid>https://baichuan-blog.netlify.app/p/openclaw/</guid>
+        <description>&lt;h2 id=&#34;openclaw-slash-commands&#34;&gt;OpenClaw Slash Commands
+&lt;/h2&gt;&lt;h3 id=&#34;session-commands&#34;&gt;Session Commands
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Command&lt;/th&gt;
+          &lt;th&gt;Description&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;/session&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Manage session-level settings (e.g.,&lt;code&gt;/session idle&lt;/code&gt;).&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;/stop&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Stop the current run.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;/reset&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Reset the current session.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;/new&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Start a new session.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;/compact&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Compact the session context to reduce memory usage.&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;options&#34;&gt;Options
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Command&lt;/th&gt;
+          &lt;th&gt;Description&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;/usage&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Show usage footer or cost summary.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;/think&lt;/code&gt; (&lt;code&gt;/thinking&lt;/code&gt;, &lt;code&gt;/t&lt;/code&gt;)&lt;/td&gt;
+          &lt;td&gt;Set thinking level (off, on, stream).&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;/verbose&lt;/code&gt; (&lt;code&gt;/v&lt;/code&gt;)&lt;/td&gt;
+          &lt;td&gt;Toggle verbose mode for more detailed output.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;/reasoning&lt;/code&gt; (&lt;code&gt;/reason&lt;/code&gt;)&lt;/td&gt;
+          &lt;td&gt;Toggle reasoning visibility.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;/elevated&lt;/code&gt; (&lt;code&gt;/elev&lt;/code&gt;)&lt;/td&gt;
+          &lt;td&gt;Toggle elevated mode for advanced permissions.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;/exec&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Set exec defaults for this session.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;/model&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Show or set the model.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;/models&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;List model providers or provider models.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;/queue&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Adjust queue settings.&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;status-commands&#34;&gt;Status Commands
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Command&lt;/th&gt;
+          &lt;th&gt;Description&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;/help&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Show available commands.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;/commands&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;List all slash commands.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;/status&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Show current status.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;/context&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Explain how context is built and used.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;/export-session&lt;/code&gt; (&lt;code&gt;/export&lt;/code&gt;)&lt;/td&gt;
+          &lt;td&gt;Export current session to HTML with full system prompt.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;/whoami&lt;/code&gt; (&lt;code&gt;/id&lt;/code&gt;)&lt;/td&gt;
+          &lt;td&gt;Show your sender ID.&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;management-commands&#34;&gt;Management Commands
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Command&lt;/th&gt;
+          &lt;th&gt;Description&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;/allowlist [text]&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;List/add/remove allowlist entries.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;/approve&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Approve or deny exec requests.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;/subagents&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;List, kill, log, spawn, or steer subagent runs.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;/acp&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Manage ACP sessions and runtime options.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;/focus&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Bind Discord thread (or new one) to a session target.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;/unfocus&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Remove the current Discord thread binding.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;/agents&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;List thread-bound agents for this session.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;/kill&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Kill a running subagent (or all).&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;/steer&lt;/code&gt; (&lt;code&gt;/tell&lt;/code&gt;)&lt;/td&gt;
+          &lt;td&gt;Send guidance to a running subagent.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;/activation&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Set group activation mode.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;/send&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Set send policy.&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;media-commands&#34;&gt;Media Commands
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Command&lt;/th&gt;
+          &lt;th&gt;Description&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;/tts&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Control text-to-speech (TTS).&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;tools&#34;&gt;Tools
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Command&lt;/th&gt;
+          &lt;th&gt;Description&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;/skill&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Run a skill by name.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;/restart&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;Restart OpenClaw.&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;docks&#34;&gt;Docks
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Command&lt;/th&gt;
+          &lt;th&gt;Description&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;/dock_telegram&lt;/code&gt; (&lt;code&gt;/dock-telegram&lt;/code&gt;)&lt;/td&gt;
+          &lt;td&gt;Switch to Telegram for replies.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;/dock_discord&lt;/code&gt; (&lt;code&gt;/dock-discord&lt;/code&gt;)&lt;/td&gt;
+          &lt;td&gt;Switch to Discord for replies.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;/dock_slack&lt;/code&gt; (&lt;code&gt;/dock-slack&lt;/code&gt;)&lt;/td&gt;
+          &lt;td&gt;Switch to Slack for replies.&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;在openclaw中新增模型&#34;&gt;在OpenClaw中新增模型
+&lt;/h2&gt;&lt;p&gt;文件夹&lt;code&gt;~/.openclaw/openclaw.json&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;修改方法&lt;/strong&gt;：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在 &lt;code&gt;models.providers&lt;/code&gt; 下增加或修改 key&lt;/li&gt;
+&lt;li&gt;填写新的 API 信息和模型配置&lt;/li&gt;
+&lt;li&gt;更新 agents 映射或 primary&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;关键字段&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;baseUrl&lt;/code&gt;：API 地址&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;apiKey&lt;/code&gt;：调用密钥&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;api&lt;/code&gt;：接口类型（一般为 &lt;code&gt;openai-completions&lt;/code&gt;）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;models&lt;/code&gt;：模型列表，每个模型包含 &lt;code&gt;id&lt;/code&gt;、&lt;code&gt;name&lt;/code&gt;、&lt;code&gt;reasoning&lt;/code&gt;、&lt;code&gt;input&lt;/code&gt;、&lt;code&gt;contextWindow&lt;/code&gt;、&lt;code&gt;maxTokens&lt;/code&gt; 等&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;默认使用&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在 &lt;code&gt;agents.defaults.models&lt;/code&gt; 中添加映射&lt;/li&gt;
+&lt;li&gt;或将 &lt;code&gt;agents.defaults.model.primary&lt;/code&gt; 设置为相应模型，如 &lt;code&gt;&amp;quot;openrouter/hunter-alpha&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;阿里云切换模型的“应用”过程本质就是在这里修改&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;网站安全&#34;&gt;网站安全
+&lt;/h2&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gdscript3&#34; data-lang=&#34;gdscript3&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;wget&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;https&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;github&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;com&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cloudflare&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cloudflared&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;releases&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;latest&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;download&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cloudflared&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;linux&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;amd64&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;deb&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;sudo&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rpm&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ivh&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;https&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;github&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;com&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cloudflare&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cloudflared&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;releases&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;latest&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;download&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cloudflared&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;linux&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x86_64&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rpm&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;cloudflared&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tunnel&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;url&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;http&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;localhost&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;5000&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;文献总结模块&#34;&gt;文献总结模块
+&lt;/h2&gt;&lt;hr&gt;
+&lt;p&gt;第一次点&amp;quot;📝 总结&amp;quot;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;检查缓存 — 先看 pdf_temp/{arxiv_id}.md 是否存在&lt;/li&gt;
+&lt;li&gt;没缓存则下载全文，优先顺序：
+&lt;ul&gt;
+&lt;li&gt;尝试下载 PDF（arxiv.org/pdf/{id}.pdf），成功则用 MinerU API 转成 Markdown（MinerU 不可用时降级 PyMuPDF/PyPDF2 直接提取文本）&lt;/li&gt;
+&lt;li&gt;PDF 404 则改抓 arxiv.org/html/{id} 的 HTML 并剥离标签提取纯文本&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;提取结果存为 .md 缓存文件&lt;/li&gt;
+&lt;li&gt;调用 Qwen LLM，把论文全文（最多 3 万字）连同 prompt 一起发给模型，生成中文总结&lt;/li&gt;
+&lt;li&gt;总结存为 {arxiv_id}_summary.txt，返回给前端显示&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;再次点&amp;quot;📝 总结&amp;quot;（非强制重新生成）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;直接读 _summary.txt 缓存，不重新下载，不再调用 LLM&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;点&amp;quot;🔄 重新生成&amp;quot;（force 模式）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;删掉旧的 _summary.txt，但 .md 文件保留，所以只重新调用 LLM，不重新下载 PDF/HTML&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;PDF/HTML 只下载一次，之后缓存为 .md；LLM 总结也只生成一次，缓存为 _summary.txt。重新生成只是重跑 LLM 这一步，用的是已缓存的全文内容。&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
