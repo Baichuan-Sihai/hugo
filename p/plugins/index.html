@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=" Baichuan-Sihai/mdnotes: Markdown note plugin for Zotero 7 Baichuan-Sihai/markdown-editor): Markdown editor for Cursor mdnotes TO-DO 固定整页、允许打开其他条目文献时在侧边栏保持 与pdf批注绑定，形成双链 黑色主题 vscode-markdown-editor 在页面最后一行，按向下键，输入内容会直接跳到最上方 增加实时更新功能，目前cursor对文件进行修改后文件渲染不会更新，需要关掉重新打开才能看到 在页面添加Ctrl+F查找功能 ">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=" Baichuan-Sihai/mdnotes: Markdown note plugin for Zotero 7 Baichuan-Sihai/markdown-editor): Markdown editor for Cursor mdnotes TO-DO 固定整页、允许打开其他条目文献时在侧边栏保持 与pdf批注绑定，形成双链 黑色主题 vscode-markdown-editor 编辑器处理$$...$$时会多出一个空行，导致KaTeX渲染出错 在页面最后一行，按向下键，输入内容会直接跳到最上方 增加实时更新功能，目前cursor对文件进行修改后文件渲染不会更新，需要关掉重新打开才能看到 在页面添加Ctrl+F查找功能 zotero-explorer 星标条目 显示某个条目是否有独立笔记 pdf在cursor窗口的名字显示太长了 增加pdf中的搜索功能 ">
 <title>Plugins</title>
 
 <link rel='canonical' href='https://baichuan-blog.netlify.app/p/plugins/'>
 
 <link rel="stylesheet" href="/scss/style.min.aa4e5bb4873d63f64e9e948d6fe299ba8efe6c037f997068cf681de3fe33d371.css"><meta property='og:title' content="Plugins">
-<meta property='og:description' content=" Baichuan-Sihai/mdnotes: Markdown note plugin for Zotero 7 Baichuan-Sihai/markdown-editor): Markdown editor for Cursor mdnotes TO-DO 固定整页、允许打开其他条目文献时在侧边栏保持 与pdf批注绑定，形成双链 黑色主题 vscode-markdown-editor 在页面最后一行，按向下键，输入内容会直接跳到最上方 增加实时更新功能，目前cursor对文件进行修改后文件渲染不会更新，需要关掉重新打开才能看到 在页面添加Ctrl+F查找功能 ">
+<meta property='og:description' content=" Baichuan-Sihai/mdnotes: Markdown note plugin for Zotero 7 Baichuan-Sihai/markdown-editor): Markdown editor for Cursor mdnotes TO-DO 固定整页、允许打开其他条目文献时在侧边栏保持 与pdf批注绑定，形成双链 黑色主题 vscode-markdown-editor 编辑器处理$$...$$时会多出一个空行，导致KaTeX渲染出错 在页面最后一行，按向下键，输入内容会直接跳到最上方 增加实时更新功能，目前cursor对文件进行修改后文件渲染不会更新，需要关掉重新打开才能看到 在页面添加Ctrl+F查找功能 zotero-explorer 星标条目 显示某个条目是否有独立笔记 pdf在cursor窗口的名字显示太长了 增加pdf中的搜索功能 ">
 <meta property='og:url' content='https://baichuan-blog.netlify.app/p/plugins/'>
 <meta property='og:site_name' content='百川的小屋'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='plugins' /><meta property='article:tag' content='claude code' /><meta property='article:published_time' content='2026-03-06T11:04:28&#43;08:00'/><meta property='article:modified_time' content='2026-03-18T08:59:18&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='plugins' /><meta property='article:tag' content='claude code' /><meta property='article:published_time' content='2026-03-06T11:04:28&#43;08:00'/><meta property='article:modified_time' content='2026-03-27T11:01:37&#43;08:00'/>
 <meta name="twitter:title" content="Plugins">
-<meta name="twitter:description" content=" Baichuan-Sihai/mdnotes: Markdown note plugin for Zotero 7 Baichuan-Sihai/markdown-editor): Markdown editor for Cursor mdnotes TO-DO 固定整页、允许打开其他条目文献时在侧边栏保持 与pdf批注绑定，形成双链 黑色主题 vscode-markdown-editor 在页面最后一行，按向下键，输入内容会直接跳到最上方 增加实时更新功能，目前cursor对文件进行修改后文件渲染不会更新，需要关掉重新打开才能看到 在页面添加Ctrl+F查找功能 ">
+<meta name="twitter:description" content=" Baichuan-Sihai/mdnotes: Markdown note plugin for Zotero 7 Baichuan-Sihai/markdown-editor): Markdown editor for Cursor mdnotes TO-DO 固定整页、允许打开其他条目文献时在侧边栏保持 与pdf批注绑定，形成双链 黑色主题 vscode-markdown-editor 编辑器处理$$...$$时会多出一个空行，导致KaTeX渲染出错 在页面最后一行，按向下键，输入内容会直接跳到最上方 增加实时更新功能，目前cursor对文件进行修改后文件渲染不会更新，需要关掉重新打开才能看到 在页面添加Ctrl+F查找功能 zotero-explorer 星标条目 显示某个条目是否有独立笔记 pdf在cursor窗口的名字显示太长了 增加pdf中的搜索功能 ">
     <link rel="shortcut icon" href="/favicon2.ico" />
 
     </head>
@@ -289,6 +289,7 @@
       </ol>
     </li>
     <li><a href="#vscode-markdown-editor">vscode-markdown-editor</a></li>
+    <li><a href="#zotero-explorer">zotero-explorer</a></li>
   </ol>
 </nav>
         </div>
@@ -334,7 +335,7 @@
 			
 			
 						<span class="article-time--final-update">
-							最后更新于 <time class="article-time--updated" datetime="2026-03-18 08:59:18 &#43;0800 &#43;0800" title="2026-03-18 08:59:18 &#43;0800 &#43;0800">2026-03-18 08:59</time>
+							最后更新于 <time class="article-time--updated" datetime="2026-03-27 11:01:37 &#43;0800 &#43;0800" title="2026-03-27 11:01:37 &#43;0800 &#43;0800">2026-03-27 11:01</time>
 						</span>
 
 			
@@ -358,15 +359,23 @@
 <h2 id="mdnotes">mdnotes
 </h2><h3 id="to-do">TO-DO
 </h3><ol>
-<li><input checked="" disabled="" type="checkbox"> 固定整页、允许打开其他条目文献时在侧边栏保持</li>
+<li><input disabled="" type="checkbox"> 固定整页、允许打开其他条目文献时在侧边栏保持</li>
 <li><input disabled="" type="checkbox"> 与pdf批注绑定，形成双链</li>
 <li><input checked="" disabled="" type="checkbox"> 黑色主题</li>
 </ol>
 <h2 id="vscode-markdown-editor">vscode-markdown-editor
 </h2><ul>
+<li><input disabled="" type="checkbox"> 编辑器处理<code>$$...$$</code>时会多出一个空行，导致KaTeX渲染出错</li>
 <li><input disabled="" type="checkbox"> 在页面最后一行，按向下键，输入内容会直接跳到最上方</li>
 <li><input disabled="" type="checkbox"> 增加实时更新功能，目前cursor对文件进行修改后文件渲染不会更新，需要关掉重新打开才能看到</li>
 <li><input disabled="" type="checkbox"> 在页面添加Ctrl+F查找功能</li>
+</ul>
+<h2 id="zotero-explorer">zotero-explorer
+</h2><ul>
+<li><input disabled="" type="checkbox"> 星标条目</li>
+<li><input disabled="" type="checkbox"> 显示某个条目是否有独立笔记</li>
+<li><input disabled="" type="checkbox"> pdf在cursor窗口的名字显示太长了</li>
+<li><input disabled="" type="checkbox"> 增加pdf中的搜索功能</li>
 </ul>
 
 </section>

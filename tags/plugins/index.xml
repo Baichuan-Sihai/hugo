@@ -7,7 +7,7 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>百川</copyright>
-        <lastBuildDate>Wed, 18 Mar 2026 08:59:18 +0800</lastBuildDate><atom:link href="https://baichuan-blog.netlify.app/tags/plugins/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 27 Mar 2026 11:01:37 +0800</lastBuildDate><atom:link href="https://baichuan-blog.netlify.app/tags/plugins/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Plugins</title>
         <link>https://baichuan-blog.netlify.app/p/plugins/</link>
         <pubDate>Fri, 06 Mar 2026 11:04:28 +0800</pubDate>
@@ -22,15 +22,23 @@
 &lt;h2 id=&#34;mdnotes&#34;&gt;mdnotes
 &lt;/h2&gt;&lt;h3 id=&#34;to-do&#34;&gt;TO-DO
 &lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 固定整页、允许打开其他条目文献时在侧边栏保持&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 固定整页、允许打开其他条目文献时在侧边栏保持&lt;/li&gt;
 &lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 与pdf批注绑定，形成双链&lt;/li&gt;
 &lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 黑色主题&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2 id=&#34;vscode-markdown-editor&#34;&gt;vscode-markdown-editor
 &lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 编辑器处理&lt;code&gt;$$...$$&lt;/code&gt;时会多出一个空行，导致KaTeX渲染出错&lt;/li&gt;
 &lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 在页面最后一行，按向下键，输入内容会直接跳到最上方&lt;/li&gt;
 &lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 增加实时更新功能，目前cursor对文件进行修改后文件渲染不会更新，需要关掉重新打开才能看到&lt;/li&gt;
 &lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 在页面添加Ctrl+F查找功能&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;zotero-explorer&#34;&gt;zotero-explorer
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 星标条目&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 显示某个条目是否有独立笔记&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; pdf在cursor窗口的名字显示太长了&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 增加pdf中的搜索功能&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         </item>

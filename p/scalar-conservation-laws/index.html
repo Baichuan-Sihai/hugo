@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Riemann问题 考虑一维Riemann问题： \\[\\begin{cases}\\p_t \\bm{u}+\\p_x(\\bm{f}(\\bm{u})\\cdot\\bm{n})=0,\\quad (x,t)\\in\\R\\times \\R_+,\\\\\\bm{u}(x,0)=\\begin{cases}\\bm{u}_L&\\text{if } x<0,\\\\\\bm{u}_R&\\text{if }x>0. \\end{cases}\\end{cases}\\] 其中$(\\bm{u}_L,\\bm{u}_R)\\in \\mathcal{A}\\times\\mathcal{A}$，$\\mathcal{A}\\subset \\R^m$。\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="保极值与保正性 Linear Transport Equation $$ \\p_t u+\\vec{\\beta}\\cdot\\nabla u=0 $$考虑特征线\n$$ \\frac{d \\mathbf{x}(t)}{d t}=\\vec{\\beta}(\\mathbf{x},t) $$沿特征线有\n$$ \\frac{du(\\mathbf{x}(t))}{dt}=0 $$信息沿特征线传播，没有被创造或者消耗，所以能保极值，一般情况不保守恒。\nNonlinear Scalar Conservation Law $$ \\p_t u+\\mathrm{div}(\\mathbf{f}(u))=0 $$上式可以写成$\\p_t u+\\mathbf{f}'(u)\\cdot\\nabla(u)=0$，如果解存在且充分光滑，则$\\mathbf{f}'(u)=\\mathbf{f}'(u(\\mathbf{x},t))$，由前面对线性输运方程的分析可知保极值。对解间断的情形，考虑Kruzhkov 熵解方法，构造$|u - k|$，推导熵不等式：\n">
 <title>Scalar Conservation Laws</title>
 
 <link rel='canonical' href='https://baichuan-blog.netlify.app/p/scalar-conservation-laws/'>
 
 <link rel="stylesheet" href="/scss/style.min.aa4e5bb4873d63f64e9e948d6fe299ba8efe6c037f997068cf681de3fe33d371.css"><meta property='og:title' content="Scalar Conservation Laws">
-<meta property='og:description' content="Riemann问题 考虑一维Riemann问题： \\[\\begin{cases}\\p_t \\bm{u}+\\p_x(\\bm{f}(\\bm{u})\\cdot\\bm{n})=0,\\quad (x,t)\\in\\R\\times \\R_+,\\\\\\bm{u}(x,0)=\\begin{cases}\\bm{u}_L&\\text{if } x<0,\\\\\\bm{u}_R&\\text{if }x>0. \\end{cases}\\end{cases}\\] 其中$(\\bm{u}_L,\\bm{u}_R)\\in \\mathcal{A}\\times\\mathcal{A}$，$\\mathcal{A}\\subset \\R^m$。\n">
+<meta property='og:description' content="保极值与保正性 Linear Transport Equation $$ \\p_t u+\\vec{\\beta}\\cdot\\nabla u=0 $$考虑特征线\n$$ \\frac{d \\mathbf{x}(t)}{d t}=\\vec{\\beta}(\\mathbf{x},t) $$沿特征线有\n$$ \\frac{du(\\mathbf{x}(t))}{dt}=0 $$信息沿特征线传播，没有被创造或者消耗，所以能保极值，一般情况不保守恒。\nNonlinear Scalar Conservation Law $$ \\p_t u+\\mathrm{div}(\\mathbf{f}(u))=0 $$上式可以写成$\\p_t u+\\mathbf{f}'(u)\\cdot\\nabla(u)=0$，如果解存在且充分光滑，则$\\mathbf{f}'(u)=\\mathbf{f}'(u(\\mathbf{x},t))$，由前面对线性输运方程的分析可知保极值。对解间断的情形，考虑Kruzhkov 熵解方法，构造$|u - k|$，推导熵不等式：\n">
 <meta property='og:url' content='https://baichuan-blog.netlify.app/p/scalar-conservation-laws/'>
 <meta property='og:site_name' content='百川的小屋'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-08-26T15:42:37&#43;08:00'/><meta property='article:modified_time' content='2026-03-01T21:11:10&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-08-26T15:42:37&#43;08:00'/><meta property='article:modified_time' content='2026-03-27T11:01:37&#43;08:00'/>
 <meta name="twitter:title" content="Scalar Conservation Laws">
-<meta name="twitter:description" content="Riemann问题 考虑一维Riemann问题： \\[\\begin{cases}\\p_t \\bm{u}+\\p_x(\\bm{f}(\\bm{u})\\cdot\\bm{n})=0,\\quad (x,t)\\in\\R\\times \\R_+,\\\\\\bm{u}(x,0)=\\begin{cases}\\bm{u}_L&\\text{if } x<0,\\\\\\bm{u}_R&\\text{if }x>0. \\end{cases}\\end{cases}\\] 其中$(\\bm{u}_L,\\bm{u}_R)\\in \\mathcal{A}\\times\\mathcal{A}$，$\\mathcal{A}\\subset \\R^m$。\n">
+<meta name="twitter:description" content="保极值与保正性 Linear Transport Equation $$ \\p_t u+\\vec{\\beta}\\cdot\\nabla u=0 $$考虑特征线\n$$ \\frac{d \\mathbf{x}(t)}{d t}=\\vec{\\beta}(\\mathbf{x},t) $$沿特征线有\n$$ \\frac{du(\\mathbf{x}(t))}{dt}=0 $$信息沿特征线传播，没有被创造或者消耗，所以能保极值，一般情况不保守恒。\nNonlinear Scalar Conservation Law $$ \\p_t u+\\mathrm{div}(\\mathbf{f}(u))=0 $$上式可以写成$\\p_t u+\\mathbf{f}'(u)\\cdot\\nabla(u)=0$，如果解存在且充分光滑，则$\\mathbf{f}'(u)=\\mathbf{f}'(u(\\mathbf{x},t))$，由前面对线性输运方程的分析可知保极值。对解间断的情形，考虑Kruzhkov 熵解方法，构造$|u - k|$，推导熵不等式：\n">
     <link rel="shortcut icon" href="/favicon2.ico" />
 
     </head>
@@ -283,6 +283,14 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
+    <li><a href="#保极值与保正性">保极值与保正性</a>
+      <ol>
+        <li><a href="#linear-transport-equation">Linear Transport Equation</a></li>
+        <li><a href="#nonlinear-scalar-conservation-law">Nonlinear Scalar Conservation Law</a></li>
+        <li><a href="#linear-scalar-conservation-law">Linear Scalar Conservation Law</a></li>
+        <li><a href="#保极值保正性质与守恒性">保极值、保正性质与守恒性</a></li>
+      </ol>
+    </li>
     <li><a href="#riemann问题">Riemann问题</a>
       <ol>
         <li><a href="#熵不等式">熵不等式</a></li>
@@ -342,7 +350,7 @@
 			
 			
 						<span class="article-time--final-update">
-							最后更新于 <time class="article-time--updated" datetime="2026-03-01 21:11:10 &#43;0800 &#43;0800" title="2026-03-01 21:11:10 &#43;0800 &#43;0800">2026-03-01 21:11</time>
+							最后更新于 <time class="article-time--updated" datetime="2026-03-27 11:01:37 &#43;0800 &#43;0800" title="2026-03-27 11:01:37 &#43;0800 &#43;0800">2026-03-27 11:01</time>
 						</span>
 
 			
@@ -357,78 +365,173 @@
     <section class="article-content">
     
     
-    <h2 id="riemann问题">Riemann问题
-</h2><p>考虑一维Riemann问题：
-</p>
-\[\begin{cases}\p_t \bm{u}+\p_x(\bm{f}(\bm{u})\cdot\bm{n})=0,\quad (x,t)\in\R\times \R_+,\\\bm{u}(x,0)=\begin{cases}\bm{u}_L&\text{if } x<0,\\\bm{u}_R&\text{if }x>0. \end{cases}\end{cases}\]<p>
-其中$(\bm{u}_L,\bm{u}_R)\in \mathcal{A}\times\mathcal{A}$，$\mathcal{A}\subset \R^m$。</p>
+    <h2 id="保极值与保正性">保极值与保正性
+</h2><h3 id="linear-transport-equation">Linear Transport Equation
+</h3>$$
+\p_t u+\vec{\beta}\cdot\nabla u=0
+$$<p>考虑特征线</p>
+$$
+\frac{d \mathbf{x}(t)}{d t}=\vec{\beta}(\mathbf{x},t)
+$$<p>沿特征线有</p>
+$$
+\frac{du(\mathbf{x}(t))}{dt}=0
+$$<p>信息沿特征线传播，没有被创造或者消耗，所以能<strong>保极值</strong>，一般情况<strong>不保守恒</strong>。</p>
+<h3 id="nonlinear-scalar-conservation-law">Nonlinear Scalar Conservation Law
+</h3>$$
+\p_t u+\mathrm{div}(\mathbf{f}(u))=0
+$$<p>上式可以写成$\p_t u+\mathbf{f}'(u)\cdot\nabla(u)=0$，如果解存在且充分光滑，则$\mathbf{f}'(u)=\mathbf{f}'(u(\mathbf{x},t))$，由前面对线性输运方程的分析可知保极值。对解间断的情形，考虑Kruzhkov 熵解方法，构造$|u - k|$，推导熵不等式：</p>
+$$
+\partial_t |u - k| + \operatorname{div}\big(\operatorname{sgn}(u-k)(f(u) - f(k))\big) \le 0
+$$<p>取$k=M$, 则</p>
+$$
+\partial_t (u-M)^+ + \operatorname{div}(\cdots) \le 0
+$$<p>对空间积分：</p>
+$$
+\frac{d}{dt} \int_{\mathbb{R}^d} (u-M)^+ dx \le 0
+$$<p>由于初值满足$(u_0 - M)^+ = 0$, 因此：</p>
+$$
+\int (u-M)^+ dx = 0
+$$<p>激波和稀疏波只是压缩或展开，让解更集中或者更稀疏，不会改变极值。<strong>保极值</strong>且<strong>保守恒</strong>。</p>
+<h3 id="linear-scalar-conservation-law">Linear Scalar Conservation Law
+</h3><p>∂tu+div(β(x,t)u)=0上式可写成$\p_t u+\vec{\beta}\cdot\nabla u+u\mathrm{div}\vec{\beta}=0$，用特征线法得到</p>
+$$
+\frac{d u(\mathbf{x}(t))}{dt}=-\mathrm{div}(\vec{\beta}(\mathbf{x}(t),t))u
+$$<p>于是</p>
+$$
+u(\mathbf{x}(t))=u_0(\mathbf{x}(0))e^{-\int_{0}^t \mathrm{div}(\vec{\beta}(\mathbf{x}(s),s))ds}
+$$<p>因此，只要初值非负，演化过程中能够<strong>保正</strong>，但在速度场散度非0的情况下，可能产生汇聚或发散，从而<strong>不保极值</strong>。<strong>守恒性</strong>则是由方程形式保证（积分一下即可验证）。</p>
+<h3 id="保极值保正性质与守恒性">保极值、保正性质与守恒性
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>Equation</th>
+          <th>保极值</th>
+          <th>保正</th>
+          <th>保守恒</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Linear transport equation</td>
+          <td>✔</td>
+          <td>✔</td>
+          <td>✘</td>
+      </tr>
+      <tr>
+          <td>Nonlinear scalar conservation law</td>
+          <td>✔</td>
+          <td>✔</td>
+          <td>✔</td>
+      </tr>
+      <tr>
+          <td>Linear scalar conservation law</td>
+          <td>✘</td>
+          <td>✔</td>
+          <td>✔</td>
+      </tr>
+  </tbody>
+</table></div>
+<h2 id="riemann问题">Riemann问题
+</h2><p>考虑一维Riemann问题：</p>
+$$
+\begin{cases}\p_t \bm{u}+\p_x(\bm{f}(\bm{u})\cdot\bm{n})=0,\quad (x,t)\in\R\times \R_+,\\\bm{u}(x,0)=\begin{cases}\bm{u}_L&\text{if } x<0,\\\bm{u}_R&\text{if }x>0. \end{cases}\end{cases}
+$$<p>其中$(\bm{u}_L,\bm{u}_R)\in \mathcal{A}\times\mathcal{A}$，$\mathcal{A}\subset \R^m$。</p>
 <p>When the system is strictly hyperbolic with smooth ﬂux and all the characteristic ﬁelds are either genuinely non-linear or linearly degenerate, it is possible to show that there exists $\delta> 0$ such that the Riemann problem has a unique self-similar weak solution in Lax’s form for any initial data such that
-\(\norm{\cuti{u}_L-\cuti{u}_R}_{l^2}\le\delta\).
-In particular, there are $2m$ numbers
-</p>
-\[\lambda_1^-\le\lambda_1^+\le\lambda_2^-\le\lambda_2^+\le \cdots\le \lambda_m^-\le\lambda_m^+\]<p>
-defining up to $2m+1$ sectors (some could be empty) in the $(x,t)$ plane[1].</p>
-<p>定义最大传播速度$\lambda_{\max}(\bm{u},\bm{u}_L,\bm{u}_R):=\max(|\lambda_1^-|,|\lambda_m^+|)$，则对$t\ge 0$，有
-</p>
-\[\bm{u}(x,t)=\begin{cases}\bm{u}_L&\text{if }x\le -t\lambda_{\max},\\\bm{u}_R & \text{if } x\ge t\lambda_{\max}. \end{cases}\]<p><strong>引理：</strong> 定义
-</p>
-\[\bar{\bm{u}}(t,\bm{n},\bm{u}_L,\bm{u}_R):=\int_{-\f12}^{\f12}\bm{u}(\bm{n},\bm{u}_L,\bm{u}_R)(x,t)\mathrm{d}x,\tag{1}\]<p>
-并假设$t\lambda_{\max}(\bm{n},\bm{u}_L,\bm{u}_R)\le \f12$，则
-</p>
-\[\bar{\bm{u}}(t,\bm{n},\bm{u}_L,\bm{u}_R)=\f12(\bm{u}_L+\bm{u}_R)-t(\bm{f}(\bm{u}_R)-\bm{f}(\bm{u}_L))\cdot\bm{n}.\tag{2}\]<p><strong>Proof：</strong>
-对于$t\lambda_{\max}(\bm{n},\bm{u}_L,\bm{u}_R)\le \f12$，$\bm{u}(-\f12,t)=\bm{u}_L$，$\bm{u}(\f12,t)=\bm{u}_R$，于是
-</p>
-\[\int_{-\f12}^{\f12}\partial_t \bm{u}\mathrm{d}x=-\int_{-\f12}^{\f12}\p_x(\bm{f}(\bm{u})\cdot \bm{n})\mathrm{d}x=-(\bm{f}(\bm{u}_R)-\bm{f}(\bm{u}_L))\cdot \bm{n}.\]<p>
-右端为常数，因此
-</p>
-\[\begin{aligned}
-\int_{-\f12}^{\f12}\bm{u}(x,t)\mathrm{d}x=&\int_{-\f12}^{\f12}\bm{u}(x,0)\mathrm{d}x-t(\bm{f}(\bm{u}_R)-\bm{f}(\bm{u}_L))\cdot \bm{n}\\
-=&\f12(\bm{u}_L+\bm{u}_R)-t(\bm{f}(\bm{u}_R)-\bm{f}(\bm{u}_L))\cdot\bm{n}.
-\end{aligned}\]<h3 id="熵不等式">熵不等式
+$\norm{\cuti{u}_L-\cuti{u}_R}_{l^2}\le\delta$.
+In particular, there are $2m$ numbers</p>
+$$
+\lambda_1^-\le\lambda_1^+\le\lambda_2^-\le\lambda_2^+\le \cdots\le \lambda_m^-\le\lambda_m^+
+$$<p>defining up to $2m+1$ sectors (some could be empty) in the $(x,t)$ plane[1].</p>
+<p>定义最大传播速度$\lambda_{\max}(\bm{u},\bm{u}_L,\bm{u}_R):=\max(|\lambda_1^-|,|\lambda_m^+|)$，则对$t\ge 0$，有</p>
+$$
+\bm{u}(x,t)=\begin{cases}\bm{u}_L&\text{if }x\le -t\lambda_{\max},\\\bm{u}_R & \text{if } x\ge t\lambda_{\max}. \end{cases}
+$$<p><strong>引理：</strong> 定义</p>
+$$
+\bar{\bm{u}}(t,\bm{n},\bm{u}_L,\bm{u}_R):=\int_{-\frac12}^{\frac12}\bm{u}(\bm{n},\bm{u}_L,\bm{u}_R)(x,t)\mathrm{d}x,\tag{1}
+$$<p>并假设$t\lambda_{\max}(\bm{n},\bm{u}_L,\bm{u}_R)\le \frac12$，则</p>
+$$
+\bar{\bm{u}}(t,\bm{n},\bm{u}_L,\bm{u}_R)=\frac12(\bm{u}_L+\bm{u}_R)-t(\bm{f}(\bm{u}_R)-\bm{f}(\bm{u}_L))\cdot\bm{n}.\tag{2}
+$$<p><strong>Proof：</strong>
+对于$t\lambda_{\max}(\bm{n},\bm{u}_L,\bm{u}_R)\le \frac12$，$\bm{u}(-\frac12,t)=\bm{u}_L$，$\bm{u}(\frac12,t)=\bm{u}_R$，于是</p>
+$$
+\int_{-\frac12}^{\frac12}\partial_t \bm{u}\mathrm{d}x=-\int_{-\frac12}^{\frac12}\p_x(\bm{f}(\bm{u})\cdot \bm{n})\mathrm{d}x=-(\bm{f}(\bm{u}_R)-\bm{f}(\bm{u}_L))\cdot \bm{n}.
+$$<p>右端为常数，因此</p>
+$$
+\begin{aligned}
+\int_{-\frac12}^{\frac12}\bm{u}(x,t)\mathrm{d}x=&\int_{-\frac12}^{\frac12}\bm{u}(x,0)\mathrm{d}x-t(\bm{f}(\bm{u}_R)-\bm{f}(\bm{u}_L))\cdot \bm{n}\\
+=&\frac12(\bm{u}_L+\bm{u}_R)-t(\bm{f}(\bm{u}_R)-\bm{f}(\bm{u}_L))\cdot\bm{n}.
+\end{aligned}
+$$<h3 id="熵不等式">熵不等式
 </h3><p>我们要证明如下不等式成立：</p>
-$$\eta(\bar{\mathbf{u}}(t, \mathbf{n}, \mathbf{u}_L, \mathbf{u}_R)) \leq \frac{1}{2}(\eta(\mathbf{u}_L) + \eta(\mathbf{u}_R)) - t(\mathbf{q}(\mathbf{u}_R)\cdot\mathbf{n} - \mathbf{q}(\mathbf{u}_L)\cdot\mathbf{n})$$<ol>
+$$
+\eta(\bar{\mathbf{u}}(t, \mathbf{n}, \mathbf{u}_L, \mathbf{u}_R)) \leq \frac{1}{2}(\eta(\mathbf{u}_L) + \eta(\mathbf{u}_R)) - t(\mathbf{q}(\mathbf{u}_R)\cdot\mathbf{n} - \mathbf{q}(\mathbf{u}_L)\cdot\mathbf{n})
+$$<ol>
 <li>基本假设与定义</li>
 </ol>
 <ul>
-<li><strong>熵对性质</strong>：设 $(\eta, \mathbf{q})$ 为系统的熵对，满足熵不等式：
-$$  \partial_t \eta(\mathbf{u}) + \partial_x (\mathbf{q}(\mathbf{u}) \cdot \mathbf{n}) \leq 0  $$ 对于光滑解取等号，对于包含激波的弱解取严格不等号。</li>
-<li><strong>Riemann 扇区平均值</strong>：定义 $\bar{\mathbf{u}}$ 为自相似变量 $\xi = x/t$ 在区间 $[-\frac{1}{2}, \frac{1}{2}]$ 上的积分平均值：
-$$  \bar{\mathbf{u}} = \int_{-\frac{1}{2}}^{\frac{1}{2}} \mathbf{u}(\xi) \, d\xi  $$</li>
+<li>
+<p><strong>熵对性质</strong>：设 $(\eta, \mathbf{q})$ 为系统的熵对，满足熵不等式：</p>
+$$
+  \partial_t \eta(\mathbf{u}) + \partial_x (\mathbf{q}(\mathbf{u}) \cdot \mathbf{n}) \leq 0
+  $$<p>对于光滑解取等号，对于包含激波的弱解取严格不等号。</p>
+</li>
+<li>
+<p><strong>Riemann 扇区平均值</strong>：定义 $\bar{\mathbf{u}}$ 为自相似变量 $\xi = x/t$ 在区间 $[-\frac{1}{2}, \frac{1}{2}]$ 上的积分平均值：</p>
+$$
+  \bar{\mathbf{u}} = \int_{-\frac{1}{2}}^{\frac{1}{2}} \mathbf{u}(\xi) \, d\xi
+  $$</li>
 </ul>
 <ol start="2">
-<li>积分形式的熵不等式将熵不等式写为关于自相似变量 $\xi$ 的形式。由于 $\partial_t = -\frac{\xi}{t} \partial_\xi$ 且 $\partial_x = \frac{1}{t} \partial_\xi$，代入得：
-$$-\frac{\xi}{t} \partial_\xi \eta(\mathbf{u}) + \frac{1}{t} \partial_\xi (\mathbf{q}(\mathbf{u}) \cdot \mathbf{n}) \leq 0$$整理后：
-$$\partial_\xi \left( \mathbf{q}(\mathbf{u}) \cdot \mathbf{n} - \xi \eta(\mathbf{u}) \right) \leq 0$$</li>
-<li>在扇区上积分对上述不等式在区间 $[-\frac{1}{2}, \frac{1}{2}]$ 上积分：
-$$\int_{-\frac{1}{2}}^{\frac{1}{2}} \partial_\xi \left( \mathbf{q}(\mathbf{u}) \cdot \mathbf{n} - \xi \eta(\mathbf{u}) \right) d\xi \leq 0$$利用牛顿-莱布尼茨公式计算积分：
-$$\left[ \mathbf{q}(\mathbf{u}) \cdot \mathbf{n} - \xi \eta(\mathbf{u}) \right]_{\xi=-\frac{1}{2}}^{\xi=\frac{1}{2}} \leq 0$$展开边界项：
-$$\left( \mathbf{q}(\mathbf{u}_R) \cdot \mathbf{n} - \frac{1}{2} \eta(\mathbf{u}_R) \right) - \left( \mathbf{q}(\mathbf{u}_L) \cdot \mathbf{n} + \frac{1}{2} \eta(\mathbf{u}_L) \right) \leq 0$$整理得：
-$$\mathbf{q}(\mathbf{u}_R) \cdot \mathbf{n} - \mathbf{q}(\mathbf{u}_L) \cdot \mathbf{n} \leq \frac{1}{2} (\eta(\mathbf{u}_L) + \eta(\mathbf{u}_R))$$
-4. 利用熵的凸性由于 $\eta$ 是凸函数，根据 Jensen 不等式，积分平均值的熵不大于熵的平均值：
-$$\eta(\bar{\mathbf{u}}) \leq \int_{-\frac{1}{2}}^{\frac{1}{2}} \eta(\mathbf{u}(\xi)) \, d\xi$$结合步骤 3 的结果，我们将不等式两边乘以 $t$ 并移项，得到：
-$$\eta(\bar{\mathbf{u}}) \leq \frac{1}{2}(\eta(\mathbf{u}_L) + \eta(\mathbf{u}_R)) - t(\mathbf{q}(\mathbf{u}_R)\cdot\mathbf{n} - \mathbf{q}(\mathbf{u}_L)\cdot\mathbf{n})$$
-证毕。</li>
+<li>
+<p>积分形式的熵不等式将熵不等式写为关于自相似变量 $\xi$ 的形式。由于 $\partial_t = -\frac{\xi}{t} \partial_\xi$ 且 $\partial_x = \frac{1}{t} \partial_\xi$，代入得：</p>
+$$
+   -\frac{\xi}{t} \partial_\xi \eta(\mathbf{u}) + \frac{1}{t} \partial_\xi (\mathbf{q}(\mathbf{u}) \cdot \mathbf{n}) \leq 0
+   $$<p>整理后：</p>
+$$
+   \partial_\xi \left( \mathbf{q}(\mathbf{u}) \cdot \mathbf{n} - \xi \eta(\mathbf{u}) \right) \leq 0
+   $$</li>
+<li>
+<p>在扇区上积分对上述不等式在区间 $[-\frac{1}{2}, \frac{1}{2}]$ 上积分：</p>
+$$
+   \int_{-\frac{1}{2}}^{\frac{1}{2}} \partial_\xi \left( \mathbf{q}(\mathbf{u}) \cdot \mathbf{n} - \xi \eta(\mathbf{u}) \right) d\xi \leq 0
+   $$<p>利用牛顿-莱布尼茨公式计算积分：</p>
+$$
+   \left[ \mathbf{q}(\mathbf{u}) \cdot \mathbf{n} - \xi \eta(\mathbf{u}) \right]_{\xi=-\frac{1}{2}}^{\xi=\frac{1}{2}} \leq 0
+   $$<p>展开边界项：</p>
+$$
+   \left( \mathbf{q}(\mathbf{u}_R) \cdot \mathbf{n} - \frac{1}{2} \eta(\mathbf{u}_R) \right) - \left( \mathbf{q}(\mathbf{u}_L) \cdot \mathbf{n} + \frac{1}{2} \eta(\mathbf{u}_L) \right) \leq 0
+   $$<p>整理得：</p>
+$$
+   \mathbf{q}(\mathbf{u}_R) \cdot \mathbf{n} - \mathbf{q}(\mathbf{u}_L) \cdot \mathbf{n} \leq \frac{1}{2} (\eta(\mathbf{u}_L) + \eta(\mathbf{u}_R))
+   $$<ol start="4">
+<li>利用熵的凸性由于 $\eta$ 是凸函数，根据 Jensen 不等式，积分平均值的熵不大于熵的平均值：</li>
+</ol>
+$$
+   \eta(\bar{\mathbf{u}}) \leq \int_{-\frac{1}{2}}^{\frac{1}{2}} \eta(\mathbf{u}(\xi)) \, d\xi
+   $$<p>结合步骤 3 的结果，我们将不等式两边乘以 $t$ 并移项，得到：</p>
+$$
+   \eta(\bar{\mathbf{u}}) \leq \frac{1}{2}(\eta(\mathbf{u}_L) + \eta(\mathbf{u}_R)) - t(\mathbf{q}(\mathbf{u}_R)\cdot\mathbf{n} - \mathbf{q}(\mathbf{u}_L)\cdot\mathbf{n})
+   $$<p>证毕。</p>
+</li>
 </ol>
 <h2 id="保极值方法">保极值方法
-</h2><p>FCT实际上并不保持狭义的局部极值原理（$\min_{j\in\mathcal{I}(S_i)}\rho_j^{n}\le\rho_i^{n+1}\le \max_{j\in\mathcal{I}(S_i)}\rho_j^{n}$），
-</p>
-\[\min_{k\in\mathcal{I}(S_j),j\in\mathcal{I}(S_i)}\rho_k^{n}\le \min_{j\in\mathcal{I}(S_i)}\rho_j^{n+1,L}\le\rho_i^{n+1,FCT}\le \max_{j\in\mathcal{I}(S_i)}\rho_j^{n+1,L}\le \max_{k\in\mathcal{I}(S_j),j\in\mathcal{I}(S_i)}\rho_k^{n},\]<p>
-其因采用两步方法（先获得低阶解，随后通过修正通量来使解在保持极值的基础上尽可能贴近高阶解）而扩大了stencil的大小[2]。</p>
-<p>文章[3]取消两步分裂方法，获得真正的保局部极值的方法，且构造的通量修正\(f_{ij}^*\)关于自由度连续（the continuous dependence of the limited fluxes \(f^*_{ij}\) on the degrees of freedom implies existence of a solution to the nonlinear discrete problem by Brouwer’s fixed-point theorem）。</p>
-<p>文章[4]中在构造可压缩Euler系统的高阶保极值格式时通过对$E$和$\frac12|\bm{u}|^2$的界做合适的设计以保证最终得到的解能满足$e={\rho}^{-1}E-\f12|\mathbf{v}|^2\ge0$。</p>
+</h2><p>FCT实际上并不保持狭义的局部极值原理（$\min_{j\in\mathcal{I}(S_i)}\rho_j^{n}\le\rho_i^{n+1}\le \max_{j\in\mathcal{I}(S_i)}\rho_j^{n}$），</p>
+$$
+\min_{k\in\mathcal{I}(S_j),j\in\mathcal{I}(S_i)}\rho_k^{n}\le \min_{j\in\mathcal{I}(S_i)}\rho_j^{n+1,L}\le\rho_i^{n+1,FCT}\le \max_{j\in\mathcal{I}(S_i)}\rho_j^{n+1,L}\le \max_{k\in\mathcal{I}(S_j),j\in\mathcal{I}(S_i)}\rho_k^{n},
+$$<p>其因采用两步方法（先获得低阶解，随后通过修正通量来使解在保持极值的基础上尽可能贴近高阶解）而扩大了stencil的大小[2]。</p>
+<p>文章[3]取消两步分裂方法，获得真正的保局部极值的方法，且构造的通量修正$f_{ij}^*$关于自由度连续（the continuous dependence of the limited fluxes $f^*_{ij}$ on the degrees of freedom implies existence of a solution to the nonlinear discrete problem by Brouwer’s fixed-point theorem）。</p>
+<p>文章[4]中在构造可压缩Euler系统的高阶保极值格式时通过对$E$和$\frac12|\bm{u}|^2$的界做合适的设计以保证最终得到的解能满足$e={\rho}^{-1}E-\frac12|\mathbf{v}|^2\ge0$。</p>
 <h2 id="specific-entropy">Specific entropy
-</h2><p>记比熵(specific entropy)为$s=s(\rho,e)$, 满足热力学恒等式[6]：
-</p>
+</h2><p>记比熵(specific entropy)为$s=s(\rho,e)$, 满足热力学恒等式[6]：</p>
 $$
 Tds=de-p\rho^{-2}d\rho,
-$$<p>
-其中$e:=\rho^{-1}E-\frac12|\mathbf{v}|^2$为比内能(specific internal energy)。
-由此关系可以得到
-</p>
+$$<p>其中$e:=\rho^{-1}E-\frac12|\mathbf{v}|^2$为比内能(specific internal energy)。
+由此关系可以得到</p>
 $$
 \begin{cases}s_e=T^{-1},\\
 s_{\rho}=-p\rho^{-2}T^{-1},\quad \text{i.e., } p = -\rho^{2}s_{\rho}s_e^{-1}.
-\end{cases}$$<p><img src="/p/scalar-conservation-laws/image.png"
+\end{cases}
+$$<p><img src="/p/scalar-conservation-laws/image.png"
 	width="1516"
 	height="716"
 	srcset="/p/scalar-conservation-laws/image_hu_e5ea74077b18b35.png 480w, /p/scalar-conservation-laws/image_hu_65cbb14a9923a633.png 1024w"
@@ -442,43 +545,36 @@ s_{\rho}=-p\rho^{-2}T^{-1},\quad \text{i.e., } p = -\rho^{2}s_{\rho}s_e^{-1}.
 		data-flex-basis="508px"
 	
 ></p>
-<p><strong>注：</strong> 对于多方气体(polytropic ideal gas)，比熵为
-</p>
+<p><strong>注：</strong> 对于多方气体(polytropic ideal gas)，比熵为</p>
 $$
 s(\rho,e)=s_0+c_v\ln(e\rho^{-(\gamma-1)}).
 $$<h3 id="quasiconcavity-of">Quasiconcavity of $s$
-</h3><p><strong>定义（拟凹性）</strong><br>
-给定一个凸集 $\mathcal{A} \subset \mathbb{R}^m$，我们称函数 $\Psi: \mathcal{A} \to \mathbb{R}$ 是<strong>拟凹的</strong>，如果它的每一个上水平集都是凸集；也就是说，对任意 $\lambda \in \mathbb{R}$（在 $\Psi$ 的值域内），集合<br>
-</p>
+</h3><p><strong>定义（拟凹性）</strong>
+给定一个凸集 $\mathcal{A} \subset \mathbb{R}^m$，我们称函数 $\Psi: \mathcal{A} \to \mathbb{R}$ 是<strong>拟凹的</strong>，如果它的每一个上水平集都是凸集；也就是说，对任意 $\lambda \in \mathbb{R}$（在 $\Psi$ 的值域内），集合</p>
 $$
 L_\lambda(\Psi) := \{ \mathbf{U} \in \mathcal{A} : \Psi(\mathbf{U}) \geq \lambda \}
-$$<p><br>
-是凸集。</p>
+$$<p>是凸集。</p>
 <p>定义函数$\varphi:(\rho,\mathbf{m},E)\mapsto (\rho, e)$, 即从守恒变量映到$s$的自变量，接着我们定义函数$G:=s\circ\varphi$，则$G$是关于守恒变量的函数，借此我们可以讨论熵在守恒变量下的拟凹性。</p>
-<p>定义
-</p>
+<p>定义</p>
 $$
 \alpha:=d\varphi_2=de=(\rho^{-3}|\mathbf{m}|^2-\rho^{-2}E)d\rho-\rho^{-2}\mathbf{m}\cdot d\mathbf{m}+\rho^{-1}dE
 $$<p><strong>从矩阵视角来看二次型$X^TD^2GX^T$</strong>,
-根据复合函数求导法则：
-</p>
-$$D^2G=(D\varphi)^TD^2S(D\varphi)+\sum_{i=1}^2\partial _iSD^2\varphi_i,$$<p>
-于是
-</p>
+根据复合函数求导法则：</p>
+$$
+D^2G=(D\varphi)^TD^2S(D\varphi)+\sum_{i=1}^2\partial _iSD^2\varphi_i,
+$$<p>于是</p>
 $$
 X^TD^2GX=Y^TD^2SY+\sum_{i=1}^2\partial_iSX^TD^2\varphi_iX,
-$$<p>
-其中$Y=D\varphi X=(d\rho,de)^T$。</p>
-<p><strong>从微分形式视角来看二次型</strong>，
-</p>
-$$dG=s_{\rho}d\rho +s_ede$$<p>
-</p>
-$$\begin{aligned}
+$$<p>其中$Y=D\varphi X=(d\rho,de)^T$。</p>
+<p><strong>从微分形式视角来看二次型</strong>，</p>
+$$
+dG=s_{\rho}d\rho +s_ede
+$$$$
+\begin{aligned}
 d^2G=&s_{\rho\rho}(d\rho)^2+s_{\rho e}d\rho de+s_{\rho}d^2\rho+s_{ee}(de)^2+s_{e\rho}d\rho de+s_ed^2e\\
 =&Y^TD^2SY+s_ed^2e,
-\end{aligned}$$<p>
-其中$d^2\rho=0$(关于守恒变量线性), $d^2e\ne 0$(关于守恒变量非线性)。
-</p>
+\end{aligned}
+$$<p>其中$d^2\rho=0$(关于守恒变量线性), $d^2e\ne 0$(关于守恒变量非线性)。</p>
 $$
 \begin{aligned}
 d^2e=&d\alpha\\
@@ -489,51 +585,37 @@ $$<p>由<strong>引理1</strong>我们可以看到，为了证明严格拟凹性
 考虑切空间$dG^{\perp}:=\{X=(d\rho,d\mathbf{m},dE)\in\mathbb{R}^3: Ds\cdot D\varphi X=0\}$，其上
 有$
 s_\rho d\varphi_1 +s_ed\varphi_2=0,$
-即
-</p>
+即</p>
 $$
 s_{\rho} d\rho+s_e\alpha=0\text{ or }\alpha = -s_{\rho}s_e^{-1}d\rho=\rho^{-2}pd\rho.
-$$<p>
-于是(将$de$的项化成与$d\rho$相关)
-</p>
+$$<p>于是(将$de$的项化成与$d\rho$相关)</p>
 $$
 \begin{aligned}
 X^TD^2GX=&s_{\rho\rho}(d\rho)^2+2s_{\rho e}\alpha d\rho+s_{ee}\alpha^2-s_e(2\rho^{-1}\alpha d\rho+|\rho^{-1}d\mathbf{m}-\rho^{-2}\mathbf{m}d\rho|^2)\\
 =&(s_{\rho\rho}+2\rho^{-2}p s_{\rho e}+\rho^{-4}p^2s_{ee})(d\rho)^2-\rho^{-2}s_e(|d\mathbf{m}-vd\rho|^2+2\rho^{-1}p(d\rho)^2)
 \end{aligned}
-$$<p>
-由于$s_e>0$, $X^TD^2GX< 0$的一个充分条件是：
-</p>
+$$<p>由于$s_e>0$, $X^TD^2GX< 0$的一个充分条件是：</p>
 $$
 s_{\rho\rho}+2\rho^{-2}ps_{\rho e}+\rho^{-4}p^2s_{ee}<2\rho^{-3}s_ep,
-$$<p>
-即
-</p>
+$$<p>即</p>
 $$
 2\rho p s_{e}\ge \rho^4s_{\rho\rho}+2\rho^2ps_{\rho e}+p^2s_{ee}.
-$$<p>
-由于$\rho^2s_{\rho}+ps_e=0$, 求导得
-</p>
+$$<p>由于$\rho^2s_{\rho}+ps_e=0$, 求导得</p>
 $$
 \begin{cases}
 2\rho s_{\rho}+\rho^2s_{\rho\rho}+p_{\rho}s_{e}+ps_{\rho e}=0\\
 \rho^2s_{\rho e}+p_es_e+ps_{ee}=0
 \end{cases}
-$$<p>
-结合$s_{\rho}=-\rho^{-2}ps_e$可将原不等式化为
-</p>
+$$<p>结合$s_{\rho}=-\rho^{-2}ps_e$可将原不等式化为</p>
 $$
 \rho^2p_{\rho}+pp_e> 0.\tag{1}
-$$<p>
-在$dG^{\perp}$上有
-</p>
+$$<p>在$dG^{\perp}$上有</p>
 $$
 dp = p_{\rho}d\rho+p_ede=(p_{\rho}+\rho^{-2}pp_e)d\rho,
-$$<p>
-于是声速
-</p>
-$$c^2={\frac{dp}{d\rho}}=\rho^{-2}(\rho^2p_{\rho}+pp_e)$$<p>
-也即不等式(1)等价于声速满足$c^2> 0$，等价于Euler系统是严格双曲的。</p>
+$$<p>于是声速</p>
+$$
+c^2={\frac{dp}{d\rho}}=\rho^{-2}(\rho^2p_{\rho}+pp_e)
+$$<p>也即不等式(1)等价于声速满足$c^2> 0$，等价于Euler系统是严格双曲的。</p>
 <hr>
 <blockquote>
 <p><strong>引理1(局部凸性判据)</strong>：
@@ -547,10 +629,10 @@ $$c^2={\frac{dp}{d\rho}}=\rho^{-2}(\rho^2p_{\rho}+pp_e)$$<p>
 <h3 id="引理1证明过程反证法">引理1证明过程（反证法）
 </h3><p><strong>1. 假设反面</strong>
 假设 $A_r$ <strong>不是</strong>严格凸集。
-则存在两点 $u_1, u_2 \in A_r$ ($u_1 \neq u_2$) 以及参数 $t_0 \in (0,1)$，使得线段上的点 $u_{mid} = (1-t_0)u_1 + t_0 u_2$ 满足：
-</p>
-$$ G(u_{mid}) \leq r $$<p>
-<em>(注：已知 $G(u_1) \geq r, G(u_2) \geq r$)</em></p>
+则存在两点 $u_1, u_2 \in A_r$ ($u_1 \neq u_2$) 以及参数 $t_0 \in (0,1)$，使得线段上的点 $u_{mid} = (1-t_0)u_1 + t_0 u_2$ 满足：</p>
+$$
+G(u_{mid}) \leq r
+$$<p><em>(注：已知 $G(u_1) \geq r, G(u_2) \geq r$)</em></p>
 <p><strong>2. 构造单变量函数</strong>
 定义沿该线段的函数 $h(t) = G((1-t)u_1 + t u_2)$，其中 $t \in [0,1]$。
 令方向向量 $v = u_2 - u_1 \neq 0$。
@@ -559,14 +641,14 @@ $$ G(u_{mid}) \leq r $$<p>
 根据连续函数的性质，$h(t)$ 在开区间 $(0,1)$ 内必存在一个<strong>局部极小值点</strong> $t^{\ast}$。
 在该点 $t^{\ast}$ 处，必须满足微积分中的极值必要条件：</p>
 <ul>
-<li><strong>一阶条件</strong>：$h\'(t^*) = 0$</li>
-<li><strong>二阶条件</strong>：$h\'\'(t^*) \geq 0$</li>
+<li><strong>一阶条件</strong>：$h'(t^*) = 0$</li>
+<li><strong>二阶条件</strong>：$h''(t^{\ast}) \geq 0$</li>
 </ul>
 <p><strong>4. 展开导数项</strong>
 利用链式法则计算 $h(t)$ 的导数：</p>
 <ul>
-<li>$h\'(t) = \nabla G(\gamma(t)) \cdot v = dG(\gamma(t))(v)$</li>
-<li>$h\'\'(t) = v^T D^2 G(\gamma(t)) v$</li>
+<li>$h'(t) = \nabla G(\gamma(t)) \cdot v = dG(\gamma(t))(v)$</li>
+<li>$h''(t) = v^T D^2 G(\gamma(t)) v$</li>
 </ul>
 <p>代入 $t^*$ 处的条件：</p>
 <ol>
@@ -578,10 +660,10 @@ $$ G(u_{mid}) \leq r $$<p>
 <blockquote>
 <p>对所有满足 $dG(u)(X)=0$ 的非零向量 $X$，都有 $X^T D^2 G(u) X < 0$。</p>
 </blockquote>
-<p>由于 $v \neq 0$ 且 $dG(u^{\ast})(v)=0$，根据题设应有：
-</p>
-$$ v^T D^2 G(u^*) v < 0 $$<p>
-这与步骤 4 中由极小值推导出的 $v^T D^2 G(u^*) v \geq 0$ <strong>直接矛盾</strong>。</p>
+<p>由于 $v \neq 0$ 且 $dG(u^{\ast})(v)=0$，根据题设应有：</p>
+$$
+v^T D^2 G(u^*) v < 0
+$$<p>这与步骤 4 中由极小值推导出的 $v^T D^2 G(u^*) v \geq 0$ <strong>直接矛盾</strong>。</p>
 <p><strong>6. 结论</strong>
 假设错误。因此，线段上任意内点的函数值必须严格大于 $r$。
 即 $A_r$ 是<strong>严格凸集</strong>。 $\square$</p>
@@ -589,11 +671,12 @@ $$ v^T D^2 G(u^*) v < 0 $$<p>
 </h3><blockquote>
 <p>$\mathcal{D}:=\\{\mathbf{U}:=(\rho,\mathbf{m},E)|\rho >0, e>0, s\ge r\\}$是凸集[6,Remark 4.2]。</p>
 </blockquote>
-<p>考虑$\mathcal{A}=\\{\mathbf{U}:=(\rho,\mathbf{m},E)|\rho >0\\}$, 令$\Psi(\mathbf{U})=\rho e$是凹函数(当$\rho>0$时,
-</p>
-$$\nabla^2\Psi = \begin{pmatrix}-\rho^{-3}|m|^2&\rho^{-2}m&0\\
+<p>考虑$\mathcal{A}=\\{\mathbf{U}:=(\rho,\mathbf{m},E)|\rho >0\\}$, 令$\Psi(\mathbf{U})=\rho e$是凹函数(当$\rho>0$时,</p>
+$$
+\nabla^2\Psi = \begin{pmatrix}-\rho^{-3}|m|^2&\rho^{-2}m&0\\
 \rho^{-2}m^T&-\rho^{-1}&0\\
-0&0&0\end{pmatrix}$$<p>是半负定矩阵)，所以$\\{\mathbf{U}:=(\rho,\mathbf{m},E)|\rho >0,e>0\\}$是凸集，再结合$s$是拟凹函数，可知其上水平集是凸集，因此$\mathcal{D}$是凸集。</p>
+0&0&0\end{pmatrix}
+$$<p>是半负定矩阵)，所以$\\{\mathbf{U}:=(\rho,\mathbf{m},E)|\rho >0,e>0\\}$是凸集，再结合$s$是拟凹函数，可知其上水平集是凸集，因此$\mathcal{D}$是凸集。</p>
 <h2 id="参考文献">参考文献
 </h2><ol>
 <li><a class="link" href="https://www.jianguoyun.com/p/DeMlom8QlsqoDRjp7IcGIAA"  target="_blank" rel="noopener"
