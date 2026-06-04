@@ -290,7 +290,7 @@
   <ol>
     <li><a href="#31-格式定义">3.1 格式定义</a></li>
     <li><a href="#32-pwd-选取">3.2 PWD 选取</a></li>
-    <li><a href="#33-矩阵形式与--的构成">3.3 矩阵形式与  的构成</a></li>
+    <li><a href="#33-矩阵形式与--的构成">3.3 矩阵形式与 \(M^{(k)}\) 的构成</a></li>
     <li><a href="#34-格式性质">3.4 格式性质</a></li>
     <li><a href="#35-从-pdrs-到-mpe">3.5 从 PDRS 到 MPE</a></li>
   </ol>
@@ -298,7 +298,7 @@
   <ol>
     <li><a href="#41-半离散方程-16">4.1 半离散方程 (16)</a></li>
     <li><a href="#42-pdrs-形式-17">4.2 PDRS 形式 (17)</a></li>
-    <li><a href="#43--时的具体形式">4.3  时的具体形式</a></li>
+    <li><a href="#43--时的具体形式">4.3 \(i=1\) 时的具体形式</a></li>
     <li><a href="#44-mpe-更新-20">4.4 MPE 更新 (20)</a></li>
   </ol>
 
@@ -313,7 +313,7 @@
     <li><a href="#62-面通量的-pdrs-分解">6.2 面通量的 PDRS 分解</a></li>
     <li><a href="#63-时间步格式与完整算法">6.3 时间步格式与完整算法</a>
       <ol>
-        <li><a href="#631--的保正构造">6.3.1  的保正构造</a></li>
+        <li><a href="#631--的保正构造">6.3.1 \(l_{ij}\) 的保正构造</a></li>
         <li><a href="#632-向保极值的扩展">6.3.2 向保极值的扩展</a></li>
       </ol>
     </li>
@@ -426,25 +426,25 @@ u^{n+1}_i = u^n_i + \Delta t \sum_{k=1}^{s} b_k \Biggl(
 $$<p>\(\pi^{(k)}_i\)、\(\sigma_i\) 为 <strong>Patankar 权分母 (PWDs)</strong>，须 \(\pi^{(k)}_i, \sigma_i > 0\)。产生项乘 \(u^{n+1}_j/\sigma_j\)，消灭项乘 \(u^{n+1}_i/\sigma_i\)。</p>
 <h2 id="32-pwd-选取">3.2 PWD 选取
 </h2><div class="table-wrapper"><table>
-  <thead>
-      <tr>
-          <th>格式</th>
-          <th>PWD 选取</th>
-          <th>说明</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><strong>MPE</strong>（一阶）</td>
-          <td>\(\sigma_i = u^n_i\)</td>
-          <td>基于前向 Euler</td>
-      </tr>
-      <tr>
-          <td><strong>MPHeun</strong>（二阶）</td>
-          <td>\(\pi^{(2)}_i = u^n_i\)，\(\sigma_i = u^{(2)}_i\)</td>
-          <td>基于 Heun 法</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>格式</th>
+					<th>PWD 选取</th>
+					<th>说明</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>MPE</strong>（一阶）</td>
+					<td>\(\sigma_i = u^n_i\)</td>
+					<td>基于前向 Euler</td>
+			</tr>
+			<tr>
+					<td><strong>MPHeun</strong>（二阶）</td>
+					<td>\(\pi^{(2)}_i = u^n_i\)，\(\sigma_i = u^{(2)}_i\)</td>
+					<td>基于 Heun 法</td>
+			</tr>
+	</tbody>
 </table></div>
 <p>Patankar 权 \(\frac{u^{n+1}_i}{u^n_i}\) 在 \(\Delta t \to 0\) 时趋于 1，故不破坏收敛阶。</p>
 <h2 id="33-矩阵形式与--的构成">3.3 矩阵形式与 \(M^{(k)}\) 的构成
@@ -452,26 +452,26 @@ $$<p>\(\pi^{(k)}_i\)、\(\sigma_i\) 为 <strong>Patankar 权分母 (PWDs)</stron
 <p><strong>\(M^{(k)}\) 的构成</strong>：将右端所有乘在 \(u^{(k)}\) 上的项移到左端，左端 \(u^{(k)}\) 的系数即 \(M^{(k)}\) 的元素。对角元来自 \(1\) 与消灭项，非对角元来自产生项（带负号）。</p>
 <h2 id="34-格式性质">3.4 格式性质
 </h2><div class="table-wrapper"><table>
-  <thead>
-      <tr>
-          <th>性质</th>
-          <th>说明</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><strong>隐格式</strong></td>
-          <td>未知量\(u^{(k)}\)、\(u^{n+1}\) 在等式两端，需解线性系统；为<strong>线性隐式</strong>（无需 Newton 迭代）</td>
-      </tr>
-      <tr>
-          <td><strong>M-矩阵</strong></td>
-          <td>当\(M^{(k)}\)、\(M\) 为 M-矩阵时无条件正性。\(\Delta t\) 充分小时 \(M \approx I\) 自然成立；任意 \(\Delta t\) 下需 PWD 与 \(p_{ij}=d_{ji}\) 保证</td>
-      </tr>
-      <tr>
-          <td><strong>Butcher 非负</strong></td>
-          <td>要求\(a_{k\nu}, b_k, c_k \geq 0\)，否则破坏 \(m_{ij} \leq 0\)，无法保证 M-矩阵。适用 Euler、Heun、SSP-RK 等</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>性质</th>
+					<th>说明</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>隐格式</strong></td>
+					<td>未知量\(u^{(k)}\)、\(u^{n+1}\) 在等式两端，需解线性系统；为<strong>线性隐式</strong>（无需 Newton 迭代）</td>
+			</tr>
+			<tr>
+					<td><strong>M-矩阵</strong></td>
+					<td>当\(M^{(k)}\)、\(M\) 为 M-矩阵时无条件正性。\(\Delta t\) 充分小时 \(M \approx I\) 自然成立；任意 \(\Delta t\) 下需 PWD 与 \(p_{ij}=d_{ji}\) 保证</td>
+			</tr>
+			<tr>
+					<td><strong>Butcher 非负</strong></td>
+					<td>要求\(a_{k\nu}, b_k, c_k \geq 0\)，否则破坏 \(m_{ij} \leq 0\)，无法保证 M-矩阵。适用 Euler、Heun、SSP-RK 等</td>
+			</tr>
+	</tbody>
 </table></div>
 <h2 id="35-从-pdrs-到-mpe">3.5 从 PDRS 到 MPE
 </h2><p>取 \(\sigma_i = u^n_i\)，MPE 的更新为</p>

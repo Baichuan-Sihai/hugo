@@ -7,7 +7,7 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>百川</copyright>
-        <lastBuildDate>Thu, 17 Jul 2025 13:31:17 +0800</lastBuildDate><atom:link href="https://baichuan-blog.netlify.app/tags/piml/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 04 Jun 2026 10:05:47 +0800</lastBuildDate><atom:link href="https://baichuan-blog.netlify.app/tags/piml/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Physics-Informed Machine Learning</title>
         <link>https://baichuan-blog.netlify.app/p/physics-informed-machine-learning/</link>
         <pubDate>Tue, 15 Jul 2025 23:50:17 +0800</pubDate>
@@ -37,7 +37,7 @@
 &lt;li&gt;前处理(嵌入embedding)： 例如用Fourier特征由输入坐标获得嵌入向量，可以更容易学到高频信息。&lt;/li&gt;
 &lt;li&gt;多神经网络：用多个神经网络学习不同函数，如对于Dirichlet边值问题
 
-$$\begin{cases}\mathcal{F}(u)(\mathbf{x})=0, &amp;x\in\Omega\\u(\mathbf(x))=g(\mathbf{x}),&amp;x\in\p \Omega\end{cases},$$
+$$\begin{cases}\mathcal{F}(u)(\mathbf{x})=0, &amp;x\in\Omega\\u(\mathbf(x))=g(\mathbf{x}),&amp;x\in\partial \Omega\end{cases},$$
 将解分解为两个部分
 
 $$u(\mathbf{x}) = v(\mathbf{x})+D(\mathbf{x})y(\mathbf{x}),$$
@@ -63,7 +63,8 @@ $$\min_{w}\mathcal{J}(w).$$&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;对于一般的问题，可以类似Petrov-Galerkin的想法，选一个测试函数集$V_K$，构造损失函数：
 &lt;/p&gt;
-$$\mathcal{J}(w) = \frac{1}{K}\sum_{k=1}^K|\langle\mathcal{F}(u_w)(\mathbf{x}),v\rangle_{\Omega}|^2,$$&lt;p&gt;若有边值条件等则再往损失函数中添加相关项。&lt;/p&gt;
+$$\mathcal{J}(w) = \frac{1}{K}\sum_{k=1}^K|\langle\mathcal{F}(u_w)(\mathbf{x}),v\rangle_{\Omega}|^2,$$&lt;p&gt;
+若有边值条件等则再往损失函数中添加相关项。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Weak Adversarial Networks (WAN) 将变分形式表示成了min-max问题：

@@ -361,50 +361,50 @@
 <p><a class="link" href="https://mfem.org/howto/nav-mesh-connectivity/"  target="_blank" rel="noopener"
     >Mesh connectivity</a></p>
 <div class="table-wrapper"><table>
-  <thead>
-      <tr>
-          <th>Mesh Method</th>
-          <th>Dimension</th>
-          <th>Mesh object owns data</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><code>const Table &amp;ElementToElementTable()</code></td>
-          <td>1D, 2D, 3D</td>
-          <td>Yes</td>
-      </tr>
-      <tr>
-          <td><code>const Table &amp;ElementToFaceTable()</code></td>
-          <td>1D, 2D, 3D</td>
-          <td>Yes</td>
-      </tr>
-      <tr>
-          <td><code>const Table &amp;ElementToEdgeTable()</code></td>
-          <td>1D, 2D, 3D</td>
-          <td>Yes</td>
-      </tr>
-      <tr>
-          <td><code>Table *GetFaceEdgeTable()</code></td>
-          <td>3D</td>
-          <td>Yes</td>
-      </tr>
-      <tr>
-          <td><code>Table *GetEdgeVertexTable()</code></td>
-          <td>1D, 2D, 3D</td>
-          <td>Yes</td>
-      </tr>
-      <tr>
-          <td><code>Table *GetVertexToElementTable()</code></td>
-          <td>1D, 2D, 3D</td>
-          <td>No</td>
-      </tr>
-      <tr>
-          <td><code>Table *GetFaceToElementTable()</code></td>
-          <td>1D, 2D, 3D</td>
-          <td>No</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Mesh Method</th>
+					<th>Dimension</th>
+					<th>Mesh object owns data</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>const Table &amp;ElementToElementTable()</code></td>
+					<td>1D, 2D, 3D</td>
+					<td>Yes</td>
+			</tr>
+			<tr>
+					<td><code>const Table &amp;ElementToFaceTable()</code></td>
+					<td>1D, 2D, 3D</td>
+					<td>Yes</td>
+			</tr>
+			<tr>
+					<td><code>const Table &amp;ElementToEdgeTable()</code></td>
+					<td>1D, 2D, 3D</td>
+					<td>Yes</td>
+			</tr>
+			<tr>
+					<td><code>Table *GetFaceEdgeTable()</code></td>
+					<td>3D</td>
+					<td>Yes</td>
+			</tr>
+			<tr>
+					<td><code>Table *GetEdgeVertexTable()</code></td>
+					<td>1D, 2D, 3D</td>
+					<td>Yes</td>
+			</tr>
+			<tr>
+					<td><code>Table *GetVertexToElementTable()</code></td>
+					<td>1D, 2D, 3D</td>
+					<td>No</td>
+			</tr>
+			<tr>
+					<td><code>Table *GetFaceToElementTable()</code></td>
+					<td>1D, 2D, 3D</td>
+					<td>No</td>
+			</tr>
+	</tbody>
 </table></div>
 <p>遍历每个单元，并对各边做处理：</p>
 <div class="highlight"><div class="chroma">
@@ -465,38 +465,38 @@
 <p><a class="link" href="https://mfem.org/howto/element-local-global-numbering/"  target="_blank" rel="noopener"
     >Local index and global index</a></p>
 <div class="table-wrapper"><table>
-  <thead>
-      <tr>
-          <th>功能</th>
-          <th>代码</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>局部单元数</td>
-          <td><code>Mesh::GetNE()</code></td>
-      </tr>
-      <tr>
-          <td>全局单元数</td>
-          <td><code>ParMesh::GetGlobalNE()</code></td>
-      </tr>
-      <tr>
-          <td>全局编号</td>
-          <td>局部编号+该进程的<code>offset</code></td>
-      </tr>
-      <tr>
-          <td>给定局部编号，返回全局编号</td>
-          <td><code>ParMesh::GetGlobalElementNum(local_element_num)</code></td>
-      </tr>
-      <tr>
-          <td>给定全局单元编号，返回其在当前进程上局部编号</td>
-          <td><code>ParMesh::GetLocalElementNum(global_element_num)</code></td>
-      </tr>
-      <tr>
-          <td>获取局部单元的全局编号列表</td>
-          <td><code>ParMesh::GetGlobalElementIndices</code></td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>功能</th>
+					<th>代码</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>局部单元数</td>
+					<td><code>Mesh::GetNE()</code></td>
+			</tr>
+			<tr>
+					<td>全局单元数</td>
+					<td><code>ParMesh::GetGlobalNE()</code></td>
+			</tr>
+			<tr>
+					<td>全局编号</td>
+					<td>局部编号+该进程的<code>offset</code></td>
+			</tr>
+			<tr>
+					<td>给定局部编号，返回全局编号</td>
+					<td><code>ParMesh::GetGlobalElementNum(local_element_num)</code></td>
+			</tr>
+			<tr>
+					<td>给定全局单元编号，返回其在当前进程上局部编号</td>
+					<td><code>ParMesh::GetLocalElementNum(global_element_num)</code></td>
+			</tr>
+			<tr>
+					<td>获取局部单元的全局编号列表</td>
+					<td><code>ParMesh::GetGlobalElementIndices</code></td>
+			</tr>
+	</tbody>
 </table></div>
 <p>单元编号有全局和局部编号，但在MFEM的<code>Mesh</code>类中其他网格实体只有局部编号，为了使用全局编号可用<code>ParMesh</code>类：</p>
 <ul>
