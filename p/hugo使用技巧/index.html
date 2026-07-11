@@ -469,18 +469,18 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-md" data-lang="md"><span class="line"><span class="cl">---
-</span></span><span class="line"><span class="cl">title: &#34;{{ replace .Name &#34;-&#34; &#34; &#34; | title }}&#34;
-</span></span><span class="line"><span class="cl">description: 
-</span></span><span class="line"><span class="cl">date: {{ .Date }}
-</span></span><span class="line"><span class="cl">image: 
-</span></span><span class="line"><span class="cl">math: 
-</span></span><span class="line"><span class="cl">license: 
-</span></span><span class="line"><span class="cl">categories:
-</span></span><span class="line"><span class="cl">tag:
-</span></span><span class="line"><span class="cl">weight: 
-</span></span><span class="line"><span class="cl">---
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-md" data-lang="md"><span class="line"><span class="cl"><span class="nn">---</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;{{ replace .Name &#34;</span>-<span class="s2">&#34; &#34;</span><span class="w"> </span><span class="s2">&#34; | title }}&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">description</span><span class="p">:</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="nt">date</span><span class="p">:</span><span class="w"> </span>{{<span class="w"> </span><span class="l">.Date }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">image</span><span class="p">:</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="nt">math</span><span class="p">:</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="nt">license</span><span class="p">:</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="nt">categories</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">tag</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">weight</span><span class="p">:</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="nn">---</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p><code>categories</code>生成分类，在文章中会显示分类；<code>tag</code>生成标签，不过在文章中不会显示；<code>weight</code>可以设置文章权重，以达到置顶功能，<code>weight</code>越小越靠前（主页的<code>menu</code>也有<code>weight</code>参数，可以控制菜单顺序）</p>
 <p>在博客主路径下，终端输入：</p>
@@ -637,15 +637,15 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-md" data-lang="md"><span class="line"><span class="cl">---
-</span></span><span class="line"><span class="cl">title: &#34;{{ replace .Name &#34;-&#34; &#34; &#34; | title }}&#34;
-</span></span><span class="line"><span class="cl">description:
-</span></span><span class="line"><span class="cl">image: &#34;images/&#34;
-</span></span><span class="line"><span class="cl">style:
-</span></span><span class="line"><span class="cl">    background: &#34;&#34;<span class="ni">#ff7f7f</span>&#34;&#34;
-</span></span><span class="line"><span class="cl">    color: &#34;<span class="ni">#fff</span>&#34;
-</span></span><span class="line"><span class="cl">---
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-md" data-lang="md"><span class="line"><span class="cl"><span class="nn">---</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;{{ replace .Name &#34;</span>-<span class="s2">&#34; &#34;</span><span class="w"> </span><span class="s2">&#34; | title }}&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">description</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;images/&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">style</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">background</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;&#34;</span><span class="c">#ff7f7f&#34;&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">color</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;#fff&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nn">---</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>Hugo中图片路径是按其在<code>static</code>文件夹下的相对路径，因此可以将用作封面的图片都放在<code>static/images/</code>下。<code>background</code>为背景色，这里取的是浅红色；<code>color</code>是字体颜色，这里是白色。颜色可参考<a class="link" href="https://www.codeeeee.com/color/rgb.html"  target="_blank" rel="noopener"
     >十六进制色表</a>。</p>

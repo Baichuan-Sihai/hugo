@@ -1,10 +1,9 @@
-
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://baichuan-blog.netlify.app/categories/</loc>
-    <lastmod>2026-06-04T10:05:47+08:00</lastmod>
+    <lastmod>2026-07-11T10:47:39+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-blog.netlify.app/p/flux-balanced-patankar-type-schemes-for-the-compressible-euler-equations/</loc>
     <lastmod>2026-03-18T09:49:20+08:00</lastmod>
@@ -13,10 +12,10 @@
     <lastmod>2026-03-18T09:49:20+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-blog.netlify.app/post/</loc>
-    <lastmod>2026-06-04T10:05:47+08:00</lastmod>
+    <lastmod>2026-07-11T10:47:39+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-blog.netlify.app/tags/</loc>
-    <lastmod>2026-06-04T10:05:47+08:00</lastmod>
+    <lastmod>2026-07-11T10:47:39+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-blog.netlify.app/categories/ai/</loc>
     <lastmod>2026-03-18T08:59:18+08:00</lastmod>
@@ -94,13 +93,13 @@
     <lastmod>2025-06-03T11:17:11+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-blog.netlify.app/tags/-scp/</loc>
-    <lastmod>2026-06-04T10:05:47+08:00</lastmod>
+    <lastmod>2026-07-11T10:47:39+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-blog.netlify.app/tags/-ssh/</loc>
-    <lastmod>2026-06-04T10:05:47+08:00</lastmod>
+    <lastmod>2026-07-11T10:47:39+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-blog.netlify.app/p/git/</loc>
-    <lastmod>2026-06-04T10:05:47+08:00</lastmod>
+    <lastmod>2026-07-11T10:47:39+08:00</lastmod>
   </url><url>
     <loc>https://baichuan-blog.netlify.app/p/hugo-markdown%E6%8A%80%E5%B7%A7/</loc>
     <lastmod>2026-03-18T09:49:20+08:00</lastmod>

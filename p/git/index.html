@@ -10,7 +10,7 @@
 <meta property='og:description' content="本文总结了Git的常用操作：第1-5节是基础操作，包括仓库初始化、添加身份标识等，第5节的暂存-提交-推送-拉取是日常管理中使用最为频繁的命令；后面几节则是一些进阶操作，包括解决合并冲突、临时保存、处理提交历史等，以及SSH免密连接远程仓库以及不同机器间的远程传输。\n">
 <meta property='og:url' content='https://baichuan-blog.netlify.app/p/git/'>
 <meta property='og:site_name' content='百川的小屋'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content=' ssh' /><meta property='article:tag' content=' scp' /><meta property='article:published_time' content='2025-05-27T18:46:25&#43;08:00'/><meta property='article:modified_time' content='2026-06-04T10:05:47&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content=' ssh' /><meta property='article:tag' content=' scp' /><meta property='article:published_time' content='2025-05-27T18:46:25&#43;08:00'/><meta property='article:modified_time' content='2026-07-11T10:47:39&#43;08:00'/>
 <meta name="twitter:title" content="Git">
 <meta name="twitter:description" content="本文总结了Git的常用操作：第1-5节是基础操作，包括仓库初始化、添加身份标识等，第5节的暂存-提交-推送-拉取是日常管理中使用最为频繁的命令；后面几节则是一些进阶操作，包括解决合并冲突、临时保存、处理提交历史等，以及SSH免密连接远程仓库以及不同机器间的远程传输。\n">
     <link rel="shortcut icon" href="/favicon2.ico" />
@@ -294,6 +294,7 @@
       <ol>
         <li><a href="#修改提交信息">修改提交信息</a></li>
         <li><a href="#重置分支到特定提交">重置分支到特定提交</a></li>
+        <li><a href="#补充提交">补充提交</a></li>
         <li><a href="#撤销某次提交">撤销某次提交</a></li>
         <li><a href="#远程提交">远程提交</a></li>
       </ol>
@@ -359,7 +360,7 @@
 			
 			
 						<span class="article-time--final-update">
-							最后更新于 <time class="article-time--updated" datetime="2026-06-04 10:05:47 &#43;0800 &#43;0800" title="2026-06-04 10:05:47 &#43;0800 &#43;0800">2026-06-04 10:05</time>
+							最后更新于 <time class="article-time--updated" datetime="2026-07-11 10:47:39 &#43;0800 &#43;0800" title="2026-07-11 10:47:39 &#43;0800 &#43;0800">2026-07-11 10:47</time>
 						</span>
 
 			
@@ -644,6 +645,16 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p><code>git reset [commitid]</code>默认采用<code>--mixed</code>，所谓暂存区重置是恢复快照（每次commit提交时Git都会记录下这一刻所有文件的样子），实际上从vscode的源代码管理中看暂存区是空的，工作区则仍是修改后的文件，不会被<code>reset</code>覆盖。该操作可用于合并提交历史。</p>
+<h3 id="补充提交">补充提交
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">git commit --amend --no-edit
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>将暂存区内容并入上一次的git提交中，未暂存的改动不会被带上。</p>
 <h3 id="撤销某次提交">撤销某次提交
 </h3><p>使用<code>git log --oneline</code>查看提交历史, 你会看到</p>
 <div class="highlight"><div class="chroma">
